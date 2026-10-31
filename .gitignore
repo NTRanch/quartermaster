@@ -1,2 +1,4 @@
 luac.out
 book/html/
+tools/node_modules/
+docs/previews/.frames-*/

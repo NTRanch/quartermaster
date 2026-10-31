@@ -1,13 +1,34 @@
--- quartermaster/src/main.lua — Quartermaster core (Lua).
--- Tiger Style (tiger-style-lua): explicit contracts, bounded work,
--- disciplined ownership. The week's data (protocol tables, ledgers) lives
--- in this idiom natively; presentation is the shell's job.
--- The jam ships this source READABLE on an embedded Lua VM inlined in the
--- single file (preflight picks wasm-interpreter vs JS VM; see docs/BUILD.md).
+-- src/main.lua — Quartermaster public API (the shell's whole contract).
+--
+--- new_game(seed, options) -> state
+--- step(state, input)      -> advance one fixed 1/60 s tick
+--- frame(state)            -> { palette, ops, cues, save, volume }
+--- The core is VM-portable (PUC 5.4 headless, Fengari 5.3 shipped): no
+--- host APIs in here; the bridge lives in the shell and tools.
+
+local Game = require("src.game")
 
 local M = {}
 
---- One fixed simulation step (1/60 s, fixed by the shell).
-function M.step() end
+M.VERSION = "1.0.0"
+
+---@param seed number
+---@param options table|nil { demo_level = integer|nil, save = string|nil }
+---@return table state
+function M.new_game(seed, options)
+    return Game.new(seed, options)
+end
+
+---@param state table
+---@param input table|nil
+function M.step(state, input)
+    Game.step(state, input)
+end
+
+---@param state table
+---@return table frame
+function M.frame(state)
+    return Game.frame(state)
+end
 
 return M
