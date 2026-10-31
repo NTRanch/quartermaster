@@ -9,6 +9,13 @@ local M = {}
 
 local MODULUS = 2147483647 -- 2^31 - 1
 local MULTIPLIER = 48271
+-- Schrage decomposition of MODULUS by MULTIPLIER: keeps every intermediate
+-- below 2^31, so the step is exact in both number models. A direct
+-- (state * MULTIPLIER) % MODULUS is NOT portable: Fengari's float modulo
+-- loses the quotient on large operands (measured: off by the quotient
+-- itself at the second step from seed 2303).
+local SCHRAGE_Q = 44488 -- MODULUS // MULTIPLIER
+local SCHRAGE_R = 3399 -- MODULUS % MULTIPLIER (must stay < SCHRAGE_Q)
 local RANGE_MAX = 1000000
 
 ---@class QmRng
@@ -32,7 +39,14 @@ end
 ---@param rng QmRng
 ---@return integer
 function M.next_int(rng)
-    rng.state = (rng.state * MULTIPLIER) % MODULUS
+    local state = rng.state
+    local hi = math.floor(state / SCHRAGE_Q)
+    local lo = state - hi * SCHRAGE_Q
+    local test = MULTIPLIER * lo - SCHRAGE_R * hi
+    if test < 0 then
+        test = test + MODULUS
+    end
+    rng.state = test
     return rng.state
 end
 

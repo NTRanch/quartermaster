@@ -19,7 +19,7 @@ M.PALETTE = {
     "#ff4b4b", -- 7 bad
     "#8a6d80", -- 8 muted
     "#e8b4a0", -- 9 skin tone (figure)
-    "#3a2b4d", -- 10 cloth (figure)
+    "#5a4678", -- 10 cloth (figure)
     "#cfd4dc", -- 11 silver
     "#07010a", -- 12 deep
     "#ffd7ec", -- 13 brush highlight

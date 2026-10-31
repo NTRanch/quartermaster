@@ -1,45 +1,16047 @@
-(()=>{var Op=(e=>typeof require<"u"?require:typeof Proxy<"u"?new Proxy(e,{get:(t,n)=>(typeof require<"u"?require:t)[n]}):e)(function(e){if(typeof require<"u")return require.apply(this,arguments);throw Error('Dynamic require of "'+e+'" is not supported')});var U=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports);var yo=U((E4,Ep)=>{Ep.exports={platform:()=>"browser",tmpdir:()=>"/tmp",hostname:()=>"jam",EOL:`
-`,arch:()=>"wasm",release:()=>"0"}});var Ye=U((m4,B)=>{"use strict";var Au=process.env.FENGARICONF?JSON.parse(process.env.FENGARICONF):{},{LUA_VERSION_MAJOR:Vk,LUA_VERSION_MINOR:Fk,to_luastring:jr}=_e(),Gk=";";B.exports.LUA_PATH_SEP=Gk;var qk="?";B.exports.LUA_PATH_MARK=qk;var Hk="!";B.exports.LUA_EXEC_DIR=Hk;var Xr=Vk+"."+Fk;B.exports.LUA_VDIR=Xr;if(typeof process>"u"){let e="/";B.exports.LUA_DIRSEP=e;let t="./lua/"+Xr+"/";B.exports.LUA_LDIR=t;let n=t;B.exports.LUA_JSDIR=n;let r=jr(t+"?.lua;"+t+"?/init.lua;./?.lua;./?/init.lua");B.exports.LUA_PATH_DEFAULT=r;let a=jr(n+"?.js;"+n+"loadall.js;./?.js");B.exports.LUA_JSPATH_DEFAULT=a}else if(yo().platform()==="win32"){let e="\\";B.exports.LUA_DIRSEP=e;let t="!\\lua\\";B.exports.LUA_LDIR=t;let n="!\\";B.exports.LUA_JSDIR=n;let r="!\\..\\share\\lua\\"+Xr+"\\";B.exports.LUA_SHRDIR=r;let a=jr(t+"?.lua;"+t+"?\\init.lua;"+n+"?.lua;"+n+"?\\init.lua;"+r+"?.lua;"+r+"?\\init.lua;.\\?.lua;.\\?\\init.lua");B.exports.LUA_PATH_DEFAULT=a;let s=jr(n+"?.js;"+n+"..\\share\\lua\\"+Xr+"\\?.js;"+n+"loadall.js;.\\?.js");B.exports.LUA_JSPATH_DEFAULT=s}else{let e="/";B.exports.LUA_DIRSEP=e;let t="/usr/local/";B.exports.LUA_ROOT=t;let n="/usr/",r=t+"share/lua/"+Xr+"/",a=n+"share/lua/"+Xr+"/";B.exports.LUA_LDIR=r;let s=r;B.exports.LUA_JSDIR=s;let u=a,l=jr(r+"?.lua;"+r+"?/init.lua;"+a+"?.lua;"+a+"?/init.lua;./?.lua;./?/init.lua");B.exports.LUA_PATH_DEFAULT=l;let o=jr(s+"?.js;"+s+"loadall.js;"+u+"?.js;"+u+"loadall.js;./?.js");B.exports.LUA_JSPATH_DEFAULT=o}var jk=Au.LUA_COMPAT_FLOATSTRING||!1,Xk=2147483647,Io=-2147483648,zk=Au.LUAI_MAXSTACK||1e6,Zk=Au.LUA_IDSIZE||59,Yk=function(e){return String(e)},Jk=function(e){return String(Number(e.toPrecision(14)))},Wk=function(e){return e>=Io&&e<-Io?e:!1},mp="",$k="",Qk=`%${mp}d`,Lk="%.14g",eb=function(){return 46},tb=function(e,t){if(!t)throw Error(t)},nb=Au.LUAL_BUFFERSIZE||8192,rb=function(e){if(e===0)return[e,0];var t=new DataView(new ArrayBuffer(8));t.setFloat64(0,e);var n=t.getUint32(0)>>>20&2047;n===0&&(t.setFloat64(0,e*Math.pow(2,64)),n=(t.getUint32(0)>>>20&2047)-64);var r=n-1022,a=vp(e,-r);return[a,r]},vp=function(e,t){for(var n=Math.min(3,Math.ceil(Math.abs(t)/1023)),r=e,a=0;a<n;a++)r*=Math.pow(2,Math.floor((t+a)/n));return r};B.exports.LUAI_MAXSTACK=zk;B.exports.LUA_COMPAT_FLOATSTRING=jk;B.exports.LUA_IDSIZE=Zk;B.exports.LUA_INTEGER_FMT=Qk;B.exports.LUA_INTEGER_FRMLEN=mp;B.exports.LUA_MAXINTEGER=Xk;B.exports.LUA_MININTEGER=Io;B.exports.LUA_NUMBER_FMT=Lk;B.exports.LUA_NUMBER_FRMLEN=$k;B.exports.LUAL_BUFFERSIZE=nb;B.exports.frexp=rb;B.exports.ldexp=vp;B.exports.lua_getlocaledecpoint=eb;B.exports.lua_integer2str=Yk;B.exports.lua_number2str=Jk;B.exports.lua_numbertointeger=Wk;B.exports.luai_apicheck=tb});var _e=U((v4,b)=>{"use strict";var Ja;typeof Uint8Array.from=="function"?Ja=Uint8Array.from.bind(Uint8Array):Ja=function(e){let t=0,n=e.length,r=new Uint8Array(n);for(;n>t;)r[t]=e[t++];return r};var Mo;if(typeof new Uint8Array().indexOf=="function")Mo=function(e,t,n){return e.indexOf(t,n)};else{let e=[].indexOf;if(e.call(new Uint8Array(1),0)!==0)throw Error("missing .indexOf");Mo=function(t,n,r){return e.call(t,n,r)}}var Po;typeof Uint8Array.of=="function"?Po=Uint8Array.of.bind(Uint8Array):Po=function(){return Ja(arguments)};var Wa=function(e){return e instanceof Uint8Array},ab=function(e,t){if(e!==t){let n=e.length;if(n!==t.length)return!1;for(let r=0;r<n;r++)if(e[r]!==t[r])return!1}return!0},It="cannot convert invalid utf8 to javascript string",sb=function(e,t,n,r){if(!Wa(e))throw new TypeError("to_jsstring expects a Uint8Array");n===void 0?n=e.length:n=Math.min(e.length,n);let a="";for(let s=t!==void 0?t:0;s<n;){let u=e[s++];if(u<128)a+=String.fromCharCode(u);else if(u<194||u>244){if(!r)throw RangeError(It);a+="\uFFFD"}else if(u<=223){if(s>=n){if(!r)throw RangeError(It);a+="\uFFFD";continue}let l=e[s++];if((l&192)!==128){if(!r)throw RangeError(It);a+="\uFFFD";continue}a+=String.fromCharCode(((u&31)<<6)+(l&63))}else if(u<=239){if(s+1>=n){if(!r)throw RangeError(It);a+="\uFFFD";continue}let l=e[s++];if((l&192)!==128){if(!r)throw RangeError(It);a+="\uFFFD";continue}let o=e[s++];if((o&192)!==128){if(!r)throw RangeError(It);a+="\uFFFD";continue}let c=((u&15)<<12)+((l&63)<<6)+(o&63);if(c<=65535)a+=String.fromCharCode(c);else{c-=65536;let i=(c>>10)+55296,f=c%1024+56320;a+=String.fromCharCode(i,f)}}else{if(s+2>=n){if(!r)throw RangeError(It);a+="\uFFFD";continue}let l=e[s++];if((l&192)!==128){if(!r)throw RangeError(It);a+="\uFFFD";continue}let o=e[s++];if((o&192)!==128){if(!r)throw RangeError(It);a+="\uFFFD";continue}let c=e[s++];if((c&192)!==128){if(!r)throw RangeError(It);a+="\uFFFD";continue}let i=((u&7)<<18)+((l&63)<<12)+((o&63)<<6)+(c&63);i-=65536;let f=(i>>10)+55296,T=i%1024+56320;a+=String.fromCharCode(f,T)}}return a},ub=";,/?:@&=+$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,-_.!~*'()#".split("").reduce(function(e,t){return e[t.charCodeAt(0)]=!0,e},{}),lb=function(e){if(!Wa(e))throw new TypeError("to_uristring expects a Uint8Array");let t="";for(let n=0;n<e.length;n++){let r=e[n];ub[r]?t+=String.fromCharCode(r):t+="%"+(r<16?"0":"")+r.toString(16)}return t},Up={},Do=function(e,t){if(typeof e!="string")throw new TypeError("to_luastring expects a javascript string");if(t){let s=Up[e];if(Wa(s))return s}let n=e.length,r=Array(n),a=0;for(let s=0;s<n;++s){let u=e.charCodeAt(s);if(u<=127)r[a++]=u;else if(u<=2047)r[a++]=192|u>>6,r[a++]=128|u&63;else{if(u>=55296&&u<=56319&&s+1<n){let l=e.charCodeAt(s+1);l>=56320&&l<=57343&&(s++,u=(u-55296)*1024+l+9216)}u<=65535?(r[a++]=224|u>>12,r[a++]=128|u>>6&63,r[a++]=128|u&63):(r[a++]=240|u>>18,r[a++]=128|u>>12&63,r[a++]=128|u>>6&63,r[a++]=128|u&63)}}return r=Ja(r),t&&(Up[e]=r),r},ob=function(e){if(!Wa(e))if(typeof e=="string")e=Do(e);else throw new TypeError("expects an array of bytes or javascript string");return e};b.exports.luastring_from=Ja;b.exports.luastring_indexOf=Mo;b.exports.luastring_of=Po;b.exports.is_luastring=Wa;b.exports.luastring_eq=ab;b.exports.to_jsstring=sb;b.exports.to_uristring=lb;b.exports.to_luastring=Do;b.exports.from_userstring=ob;var ib=Do("\x1BLua"),Rp="5",Sp="3",cb=503,Np="4",wp="Lua "+Rp+"."+Sp,yp=wp+"."+Np,_b=yp+"  Copyright (C) 1994-2017 Lua.org, PUC-Rio",fb="R. Ierusalimschy, L. H. de Figueiredo, W. Celes";b.exports.LUA_SIGNATURE=ib;b.exports.LUA_VERSION_MAJOR=Rp;b.exports.LUA_VERSION_MINOR=Sp;b.exports.LUA_VERSION_NUM=cb;b.exports.LUA_VERSION_RELEASE=Np;b.exports.LUA_VERSION=wp;b.exports.LUA_RELEASE=yp;b.exports.LUA_COPYRIGHT=_b;b.exports.LUA_AUTHORS=fb;var pb={LUA_OK:0,LUA_YIELD:1,LUA_ERRRUN:2,LUA_ERRSYNTAX:3,LUA_ERRMEM:4,LUA_ERRGCMM:5,LUA_ERRERR:6},Ge={LUA_TNONE:-1,LUA_TNIL:0,LUA_TBOOLEAN:1,LUA_TLIGHTUSERDATA:2,LUA_TNUMBER:3,LUA_TSTRING:4,LUA_TTABLE:5,LUA_TFUNCTION:6,LUA_TUSERDATA:7,LUA_TTHREAD:8,LUA_NUMTAGS:9};Ge.LUA_TSHRSTR=Ge.LUA_TSTRING|0;Ge.LUA_TLNGSTR=Ge.LUA_TSTRING|16;Ge.LUA_TNUMFLT=Ge.LUA_TNUMBER|0;Ge.LUA_TNUMINT=Ge.LUA_TNUMBER|16;Ge.LUA_TLCL=Ge.LUA_TFUNCTION|0;Ge.LUA_TLCF=Ge.LUA_TFUNCTION|16;Ge.LUA_TCCL=Ge.LUA_TFUNCTION|32;var hb=0,db=1,xb=2,Ab=3,gb=4,Tb=5,kb=6,bb=7,Ob=8,Eb=9,mb=10,vb=11,Ub=12,Rb=13,Sb=0,Nb=1,wb=2,yb=20,{LUAI_MAXSTACK:Ib}=Ye(),Ip=-Ib-1e3,Mb=function(e){return Ip-e},Pb=1,Mp=2,Cb=Mp,Co=class{constructor(){this.event=NaN,this.name=null,this.namewhat=null,this.what=null,this.source=null,this.currentline=NaN,this.linedefined=NaN,this.lastlinedefined=NaN,this.nups=NaN,this.nparams=NaN,this.isvararg=NaN,this.istailcall=NaN,this.short_src=null,this.i_ci=null}},Pp=0,Cp=1,Dp=2,Bp=3,Db=4,Bb=1<<Pp,Kb=1<<Cp,Vb=1<<Dp,Fb=1<<Bp;b.exports.LUA_HOOKCALL=Pp;b.exports.LUA_HOOKCOUNT=Bp;b.exports.LUA_HOOKLINE=Dp;b.exports.LUA_HOOKRET=Cp;b.exports.LUA_HOOKTAILCALL=Db;b.exports.LUA_MASKCALL=Bb;b.exports.LUA_MASKCOUNT=Fb;b.exports.LUA_MASKLINE=Vb;b.exports.LUA_MASKRET=Kb;b.exports.LUA_MINSTACK=yb;b.exports.LUA_MULTRET=-1;b.exports.LUA_OPADD=hb;b.exports.LUA_OPBAND=bb;b.exports.LUA_OPBNOT=Rb;b.exports.LUA_OPBOR=Ob;b.exports.LUA_OPBXOR=Eb;b.exports.LUA_OPDIV=Tb;b.exports.LUA_OPEQ=Sb;b.exports.LUA_OPIDIV=kb;b.exports.LUA_OPLE=wb;b.exports.LUA_OPLT=Nb;b.exports.LUA_OPMOD=Ab;b.exports.LUA_OPMUL=xb;b.exports.LUA_OPPOW=gb;b.exports.LUA_OPSHL=mb;b.exports.LUA_OPSHR=vb;b.exports.LUA_OPSUB=db;b.exports.LUA_OPUNM=Ub;b.exports.LUA_REGISTRYINDEX=Ip;b.exports.LUA_RIDX_GLOBALS=Mp;b.exports.LUA_RIDX_LAST=Cb;b.exports.LUA_RIDX_MAINTHREAD=Pb;b.exports.constant_types=Ge;b.exports.lua_Debug=Co;b.exports.lua_upvalueindex=Mb;b.exports.thread_status=pb});var Je=U((U4,me)=>{var Mt=_e(),Kp="0",Vp="1",Gb=1,Fp="4",Gp="Fengari "+Kp+"."+Vp,qp=Gp+"."+Fp,Hp="B. Giannangeli, Daurnimator",qb=qp+"  Copyright (C) 2017-2018 "+Hp+`
-Based on: `+Mt.LUA_COPYRIGHT;me.exports.FENGARI_AUTHORS=Hp;me.exports.FENGARI_COPYRIGHT=qb;me.exports.FENGARI_RELEASE=qp;me.exports.FENGARI_VERSION=Gp;me.exports.FENGARI_VERSION_MAJOR=Kp;me.exports.FENGARI_VERSION_MINOR=Vp;me.exports.FENGARI_VERSION_NUM=Gb;me.exports.FENGARI_VERSION_RELEASE=Fp;me.exports.is_luastring=Mt.is_luastring;me.exports.luastring_eq=Mt.luastring_eq;me.exports.luastring_from=Mt.luastring_from;me.exports.luastring_indexOf=Mt.luastring_indexOf;me.exports.luastring_of=Mt.luastring_of;me.exports.to_jsstring=Mt.to_jsstring;me.exports.to_luastring=Mt.to_luastring;me.exports.to_uristring=Mt.to_uristring;me.exports.from_userstring=Mt.from_userstring});var We=U((R4,Qt)=>{"use strict";var{luai_apicheck:jp}=Ye(),Xp=function(e){if(!e)throw Error("assertion failed")};Qt.exports.lua_assert=Xp;Qt.exports.luai_apicheck=jp||function(e,t){return Xp(t)};var Hb=function(e,t,n){return jp(e,t&&n)};Qt.exports.api_check=Hb;var jb=200;Qt.exports.LUAI_MAXCCALLS=jb;var Xb=32;Qt.exports.LUA_MINBUFFER=Xb;var zb=function(e,t,n){let r=t%n;return r*n<0&&(r+=n),r};Qt.exports.luai_nummod=zb;var Zb=2147483647;Qt.exports.MAX_INT=Zb;var Yb=-2147483648;Qt.exports.MIN_INT=Yb});var Bo=U((S4,ar)=>{"use strict";var{luastring_of:Jb}=_e(),zr=Jb(0,0,0,0,0,0,0,0,0,0,8,8,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,22,22,22,22,22,22,22,22,22,22,4,4,4,4,4,4,4,21,21,21,21,21,21,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,5,4,21,21,21,21,21,21,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),zp=0,Zp=1,Wb=2,$b=3,Qb=4,Lb=function(e){return(zr[e+1]&1<<Zp)!==0},eO=function(e){return(zr[e+1]&1<<Qb)!==0},tO=function(e){return(zr[e+1]&1<<Wb)!==0},nO=function(e){return(zr[e+1]&1<<$b)!==0},rO=function(e){return(zr[e+1]&1<<zp)!==0},aO=function(e){return(zr[e+1]&(1<<zp|1<<Zp))!==0};ar.exports.lisdigit=Lb;ar.exports.lislalnum=aO;ar.exports.lislalpha=rO;ar.exports.lisprint=tO;ar.exports.lisspace=nO;ar.exports.lisxdigit=eO});var Pt=U((N4,Sn)=>{"use strict";var{is_luastring:sO,luastring_eq:uO,luastring_from:lO,to_luastring:oO}=_e(),{lua_assert:$a}=We(),sr=class{constructor(t,n){this.hash=null,this.realstring=n}getstr(){return this.realstring}tsslen(){return this.realstring.length}},iO=function(e,t){return $a(e instanceof sr),$a(t instanceof sr),e==t||uO(e.realstring,t.realstring)},Yp=function(e){$a(sO(e));let t=e.length,n="|";for(let r=0;r<t;r++)n+=e[r].toString(16);return n},cO=function(e){return $a(e instanceof sr),e.hash===null&&(e.hash=Yp(e.getstr())),e.hash},Ko=function(e,t){return $a(t instanceof Uint8Array),new sr(e,t)},_O=function(e,t){return Ko(e,lO(t))},fO=function(e,t){return Ko(e,oO(t))};Sn.exports.luaS_eqlngstr=iO;Sn.exports.luaS_hash=Yp;Sn.exports.luaS_hashlongstr=cO;Sn.exports.luaS_bless=Ko;Sn.exports.luaS_new=_O;Sn.exports.luaS_newliteral=fO;Sn.exports.TString=sr});var Ct=U((w4,kt)=>{"use strict";var{constant_types:{LUA_TBOOLEAN:pO,LUA_TCCL:hO,LUA_TLCF:dO,LUA_TLCL:xO,LUA_TLIGHTUSERDATA:AO,LUA_TLNGSTR:gO,LUA_TNIL:$p,LUA_TNUMFLT:TO,LUA_TNUMINT:Go,LUA_TSHRSTR:kO,LUA_TTABLE:bO,LUA_TTHREAD:OO,LUA_TUSERDATA:EO},to_luastring:Vo}=_e(),{lua_assert:La}=We(),Fo=en(),qe=rt(),{luaS_hashlongstr:Qp,TString:mO}=Pt(),vO=Lt(),Jp=new WeakMap,Wp=function(e){let t=Jp.get(e);return t||(t={},Jp.set(e,t)),t},qo=function(e,t){switch(t.type){case $p:return Fo.luaG_runerror(e,Vo("table index is nil",!0));case TO:if(isNaN(t.value))return Fo.luaG_runerror(e,Vo("table index is NaN",!0));case Go:case pO:case bO:case xO:case dO:case hO:case EO:case OO:return t.value;case kO:case gO:return Qp(t.tsvalue());case AO:{let n=t.value;switch(typeof n){case"string":return"*"+n;case"number":return"#"+n;case"boolean":return n?"?true":"?false";case"function":return Wp(n);case"object":if(n instanceof vO.lua_State&&n.l_G===e.l_G||n instanceof Qa||n instanceof qe.Udata||n instanceof qe.LClosure||n instanceof qe.CClosure)return Wp(n);default:return n}}default:throw new Error("unknown key type: "+t.type)}},Qa=class{constructor(t){this.id=t.l_G.id_counter++,this.strong=new Map,this.dead_strong=new Map,this.dead_weak=void 0,this.f=void 0,this.l=void 0,this.metatable=null,this.flags=-1}},UO=function(e){e.flags=0},Lp=function(e,t,n,r){e.dead_strong.clear(),e.dead_weak=void 0;let a=null,s={key:n,value:r,p:a=e.l,n:void 0};e.f||(e.f=s),a&&(a.n=s),e.strong.set(t,s),e.l=s},RO=function(e){return typeof e=="object"?e!==null:typeof e=="function"},e0=function(e,t){let n=e.strong.get(t);if(n){n.key.setdeadvalue(),n.value=void 0;let r=n.n,a=n.p;n.p=void 0,a&&(a.n=r),r&&(r.p=a),e.f===n&&(e.f=r),e.l===n&&(e.l=a),e.strong.delete(t),RO(t)?(e.dead_weak||(e.dead_weak=new WeakMap),e.dead_weak.set(t,n)):e.dead_strong.set(t,n)}},SO=function(e){return new Qa(e)},Ho=function(e,t){let n=e.strong.get(t);return n?n.value:qe.luaO_nilobject},t0=function(e,t){return La(typeof t=="number"&&(t|0)===t),Ho(e,t)},NO=function(e,t){return La(t instanceof mO),Ho(e,Qp(t))},wO=function(e,t,n){return La(n instanceof qe.TValue),n.ttisnil()||n.ttisfloat()&&isNaN(n.value)?qe.luaO_nilobject:Ho(t,qo(e,n))},yO=function(e,t,n){La(typeof t=="number"&&(t|0)===t&&n instanceof qe.TValue);let r=t;if(n.ttisnil()){e0(e,r);return}let a=e.strong.get(r);if(a)a.value.setfrom(n);else{let s=new qe.TValue(Go,t),u=new qe.TValue(n.type,n.value);Lp(e,r,s,u)}},IO=function(e,t,n,r){La(n instanceof qe.TValue);let a=qo(e,n);if(r.ttisnil()){e0(t,a);return}let s=t.strong.get(a);if(s)s.value.setfrom(r);else{let u,l=n.value;n.ttisfloat()&&(l|0)===l?u=new qe.TValue(Go,l):u=new qe.TValue(n.type,l);let o=new qe.TValue(r.type,r.value);Lp(t,a,u,o)}},MO=function(e){let t=0,n=e.strong.size+1;for(;n-t>1;){let r=Math.floor((t+n)/2);t0(e,r).ttisnil()?n=r:t=r}return t},PO=function(e,t,n){let r=e.stack[n],a;if(r.type===$p){if(a=t.f,!a)return!1}else{let s=qo(e,r);if(a=t.strong.get(s),a){if(a=a.n,!a)return!1}else{if(a=t.dead_weak&&t.dead_weak.get(s)||t.dead_strong.get(s),!a)return Fo.luaG_runerror(e,Vo("invalid key to 'next'"));do if(a=a.n,!a)return!1;while(a.key.ttisdeadkey())}}return qe.setobj2s(e,n,a.key),qe.setobj2s(e,n+1,a.value),!0};kt.exports.invalidateTMcache=UO;kt.exports.luaH_get=wO;kt.exports.luaH_getint=t0;kt.exports.luaH_getn=MO;kt.exports.luaH_getstr=NO;kt.exports.luaH_setfrom=IO;kt.exports.luaH_setint=yO;kt.exports.luaH_new=SO;kt.exports.luaH_next=PO;kt.exports.Table=Qa});var cr=U((y4,g)=>{"use strict";var CO=["MOVE","LOADK","LOADKX","LOADBOOL","LOADNIL","GETUPVAL","GETTABUP","GETTABLE","SETTABUP","SETUPVAL","SETTABLE","NEWTABLE","SELF","ADD","SUB","MUL","MOD","POW","DIV","IDIV","BAND","BOR","BXOR","SHL","SHR","UNM","BNOT","NOT","LEN","CONCAT","JMP","EQ","LT","LE","TEST","TESTSET","CALL","TAILCALL","RETURN","FORLOOP","FORPREP","TFORCALL","TFORLOOP","SETLIST","CLOSURE","VARARG","EXTRAARG"],DO={OP_MOVE:0,OP_LOADK:1,OP_LOADKX:2,OP_LOADBOOL:3,OP_LOADNIL:4,OP_GETUPVAL:5,OP_GETTABUP:6,OP_GETTABLE:7,OP_SETTABUP:8,OP_SETUPVAL:9,OP_SETTABLE:10,OP_NEWTABLE:11,OP_SELF:12,OP_ADD:13,OP_SUB:14,OP_MUL:15,OP_MOD:16,OP_POW:17,OP_DIV:18,OP_IDIV:19,OP_BAND:20,OP_BOR:21,OP_BXOR:22,OP_SHL:23,OP_SHR:24,OP_UNM:25,OP_BNOT:26,OP_NOT:27,OP_LEN:28,OP_CONCAT:29,OP_JMP:30,OP_EQ:31,OP_LT:32,OP_LE:33,OP_TEST:34,OP_TESTSET:35,OP_CALL:36,OP_TAILCALL:37,OP_RETURN:38,OP_FORLOOP:39,OP_FORPREP:40,OP_TFORCALL:41,OP_TFORLOOP:42,OP_SETLIST:43,OP_CLOSURE:44,OP_VARARG:45,OP_EXTRAARG:46},le=0,te=1,He=2,K=3,D=0,gu=1,es=2,n0=3,as=[64|He<<4|le<<2|D,64|K<<4|le<<2|gu,64|le<<4|le<<2|gu,64|te<<4|te<<2|D,64|te<<4|le<<2|D,64|te<<4|le<<2|D,64|te<<4|K<<2|D,64|He<<4|K<<2|D,0|K<<4|K<<2|D,0|te<<4|le<<2|D,0|K<<4|K<<2|D,64|te<<4|te<<2|D,64|He<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|K<<4|K<<2|D,64|He<<4|le<<2|D,64|He<<4|le<<2|D,64|He<<4|le<<2|D,64|He<<4|le<<2|D,64|He<<4|He<<2|D,0|He<<4|le<<2|es,128|K<<4|K<<2|D,128|K<<4|K<<2|D,128|K<<4|K<<2|D,128|le<<4|te<<2|D,192|He<<4|te<<2|D,64|te<<4|te<<2|D,64|te<<4|te<<2|D,0|te<<4|le<<2|D,64|He<<4|le<<2|es,64|He<<4|le<<2|es,0|le<<4|te<<2|D,64|He<<4|le<<2|es,0|te<<4|te<<2|D,64|te<<4|le<<2|gu,64|te<<4|le<<2|D,0|te<<4|te<<2|n0],BO=function(e){return as[e]&3},KO=function(e){return as[e]>>4&3},VO=function(e){return as[e]>>2&3},FO=function(e){return as[e]&64},GO=function(e){return as[e]&128},Nn=9,wn=9,ur=Nn+wn,or=8,ts=Nn+wn+or,Zr=6,Dt=0,yn=Dt+Zr,ir=yn+or,ns=ir+Nn,lr=ir,rs=yn,r0=(1<<ur)-1,Tu=r0>>1,qO=(1<<ts)-1,a0=(1<<or)-1,HO=(1<<wn)-1,jO=(1<<Nn)-1,ss=1<<wn-1,XO=ss-1,zO=a0,ZO=function(e){return e&ss},YO=function(e){return e&~ss},JO=function(e){return e|ss},ye=function(e,t){return~(-1<<e)<<t},s0=function(e,t){return~ye(e,t)},WO=function(e){return e.opcode},$O=function(e,t){return e.code=e.code&s0(Zr,Dt)|t<<Dt&ye(Zr,Dt),Yr(e)},us=function(e,t,n,r){return e.code=e.code&s0(r,n)|t<<n&ye(r,n),Yr(e)},QO=function(e){return e.A},LO=function(e,t){return us(e,t,yn,or)},eE=function(e){return e.B},tE=function(e,t){return us(e,t,ns,wn)},nE=function(e){return e.C},rE=function(e,t){return us(e,t,ir,Nn)},aE=function(e){return e.Bx},u0=function(e,t){return us(e,t,lr,ur)},sE=function(e){return e.Ax},uE=function(e,t){return us(e,t,rs,ts)},lE=function(e){return e.sBx},oE=function(e,t){return u0(e,t+Tu)},Yr=function(e){if(typeof e=="number")return{code:e,opcode:e>>Dt&ye(Zr,0),A:e>>yn&ye(or,0),B:e>>ns&ye(wn,0),C:e>>ir&ye(Nn,0),Bx:e>>lr&ye(ur,0),Ax:e>>rs&ye(ts,0),sBx:(e>>lr&ye(ur,0))-Tu};{let t=e.code;return e.opcode=t>>Dt&ye(Zr,0),e.A=t>>yn&ye(or,0),e.B=t>>ns&ye(wn,0),e.C=t>>ir&ye(Nn,0),e.Bx=t>>lr&ye(ur,0),e.Ax=t>>rs&ye(ts,0),e.sBx=(t>>lr&ye(ur,0))-Tu,e}},iE=function(e,t,n,r){return Yr(e<<Dt|t<<yn|n<<ns|r<<ir)},cE=function(e,t,n){return Yr(e<<Dt|t<<yn|n<<lr)},_E=function(e,t){return Yr(e<<Dt|t<<rs)},fE=50;g.exports.BITRK=ss;g.exports.CREATE_ABC=iE;g.exports.CREATE_ABx=cE;g.exports.CREATE_Ax=_E;g.exports.GET_OPCODE=WO;g.exports.GETARG_A=QO;g.exports.GETARG_B=eE;g.exports.GETARG_C=nE;g.exports.GETARG_Bx=aE;g.exports.GETARG_Ax=sE;g.exports.GETARG_sBx=lE;g.exports.INDEXK=YO;g.exports.ISK=ZO;g.exports.LFIELDS_PER_FLUSH=fE;g.exports.MAXARG_A=a0;g.exports.MAXARG_Ax=qO;g.exports.MAXARG_B=HO;g.exports.MAXARG_Bx=r0;g.exports.MAXARG_C=jO;g.exports.MAXARG_sBx=Tu;g.exports.MAXINDEXRK=XO;g.exports.NO_REG=zO;g.exports.OpArgK=K;g.exports.OpArgN=le;g.exports.OpArgR=He;g.exports.OpArgU=te;g.exports.OpCodes=CO;g.exports.OpCodesI=DO;g.exports.POS_A=yn;g.exports.POS_Ax=rs;g.exports.POS_B=ns;g.exports.POS_Bx=lr;g.exports.POS_C=ir;g.exports.POS_OP=Dt;g.exports.RKASK=JO;g.exports.SETARG_A=LO;g.exports.SETARG_Ax=uE;g.exports.SETARG_B=tE;g.exports.SETARG_Bx=u0;g.exports.SETARG_C=rE;g.exports.SETARG_sBx=oE;g.exports.SET_OPCODE=$O;g.exports.SIZE_A=or;g.exports.SIZE_Ax=ts;g.exports.SIZE_B=wn;g.exports.SIZE_Bx=ur;g.exports.SIZE_C=Nn;g.exports.SIZE_OP=Zr;g.exports.fullins=Yr;g.exports.getBMode=KO;g.exports.getCMode=VO;g.exports.getOpMode=BO;g.exports.iABC=D;g.exports.iABx=gu;g.exports.iAsBx=es;g.exports.iAx=n0;g.exports.testAMode=FO;g.exports.testTMode=GO});var fr=U((I4,he)=>{"use strict";var{LUA_MASKLINE:pE,LUA_MASKCOUNT:hE,LUA_MULTRET:dE,constant_types:{LUA_TBOOLEAN:xE,LUA_TLCF:AE,LUA_TLIGHTUSERDATA:gE,LUA_TLNGSTR:_0,LUA_TNIL:TE,LUA_TNUMBER:f0,LUA_TNUMFLT:kE,LUA_TNUMINT:bE,LUA_TSHRSTR:p0,LUA_TTABLE:h0,LUA_TUSERDATA:OE},to_luastring:Bt}=_e(),{INDEXK:d0,ISK:x0,LFIELDS_PER_FLUSH:EE,OpCodesI:{OP_ADD:A0,OP_BAND:g0,OP_BNOT:T0,OP_BOR:k0,OP_BXOR:b0,OP_CALL:zo,OP_CLOSURE:mE,OP_CONCAT:O0,OP_DIV:E0,OP_EQ:m0,OP_EXTRAARG:jo,OP_FORLOOP:vE,OP_FORPREP:UE,OP_GETTABLE:v0,OP_GETTABUP:U0,OP_GETUPVAL:RE,OP_IDIV:R0,OP_JMP:S0,OP_LE:Zo,OP_LEN:N0,OP_LOADBOOL:SE,OP_LOADK:NE,OP_LOADKX:wE,OP_LOADNIL:yE,OP_LT:w0,OP_MOD:y0,OP_MOVE:IE,OP_MUL:I0,OP_NEWTABLE:ME,OP_NOT:PE,OP_POW:M0,OP_RETURN:CE,OP_SELF:P0,OP_SETLIST:DE,OP_SETTABLE:BE,OP_SETTABUP:KE,OP_SETUPVAL:VE,OP_SHL:C0,OP_SHR:D0,OP_SUB:B0,OP_TAILCALL:FE,OP_TEST:GE,OP_TESTSET:qE,OP_TFORCALL:K0,OP_TFORLOOP:Yo,OP_UNM:V0,OP_VARARG:HE}}=cr(),{LUA_MAXINTEGER:jE,LUA_MININTEGER:XE,lua_numbertointeger:zE}=Ye(),{lua_assert:Ot,luai_nummod:ZE}=We(),Y=rt(),bu=hr(),Mn=Lt(),{luaS_bless:YE,luaS_eqlngstr:JE,luaS_hashlongstr:l0}=Pt(),ve=Et(),k=pr(),_r=Ct(),at=en(),WE=function(e){let t=e.ci,n=t.l_base,r=t.l_code[t.l_savedpc-1],a=r.opcode;switch(a){case A0:case B0:case I0:case E0:case R0:case g0:case k0:case b0:case C0:case D0:case y0:case M0:case V0:case T0:case N0:case U0:case v0:case P0:{Y.setobjs2s(e,n+r.A,e.top-1),delete e.stack[--e.top];break}case Zo:case w0:case m0:{let s=!e.stack[e.top-1].l_isfalse();delete e.stack[--e.top],t.callstatus&Mn.CIST_LEQ&&(Ot(a===Zo),t.callstatus^=Mn.CIST_LEQ,s=!s),Ot(t.l_code[t.l_savedpc].opcode===S0),s!==!!r.A&&t.l_savedpc++;break}case O0:{let s=e.top-1,u=r.B,l=s-1-(n+u);Y.setobjs2s(e,s-2,s),l>1&&(e.top=s-1,ei(e,l)),Y.setobjs2s(e,t.l_base+r.A,e.top-1),ve.adjust_top(e,t.top);break}case K0:{Ot(t.l_code[t.l_savedpc].opcode===Yo),ve.adjust_top(e,t.top);break}case zo:{r.C-1>=0&&ve.adjust_top(e,t.top);break}}},o0=function(e,t,n){return t+n.A},In=function(e,t,n){return t+n.B},Ie=function(e,t,n,r){return x0(r.B)?n[d0(r.B)]:e.stack[t+r.B]},fe=function(e,t,n,r){return x0(r.C)?n[d0(r.C)]:e.stack[t+r.C]},$E=function(e){let t=e.ci;t.callstatus|=Mn.CIST_FRESH;e:for(;;){Ot(t===e.ci);let n=t.func.value,r=n.p.k,a=t.l_base,s=t.l_code[t.l_savedpc++];e.hookmask&(pE|hE)&&at.luaG_traceexec(e);let u=o0(e,a,s);switch(s.opcode){case IE:{Y.setobjs2s(e,u,In(e,a,s));break}case NE:{let o=r[s.Bx];Y.setobj2s(e,u,o);break}case wE:{Ot(t.l_code[t.l_savedpc].opcode===jo);let o=r[t.l_code[t.l_savedpc++].Ax];Y.setobj2s(e,u,o);break}case SE:{e.stack[u].setbvalue(s.B!==0),s.C!==0&&t.l_savedpc++;break}case yE:{for(let o=0;o<=s.B;o++)e.stack[u+o].setnilvalue();break}case RE:{let o=s.B;Y.setobj2s(e,u,n.upvals[o]);break}case U0:{let o=n.upvals[s.B],c=fe(e,a,r,s);ku(e,o,c,u);break}case v0:{let o=e.stack[In(e,a,s)],c=fe(e,a,r,s);ku(e,o,c,u);break}case KE:{let o=n.upvals[s.A],c=Ie(e,a,r,s),i=fe(e,a,r,s);Wo(e,o,c,i);break}case VE:{n.upvals[s.B].setfrom(e.stack[u]);break}case BE:{let o=e.stack[u],c=Ie(e,a,r,s),i=fe(e,a,r,s);Wo(e,o,c,i);break}case ME:{e.stack[u].sethvalue(_r.luaH_new(e));break}case P0:{let o=In(e,a,s),c=fe(e,a,r,s);Y.setobjs2s(e,u+1,o),ku(e,e.stack[o],c,u);break}case A0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;o.ttisinteger()&&c.ttisinteger()?e.stack[u].setivalue(o.value+c.value|0):(i=pe(o))!==!1&&(f=pe(c))!==!1?e.stack[u].setfltvalue(i+f):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_ADD);break}case B0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;o.ttisinteger()&&c.ttisinteger()?e.stack[u].setivalue(o.value-c.value|0):(i=pe(o))!==!1&&(f=pe(c))!==!1?e.stack[u].setfltvalue(i-f):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_SUB);break}case I0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;o.ttisinteger()&&c.ttisinteger()?e.stack[u].setivalue(X0(o.value,c.value)):(i=pe(o))!==!1&&(f=pe(c))!==!1?e.stack[u].setfltvalue(i*f):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_MUL);break}case y0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;o.ttisinteger()&&c.ttisinteger()?e.stack[u].setivalue(Z0(e,o.value,c.value)):(i=pe(o))!==!1&&(f=pe(c))!==!1?e.stack[u].setfltvalue(ZE(e,i,f)):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_MOD);break}case M0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;(i=pe(o))!==!1&&(f=pe(c))!==!1?e.stack[u].setfltvalue(Math.pow(i,f)):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_POW);break}case E0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;(i=pe(o))!==!1&&(f=pe(c))!==!1?e.stack[u].setfltvalue(i/f):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_DIV);break}case R0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;o.ttisinteger()&&c.ttisinteger()?e.stack[u].setivalue(z0(e,o.value,c.value)):(i=pe(o))!==!1&&(f=pe(c))!==!1?e.stack[u].setfltvalue(Math.floor(i/f)):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_IDIV);break}case g0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;(i=bt(o))!==!1&&(f=bt(c))!==!1?e.stack[u].setivalue(i&f):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_BAND);break}case k0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;(i=bt(o))!==!1&&(f=bt(c))!==!1?e.stack[u].setivalue(i|f):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_BOR);break}case b0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;(i=bt(o))!==!1&&(f=bt(c))!==!1?e.stack[u].setivalue(i^f):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_BXOR);break}case C0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;(i=bt(o))!==!1&&(f=bt(c))!==!1?e.stack[u].setivalue(Jo(i,f)):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_SHL);break}case D0:{let o=Ie(e,a,r,s),c=fe(e,a,r,s),i,f;(i=bt(o))!==!1&&(f=bt(c))!==!1?e.stack[u].setivalue(Jo(i,-f)):k.luaT_trybinTM(e,o,c,e.stack[u],k.TMS.TM_SHR);break}case V0:{let o=e.stack[In(e,a,s)],c;o.ttisinteger()?e.stack[u].setivalue(-o.value|0):(c=pe(o))!==!1?e.stack[u].setfltvalue(-c):k.luaT_trybinTM(e,o,o,e.stack[u],k.TMS.TM_UNM);break}case T0:{let o=e.stack[In(e,a,s)];o.ttisinteger()?e.stack[u].setivalue(~o.value):k.luaT_trybinTM(e,o,o,e.stack[u],k.TMS.TM_BNOT);break}case PE:{let o=e.stack[In(e,a,s)];e.stack[u].setbvalue(o.l_isfalse());break}case N0:{j0(e,e.stack[u],e.stack[In(e,a,s)]);break}case O0:{let o=s.B,c=s.C;e.top=a+c+1,ei(e,c-o+1);let i=a+o;Y.setobjs2s(e,u,i),ve.adjust_top(e,t.top);break}case S0:{F0(e,t,s,0);break}case m0:{$o(e,Ie(e,a,r,s),fe(e,a,r,s))!==s.A?t.l_savedpc++:ls(e,t);break}case w0:{G0(e,Ie(e,a,r,s),fe(e,a,r,s))!==s.A?t.l_savedpc++:ls(e,t);break}case Zo:{q0(e,Ie(e,a,r,s),fe(e,a,r,s))!==s.A?t.l_savedpc++:ls(e,t);break}case GE:{(s.C?e.stack[u].l_isfalse():!e.stack[u].l_isfalse())?t.l_savedpc++:ls(e,t);break}case qE:{let o=In(e,a,s),c=e.stack[o];(s.C?c.l_isfalse():!c.l_isfalse())?t.l_savedpc++:(Y.setobjs2s(e,u,o),ls(e,t));break}case zo:{let o=s.B,c=s.C-1;if(o!==0&&ve.adjust_top(e,u+o),ve.luaD_precall(e,u,c))c>=0&&ve.adjust_top(e,t.top);else{t=e.ci;continue e}break}case FE:{let o=s.B;if(o!==0&&ve.adjust_top(e,u+o),!ve.luaD_precall(e,u,dE)){let c=e.ci,i=c.previous,f=c.func,T=c.funcOff,v=i.funcOff,O=c.l_base+f.value.p.numparams;n.p.p.length>0&&bu.luaF_close(e,i.l_base);for(let nt=0;T+nt<O;nt++)Y.setobjs2s(e,v+nt,T+nt);i.l_base=v+(c.l_base-T),i.top=v+(e.top-T),ve.adjust_top(e,i.top),i.l_code=c.l_code,i.l_savedpc=c.l_savedpc,i.callstatus|=Mn.CIST_TAIL,i.next=null,t=e.ci=i,Ot(e.top===i.l_base+e.stack[v].value.p.maxstacksize);continue e}break}case CE:{n.p.p.length>0&&bu.luaF_close(e,a);let o=ve.luaD_poscall(e,t,u,s.B!==0?s.B-1:e.top-u);if(t.callstatus&Mn.CIST_FRESH)return;t=e.ci,o&&ve.adjust_top(e,t.top),Ot(t.callstatus&Mn.CIST_LUA),Ot(t.l_code[t.l_savedpc-1].opcode===zo);continue e}case vE:{if(e.stack[u].ttisinteger()){let o=e.stack[u+2].value,c=e.stack[u].value+o|0,i=e.stack[u+1].value;(0<o?c<=i:i<=c)&&(t.l_savedpc+=s.sBx,e.stack[u].chgivalue(c),e.stack[u+3].setivalue(c))}else{let o=e.stack[u+2].value,c=e.stack[u].value+o,i=e.stack[u+1].value;(0<o?c<=i:i<=c)&&(t.l_savedpc+=s.sBx,e.stack[u].chgfltvalue(c),e.stack[u+3].setfltvalue(c))}break}case UE:{let o=e.stack[u],c=e.stack[u+1],i=e.stack[u+2],f;if(o.ttisinteger()&&i.ttisinteger()&&(f=LE(c,i.value))){let T=f.stopnow?0:o.value;c.value=f.ilimit,o.value=T-i.value|0}else{let T,v,O;(T=pe(c))===!1&&at.luaG_runerror(e,Bt("'for' limit must be a number",!0)),e.stack[u+1].setfltvalue(T),(v=pe(i))===!1&&at.luaG_runerror(e,Bt("'for' step must be a number",!0)),e.stack[u+2].setfltvalue(v),(O=pe(o))===!1&&at.luaG_runerror(e,Bt("'for' initial value must be a number",!0)),e.stack[u].setfltvalue(O-v)}t.l_savedpc+=s.sBx;break}case K0:{let o=u+3;Y.setobjs2s(e,o+2,u+2),Y.setobjs2s(e,o+1,u+1),Y.setobjs2s(e,o,u),ve.adjust_top(e,o+3),ve.luaD_call(e,o,s.C),ve.adjust_top(e,t.top),s=t.l_code[t.l_savedpc++],u=o0(e,a,s),Ot(s.opcode===Yo)}case Yo:{e.stack[u+1].ttisnil()||(Y.setobjs2s(e,u,u+1),t.l_savedpc+=s.sBx);break}case DE:{let o=s.B,c=s.C;o===0&&(o=e.top-u-1),c===0&&(Ot(t.l_code[t.l_savedpc].opcode===jo),c=t.l_code[t.l_savedpc++].Ax);let i=e.stack[u].value,f=(c-1)*EE+o;for(;o>0;o--)_r.luaH_setint(i,f--,e.stack[u+o]);ve.adjust_top(e,t.top);break}case mE:{let o=n.p.p[s.Bx],c=nm(o,n.upvals,e.stack,a);c===null?rm(e,o,n.upvals,a,u):e.stack[u].setclLvalue(c);break}case HE:{let o=s.B-1,c=a-t.funcOff-n.p.numparams-1,i;for(c<0&&(c=0),o<0&&(o=c,ve.luaD_checkstack(e,c),ve.adjust_top(e,u+c)),i=0;i<o&&i<c;i++)Y.setobjs2s(e,u+i,a-c+i);for(;i<o;i++)e.stack[u+i].setnilvalue();break}case jo:throw Error("invalid opcode")}}},F0=function(e,t,n,r){let a=n.A;a!==0&&bu.luaF_close(e,t.l_base+a-1),t.l_savedpc+=n.sBx+r},ls=function(e,t){F0(e,t,t.l_code[t.l_savedpc],1)},G0=function(e,t,n){if(t.ttisnumber()&&n.ttisnumber())return em(t,n)?1:0;if(t.ttisstring()&&n.ttisstring())return H0(t.tsvalue(),n.tsvalue())<0?1:0;{let r=k.luaT_callorderTM(e,t,n,k.TMS.TM_LT);return r===null&&at.luaG_ordererror(e,t,n),r?1:0}},q0=function(e,t,n){let r;return t.ttisnumber()&&n.ttisnumber()?tm(t,n)?1:0:t.ttisstring()&&n.ttisstring()?H0(t.tsvalue(),n.tsvalue())<=0?1:0:(r=k.luaT_callorderTM(e,t,n,k.TMS.TM_LE),r!==null?r?1:0:(e.ci.callstatus|=Mn.CIST_LEQ,r=k.luaT_callorderTM(e,n,t,k.TMS.TM_LT),e.ci.callstatus^=Mn.CIST_LEQ,r===null&&at.luaG_ordererror(e,t,n),r?0:1))},$o=function(e,t,n){if(t.ttype()!==n.ttype())return t.ttnov()!==n.ttnov()||t.ttnov()!==f0?0:t.value===n.value?1:0;let r;switch(t.ttype()){case TE:return 1;case xE:return t.value==n.value?1:0;case gE:case bE:case kE:case AE:return t.value===n.value?1:0;case p0:case _0:return JE(t.tsvalue(),n.tsvalue())?1:0;case OE:case h0:if(t.value===n.value)return 1;if(e===null)return 0;r=k.fasttm(e,t.value.metatable,k.TMS.TM_EQ),r===null&&(r=k.fasttm(e,n.value.metatable,k.TMS.TM_EQ));break;default:return t.value===n.value?1:0}if(r===null)return 0;let a=new Y.TValue;return k.luaT_callTM(e,r,t,n,a,1),a.l_isfalse()?0:1},QE=function(e,t){return $o(null,e,t)},LE=function(e,t){let n=!1,r=Ou(e,t<0?2:1);if(r===!1){let a=pe(e);if(a===!1)return!1;0<a?(r=jE,t<0&&(n=!0)):(r=XE,t>=0&&(n=!0))}return{stopnow:n,ilimit:r}},Ou=function(e,t){if(e.ttisfloat()){let n=e.value,r=Math.floor(n);if(n!==r){if(t===0)return!1;t>1&&(r+=1)}return zE(r)}else{if(e.ttisinteger())return e.value;if(Lo(e)){let n=new Y.TValue;if(Y.luaO_str2num(e.svalue(),n)===e.vslen()+1)return Ou(n,t)}}return!1},bt=function(e){return e.ttisinteger()?e.value:Ou(e,0)},pe=function(e){if(e.ttnov()===f0)return e.value;if(Lo(e)){let t=new Y.TValue;if(Y.luaO_str2num(e.svalue(),t)===e.vslen()+1)return t.value}return!1},em=function(e,t){return e.value<t.value},tm=function(e,t){return e.value<=t.value},H0=function(e,t){let n=l0(e),r=l0(t);return n===r?0:n<r?-1:1},j0=function(e,t,n){let r;switch(n.ttype()){case h0:{let a=n.value;if(r=k.fasttm(e,a.metatable,k.TMS.TM_LEN),r!==null)break;t.setivalue(_r.luaH_getn(a));return}case p0:case _0:t.setivalue(n.vslen());return;default:{r=k.luaT_gettmbyobj(e,n,k.TMS.TM_LEN),r.ttisnil()&&at.luaG_typeerror(e,n,Bt("get length of",!0));break}}k.luaT_callTM(e,r,n,n,t,1)},X0=Math.imul||function(e,t){let n=e>>>16&65535,r=e&65535,a=t>>>16&65535,s=t&65535;return r*s+(n*s+r*a<<16>>>0)|0},z0=function(e,t,n){return n===0&&at.luaG_runerror(e,Bt("attempt to divide by zero")),Math.floor(t/n)|0},Z0=function(e,t,n){return n===0&&at.luaG_runerror(e,Bt("attempt to perform 'n%%0'")),t-Math.floor(t/n)*n|0},i0=32,Jo=function(e,t){return t<0?t<=-i0?0:e>>>-t:t>=i0?0:e<<t},nm=function(e,t,n,r){let a=e.cache;if(a!==null){let s=e.upvalues,u=s.length;for(let l=0;l<u;l++){let o=s[l].instack?n[r+s[l].idx]:t[s[l].idx];if(a.upvals[l]!==o)return null}}return a},rm=function(e,t,n,r,a){let s=t.upvalues.length,u=t.upvalues,l=new Y.LClosure(e,s);l.p=t,e.stack[a].setclLvalue(l);for(let o=0;o<s;o++)u[o].instack?l.upvals[o]=bu.luaF_findupval(e,r+u[o].idx):l.upvals[o]=n[u[o].idx];t.cache=l},Qo=function(e){return e.ttisnumber()},Lo=function(e){return e.ttisstring()},Xo=function(e,t){let n=e.stack[t];return n.ttisstring()?!0:Qo(n)?(Y.luaO_tostring(e,n),!0):!1},c0=function(e){return e.ttisstring()&&e.vslen()===0},am=function(e,t,n,r){let a=0;do{let s=e.stack[t-n],u=s.vslen(),l=s.svalue();r.set(l,a),a+=u}while(--n>0)},ei=function(e,t){Ot(t>=2);do{let n=e.top,r=2;if(!(e.stack[n-2].ttisstring()||Qo(e.stack[n-2]))||!Xo(e,n-1))k.luaT_trybinTM(e,e.stack[n-2],e.stack[n-1],e.stack[n-2],k.TMS.TM_CONCAT);else if(c0(e.stack[n-1]))Xo(e,n-2);else if(c0(e.stack[n-2]))Y.setobjs2s(e,n-2,n-1);else{let a=e.stack[n-1].vslen();for(r=1;r<t&&Xo(e,n-r-1);r++){let l=e.stack[n-r-1].vslen();a+=l}let s=new Uint8Array(a);am(e,n,r,s);let u=YE(e,s);Y.setsvalue2s(e,n-r,u)}for(t-=r-1;e.top>n-(r-1);)delete e.stack[--e.top]}while(t>1)},Y0=2e3,ku=function(e,t,n,r){for(let a=0;a<Y0;a++){let s;if(!t.ttistable())s=k.luaT_gettmbyobj(e,t,k.TMS.TM_INDEX),s.ttisnil()&&at.luaG_typeerror(e,t,Bt("index",!0));else{let u=_r.luaH_get(e,t.value,n);if(u.ttisnil()){if(s=k.fasttm(e,t.value.metatable,k.TMS.TM_INDEX),s===null){e.stack[r].setnilvalue();return}}else{Y.setobj2s(e,r,u);return}}if(s.ttisfunction()){k.luaT_callTM(e,s,t,n,e.stack[r],1);return}t=s}at.luaG_runerror(e,Bt("'__index' chain too long; possible loop",!0))},Wo=function(e,t,n,r){for(let a=0;a<Y0;a++){let s;if(t.ttistable()){let u=t.value;if(!_r.luaH_get(e,u,n).ttisnil()||(s=k.fasttm(e,u.metatable,k.TMS.TM_NEWINDEX))===null){_r.luaH_setfrom(e,u,n,r),_r.invalidateTMcache(u);return}}else(s=k.luaT_gettmbyobj(e,t,k.TMS.TM_NEWINDEX)).ttisnil()&&at.luaG_typeerror(e,t,Bt("index",!0));if(s.ttisfunction()){k.luaT_callTM(e,s,t,n,r,0);return}t=s}at.luaG_runerror(e,Bt("'__newindex' chain too long; possible loop",!0))};he.exports.cvt2str=Qo;he.exports.cvt2num=Lo;he.exports.luaV_gettable=ku;he.exports.luaV_concat=ei;he.exports.luaV_div=z0;he.exports.luaV_equalobj=$o;he.exports.luaV_execute=$E;he.exports.luaV_finishOp=WE;he.exports.luaV_imul=X0;he.exports.luaV_lessequal=q0;he.exports.luaV_lessthan=G0;he.exports.luaV_mod=Z0;he.exports.luaV_objlen=j0;he.exports.luaV_rawequalobj=QE;he.exports.luaV_shiftl=Jo;he.exports.luaV_tointeger=Ou;he.exports.settable=Wo;he.exports.tointeger=bt;he.exports.tonumber=pe});var pr=U((M4,dt)=>{"use strict";var{constant_types:{LUA_TTABLE:sm,LUA_TUSERDATA:um},to_luastring:X}=_e(),{lua_assert:lm}=We(),Jr=rt(),J0=Et(),om=Lt(),{luaS_bless:im,luaS_new:L}=Pt(),ni=Ct(),Eu=en(),W0=fr(),cm=["no value","nil","boolean","userdata","number","string","table","function","userdata","thread","proto"].map(e=>X(e)),$0=function(e){return cm[e+1]},G={TM_INDEX:0,TM_NEWINDEX:1,TM_GC:2,TM_MODE:3,TM_LEN:4,TM_EQ:5,TM_ADD:6,TM_SUB:7,TM_MUL:8,TM_MOD:9,TM_POW:10,TM_DIV:11,TM_IDIV:12,TM_BAND:13,TM_BOR:14,TM_BXOR:15,TM_SHL:16,TM_SHR:17,TM_UNM:18,TM_BNOT:19,TM_LT:20,TM_LE:21,TM_CONCAT:22,TM_CALL:23,TM_N:24},_m=function(e){e.l_G.tmname[G.TM_INDEX]=new L(e,X("__index",!0)),e.l_G.tmname[G.TM_NEWINDEX]=new L(e,X("__newindex",!0)),e.l_G.tmname[G.TM_GC]=new L(e,X("__gc",!0)),e.l_G.tmname[G.TM_MODE]=new L(e,X("__mode",!0)),e.l_G.tmname[G.TM_LEN]=new L(e,X("__len",!0)),e.l_G.tmname[G.TM_EQ]=new L(e,X("__eq",!0)),e.l_G.tmname[G.TM_ADD]=new L(e,X("__add",!0)),e.l_G.tmname[G.TM_SUB]=new L(e,X("__sub",!0)),e.l_G.tmname[G.TM_MUL]=new L(e,X("__mul",!0)),e.l_G.tmname[G.TM_MOD]=new L(e,X("__mod",!0)),e.l_G.tmname[G.TM_POW]=new L(e,X("__pow",!0)),e.l_G.tmname[G.TM_DIV]=new L(e,X("__div",!0)),e.l_G.tmname[G.TM_IDIV]=new L(e,X("__idiv",!0)),e.l_G.tmname[G.TM_BAND]=new L(e,X("__band",!0)),e.l_G.tmname[G.TM_BOR]=new L(e,X("__bor",!0)),e.l_G.tmname[G.TM_BXOR]=new L(e,X("__bxor",!0)),e.l_G.tmname[G.TM_SHL]=new L(e,X("__shl",!0)),e.l_G.tmname[G.TM_SHR]=new L(e,X("__shr",!0)),e.l_G.tmname[G.TM_UNM]=new L(e,X("__unm",!0)),e.l_G.tmname[G.TM_BNOT]=new L(e,X("__bnot",!0)),e.l_G.tmname[G.TM_LT]=new L(e,X("__lt",!0)),e.l_G.tmname[G.TM_LE]=new L(e,X("__le",!0)),e.l_G.tmname[G.TM_CONCAT]=new L(e,X("__concat",!0)),e.l_G.tmname[G.TM_CALL]=new L(e,X("__call",!0))},fm=X("__name",!0),pm=function(e,t){let n;if(t.ttistable()&&(n=t.value.metatable)!==null||t.ttisfulluserdata()&&(n=t.value.metatable)!==null){let r=ni.luaH_getstr(n,im(e,fm));if(r.ttisstring())return r.svalue()}return $0(t.ttnov())},Q0=function(e,t,n,r,a,s){let u=e.top;if(Jr.pushobj2s(e,t),Jr.pushobj2s(e,n),Jr.pushobj2s(e,r),s||Jr.pushobj2s(e,a),e.ci.callstatus&om.CIST_LUA?J0.luaD_call(e,u,s):J0.luaD_callnoyield(e,u,s),s){let l=e.stack[e.top-1];delete e.stack[--e.top],a.setfrom(l)}},ri=function(e,t,n,r,a){let s=ti(e,t,a);return s.ttisnil()&&(s=ti(e,n,a)),s.ttisnil()?!1:(Q0(e,s,t,n,r,1),!0)},hm=function(e,t,n,r,a){if(!ri(e,t,n,r,a))switch(a){case G.TM_CONCAT:return Eu.luaG_concaterror(e,t,n);case G.TM_BAND:case G.TM_BOR:case G.TM_BXOR:case G.TM_SHL:case G.TM_SHR:case G.TM_BNOT:{let s=W0.tonumber(t),u=W0.tonumber(n);return s!==!1&&u!==!1?Eu.luaG_tointerror(e,t,n):Eu.luaG_opinterror(e,t,n,X("perform bitwise operation on",!0))}default:return Eu.luaG_opinterror(e,t,n,X("perform arithmetic on",!0))}},dm=function(e,t,n,r){let a=new Jr.TValue;return ri(e,t,n,a,r)?!a.l_isfalse():null},xm=function(e,t,n){return t===null||t.flags&1<<n?null:L0(t,n,e.l_G.tmname[n])},L0=function(e,t,n){let r=ni.luaH_getstr(e,n);return lm(t<=G.TM_EQ),r.ttisnil()?(e.flags|=1<<t,null):r},ti=function(e,t,n){let r;switch(t.ttnov()){case sm:case um:r=t.value.metatable;break;default:r=e.l_G.mt[t.ttnov()]}return r?ni.luaH_getstr(r,e.l_G.tmname[n]):Jr.luaO_nilobject};dt.exports.fasttm=xm;dt.exports.TMS=G;dt.exports.luaT_callTM=Q0;dt.exports.luaT_callbinTM=ri;dt.exports.luaT_trybinTM=hm;dt.exports.luaT_callorderTM=dm;dt.exports.luaT_gettm=L0;dt.exports.luaT_gettmbyobj=ti;dt.exports.luaT_init=_m;dt.exports.luaT_objtypename=pm;dt.exports.ttypename=$0});var Lt=U((P4,Ae)=>{"use strict";var{LUA_MINSTACK:th,LUA_RIDX_GLOBALS:Am,LUA_RIDX_MAINTHREAD:gm,constant_types:{LUA_NUMTAGS:Tm,LUA_TNIL:nh,LUA_TTABLE:km,LUA_TTHREAD:rh},thread_status:{LUA_OK:ah}}=_e(),os=rt(),bm=Et(),sh=_s(),mu=Ct(),uh=pr(),lh=5,eh=2*th,is=class{constructor(){this.func=null,this.funcOff=NaN,this.top=NaN,this.previous=null,this.next=null,this.l_base=NaN,this.l_code=null,this.l_savedpc=NaN,this.c_k=null,this.c_old_errfunc=null,this.c_ctx=null,this.nresults=NaN,this.callstatus=NaN}},cs=class{constructor(t){this.id=t.id_counter++,this.base_ci=new is,this.top=NaN,this.stack_last=NaN,this.oldpc=NaN,this.l_G=t,this.stack=null,this.ci=null,this.errorJmp=null,this.nCcalls=0,this.hook=null,this.hookmask=0,this.basehookcount=0,this.allowhook=1,this.hookcount=this.basehookcount,this.nny=1,this.status=ah,this.errfunc=0}},ai=class{constructor(){this.id_counter=1,this.ids=new WeakMap,this.mainthread=null,this.l_registry=new os.TValue(nh,null),this.panic=null,this.atnativeerror=null,this.version=null,this.tmname=new Array(uh.TMS.TM_N),this.mt=new Array(Tm)}},Om=function(e){let t=new is;return e.ci.next=t,t.previous=e.ci,t.next=null,e.ci=t,t},oh=function(e){let t=e.ci;t.next=null},ih=function(e,t){e.stack=new Array(eh),e.top=0,e.stack_last=eh-lh;let n=e.base_ci;n.next=n.previous=null,n.callstatus=0,n.funcOff=e.top,n.func=e.stack[e.top],e.stack[e.top++]=new os.TValue(nh,null),n.top=e.top+th,e.ci=n},ch=function(e){e.ci=e.base_ci,oh(e),e.stack=null},Em=function(e,t){let n=mu.luaH_new(e);t.l_registry.sethvalue(n),mu.luaH_setint(n,gm,new os.TValue(rh,e)),mu.luaH_setint(n,Am,new os.TValue(km,mu.luaH_new(e)))},mm=function(e){let t=e.l_G;ih(e,e),Em(e,t),uh.luaT_init(e),t.version=sh.lua_version(null)},vm=function(e){let t=e.l_G,n=new cs(t);return e.stack[e.top]=new os.TValue(rh,n),sh.api_incr_top(e),n.hookmask=e.hookmask,n.basehookcount=e.basehookcount,n.hook=e.hook,n.hookcount=n.basehookcount,ih(n,e),n},Um=function(e,t){ch(t)},Rm=function(){let e=new ai,t=new cs(e);return e.mainthread=t,bm.luaD_rawrunprotected(t,mm,null)!==ah&&(t=null),t},Sm=function(e){ch(e)},Nm=function(e){e=e.l_G.mainthread,Sm(e)};Ae.exports.lua_State=cs;Ae.exports.CallInfo=is;Ae.exports.CIST_OAH=1;Ae.exports.CIST_LUA=2;Ae.exports.CIST_HOOKED=4;Ae.exports.CIST_FRESH=8;Ae.exports.CIST_YPCALL=16;Ae.exports.CIST_TAIL=32;Ae.exports.CIST_HOOKYIELD=64;Ae.exports.CIST_LEQ=128;Ae.exports.CIST_FIN=256;Ae.exports.EXTRA_STACK=lh;Ae.exports.lua_close=Nm;Ae.exports.lua_newstate=Rm;Ae.exports.lua_newthread=vm;Ae.exports.luaE_extendCI=Om;Ae.exports.luaE_freeCI=oh;Ae.exports.luaE_freethread=Um});var rt=U((C4,$)=>{"use strict";var{LUA_OPADD:di,LUA_OPBAND:Eh,LUA_OPBNOT:mh,LUA_OPBOR:vh,LUA_OPBXOR:Uh,LUA_OPDIV:Rh,LUA_OPIDIV:Sh,LUA_OPMOD:Nh,LUA_OPMUL:wh,LUA_OPPOW:yh,LUA_OPSHL:Ih,LUA_OPSHR:Mh,LUA_OPSUB:Ph,LUA_OPUNM:Ch,constant_types:{LUA_NUMTAGS:Dh,LUA_TBOOLEAN:_h,LUA_TCCL:fh,LUA_TFUNCTION:ph,LUA_TLCF:hh,LUA_TLCL:dh,LUA_TLIGHTUSERDATA:xh,LUA_TLNGSTR:ii,LUA_TNIL:fs,LUA_TNUMBER:wm,LUA_TNUMFLT:si,LUA_TNUMINT:ui,LUA_TSHRSTR:ym,LUA_TSTRING:Im,LUA_TTABLE:Ah,LUA_TTHREAD:gh,LUA_TUSERDATA:Th},from_userstring:Mm,luastring_indexOf:ci,luastring_of:Pm,to_jsstring:Bh,to_luastring:Me}=_e(),{lisdigit:Uu,lisprint:Cm,lisspace:Ru,lisxdigit:Kh}=Bo(),Dm=en(),vu=Et(),Bm=Lt(),{luaS_bless:Km,luaS_new:Vm}=Pt(),Fm=Ct(),{LUA_COMPAT_FLOATSTRING:Gm,ldexp:qm,lua_integer2str:Hm,lua_number2str:jm}=Ye(),xt=fr(),{MAX_INT:Vh,luai_nummod:Xm,lua_assert:dr}=We(),kh=pr(),zm=Dh,_i=Dh+1,Pn=class{constructor(t,n){this.type=t,this.value=n}ttype(){return this.type&63}ttnov(){return this.type&15}checktag(t){return this.type===t}checktype(t){return this.ttnov()===t}ttisnumber(){return this.checktype(wm)}ttisfloat(){return this.checktag(si)}ttisinteger(){return this.checktag(ui)}ttisnil(){return this.checktag(fs)}ttisboolean(){return this.checktag(_h)}ttislightuserdata(){return this.checktag(xh)}ttisstring(){return this.checktype(Im)}ttisshrstring(){return this.checktag(ym)}ttislngstring(){return this.checktag(ii)}ttistable(){return this.checktag(Ah)}ttisfunction(){return this.checktype(ph)}ttisclosure(){return(this.type&31)===ph}ttisCclosure(){return this.checktag(fh)}ttisLclosure(){return this.checktag(dh)}ttislcf(){return this.checktag(hh)}ttisfulluserdata(){return this.checktag(Th)}ttisthread(){return this.checktag(gh)}ttisdeadkey(){return this.checktag(_i)}l_isfalse(){return this.ttisnil()||this.ttisboolean()&&this.value===!1}setfltvalue(t){this.type=si,this.value=t}chgfltvalue(t){dr(this.type==si),this.value=t}setivalue(t){this.type=ui,this.value=t}chgivalue(t){dr(this.type==ui),this.value=t}setnilvalue(){this.type=fs,this.value=null}setfvalue(t){this.type=hh,this.value=t}setpvalue(t){this.type=xh,this.value=t}setbvalue(t){this.type=_h,this.value=t}setsvalue(t){this.type=ii,this.value=t}setuvalue(t){this.type=Th,this.value=t}setthvalue(t){this.type=gh,this.value=t}setclLvalue(t){this.type=dh,this.value=t}setclCvalue(t){this.type=fh,this.value=t}sethvalue(t){this.type=Ah,this.value=t}setdeadvalue(){this.type=_i,this.value=null}setfrom(t){this.type=t.type,this.value=t.value}tsvalue(){return dr(this.ttisstring()),this.value}svalue(){return this.tsvalue().getstr()}vslen(){return this.tsvalue().tsslen()}jsstring(t,n){return Bh(this.svalue(),t,n,!0)}},Zm=function(e,t){e.stack[e.top++]=new Pn(t.type,t.value)},Ym=function(e,t){e.stack[e.top++]=new Pn(ii,t)},Jm=function(e,t,n){e.stack[t].setfrom(e.stack[n])},Wm=function(e,t,n){e.stack[t].setfrom(n)},Fh=function(e,t,n){e.stack[t].setsvalue(n)},Gh=new Pn(fs,null);Object.freeze(Gh);$.exports.luaO_nilobject=Gh;var Su=class{constructor(t,n){this.id=t.l_G.id_counter++,this.p=null,this.nupvalues=n,this.upvals=new Array(n)}},Nu=class{constructor(t,n,r){for(this.id=t.l_G.id_counter++,this.f=n,this.nupvalues=r,this.upvalue=new Array(r);r--;)this.upvalue[r]=new Pn(fs,null)}},wu=class{constructor(t,n){this.id=t.l_G.id_counter++,this.metatable=null,this.uservalue=new Pn(fs,null),this.len=n,this.data=Object.create(null)}},fi=class{constructor(){this.varname=null,this.startpc=NaN,this.endpc=NaN}},Wr=Me("..."),li=Me('[string "'),oi=Me('"]'),$m=function(e,t){let n=e.length,r;if(e[0]===61)n<t?(r=new Uint8Array(n-1),r.set(e.subarray(1))):(r=new Uint8Array(t),r.set(e.subarray(1,t+1)));else if(e[0]===64)n<=t?(r=new Uint8Array(n-1),r.set(e.subarray(1))):(r=new Uint8Array(t),r.set(Wr),t-=Wr.length,r.set(e.subarray(n-t),Wr.length));else{r=new Uint8Array(t);let a=ci(e,10);r.set(li);let s=li.length;t-=li.length+Wr.length+oi.length,n<t&&a===-1?(r.set(e,s),s+=e.length):(a!==-1&&(n=a),n>t&&(n=t),r.set(e.subarray(0,n),s),s+=n,r.set(Wr,s),s+=Wr.length),r.set(oi,s),s+=oi.length,r=r.subarray(0,s)}return r},xi=function(e){return Uu(e)?e-48:(e&223)-55},$r=8,qh=function(e,t){let n=1;if(dr(t<=1114111),t<128)e[$r-1]=t;else{let r=63;do e[$r-n++]=128|t&63,t>>=6,r>>=1;while(t>r);e[$r-n]=~r<<1|t}return n},Qm=30,Lm=function(e){let t=0,n=0,r=0,a=0,s=0,u,l=!1;for(;Ru(e[t]);)t++;if(((u=e[t]===45)||e[t]===43)&&t++,!(e[t]===48&&(e[t+1]===120||e[t+1]===88)))return null;for(t+=2;;t++)if(e[t]===46){if(l)break;l=!0}else if(Kh(e[t]))r===0&&e[t]===48?a++:++r<=Qm?n=n*16+xi(e[t]):s++,l&&s--;else break;if(a+r===0)return null;if(s*=4,e[t]===112||e[t]===80){let o=0,c;if(t++,((c=e[t]===45)||e[t]===43)&&t++,!Uu(e[t]))return null;for(;Uu(e[t]);)o=o*10+e[t++]-48;c&&(o=-o),s+=o}return u&&(n=-n),{n:qm(n,s),i:t}},ev=function(e){try{e=Bh(e)}catch{return null}let t=/^[\t\v\f \n\r]*[+-]?(?:[0-9]+\.?[0-9]*|\.[0-9]*)(?:[eE][+-]?[0-9]+)?/.exec(e);if(!t)return null;let n=parseFloat(t[0]);return isNaN(n)?null:{n,i:t[0].length}},tv=function(e,t){let n=t==="x"?Lm(e):ev(e);if(n===null)return null;for(;Ru(e[n.i]);)n.i++;return n.i===e.length||e[n.i]===0?n:null},nv=[46,120,88,110,78],rv={46:".",120:"x",88:"x",110:"n",78:"n"},av=function(e){let t=e.length,n=0;for(let s=0;s<t;s++){let u=e[s];if(nv.indexOf(u)!==-1){n=u;break}}let r=rv[n];return r==="n"?null:tv(e,r)},bh=Math.floor(Vh/10),sv=Vh%10,uv=function(e){let t=0,n=0,r=!0,a;for(;Ru(e[t]);)t++;if(((a=e[t]===45)||e[t]===43)&&t++,e[t]===48&&(e[t+1]===120||e[t+1]===88))for(t+=2;t<e.length&&Kh(e[t]);t++)n=n*16+xi(e[t])|0,r=!1;else for(;t<e.length&&Uu(e[t]);t++){let s=e[t]-48;if(n>=bh&&(n>bh||s>sv+a))return null;n=n*10+s|0,r=!1}for(;t<e.length&&Ru(e[t]);)t++;return r||t!==e.length&&e[t]!==0?null:{n:(a?-n:n)|0,i:t}},lv=function(e,t){let n=uv(e);return n!==null?(t.setivalue(n.n),n.i+1):(n=av(e),n!==null?(t.setfltvalue(n.n),n.i+1):0)},pi=function(e,t){let n;if(t.ttisinteger())n=Me(Hm(t.value));else{let r=jm(t.value);!Gm&&/^[-0123456789]+$/.test(r)&&(r+=".0"),n=Me(r)}t.setsvalue(Km(e,n))},$e=function(e,t){vu.luaD_inctop(e),Fh(e,e.top-1,Vm(e,t))},Hh=function(e,t,n){let r=0,a=0,s=0,u;for(;u=ci(t,37,a),u!=-1;){switch($e(e,t.subarray(a,u)),t[u+1]){case 115:{let l=n[s++];if(l===null)l=Me("(null)",!0);else{l=Mm(l);let o=ci(l,0);o!==-1&&(l=l.subarray(0,o))}$e(e,l);break}case 99:{let l=n[s++];Cm(l)?$e(e,Pm(l)):jh(e,Me("<\\%d>",!0),l);break}case 100:case 73:vu.luaD_inctop(e),e.stack[e.top-1].setivalue(n[s++]),pi(e,e.stack[e.top-1]);break;case 102:vu.luaD_inctop(e),e.stack[e.top-1].setfltvalue(n[s++]),pi(e,e.stack[e.top-1]);break;case 112:{let l=n[s++];if(l instanceof Bm.lua_State||l instanceof Fm.Table||l instanceof wu||l instanceof Su||l instanceof Nu)$e(e,Me("0x"+l.id.toString(16)));else switch(typeof l){case"undefined":$e(e,Me("undefined"));break;case"number":$e(e,Me("Number("+l+")"));break;case"string":$e(e,Me("String("+JSON.stringify(l)+")"));break;case"boolean":$e(e,Me(l?"Boolean(true)":"Boolean(false)"));break;case"object":if(l===null){$e(e,Me("null"));break}case"function":{let o=e.l_G.ids.get(l);o||(o=e.l_G.id_counter++,e.l_G.ids.set(l,o)),$e(e,Me("0x"+o.toString(16)));break}default:$e(e,Me("<id NYI>"))}break}case 85:{let l=new Uint8Array($r),o=qh(l,n[s++]);$e(e,l.subarray($r-o));break}case 37:$e(e,Me("%",!0));break;default:Dm.luaG_runerror(e,Me("invalid option '%%%c' to 'lua_pushfstring'"),t[u+1])}r+=2,a=u+2}return vu.luaD_checkstack(e,1),$e(e,t.subarray(a)),r>0&&xt.luaV_concat(e,r+1),e.stack[e.top-1].svalue()},jh=function(e,t,...n){return Hh(e,t,n)},ov=function(e){let t=0;if(e<8)return e;for(;e>=128;)e=e+15>>4,t+=4;for(;e>=16;)e=e+1>>1,t++;return t+1<<3|e-8},Oh=function(e,t,n,r){switch(t){case di:return n+r|0;case Ph:return n-r|0;case wh:return xt.luaV_imul(n,r);case Nh:return xt.luaV_mod(e,n,r);case Sh:return xt.luaV_div(e,n,r);case Eh:return n&r;case vh:return n|r;case Uh:return n^r;case Ih:return xt.luaV_shiftl(n,r);case Mh:return xt.luaV_shiftl(n,-r);case Ch:return 0-n|0;case mh:return-1^n;default:dr(0)}},hi=function(e,t,n,r){switch(t){case di:return n+r;case Ph:return n-r;case wh:return n*r;case Rh:return n/r;case yh:return Math.pow(n,r);case Sh:return Math.floor(n/r);case Ch:return-n;case Nh:return Xm(e,n,r);default:dr(0)}},iv=function(e,t,n,r,a){let s=typeof a=="number"?e.stack[a]:a;switch(t){case Eh:case vh:case Uh:case Ih:case Mh:case mh:{let u,l;if((u=xt.tointeger(n))!==!1&&(l=xt.tointeger(r))!==!1){s.setivalue(Oh(e,t,u,l));return}else break}case Rh:case yh:{let u,l;if((u=xt.tonumber(n))!==!1&&(l=xt.tonumber(r))!==!1){s.setfltvalue(hi(e,t,u,l));return}else break}default:{let u,l;if(n.ttisinteger()&&r.ttisinteger()){s.setivalue(Oh(e,t,n.value,r.value));return}else if((u=xt.tonumber(n))!==!1&&(l=xt.tonumber(r))!==!1){s.setfltvalue(hi(e,t,u,l));return}else break}}dr(e!==null),kh.luaT_trybinTM(e,n,r,a,t-di+kh.TMS.TM_ADD)};$.exports.CClosure=Nu;$.exports.LClosure=Su;$.exports.LUA_TDEADKEY=_i;$.exports.LUA_TPROTO=zm;$.exports.LocVar=fi;$.exports.TValue=Pn;$.exports.Udata=wu;$.exports.UTF8BUFFSZ=$r;$.exports.luaO_arith=iv;$.exports.luaO_chunkid=$m;$.exports.luaO_hexavalue=xi;$.exports.luaO_int2fb=ov;$.exports.luaO_pushfstring=jh;$.exports.luaO_pushvfstring=Hh;$.exports.luaO_str2num=lv;$.exports.luaO_tostring=pi;$.exports.luaO_utf8esc=qh;$.exports.numarith=hi;$.exports.pushobj2s=Zm;$.exports.pushsvalue2s=Ym;$.exports.setobjs2s=Jm;$.exports.setobj2s=Wm;$.exports.setsvalue2s=Fh});var hr=U((D4,Cn)=>{"use strict";var{constant_types:{LUA_TNIL:cv}}=_e(),gi=rt(),Ai=class{constructor(t){this.id=t.l_G.id_counter++,this.k=[],this.p=[],this.code=[],this.cache=null,this.lineinfo=[],this.upvalues=[],this.numparams=0,this.is_vararg=!1,this.maxstacksize=0,this.locvars=[],this.linedefined=0,this.lastlinedefined=0,this.source=null}},_v=function(e,t){return new gi.LClosure(e,t)},fv=function(e,t){return e.stack[t]},pv=function(e,t){for(let n=t;n<e.top;n++){let r=e.stack[n];e.stack[n]=new gi.TValue(r.type,r.value)}},hv=function(e,t){for(let n=0;n<t.nupvalues;n++)t.upvals[n]=new gi.TValue(cv,null)},dv=function(e,t,n){for(let r=0;r<e.locvars.length&&e.locvars[r].startpc<=n;r++)if(n<e.locvars[r].endpc&&(t--,t===0))return e.locvars[r].varname.getstr();return null};Cn.exports.MAXUPVAL=255;Cn.exports.Proto=Ai;Cn.exports.luaF_findupval=fv;Cn.exports.luaF_close=pv;Cn.exports.luaF_getlocalname=dv;Cn.exports.luaF_initupvals=hv;Cn.exports.luaF_newLclosure=_v});var ps=U((B4,Kt)=>{"use strict";var{lua_assert:Xh}=We(),Ti=class{constructor(){this.buffer=null,this.n=0}},xv=function(e){return e.buffer.subarray(0,e.n)},Av=function(e,t){e.n-=t},gv=function(e){e.n=0},Tv=function(e,t,n){let r=new Uint8Array(n);t.buffer&&r.set(t.buffer),t.buffer=r},ki=class{constructor(t,n,r){this.L=t,Xh(typeof n=="function","ZIO requires a reader"),this.reader=n,this.data=r,this.n=0,this.buffer=null,this.off=0}zgetc(){return this.n-- >0?this.buffer[this.off++]:bi(this)}},yu=-1,bi=function(e){let t=e.reader(e.L,e.data);if(t===null)return yu;Xh(t instanceof Uint8Array,"Should only load binary of array of bytes");let n=t.length;return n===0?yu:(e.buffer=t,e.off=0,e.n=n-1,e.buffer[e.off++])},kv=function(e,t,n,r){for(;r;){if(e.n===0){if(bi(e)===yu)return r;e.n++,e.off--}let a=r<=e.n?r:e.n;for(let s=0;s<a;s++)t[n++]=e.buffer[e.off++];e.n-=a,e.n===0&&(e.buffer=null),r-=a}return 0};Kt.exports.EOZ=yu;Kt.exports.luaZ_buffer=xv;Kt.exports.luaZ_buffremove=Av;Kt.exports.luaZ_fill=bi;Kt.exports.luaZ_read=kv;Kt.exports.luaZ_resetbuffer=gv;Kt.exports.luaZ_resizebuffer=Tv;Kt.exports.MBuffer=Ti;Kt.exports.ZIO=ki});var Ku=U((K4,ut)=>{"use strict";var{constant_types:{LUA_TBOOLEAN:bv,LUA_TLNGSTR:Ov},thread_status:{LUA_ERRSYNTAX:Ev},to_luastring:ge}=_e(),{LUA_MINBUFFER:mv,MAX_INT:Yh,lua_assert:Lr}=We(),vv=en(),Uv=Et(),{lisdigit:Cu,lislalnum:Rv,lislalpha:Sv,lisspace:Nv,lisxdigit:Ui}=Bo(),st=rt(),{luaS_bless:wv,luaS_hash:yv,luaS_hashlongstr:Ri,luaS_new:Iv}=Pt(),Mv=Ct(),{EOZ:ea,luaZ_buffer:Si,luaZ_buffremove:hs,luaZ_resetbuffer:Iu,luaZ_resizebuffer:Jh}=ps(),P=257,Wh=ge("_ENV",!0),Pv=P,Cv=P+1,Dv=P+2,Bv=P+3,Kv=P+4,Vv=P+5,Fv=P+6,Gv=P+7,qv=P+8,Hv=P+9,jv=P+10,Xv=P+11,zv=P+12,Zv=P+13,Yv=P+14,Jv=P+15,Wv=P+16,$v=P+17,Qv=P+18,Lv=P+19,eU=P+20,tU=P+21,$h=P+22,Qh=P+23,Lh=P+24,ed=P+25,td=P+26,nd=P+27,rd=P+28,ad=P+29,sd=P+30,ud=P+31,tn=P+32,Mu=P+33,Ni=P+34,wi=P+35,xr=P+36,nU={TK_AND:Pv,TK_BREAK:Cv,TK_DO:Dv,TK_ELSE:Bv,TK_ELSEIF:Kv,TK_END:Vv,TK_FALSE:Fv,TK_FOR:Gv,TK_FUNCTION:qv,TK_GOTO:Hv,TK_IF:jv,TK_IN:Xv,TK_LOCAL:zv,TK_NIL:Zv,TK_NOT:Yv,TK_OR:Jv,TK_REPEAT:Wv,TK_RETURN:$v,TK_THEN:Qv,TK_TRUE:Lv,TK_UNTIL:eU,TK_WHILE:tU,TK_IDIV:$h,TK_CONCAT:Qh,TK_DOTS:Lh,TK_EQ:ed,TK_GE:td,TK_LE:nd,TK_NE:rd,TK_SHL:ad,TK_SHR:sd,TK_DBCOLON:ud,TK_EOS:tn,TK_FLT:Mu,TK_INT:Ni,TK_NAME:wi,TK_STRING:xr},yi=["and","break","do","else","elseif","end","false","for","function","goto","if","in","local","nil","not","or","repeat","return","then","true","until","while","//","..","...","==",">=","<=","~=","<<",">>","::","<eof>","<number>","<integer>","<name>","<string>"].map((e,t)=>ge(e)),ds=class{constructor(){this.r=NaN,this.i=NaN,this.ts=null}},Pu=class{constructor(){this.token=NaN,this.seminfo=new ds}},Ei=class{constructor(){this.current=NaN,this.linenumber=NaN,this.lastline=NaN,this.t=new Pu,this.lookahead=new Pu,this.fs=null,this.L=null,this.z=null,this.buff=null,this.h=null,this.dyd=null,this.source=null,this.envn=null}},Du=function(e,t){let n=e.buff;if(n.n+1>n.buffer.length){n.buffer.length>=Yh/2&&nn(e,ge("lexical element too long",!0),0);let r=n.buffer.length*2;Jh(e.L,n,r)}n.buffer[n.n++]=t<0?255+t+1:t},ld=function(e,t){if(t<P)return st.luaO_pushfstring(e.L,ge("'%c'",!0),t);{let n=yi[t-P];return t<tn?st.luaO_pushfstring(e.L,ge("'%s'",!0),n):n}},xs=function(e){return e.current===10||e.current===13},de=function(e){e.current=e.z.zgetc()},oe=function(e){Du(e,e.current),de(e)},rU=new st.TValue(bv,!0),Bu=function(e,t){let n=e.L,r=Iv(n,t),a=e.h.strong.get(Ri(r));if(a)r=a.key.tsvalue();else{let s=new st.TValue(Ov,r);Mv.luaH_setfrom(n,e.h,s,rU)}return r},As=function(e){let t=e.current;Lr(xs(e)),de(e),xs(e)&&e.current!==t&&de(e),++e.linenumber>=Yh&&nn(e,ge("chunk has too many lines",!0),0)},aU=function(e,t,n,r,a){t.t={token:0,seminfo:new ds},t.L=e,t.current=a,t.lookahead={token:tn,seminfo:new ds},t.z=n,t.fs=null,t.linenumber=1,t.lastline=1,t.source=r,t.envn=wv(e,Wh),Jh(e,t.buff,mv)},Vt=function(e,t){return e.current===t?(de(e),!0):!1},Oi=function(e,t){return e.current===t[0].charCodeAt(0)||e.current===t[1].charCodeAt(0)?(oe(e),!0):!1},zh=function(e,t){let n="Ee",r=e.current;for(Lr(Cu(e.current)),oe(e),r===48&&Oi(e,"xX")&&(n="Pp");;)if(Oi(e,n)&&Oi(e,"-+"),Ui(e.current))oe(e);else if(e.current===46)oe(e);else break;let a=new st.TValue;return st.luaO_str2num(Si(e.buff),a)===0&&nn(e,ge("malformed number",!0),Mu),a.ttisinteger()?(t.i=a.value,Ni):(Lr(a.ttisfloat()),t.r=a.value,Mu)},sU=function(e,t){switch(t){case wi:case xr:case Mu:case Ni:return st.luaO_pushfstring(e.L,ge("'%s'",!0),Si(e.buff));default:return ld(e,t)}},nn=function(e,t,n){t=vv.luaG_addinfo(e.L,t,e.source,e.linenumber),n&&st.luaO_pushfstring(e.L,ge("%s near %s"),t,sU(e,n)),Uv.luaD_throw(e.L,Ev)},uU=function(e,t){nn(e,t,e.t.token)},mi=function(e){let t=0,n=e.current;for(Lr(n===91||n===93),oe(e);e.current===61;)oe(e),t++;return e.current===n?t:-t-1},Zh=function(e,t,n){let r=e.linenumber;oe(e),xs(e)&&As(e);let a=!1;for(;!a;)switch(e.current){case ea:{let u=`unfinished long ${t?"string":"comment"} (starting at line ${r})`;nn(e,ge(u),tn);break}case 93:{mi(e)===n&&(oe(e),a=!0);break}case 10:case 13:{Du(e,10),As(e),t||Iu(e.buff);break}default:t?oe(e):de(e)}t&&(t.ts=Bu(e,e.buff.buffer.subarray(2+n,e.buff.n-(2+n))))},Qr=function(e,t,n){t||(e.current!==ea&&oe(e),nn(e,n,xr))},vi=function(e){return oe(e),Qr(e,Ui(e.current),ge("hexadecimal digit expected",!0)),st.luaO_hexavalue(e.current)},lU=function(e){let t=vi(e);return t=(t<<4)+vi(e),hs(e.buff,2),t},oU=function(e){let t=4;oe(e),Qr(e,e.current===123,ge("missing '{'",!0));let n=vi(e);for(oe(e);Ui(e.current);)t++,n=(n<<4)+st.luaO_hexavalue(e.current),Qr(e,n<=1114111,ge("UTF-8 value too large",!0)),oe(e);return Qr(e,e.current===125,ge("missing '}'",!0)),de(e),hs(e.buff,t),n},iU=function(e){let t=new Uint8Array(st.UTF8BUFFSZ),n=st.luaO_utf8esc(t,oU(e));for(;n>0;n--)Du(e,t[st.UTF8BUFFSZ-n])},cU=function(e){let t=0,n;for(n=0;n<3&&Cu(e.current);n++)t=10*t+e.current-48,oe(e);return Qr(e,t<=255,ge("decimal escape too large",!0)),hs(e.buff,n),t},_U=function(e,t,n){for(oe(e);e.current!==t;)switch(e.current){case ea:nn(e,ge("unfinished string",!0),tn);break;case 10:case 13:nn(e,ge("unfinished string",!0),xr);break;case 92:{oe(e);let r,a;switch(e.current){case 97:a=7,r="read_save";break;case 98:a=8,r="read_save";break;case 102:a=12,r="read_save";break;case 110:a=10,r="read_save";break;case 114:a=13,r="read_save";break;case 116:a=9,r="read_save";break;case 118:a=11,r="read_save";break;case 120:a=lU(e),r="read_save";break;case 117:iU(e),r="no_save";break;case 10:case 13:As(e),a=10,r="only_save";break;case 92:case 34:case 39:a=e.current,r="read_save";break;case ea:r="no_save";break;case 122:{for(hs(e.buff,1),de(e);Nv(e.current);)xs(e)?As(e):de(e);r="no_save";break}default:{Qr(e,Cu(e.current),ge("invalid escape sequence",!0)),a=cU(e),r="only_save";break}}r==="read_save"&&de(e),(r==="read_save"||r==="only_save")&&(hs(e.buff,1),Du(e,a));break}default:oe(e)}oe(e),n.ts=Bu(e,e.buff.buffer.subarray(1,e.buff.n-1))},Ii=Object.create(null);yi.forEach((e,t)=>Ii[yv(e)]=t);var fU=function(e){let t=Ii[Ri(e)];return t!==void 0&&t<=22},od=function(e,t){for(Iu(e.buff);;)switch(Lr(typeof e.current=="number"),e.current){case 10:case 13:{As(e);break}case 32:case 12:case 9:case 11:{de(e);break}case 45:{if(de(e),e.current!==45)return 45;if(de(e),e.current===91){let n=mi(e);if(Iu(e.buff),n>=0){Zh(e,null,n),Iu(e.buff);break}}for(;!xs(e)&&e.current!==ea;)de(e);break}case 91:{let n=mi(e);return n>=0?(Zh(e,t,n),xr):(n!==-1&&nn(e,ge("invalid long string delimiter",!0),xr),91)}case 61:return de(e),Vt(e,61)?ed:61;case 60:return de(e),Vt(e,61)?nd:Vt(e,60)?ad:60;case 62:return de(e),Vt(e,61)?td:Vt(e,62)?sd:62;case 47:return de(e),Vt(e,47)?$h:47;case 126:return de(e),Vt(e,61)?rd:126;case 58:return de(e),Vt(e,58)?ud:58;case 34:case 39:return _U(e,e.current,t),xr;case 46:return oe(e),Vt(e,46)?Vt(e,46)?Lh:Qh:Cu(e.current)?zh(e,t):46;case 48:case 49:case 50:case 51:case 52:case 53:case 54:case 55:case 56:case 57:return zh(e,t);case ea:return tn;default:if(Sv(e.current)){do oe(e);while(Rv(e.current));let n=Bu(e,Si(e.buff));t.ts=n;let r=Ii[Ri(n)];return r!==void 0&&r<=22?r+P:wi}else{let n=e.current;return de(e),n}}},pU=function(e){e.lastline=e.linenumber,e.lookahead.token!==tn?(e.t.token=e.lookahead.token,e.t.seminfo.i=e.lookahead.seminfo.i,e.t.seminfo.r=e.lookahead.seminfo.r,e.t.seminfo.ts=e.lookahead.seminfo.ts,e.lookahead.token=tn):e.t.token=od(e,e.t.seminfo)},hU=function(e){return Lr(e.lookahead.token===tn),e.lookahead.token=od(e,e.lookahead.seminfo),e.lookahead.token};ut.exports.FIRST_RESERVED=P;ut.exports.LUA_ENV=Wh;ut.exports.LexState=Ei;ut.exports.RESERVED=nU;ut.exports.isreserved=fU;ut.exports.luaX_lookahead=hU;ut.exports.luaX_newstring=Bu;ut.exports.luaX_next=pU;ut.exports.luaX_setinput=aU;ut.exports.luaX_syntaxerror=uU;ut.exports.luaX_token2str=ld;ut.exports.luaX_tokens=yi});var Cd=U((V4,I)=>{"use strict";var{LUA_MULTRET:Ci,LUA_OPADD:dU,LUA_OPBAND:xU,LUA_OPBNOT:AU,LUA_OPBOR:gU,LUA_OPBXOR:TU,LUA_OPDIV:kU,LUA_OPIDIV:bU,LUA_OPMOD:OU,LUA_OPSHL:EU,LUA_OPSHR:mU,LUA_OPUNM:vU,constant_types:{LUA_TBOOLEAN:UU,LUA_TLIGHTUSERDATA:RU,LUA_TLNGSTR:SU,LUA_TNIL:NU,LUA_TNUMFLT:xd,LUA_TNUMINT:Di,LUA_TTABLE:wU},to_luastring:Bi}=_e(),{lua_assert:ne}=We(),Ki=Ku(),Vi=rt(),E=cr(),z=Xi(),id=Ct(),cd=fr(),F=E.OpCodesI,Ft=Vi.TValue,yU=255,J=-1,M={OPR_ADD:0,OPR_SUB:1,OPR_MUL:2,OPR_MOD:3,OPR_POW:4,OPR_DIV:5,OPR_IDIV:6,OPR_BAND:7,OPR_BOR:8,OPR_BXOR:9,OPR_SHL:10,OPR_SHR:11,OPR_CONCAT:12,OPR_EQ:13,OPR_LT:14,OPR_LE:15,OPR_NE:16,OPR_GT:17,OPR_GE:18,OPR_AND:19,OPR_OR:20,OPR_NOBINOPR:21},gs={OPR_MINUS:0,OPR_BNOT:1,OPR_NOT:2,OPR_LEN:3,OPR_NOUNOPR:4},na=function(e){return e.t!==e.f},Mi=function(e,t){let n=z.expkind;if(na(e))return!1;switch(e.k){case n.VKINT:return t?new Ft(Di,e.u.ival):!0;case n.VKFLT:return t?new Ft(xd,e.u.nval):!0;default:return!1}},Ad=function(e,t,n){let r,a=t+n-1;if(e.pc>e.lasttarget&&(r=e.f.code[e.pc-1],r.opcode===F.OP_LOADNIL)){let s=r.A,u=s+r.B;if(s<=t&&t<=u+1||t<=s&&s<=a+1){s<t&&(t=s),u>a&&(a=u),E.SETARG_A(r,t),E.SETARG_B(r,a-t);return}}Pe(e,F.OP_LOADNIL,t,n-1,0)},rn=function(e,t){return e.f.code[t.u.info]},ta=function(e,t){let n=e.f.code[t].sBx;return n===J?J:t+1+n},Pi=function(e,t,n){let r=e.f.code[t],a=n-(t+1);ne(n!==J),Math.abs(a)>E.MAXARG_sBx&&Ki.luaX_syntaxerror(e.ls,Bi("control structure too long",!0)),E.SETARG_sBx(r,a)},Dn=function(e,t,n){if(n===J)return t;if(t===J)t=n;else{let r=t,a=ta(e,r);for(;a!==J;)r=a,a=ta(e,r);Pi(e,r,n)}return t},qu=function(e){let t=e.jpc;e.jpc=J;let n=Od(e,F.OP_JMP,0,J);return n=Dn(e,n,t),n},IU=function(e,t){return bd(e,qu(e),t)},MU=function(e,t,n){Pe(e,F.OP_RETURN,t,n+1,0)},Ts=function(e,t,n,r,a){return Pe(e,t,n,r,a),qu(e)},Hu=function(e){return e.lasttarget=e.pc,e.pc},gd=function(e,t){return t>=1&&E.testTMode(e.f.code[t-1].opcode)?t-1:t},Td=function(e,t){return e.f.code[gd(e,t)]},kd=function(e,t,n){let r=gd(e,t),a=e.f.code[r];return a.opcode!==F.OP_TESTSET?!1:(n!==E.NO_REG&&n!==a.B?E.SETARG_A(a,n):e.f.code[r]=E.CREATE_ABC(F.OP_TEST,a.B,0,a.C),!0)},_d=function(e,t){for(;t!==J;t=ta(e,t))kd(e,t,E.NO_REG)},Fu=function(e,t,n,r,a){for(;t!==J;){let s=ta(e,t);kd(e,t,r)?Pi(e,t,n):Pi(e,t,a),t=s}},PU=function(e){Fu(e,e.jpc,e.pc,E.NO_REG,e.pc),e.jpc=J},ks=function(e,t){Hu(e),e.jpc=Dn(e,e.jpc,t)},bd=function(e,t,n){n===e.pc?ks(e,t):(ne(n<e.pc),Fu(e,t,n,E.NO_REG,n))},CU=function(e,t,n){for(n++;t!==J;t=ta(e,t)){let r=e.f.code[t];ne(r.opcode===F.OP_JMP&&(r.A===0||r.A>=n)),E.SETARG_A(r,n)}},ju=function(e,t){let n=e.f;return PU(e),n.code[e.pc]=t,n.lineinfo[e.pc]=e.ls.lastline,e.pc++},Pe=function(e,t,n,r,a){return ne(E.getOpMode(t)===E.iABC),ne(E.getBMode(t)!==E.OpArgN||r===0),ne(E.getCMode(t)!==E.OpArgN||a===0),ne(n<=E.MAXARG_A&&r<=E.MAXARG_B&&a<=E.MAXARG_C),ju(e,E.CREATE_ABC(t,n,r,a))},Gu=function(e,t,n,r){return ne(E.getOpMode(t)===E.iABx||E.getOpMode(t)===E.iAsBx),ne(E.getCMode(t)===E.OpArgN),ne(n<=E.MAXARG_A&&r<=E.MAXARG_Bx),ju(e,E.CREATE_ABx(t,n,r))},Od=function(e,t,n,r){return Gu(e,t,n,r+E.MAXARG_sBx)},Ed=function(e,t){return ne(t<=E.MAXARG_Ax),ju(e,E.CREATE_Ax(F.OP_EXTRAARG,t))},Vu=function(e,t,n){if(n<=E.MAXARG_Bx)return Gu(e,F.OP_LOADK,t,n);{let r=Gu(e,F.OP_LOADKX,t,0);return Ed(e,n),r}},md=function(e,t){let n=e.freereg+t;n>e.f.maxstacksize&&(n>=yU&&Ki.luaX_syntaxerror(e.ls,Bi("function or expression needs too many registers",!0)),e.f.maxstacksize=n)},bs=function(e,t){md(e,t),e.freereg+=t},Ar=function(e,t){!E.ISK(t)&&t>=e.nactvar&&(e.freereg--,ne(t===e.freereg))},an=function(e,t){t.k===z.expkind.VNONRELOC&&Ar(e,t.u.info)},vd=function(e,t,n){let r=t.k===z.expkind.VNONRELOC?t.u.info:-1,a=n.k===z.expkind.VNONRELOC?n.u.info:-1;r>a?(Ar(e,r),Ar(e,a)):(Ar(e,a),Ar(e,r))},Os=function(e,t,n){let r=e.f,a=id.luaH_get(e.L,e.ls.h,t);if(a.ttisinteger()){let u=a.value;if(u<e.nk&&r.k[u].ttype()===n.ttype()&&r.k[u].value===n.value)return u}let s=e.nk;return id.luaH_setfrom(e.L,e.ls.h,t,new Vi.TValue(Di,s)),r.k[s]=n,e.nk++,s},DU=function(e,t){let n=new Ft(SU,t);return Os(e,n,n)},Fi=function(e,t){let n=new Ft(RU,t),r=new Ft(Di,t);return Os(e,n,r)},Gi=function(e,t){let n=new Ft(xd,t);return Os(e,n,n)},fd=function(e,t){let n=new Ft(UU,t);return Os(e,n,n)},BU=function(e){let t=new Ft(NU,null),n=new Ft(wU,e.ls.h);return Os(e,n,t)},Ud=function(e,t,n){let r=z.expkind;if(t.k===r.VCALL)E.SETARG_C(rn(e,t),n+1);else if(t.k===r.VVARARG){let a=rn(e,t);E.SETARG_B(a,n+1),E.SETARG_A(a,e.freereg),bs(e,1)}else ne(n===Ci)},KU=function(e,t){Ud(e,t,Ci)},Rd=function(e,t){let n=z.expkind;t.k===n.VCALL?(ne(rn(e,t).C===2),t.k=n.VNONRELOC,t.u.info=rn(e,t).A):t.k===n.VVARARG&&(E.SETARG_B(rn(e,t),2),t.k=n.VRELOCABLE)},Gt=function(e,t){let n=z.expkind;switch(t.k){case n.VLOCAL:{t.k=n.VNONRELOC;break}case n.VUPVAL:{t.u.info=Pe(e,F.OP_GETUPVAL,0,t.u.info,0),t.k=n.VRELOCABLE;break}case n.VINDEXED:{let r;Ar(e,t.u.ind.idx),t.u.ind.vt===n.VLOCAL?(Ar(e,t.u.ind.t),r=F.OP_GETTABLE):(ne(t.u.ind.vt===n.VUPVAL),r=F.OP_GETTABUP),t.u.info=Pe(e,r,0,t.u.ind.t,t.u.ind.idx),t.k=n.VRELOCABLE;break}case n.VVARARG:case n.VCALL:{Rd(e,t);break}default:break}},pd=function(e,t,n,r){return Hu(e),Pe(e,F.OP_LOADBOOL,t,n,r)},Sd=function(e,t,n){let r=z.expkind;switch(Gt(e,t),t.k){case r.VNIL:{Ad(e,n,1);break}case r.VFALSE:case r.VTRUE:{Pe(e,F.OP_LOADBOOL,n,t.k===r.VTRUE,0);break}case r.VK:{Vu(e,n,t.u.info);break}case r.VKFLT:{Vu(e,n,Gi(e,t.u.nval));break}case r.VKINT:{Vu(e,n,Fi(e,t.u.ival));break}case r.VRELOCABLE:{let a=rn(e,t);E.SETARG_A(a,n);break}case r.VNONRELOC:{n!==t.u.info&&Pe(e,F.OP_MOVE,n,t.u.info,0);break}default:{ne(t.k===r.VJMP);return}}t.u.info=n,t.k=r.VNONRELOC},Nd=function(e,t){t.k!==z.expkind.VNONRELOC&&(bs(e,1),Sd(e,t,e.freereg-1))},hd=function(e,t){for(;t!==J;t=ta(e,t))if(Td(e,t).opcode!==F.OP_TESTSET)return!0;return!1},qi=function(e,t,n){let r=z.expkind;if(Sd(e,t,n),t.k===r.VJMP&&(t.t=Dn(e,t.t,t.u.info)),na(t)){let a,s=J,u=J;if(hd(e,t.t)||hd(e,t.f)){let l=t.k===r.VJMP?J:qu(e);s=pd(e,n,0,1),u=pd(e,n,1,0),ks(e,l)}a=Hu(e),Fu(e,t.f,a,n,s),Fu(e,t.t,a,n,u)}t.f=t.t=J,t.u.info=n,t.k=r.VNONRELOC},Xu=function(e,t){Gt(e,t),an(e,t),bs(e,1),qi(e,t,e.freereg-1)},gr=function(e,t){if(Gt(e,t),t.k===z.expkind.VNONRELOC){if(!na(t))return t.u.info;if(t.u.info>=e.nactvar)return qi(e,t,t.u.info),t.u.info}return Xu(e,t),t.u.info},VU=function(e,t){(t.k!==z.expkind.VUPVAL||na(t))&&gr(e,t)},Hi=function(e,t){na(t)?gr(e,t):Gt(e,t)},sn=function(e,t){let n=z.expkind,r=!1;switch(Hi(e,t),t.k){case n.VTRUE:t.u.info=fd(e,!0),r=!0;break;case n.VFALSE:t.u.info=fd(e,!1),r=!0;break;case n.VNIL:t.u.info=BU(e),r=!0;break;case n.VKINT:t.u.info=Fi(e,t.u.ival),r=!0;break;case n.VKFLT:t.u.info=Gi(e,t.u.nval),r=!0;break;case n.VK:r=!0;break;default:break}return r&&(t.k=n.VK,t.u.info<=E.MAXINDEXRK)?E.RKASK(t.u.info):gr(e,t)},FU=function(e,t,n){let r=z.expkind;switch(t.k){case r.VLOCAL:{an(e,n),qi(e,n,t.u.info);return}case r.VUPVAL:{let a=gr(e,n);Pe(e,F.OP_SETUPVAL,a,t.u.info,0);break}case r.VINDEXED:{let a=t.u.ind.vt===r.VLOCAL?F.OP_SETTABLE:F.OP_SETTABUP,s=sn(e,n);Pe(e,a,t.u.ind.t,t.u.ind.idx,s);break}}an(e,n)},GU=function(e,t,n){gr(e,t);let r=t.u.info;an(e,t),t.u.info=e.freereg,t.k=z.expkind.VNONRELOC,bs(e,2),Pe(e,F.OP_SELF,t.u.info,r,sn(e,n)),an(e,n)},wd=function(e,t){let n=Td(e,t.u.info);ne(E.testTMode(n.opcode)&&n.opcode!==F.OP_TESTSET&&n.opcode!==F.OP_TEST),E.SETARG_A(n,!n.A)},yd=function(e,t,n){if(t.k===z.expkind.VRELOCABLE){let r=rn(e,t);if(r.opcode===F.OP_NOT)return e.pc--,Ts(e,F.OP_TEST,r.B,0,!n)}return Nd(e,t),an(e,t),Ts(e,F.OP_TESTSET,E.NO_REG,t.u.info,n)},Id=function(e,t){let n=z.expkind,r;switch(Gt(e,t),t.k){case n.VJMP:{wd(e,t),r=t.u.info;break}case n.VK:case n.VKFLT:case n.VKINT:case n.VTRUE:{r=J;break}default:{r=yd(e,t,0);break}}t.f=Dn(e,t.f,r),ks(e,t.t),t.t=J},Md=function(e,t){let n=z.expkind,r;switch(Gt(e,t),t.k){case n.VJMP:{r=t.u.info;break}case n.VNIL:case n.VFALSE:{r=J;break}default:{r=yd(e,t,1);break}}t.t=Dn(e,t.t,r),ks(e,t.f),t.f=J},qU=function(e,t){let n=z.expkind;switch(Gt(e,t),t.k){case n.VNIL:case n.VFALSE:{t.k=n.VTRUE;break}case n.VK:case n.VKFLT:case n.VKINT:case n.VTRUE:{t.k=n.VFALSE;break}case n.VJMP:{wd(e,t);break}case n.VRELOCABLE:case n.VNONRELOC:{Nd(e,t),an(e,t),t.u.info=Pe(e,F.OP_NOT,0,t.u.info,0),t.k=n.VRELOCABLE;break}}{let r=t.f;t.f=t.t,t.t=r}_d(e,t.f),_d(e,t.t)},HU=function(e,t,n){let r=z.expkind;ne(!na(t)&&(z.vkisinreg(t.k)||t.k===r.VUPVAL)),t.u.ind.t=t.u.info,t.u.ind.idx=sn(e,n),t.u.ind.vt=t.k===r.VUPVAL?r.VUPVAL:r.VLOCAL,t.k=r.VINDEXED},jU=function(e,t,n){switch(e){case xU:case gU:case TU:case EU:case mU:case AU:return cd.tointeger(t)!==!1&&cd.tointeger(n)!==!1;case kU:case bU:case OU:return n.value!==0;default:return 1}},Pd=function(e,t,n){let r=z.expkind,a,s;if(!(a=Mi(t,!0))||!(s=Mi(n,!0))||!jU(e,a,s))return 0;let u=new Ft;if(Vi.luaO_arith(null,e,a,s,u),u.ttisinteger())t.k=r.VKINT,t.u.ival=u.value;else{let l=u.value;if(isNaN(l)||l===0)return!1;t.k=r.VKFLT,t.u.nval=l}return!0},XU=function(e,t,n,r){let a=gr(e,n);an(e,n),n.u.info=Pe(e,t,0,a,0),n.k=z.expkind.VRELOCABLE,ji(e,r)},dd=function(e,t,n,r,a){let s=sn(e,r),u=sn(e,n);vd(e,n,r),n.u.info=Pe(e,t,0,u,s),n.k=z.expkind.VRELOCABLE,ji(e,a)},zU=function(e,t,n,r){let a=z.expkind,s;n.k===a.VK?s=E.RKASK(n.u.info):(ne(n.k===a.VNONRELOC),s=n.u.info);let u=sn(e,r);switch(vd(e,n,r),t){case M.OPR_NE:{n.u.info=Ts(e,F.OP_EQ,0,s,u);break}case M.OPR_GT:case M.OPR_GE:{let l=t-M.OPR_NE+F.OP_EQ;n.u.info=Ts(e,l,1,u,s);break}default:{let l=t-M.OPR_EQ+F.OP_EQ;n.u.info=Ts(e,l,1,s,u);break}}n.k=a.VJMP},ZU=function(e,t,n,r){let a=new z.expdesc;switch(a.k=z.expkind.VKINT,a.u.ival=a.u.nval=a.u.info=0,a.t=J,a.f=J,t){case gs.OPR_MINUS:case gs.OPR_BNOT:if(Pd(t+vU,n,a))break;case gs.OPR_LEN:XU(e,t+F.OP_UNM,n,r);break;case gs.OPR_NOT:qU(e,n);break}},YU=function(e,t,n){switch(t){case M.OPR_AND:{Id(e,n);break}case M.OPR_OR:{Md(e,n);break}case M.OPR_CONCAT:{Xu(e,n);break}case M.OPR_ADD:case M.OPR_SUB:case M.OPR_MUL:case M.OPR_DIV:case M.OPR_IDIV:case M.OPR_MOD:case M.OPR_POW:case M.OPR_BAND:case M.OPR_BOR:case M.OPR_BXOR:case M.OPR_SHL:case M.OPR_SHR:{Mi(n,!1)||sn(e,n);break}default:{sn(e,n);break}}},JU=function(e,t,n,r,a){let s=z.expkind;switch(t){case M.OPR_AND:{ne(n.t===J),Gt(e,r),r.f=Dn(e,r.f,n.f),n.to(r);break}case M.OPR_OR:{ne(n.f===J),Gt(e,r),r.t=Dn(e,r.t,n.t),n.to(r);break}case M.OPR_CONCAT:{Hi(e,r);let u=rn(e,r);r.k===s.VRELOCABLE&&u.opcode===F.OP_CONCAT?(ne(n.u.info===u.B-1),an(e,n),E.SETARG_B(u,n.u.info),n.k=s.VRELOCABLE,n.u.info=r.u.info):(Xu(e,r),dd(e,F.OP_CONCAT,n,r,a));break}case M.OPR_ADD:case M.OPR_SUB:case M.OPR_MUL:case M.OPR_DIV:case M.OPR_IDIV:case M.OPR_MOD:case M.OPR_POW:case M.OPR_BAND:case M.OPR_BOR:case M.OPR_BXOR:case M.OPR_SHL:case M.OPR_SHR:{Pd(t+dU,n,r)||dd(e,t+F.OP_ADD,n,r,a);break}case M.OPR_EQ:case M.OPR_LT:case M.OPR_LE:case M.OPR_NE:case M.OPR_GT:case M.OPR_GE:{zU(e,t,n,r);break}}return n},ji=function(e,t){e.f.lineinfo[e.pc-1]=t},WU=function(e,t,n,r){let a=(n-1)/E.LFIELDS_PER_FLUSH+1,s=r===Ci?0:r;ne(r!==0&&r<=E.LFIELDS_PER_FLUSH),a<=E.MAXARG_C?Pe(e,F.OP_SETLIST,t,s,a):a<=E.MAXARG_Ax?(Pe(e,F.OP_SETLIST,t,s,0),Ed(e,a)):Ki.luaX_syntaxerror(e.ls,Bi("constructor too long",!0)),e.freereg=t+1};I.exports.BinOpr=M;I.exports.NO_JUMP=J;I.exports.UnOpr=gs;I.exports.getinstruction=rn;I.exports.luaK_checkstack=md;I.exports.luaK_code=ju;I.exports.luaK_codeABC=Pe;I.exports.luaK_codeABx=Gu;I.exports.luaK_codeAsBx=Od;I.exports.luaK_codek=Vu;I.exports.luaK_concat=Dn;I.exports.luaK_dischargevars=Gt;I.exports.luaK_exp2RK=sn;I.exports.luaK_exp2anyreg=gr;I.exports.luaK_exp2anyregup=VU;I.exports.luaK_exp2nextreg=Xu;I.exports.luaK_exp2val=Hi;I.exports.luaK_fixline=ji;I.exports.luaK_getlabel=Hu;I.exports.luaK_goiffalse=Md;I.exports.luaK_goiftrue=Id;I.exports.luaK_indexed=HU;I.exports.luaK_infix=YU;I.exports.luaK_intK=Fi;I.exports.luaK_jump=qu;I.exports.luaK_jumpto=IU;I.exports.luaK_nil=Ad;I.exports.luaK_numberK=Gi;I.exports.luaK_patchclose=CU;I.exports.luaK_patchlist=bd;I.exports.luaK_patchtohere=ks;I.exports.luaK_posfix=JU;I.exports.luaK_prefix=ZU;I.exports.luaK_reserveregs=bs;I.exports.luaK_ret=MU;I.exports.luaK_self=GU;I.exports.luaK_setlist=WU;I.exports.luaK_setmultret=KU;I.exports.luaK_setoneret=Rd;I.exports.luaK_setreturns=Ud;I.exports.luaK_storevar=FU;I.exports.luaK_stringK=DU});var Xi=U((F4,ia)=>{"use strict";var{LUA_MULTRET:sc,to_luastring:ae}=_e(),{BinOpr:{OPR_ADD:$U,OPR_AND:QU,OPR_BAND:LU,OPR_BOR:eR,OPR_BXOR:tR,OPR_CONCAT:nR,OPR_DIV:rR,OPR_EQ:aR,OPR_GE:sR,OPR_GT:uR,OPR_IDIV:lR,OPR_LE:oR,OPR_LT:iR,OPR_MOD:cR,OPR_MUL:_R,OPR_NE:fR,OPR_NOBINOPR:Hd,OPR_OR:pR,OPR_POW:hR,OPR_SHL:dR,OPR_SHR:xR,OPR_SUB:AR},UnOpr:{OPR_BNOT:gR,OPR_LEN:TR,OPR_MINUS:kR,OPR_NOT:bR,OPR_NOUNOPR:jd},NO_JUMP:ra,getinstruction:Yi,luaK_checkstack:OR,luaK_codeABC:ua,luaK_codeABx:ER,luaK_codeAsBx:zi,luaK_codek:mR,luaK_concat:vR,luaK_dischargevars:UR,luaK_exp2RK:Dd,luaK_exp2anyreg:RR,luaK_exp2anyregup:Xd,luaK_exp2nextreg:Ht,luaK_exp2val:SR,luaK_fixline:zu,luaK_getlabel:uc,luaK_goiffalse:NR,luaK_goiftrue:zd,luaK_indexed:lc,luaK_infix:wR,luaK_intK:yR,luaK_jump:Es,luaK_jumpto:IR,luaK_nil:MR,luaK_patchclose:Wu,luaK_patchlist:oc,luaK_patchtohere:ms,luaK_posfix:PR,luaK_prefix:CR,luaK_reserveregs:aa,luaK_ret:Zd,luaK_self:DR,luaK_setlist:Ji,luaK_setmultret:ic,luaK_setoneret:BR,luaK_setreturns:KR,luaK_storevar:Wi,luaK_stringK:VR}=Cd(),Bd=Et(),cc=hr(),y=Ku(),{LUAI_MAXCCALLS:Yd,MAX_INT:Jd,lua_assert:Qe}=We(),qt=rt(),{OpCodesI:{OP_CALL:FR,OP_CLOSURE:GR,OP_FORLOOP:qR,OP_FORPREP:HR,OP_GETUPVAL:jR,OP_MOVE:XR,OP_NEWTABLE:zR,OP_SETTABLE:ZR,OP_TAILCALL:YR,OP_TFORCALL:JR,OP_TFORLOOP:WR,OP_VARARG:$R},LFIELDS_PER_FLUSH:QR,SETARG_B:LR,SETARG_C:Wd,SET_OPCODE:eS}=cr(),{luaS_eqlngstr:tS,luaS_new:nS,luaS_newliteral:$d}=Pt(),rS=Ct(),Qd=cc.Proto,d=y.RESERVED,aS=200,$u=function(e){return e===N.VCALL||e===N.VVARARG},la=function(e,t){return tS(e,t)},mt=class{constructor(){this.previous=null,this.firstlabel=NaN,this.firstgoto=NaN,this.nactvar=NaN,this.upval=NaN,this.isloop=NaN}},N={VVOID:0,VNIL:1,VTRUE:2,VFALSE:3,VK:4,VKFLT:5,VKINT:6,VNONRELOC:7,VLOCAL:8,VUPVAL:9,VINDEXED:10,VJMP:11,VRELOCABLE:12,VCALL:13,VVARARG:14},sS=function(e){return N.VLOCAL<=e&&e<=N.VINDEXED},uS=function(e){return e===N.VNONRELOC||e===N.VLOCAL},Q=class{constructor(){this.k=NaN,this.u={ival:NaN,nval:NaN,info:NaN,ind:{idx:NaN,t:NaN,vt:NaN}},this.t=NaN,this.f=NaN}to(t){this.k=t.k,this.u=t.u,this.t=t.t,this.f=t.f}},Zu=class{constructor(){this.f=null,this.prev=null,this.ls=null,this.bl=null,this.pc=NaN,this.lasttarget=NaN,this.jpc=NaN,this.nk=NaN,this.np=NaN,this.firstlocal=NaN,this.nlocvars=NaN,this.nactvar=NaN,this.nups=NaN,this.freereg=NaN}},$i=class{constructor(){this.idx=NaN}},Qi=class{constructor(){this.name=null,this.pc=NaN,this.line=NaN,this.nactvar=NaN}},Yu=class{constructor(){this.arr=[],this.n=NaN,this.size=NaN}},Li=class{constructor(){this.actvar={arr:[],n:NaN,size:NaN},this.gt=new Yu,this.label=new Yu}},_c=function(e,t){e.t.token=0,y.luaX_syntaxerror(e,t)},Ld=function(e,t){y.luaX_syntaxerror(e,qt.luaO_pushfstring(e.L,ae("%s expected",!0),y.luaX_token2str(e,t)))},lS=function(e,t,n){let r=e.ls.L,a=e.f.linedefined,s=a===0?ae("main function",!0):qt.luaO_pushfstring(r,ae("function at line %d",!0),a),u=qt.luaO_pushfstring(r,ae("too many %s (limit is %d) in %s",!0),n,t,s);y.luaX_syntaxerror(e.ls,u)},oa=function(e,t,n,r){t>n&&lS(e,n,r)},je=function(e,t){return e.t.token===t?(y.luaX_next(e),!0):!1},fc=function(e,t){e.t.token!==t&&Ld(e,t)},lt=function(e,t){fc(e,t),y.luaX_next(e)},pc=function(e,t,n){t||y.luaX_syntaxerror(e,n)},cn=function(e,t,n,r){je(e,t)||(r===e.linenumber?Ld(e,t):y.luaX_syntaxerror(e,qt.luaO_pushfstring(e.L,ae("%s expected (to close %s at line %d)"),y.luaX_token2str(e,t),y.luaX_token2str(e,n),r)))},_n=function(e){fc(e,d.TK_NAME);let t=e.t.seminfo.ts;return y.luaX_next(e),t},Be=function(e,t,n){e.f=e.t=ra,e.k=t,e.u.info=n},Qu=function(e,t,n){Be(t,N.VK,VR(e.fs,n))},hc=function(e,t){Qu(e,t,_n(e))},oS=function(e,t){let n=e.fs,r=n.f;return r.locvars[n.nlocvars]=new qt.LocVar,r.locvars[n.nlocvars].varname=t,n.nlocvars++},kr=function(e,t){let n=e.fs,r=e.dyd,a=oS(e,t);oa(n,r.actvar.n+1-n.firstlocal,aS,ae("local variables",!0)),r.actvar.arr[r.actvar.n]=new $i,r.actvar.arr[r.actvar.n].idx=a,r.actvar.n++},Tr=function(e,t){kr(e,y.luaX_newstring(e,ae(t,!0)))},vs=function(e,t){let n=e.ls.dyd.actvar.arr[e.firstlocal+t].idx;return Qe(n<e.nlocvars),e.f.locvars[n]},sa=function(e,t){let n=e.fs;for(n.nactvar=n.nactvar+t;t;t--)vs(n,n.nactvar-t).startpc=n.pc},iS=function(e,t){for(e.ls.dyd.actvar.n-=e.nactvar-t;e.nactvar>t;)vs(e,--e.nactvar).endpc=e.pc},cS=function(e,t){let n=e.f.upvalues;for(let r=0;r<e.nups;r++)if(la(n[r].name,t))return r;return-1},ex=function(e,t,n){let r=e.f;return oa(e,e.nups+1,cc.MAXUPVAL,ae("upvalues",!0)),r.upvalues[e.nups]={instack:n.k===N.VLOCAL,idx:n.u.info,name:t},e.nups++},_S=function(e,t){for(let n=e.nactvar-1;n>=0;n--)if(la(t,vs(e,n).varname))return n;return-1},fS=function(e,t){let n=e.bl;for(;n.nactvar>t;)n=n.previous;n.upval=1},ec=function(e,t,n,r){if(e===null)Be(n,N.VVOID,0);else{let a=_S(e,t);if(a>=0)Be(n,N.VLOCAL,a),r||fS(e,a);else{let s=cS(e,t);if(s<0){if(ec(e.prev,t,n,0),n.k===N.VVOID)return;s=ex(e,t,n)}Be(n,N.VUPVAL,s)}}},tx=function(e,t){let n=_n(e),r=e.fs;if(ec(r,n,t,1),t.k===N.VVOID){let a=new Q;ec(r,e.envn,t,1),Qe(t.k!==N.VVOID),Qu(e,a,n),lc(r,t,a)}},dc=function(e,t,n,r){let a=e.fs,s=t-n;if($u(r.k))s++,s<0&&(s=0),KR(a,r,s),s>1&&aa(a,s-1);else if(r.k!==N.VVOID&&Ht(a,r),s>0){let u=a.freereg;aa(a,s),MR(a,u,s)}n>t&&(e.fs.freereg-=n-t)},nx=function(e){let t=e.L;++t.nCcalls,oa(e.fs,t.nCcalls,Yd,ae("JS levels",!0))},rx=function(e){return e.L.nCcalls--},ax=function(e,t,n){let r=e.fs,a=e.dyd.gt,s=a.arr[t];if(Qe(la(s.name,n.name)),s.nactvar<n.nactvar){let u=vs(r,s.nactvar).varname,l=qt.luaO_pushfstring(e.L,ae("<goto %s> at line %d jumps into the scope of local '%s'"),s.name.getstr(),s.line,u.getstr());_c(e,l)}oc(r,s.pc,n.pc);for(let u=t;u<a.n-1;u++)a.arr[u]=a.arr[u+1];a.n--},sx=function(e,t){let n=e.fs.bl,r=e.dyd,a=r.gt.arr[t];for(let s=n.firstlabel;s<r.label.n;s++){let u=r.label.arr[s];if(la(u.name,a.name))return a.nactvar>u.nactvar&&(n.upval||r.label.n>n.firstlabel)&&Wu(e.fs,a.pc,u.nactvar),ax(e,t,u),!0}return!1},xc=function(e,t,n,r,a){let s=t.n;return t.arr[s]=new Qi,t.arr[s].name=n,t.arr[s].line=r,t.arr[s].nactvar=e.fs.nactvar,t.arr[s].pc=a,t.n=s+1,s},ux=function(e,t){let n=e.dyd.gt,r=e.fs.bl.firstgoto;for(;r<n.n;)la(n.arr[r].name,t.name)?ax(e,r,t):r++},pS=function(e,t){let n=t.firstgoto,r=e.ls.dyd.gt;for(;n<r.n;){let a=r.arr[n];a.nactvar>t.nactvar&&(t.upval&&Wu(e,a.pc,t.nactvar),a.nactvar=t.nactvar),sx(e.ls,n)||n++}},un=function(e,t,n){t.isloop=n,t.nactvar=e.nactvar,t.firstlabel=e.ls.dyd.label.n,t.firstgoto=e.ls.dyd.gt.n,t.upval=0,t.previous=e.bl,e.bl=t,Qe(e.freereg===e.nactvar)},hS=function(e){let t=$d(e.L,"break"),n=xc(e,e.dyd.label,t,0,e.fs.pc);ux(e,e.dyd.label.arr[n])},dS=function(e,t){let n=y.isreserved(t.name)?"<%s> at line %d not inside a loop":"no visible label '%s' for <goto> at line %d";n=qt.luaO_pushfstring(e.L,ae(n),t.name.getstr(),t.line),_c(e,n)},xS=function(e){let t=e.L,n=new Qd(t),r=e.fs,a=r.f;return a.p[r.np++]=n,n},AS=function(e,t){let n=e.fs.prev;Be(t,N.VRELOCABLE,ER(n,GR,0,n.np-1)),Ht(n,t)},lx=function(e,t,n){t.prev=e.fs,t.ls=e,e.fs=t,t.pc=0,t.lasttarget=0,t.jpc=ra,t.freereg=0,t.nk=0,t.np=0,t.nups=0,t.nlocvars=0,t.nactvar=0,t.firstlocal=e.dyd.actvar.n,t.bl=null;let r=t.f;r.source=e.source,r.maxstacksize=2,un(t,n,!1)},ln=function(e){let t=e.bl,n=e.ls;if(t.previous&&t.upval){let r=Es(e);Wu(e,r,t.nactvar),ms(e,r)}t.isloop&&hS(n),e.bl=t.previous,iS(e,t.nactvar),Qe(t.nactvar===e.nactvar),e.freereg=e.nactvar,n.dyd.label.n=t.firstlabel,t.previous?pS(e,t):t.firstgoto<n.dyd.gt.n&&dS(n,n.dyd.gt.arr[t.firstgoto])},ox=function(e){let t=e.fs;Zd(t,0,0),ln(t),Qe(t.bl===null),e.fs=t.prev},Lu=function(e,t){switch(e.t.token){case d.TK_ELSE:case d.TK_ELSEIF:case d.TK_END:case d.TK_EOS:return!0;case d.TK_UNTIL:return t;default:return!1}},Us=function(e){for(;!Lu(e,1);){if(e.t.token===d.TK_RETURN){ac(e);return}ac(e)}},tc=function(e,t){let n=e.fs,r=new Q;Xd(n,t),y.luaX_next(e),hc(e,r),lc(n,t,r)},ix=function(e,t){y.luaX_next(e),on(e,t),SR(e.fs,t),lt(e,93)},nc=class{constructor(){this.v=new Q,this.t=new Q,this.nh=NaN,this.na=NaN,this.tostore=NaN}},Kd=function(e,t){let n=e.fs,r=e.fs.freereg,a=new Q,s=new Q;e.t.token===d.TK_NAME?(oa(n,t.nh,Jd,ae("items in a constructor",!0)),hc(e,a)):ix(e,a),t.nh++,lt(e,61);let u=Dd(n,a);on(e,s),ua(n,ZR,t.t.u.info,u,Dd(n,s)),n.freereg=r},gS=function(e,t){t.v.k!==N.VVOID&&(Ht(e,t.v),t.v.k=N.VVOID,t.tostore===QR&&(Ji(e,t.t.u.info,t.na,t.tostore),t.tostore=0))},TS=function(e,t){t.tostore!==0&&($u(t.v.k)?(ic(e,t.v),Ji(e,t.t.u.info,t.na,sc),t.na--):(t.v.k!==N.VVOID&&Ht(e,t.v),Ji(e,t.t.u.info,t.na,t.tostore)))},Vd=function(e,t){on(e,t.v),oa(e.fs,t.na,Jd,ae("items in a constructor",!0)),t.na++,t.tostore++},kS=function(e,t){switch(e.t.token){case d.TK_NAME:{y.luaX_lookahead(e)!==61?Vd(e,t):Kd(e,t);break}case 91:{Kd(e,t);break}default:{Vd(e,t);break}}},cx=function(e,t){let n=e.fs,r=e.linenumber,a=ua(n,zR,0,0,0),s=new nc;s.na=s.nh=s.tostore=0,s.t=t,Be(t,N.VRELOCABLE,a),Be(s.v,N.VVOID,0),Ht(e.fs,t),lt(e,123);do{if(Qe(s.v.k===N.VVOID||s.tostore>0),e.t.token===125)break;gS(n,s),kS(e,s)}while(je(e,44)||je(e,59));cn(e,125,123,r),TS(n,s),LR(n.f.code[a],qt.luaO_int2fb(s.na)),Wd(n.f.code[a],qt.luaO_int2fb(s.nh))},bS=function(e){let t=e.fs,n=t.f,r=0;if(n.is_vararg=!1,e.t.token!==41)do switch(e.t.token){case d.TK_NAME:{kr(e,_n(e)),r++;break}case d.TK_DOTS:{y.luaX_next(e),n.is_vararg=!0;break}default:y.luaX_syntaxerror(e,ae("<name> or '...' expected",!0))}while(!n.is_vararg&&je(e,44));sa(e,r),n.numparams=t.nactvar,aa(t,t.nactvar)},Ac=function(e,t,n,r){let a=new Zu,s=new mt;a.f=xS(e),a.f.linedefined=r,lx(e,a,s),lt(e,40),n&&(Tr(e,"self"),sa(e,1)),bS(e),lt(e,41),Us(e),a.f.lastlinedefined=e.linenumber,cn(e,d.TK_END,d.TK_FUNCTION,r),AS(e,t),ox(e)},Rs=function(e,t){let n=1;for(on(e,t);je(e,44);)Ht(e.fs,t),on(e,t),n++;return n},Fd=function(e,t,n){let r=e.fs,a=new Q;switch(e.t.token){case 40:{y.luaX_next(e),e.t.token===41?a.k=N.VVOID:(Rs(e,a),ic(r,a)),cn(e,41,40,n);break}case 123:{cx(e,a);break}case d.TK_STRING:{Qu(e,a,e.t.seminfo.ts),y.luaX_next(e);break}default:y.luaX_syntaxerror(e,ae("function arguments expected",!0))}Qe(t.k===N.VNONRELOC);let s,u=t.u.info;$u(a.k)?s=sc:(a.k!==N.VVOID&&Ht(r,a),s=r.freereg-(u+1)),Be(t,N.VCALL,ua(r,FR,u,s+1,2)),zu(r,n),r.freereg=u+1},OS=function(e,t){switch(e.t.token){case 40:{let n=e.linenumber;y.luaX_next(e),on(e,t),cn(e,41,40,n),UR(e.fs,t);return}case d.TK_NAME:{tx(e,t);return}default:y.luaX_syntaxerror(e,ae("unexpected symbol",!0))}},gc=function(e,t){let n=e.fs,r=e.linenumber;for(OS(e,t);;)switch(e.t.token){case 46:{tc(e,t);break}case 91:{let a=new Q;Xd(n,t),ix(e,a),lc(n,t,a);break}case 58:{let a=new Q;y.luaX_next(e),hc(e,a),DR(n,t,a),Fd(e,t,r);break}case 40:case d.TK_STRING:case 123:{Ht(n,t),Fd(e,t,r);break}default:return}},ES=function(e,t){switch(e.t.token){case d.TK_FLT:{Be(t,N.VKFLT,0),t.u.nval=e.t.seminfo.r;break}case d.TK_INT:{Be(t,N.VKINT,0),t.u.ival=e.t.seminfo.i;break}case d.TK_STRING:{Qu(e,t,e.t.seminfo.ts);break}case d.TK_NIL:{Be(t,N.VNIL,0);break}case d.TK_TRUE:{Be(t,N.VTRUE,0);break}case d.TK_FALSE:{Be(t,N.VFALSE,0);break}case d.TK_DOTS:{let n=e.fs;pc(e,n.f.is_vararg,ae("cannot use '...' outside a vararg function",!0)),Be(t,N.VVARARG,ua(n,$R,0,1,0));break}case 123:{cx(e,t);return}case d.TK_FUNCTION:{y.luaX_next(e),Ac(e,t,0,e.linenumber);return}default:{gc(e,t);return}}y.luaX_next(e)},mS=function(e){switch(e){case d.TK_NOT:return bR;case 45:return kR;case 126:return gR;case 35:return TR;default:return jd}},vS=function(e){switch(e){case 43:return $U;case 45:return AR;case 42:return _R;case 37:return cR;case 94:return hR;case 47:return rR;case d.TK_IDIV:return lR;case 38:return LU;case 124:return eR;case 126:return tR;case d.TK_SHL:return dR;case d.TK_SHR:return xR;case d.TK_CONCAT:return nR;case d.TK_NE:return fR;case d.TK_EQ:return aR;case 60:return iR;case d.TK_LE:return oR;case 62:return uR;case d.TK_GE:return sR;case d.TK_AND:return QU;case d.TK_OR:return pR;default:return Hd}},Gd=[{left:10,right:10},{left:10,right:10},{left:11,right:11},{left:11,right:11},{left:14,right:13},{left:11,right:11},{left:11,right:11},{left:6,right:6},{left:4,right:4},{left:5,right:5},{left:7,right:7},{left:7,right:7},{left:9,right:8},{left:3,right:3},{left:3,right:3},{left:3,right:3},{left:3,right:3},{left:3,right:3},{left:3,right:3},{left:2,right:2},{left:1,right:1}],US=12,rc=function(e,t,n){nx(e);let r=mS(e.t.token);if(r!==jd){let s=e.linenumber;y.luaX_next(e),rc(e,t,US),CR(e.fs,r,t,s)}else ES(e,t);let a=vS(e.t.token);for(;a!==Hd&&Gd[a].left>n;){let s=new Q,u=e.linenumber;y.luaX_next(e),wR(e.fs,a,t);let l=rc(e,s,Gd[a].right);PR(e.fs,a,t,s,u),a=l}return rx(e),a},on=function(e,t){rc(e,t,0)},el=function(e){let t=e.fs,n=new mt;un(t,n,0),Us(e),ln(t)},Ju=class{constructor(){this.prev=null,this.v=new Q}},RS=function(e,t,n){let r=e.fs,a=r.freereg,s=!1;for(;t;t=t.prev)t.v.k===N.VINDEXED&&(t.v.u.ind.vt===n.k&&t.v.u.ind.t===n.u.info&&(s=!0,t.v.u.ind.vt=N.VLOCAL,t.v.u.ind.t=a),n.k===N.VLOCAL&&t.v.u.ind.idx===n.u.info&&(s=!0,t.v.u.ind.idx=a));if(s){let u=n.k===N.VLOCAL?XR:jR;ua(r,u,a,n.u.info,0),aa(r,1)}},_x=function(e,t,n){let r=new Q;if(pc(e,sS(t.v.k),ae("syntax error",!0)),je(e,44)){let a=new Ju;a.prev=t,gc(e,a.v),a.v.k!==N.VINDEXED&&RS(e,t,a.v),oa(e.fs,n+e.L.nCcalls,Yd,ae("JS levels",!0)),_x(e,a,n+1)}else{lt(e,61);let a=Rs(e,r);if(a!==n)dc(e,n,a,r);else{BR(e.fs,r),Wi(e.fs,t.v,r);return}}Be(r,N.VNONRELOC,e.fs.freereg-1),Wi(e.fs,t.v,r)},fx=function(e){let t=new Q;return on(e,t),t.k===N.VNIL&&(t.k=N.VFALSE),zd(e.fs,t),t.f},px=function(e,t){let n=e.linenumber,r;je(e,d.TK_GOTO)?r=_n(e):(y.luaX_next(e),r=$d(e.L,"break"));let a=xc(e,e.dyd.gt,r,n,t);sx(e,a)},SS=function(e,t,n){for(let r=e.bl.firstlabel;r<t.n;r++)if(la(n,t.arr[r].name)){let a=qt.luaO_pushfstring(e.ls.L,ae("label '%s' already defined on line %d",!0),n.getstr(),t.arr[r].line);_c(e.ls,a)}},NS=function(e){for(;e.t.token===59||e.t.token===d.TK_DBCOLON;)ac(e)},wS=function(e,t,n){let r=e.fs,a=e.dyd.label,s;SS(r,a,t),lt(e,d.TK_DBCOLON),s=xc(e,a,t,n,uc(r)),NS(e),Lu(e,0)&&(a.arr[s].nactvar=r.bl.nactvar),ux(e,a.arr[s])},yS=function(e,t){let n=e.fs,r=new mt;y.luaX_next(e);let a=uc(n),s=fx(e);un(n,r,1),lt(e,d.TK_DO),el(e),IR(n,a),cn(e,d.TK_END,d.TK_WHILE,t),ln(n),ms(n,s)},IS=function(e,t){let n=e.fs,r=uc(n),a=new mt,s=new mt;un(n,a,1),un(n,s,0),y.luaX_next(e),Us(e),cn(e,d.TK_UNTIL,d.TK_REPEAT,t);let u=fx(e);s.upval&&Wu(n,u,s.nactvar),ln(n),oc(n,u,r),ln(n)},Zi=function(e){let t=new Q;return on(e,t),Ht(e.fs,t),Qe(t.k===N.VNONRELOC),t.u.info},hx=function(e,t,n,r,a){let s=new mt,u=e.fs,l;sa(e,3),lt(e,d.TK_DO);let o=a?zi(u,HR,t,ra):Es(u);un(u,s,0),sa(e,r),aa(u,r),el(e),ln(u),ms(u,o),a?l=zi(u,qR,t,ra):(ua(u,JR,t,0,r),zu(u,n),l=zi(u,WR,t+2,ra)),oc(u,l,o+1),zu(u,n)},MS=function(e,t,n){let r=e.fs,a=r.freereg;Tr(e,"(for index)"),Tr(e,"(for limit)"),Tr(e,"(for step)"),kr(e,t),lt(e,61),Zi(e),lt(e,44),Zi(e),je(e,44)?Zi(e):(mR(r,r.freereg,yR(r,1)),aa(r,1)),hx(e,a,n,1,1)},PS=function(e,t){let n=e.fs,r=new Q,a=4,s=n.freereg;for(Tr(e,"(for generator)"),Tr(e,"(for state)"),Tr(e,"(for control)"),kr(e,t);je(e,44);)kr(e,_n(e)),a++;lt(e,d.TK_IN);let u=e.linenumber;dc(e,3,Rs(e,r),r),OR(n,3),hx(e,s,u,a-3,0)},CS=function(e,t){let n=e.fs,r=new mt;un(n,r,1),y.luaX_next(e);let a=_n(e);switch(e.t.token){case 61:MS(e,a,t);break;case 44:case d.TK_IN:PS(e,a);break;default:y.luaX_syntaxerror(e,ae("'=' or 'in' expected",!0))}cn(e,d.TK_END,d.TK_FOR,t),ln(n)},qd=function(e,t){let n=new mt,r=e.fs,a=new Q,s;if(y.luaX_next(e),on(e,a),lt(e,d.TK_THEN),e.t.token===d.TK_GOTO||e.t.token===d.TK_BREAK){for(NR(e.fs,a),un(r,n,!1),px(e,a.t);je(e,59););if(Lu(e,0))return ln(r),t;s=Es(r)}else zd(e.fs,a),un(r,n,!1),s=a.f;return Us(e),ln(r),(e.t.token===d.TK_ELSE||e.t.token===d.TK_ELSEIF)&&(t=vR(r,t,Es(r))),ms(r,s),t},DS=function(e,t){let n=e.fs,r=ra;for(r=qd(e,r);e.t.token===d.TK_ELSEIF;)r=qd(e,r);je(e,d.TK_ELSE)&&el(e),cn(e,d.TK_END,d.TK_IF,t),ms(n,r)},BS=function(e){let t=new Q,n=e.fs;kr(e,_n(e)),sa(e,1),Ac(e,t,0,e.linenumber),vs(n,t.u.info).startpc=n.pc},KS=function(e){let t=0,n,r=new Q;do kr(e,_n(e)),t++;while(je(e,44));je(e,61)?n=Rs(e,r):(r.k=N.VVOID,n=0),dc(e,t,n,r),sa(e,t)},VS=function(e,t){let n=0;for(tx(e,t);e.t.token===46;)tc(e,t);return e.t.token===58&&(n=1,tc(e,t)),n},FS=function(e,t){let n=new Q,r=new Q;y.luaX_next(e);let a=VS(e,n);Ac(e,r,a,t),Wi(e.fs,n,r),zu(e.fs,t)},GS=function(e){let t=e.fs,n=new Ju;gc(e,n.v),e.t.token===61||e.t.token===44?(n.prev=null,_x(e,n,1)):(pc(e,n.v.k===N.VCALL,ae("syntax error",!0)),Wd(Yi(t,n.v),1))},qS=function(e){let t=e.fs,n=new Q,r,a;Lu(e,1)||e.t.token===59?r=a=0:(a=Rs(e,n),$u(n.k)?(ic(t,n),n.k===N.VCALL&&a===1&&(eS(Yi(t,n),YR),Qe(Yi(t,n).A===t.nactvar)),r=t.nactvar,a=sc):a===1?r=RR(t,n):(Ht(t,n),r=t.nactvar,Qe(a===t.freereg-r))),Zd(t,r,a),je(e,59)},ac=function(e){let t=e.linenumber;switch(nx(e),e.t.token){case 59:{y.luaX_next(e);break}case d.TK_IF:{DS(e,t);break}case d.TK_WHILE:{yS(e,t);break}case d.TK_DO:{y.luaX_next(e),el(e),cn(e,d.TK_END,d.TK_DO,t);break}case d.TK_FOR:{CS(e,t);break}case d.TK_REPEAT:{IS(e,t);break}case d.TK_FUNCTION:{FS(e,t);break}case d.TK_LOCAL:{y.luaX_next(e),je(e,d.TK_FUNCTION)?BS(e):KS(e);break}case d.TK_DBCOLON:{y.luaX_next(e),wS(e,_n(e),t);break}case d.TK_RETURN:{y.luaX_next(e),qS(e);break}case d.TK_BREAK:case d.TK_GOTO:{px(e,Es(e.fs));break}default:{GS(e);break}}Qe(e.fs.f.maxstacksize>=e.fs.freereg&&e.fs.freereg>=e.fs.nactvar),e.fs.freereg=e.fs.nactvar,rx(e)},HS=function(e,t){let n=new mt,r=new Q;lx(e,t,n),t.f.is_vararg=!0,Be(r,N.VLOCAL,0),ex(t,e.envn,r),y.luaX_next(e),Us(e),fc(e,d.TK_EOS),ox(e)},jS=function(e,t,n,r,a,s){let u=new y.LexState,l=new Zu,o=cc.luaF_newLclosure(e,1);return Bd.luaD_inctop(e),e.stack[e.top-1].setclLvalue(o),u.h=rS.luaH_new(e),Bd.luaD_inctop(e),e.stack[e.top-1].sethvalue(u.h),l.f=o.p=new Qd(e),l.f.source=nS(e,a),u.buff=n,u.dyd=r,r.actvar.n=r.gt.n=r.label.n=0,y.luaX_setinput(e,u,t,l.f.source,s),HS(u,l),Qe(!l.prev&&l.nups===1&&!u.fs),Qe(r.actvar.n===0&&r.gt.n===0&&r.label.n===0),delete e.stack[--e.top],o};ia.exports.Dyndata=Li;ia.exports.expkind=N;ia.exports.expdesc=Q;ia.exports.luaY_parser=jS;ia.exports.vkisinreg=uS});var vx=U((G4,mx)=>{"use strict";var{LUA_SIGNATURE:dx,constant_types:{LUA_TBOOLEAN:xx,LUA_TLNGSTR:Ax,LUA_TNIL:gx,LUA_TNUMFLT:Tx,LUA_TNUMINT:kx,LUA_TSHRSTR:XS},thread_status:{LUA_ERRSYNTAX:zS},is_luastring:ZS,luastring_eq:YS,to_luastring:Tc}=_e(),Ex=Et(),kc=hr(),ca=rt(),{MAXARG_sBx:JS,POS_A:WS,POS_Ax:$S,POS_B:QS,POS_Bx:bx,POS_C:LS,POS_OP:eN,SIZE_A:tN,SIZE_Ax:nN,SIZE_B:rN,SIZE_Bx:Ox,SIZE_C:aN,SIZE_OP:sN}=cr(),{lua_assert:bc}=We(),{luaS_bless:uN}=Pt(),{luaZ_read:_a,ZIO:lN}=ps(),oN=[25,147,13,10,26,10],Oc=class e{constructor(t,n,r){this.intSize=4,this.size_tSize=4,this.instructionSize=4,this.integerSize=4,this.numberSize=8,bc(n instanceof lN,"BytecodeParser only operates on a ZIO"),bc(ZS(r)),r[0]===64||r[0]===61?this.name=r.subarray(1):r[0]==dx[0]?this.name=Tc("binary string",!0):this.name=r,this.L=t,this.Z=n,this.arraybuffer=new ArrayBuffer(Math.max(this.intSize,this.size_tSize,this.instructionSize,this.integerSize,this.numberSize)),this.dv=new DataView(this.arraybuffer),this.u8=new Uint8Array(this.arraybuffer)}read(t){let n=new Uint8Array(t);return _a(this.Z,n,0,t)!==0&&this.error("truncated"),n}LoadByte(){return _a(this.Z,this.u8,0,1)!==0&&this.error("truncated"),this.u8[0]}LoadInt(){return _a(this.Z,this.u8,0,this.intSize)!==0&&this.error("truncated"),this.dv.getInt32(0,!0)}LoadNumber(){return _a(this.Z,this.u8,0,this.numberSize)!==0&&this.error("truncated"),this.dv.getFloat64(0,!0)}LoadInteger(){return _a(this.Z,this.u8,0,this.integerSize)!==0&&this.error("truncated"),this.dv.getInt32(0,!0)}LoadSize_t(){return this.LoadInteger()}LoadString(){let t=this.LoadByte();return t===255&&(t=this.LoadSize_t()),t===0?null:uN(this.L,this.read(t-1))}static MASK1(t,n){return~(-1<<t)<<n}LoadCode(t){let n=this.LoadInt(),r=e;for(let a=0;a<n;a++){_a(this.Z,this.u8,0,this.instructionSize)!==0&&this.error("truncated");let s=this.dv.getUint32(0,!0);t.code[a]={code:s,opcode:s>>eN&r.MASK1(sN,0),A:s>>WS&r.MASK1(tN,0),B:s>>QS&r.MASK1(rN,0),C:s>>LS&r.MASK1(aN,0),Bx:s>>bx&r.MASK1(Ox,0),Ax:s>>$S&r.MASK1(nN,0),sBx:(s>>bx&r.MASK1(Ox,0))-JS}}}LoadConstants(t){let n=this.LoadInt();for(let r=0;r<n;r++){let a=this.LoadByte();switch(a){case gx:t.k.push(new ca.TValue(gx,null));break;case xx:t.k.push(new ca.TValue(xx,this.LoadByte()!==0));break;case Tx:t.k.push(new ca.TValue(Tx,this.LoadNumber()));break;case kx:t.k.push(new ca.TValue(kx,this.LoadInteger()));break;case XS:case Ax:t.k.push(new ca.TValue(Ax,this.LoadString()));break;default:this.error(`unrecognized constant '${a}'`)}}}LoadProtos(t){let n=this.LoadInt();for(let r=0;r<n;r++)t.p[r]=new kc.Proto(this.L),this.LoadFunction(t.p[r],t.source)}LoadUpvalues(t){let n=this.LoadInt();for(let r=0;r<n;r++)t.upvalues[r]={name:null,instack:this.LoadByte(),idx:this.LoadByte()}}LoadDebug(t){let n=this.LoadInt();for(let r=0;r<n;r++)t.lineinfo[r]=this.LoadInt();n=this.LoadInt();for(let r=0;r<n;r++)t.locvars[r]={varname:this.LoadString(),startpc:this.LoadInt(),endpc:this.LoadInt()};n=this.LoadInt();for(let r=0;r<n;r++)t.upvalues[r].name=this.LoadString()}LoadFunction(t,n){t.source=this.LoadString(),t.source===null&&(t.source=n),t.linedefined=this.LoadInt(),t.lastlinedefined=this.LoadInt(),t.numparams=this.LoadByte(),t.is_vararg=this.LoadByte()!==0,t.maxstacksize=this.LoadByte(),this.LoadCode(t),this.LoadConstants(t),this.LoadUpvalues(t),this.LoadProtos(t),this.LoadDebug(t)}checkliteral(t,n){let r=this.read(t.length);YS(r,t)||this.error(n)}checkHeader(){this.checkliteral(dx.subarray(1),"not a"),this.LoadByte()!==83&&this.error("version mismatch in"),this.LoadByte()!==0&&this.error("format mismatch in"),this.checkliteral(oN,"corrupted"),this.intSize=this.LoadByte(),this.size_tSize=this.LoadByte(),this.instructionSize=this.LoadByte(),this.integerSize=this.LoadByte(),this.numberSize=this.LoadByte(),this.checksize(this.intSize,4,"int"),this.checksize(this.size_tSize,4,"size_t"),this.checksize(this.instructionSize,4,"instruction"),this.checksize(this.integerSize,4,"integer"),this.checksize(this.numberSize,8,"number"),this.LoadInteger()!==22136&&this.error("endianness mismatch in"),this.LoadNumber()!==370.5&&this.error("float format mismatch in")}error(t){ca.luaO_pushfstring(this.L,Tc("%s: %s precompiled chunk"),this.name,Tc(t)),Ex.luaD_throw(this.L,zS)}checksize(t,n,r){t!==n&&this.error(`${r} size mismatch in`)}},iN=function(e,t,n){let r=new Oc(e,t,n);r.checkHeader();let a=kc.luaF_newLclosure(e,r.LoadByte());return Ex.luaD_inctop(e),e.stack[e.top-1].setclLvalue(a),a.p=new kc.Proto(e),r.LoadFunction(a.p,null),bc(a.nupvalues===a.p.upvalues.length),a};mx.exports.luaU_undump=iN});var Et=U((q4,Te)=>{"use strict";var{LUA_HOOKCALL:Ix,LUA_HOOKRET:cN,LUA_HOOKTAILCALL:_N,LUA_MASKCALL:Ux,LUA_MASKLINE:fN,LUA_MASKRET:Rx,LUA_MINSTACK:tl,LUA_MULTRET:Rc,LUA_SIGNATURE:pN,constant_types:{LUA_TCCL:Sx,LUA_TLCF:hN,LUA_TLCL:dN,LUA_TNIL:pa},thread_status:{LUA_ERRMEM:xN,LUA_ERRERR:Sc,LUA_ERRRUN:Nc,LUA_ERRSYNTAX:AN,LUA_OK:fn,LUA_YIELD:pn},lua_Debug:gN,luastring_indexOf:TN,to_luastring:Bn}=_e(),br=_s(),Ns=en(),wc=hr(),{api_check:Mx,lua_assert:ot,LUAI_MAXCCALLS:Ss}=We(),se=rt(),kN=cr(),Px=Xi(),ue=Lt(),{luaS_newliteral:mc}=Pt(),Nx=pr(),{LUAI_MAXSTACK:jt}=Ye(),bN=vx(),ws=fr(),{MBuffer:ON}=ps(),yc=function(e,t){if(e.top<t)for(;e.top<t;)e.stack[e.top++]=new se.TValue(pa,null);else for(;e.top>t;)delete e.stack[--e.top]},al=function(e,t,n){let r=e.top;for(;e.top<n+1;)e.stack[e.top++]=new se.TValue(pa,null);switch(t){case xN:{se.setsvalue2s(e,n,mc(e,"not enough memory"));break}case Sc:{se.setsvalue2s(e,n,mc(e,"error in error handling"));break}default:se.setobjs2s(e,n,r-1)}for(;e.top>n+1;)delete e.stack[--e.top]},Cx=jt+200,nl=function(e,t){ot(t<=jt||t==Cx),ot(e.stack_last==e.stack.length-ue.EXTRA_STACK),e.stack.length=t,e.stack_last=t-ue.EXTRA_STACK},Dx=function(e,t){let n=e.stack.length;if(n>jt)ha(e,Sc);else{let r=e.top+t+ue.EXTRA_STACK,a=2*n;a>jt&&(a=jt),a<r&&(a=r),a>jt?(nl(e,Cx),Ns.luaG_runerror(e,Bn("stack overflow",!0))):nl(e,a)}},fa=function(e,t){e.stack_last-e.top<=t&&Dx(e,t)},EN=function(e){let t=e.top;for(let n=e.ci;n!==null;n=n.previous)t<n.top&&(t=n.top);return ot(t<=e.stack_last),t+1},Bx=function(e){let t=EN(e),n=t+Math.floor(t/8)+2*ue.EXTRA_STACK;n>jt&&(n=jt),e.stack.length>jt&&ue.luaE_freeCI(e),t<=jt-ue.EXTRA_STACK&&n<e.stack.length&&nl(e,n)},mN=function(e){fa(e,1),e.stack[e.top++]=new se.TValue(pa,null)},sl=function(e,t,n){let r=e.stack[t];switch(r.type){case Sx:case hN:{let a=r.type===Sx?r.value.f:r.value;fa(e,tl);let s=ue.luaE_extendCI(e);s.funcOff=t,s.nresults=n,s.func=r,s.top=e.top+tl,ot(s.top<=e.stack_last),s.callstatus=0,e.hookmask&Ux&&ll(e,Ix,-1);let u=a(e);if(typeof u!="number"||u<0||(u|0)!==u)throw Error("invalid return value from JS function (expected integer)");return br.api_checknelems(e,u),ul(e,s,e.top-u,u),!0}case dN:{let a,s=r.value.p,u=e.top-t-1,l=s.maxstacksize;if(fa(e,l),s.is_vararg)a=RN(e,s,u);else{for(;u<s.numparams;u++)e.stack[e.top++]=new se.TValue(pa,null);a=t+1}let o=ue.luaE_extendCI(e);return o.funcOff=t,o.nresults=n,o.func=r,o.l_base=a,o.top=a+l,yc(e,o.top),o.l_code=s.code,o.l_savedpc=0,o.callstatus=ue.CIST_LUA,e.hookmask&Ux&&UN(e,o),!1}default:return fa(e,1),SN(e,t,r),sl(e,t,n)}},ul=function(e,t,n,r){let a=t.nresults;e.hookmask&(Rx|fN)&&(e.hookmask&Rx&&ll(e,cN,-1),e.oldpc=t.previous.l_savedpc);let s=t.funcOff;return e.ci=t.previous,e.ci.next=null,vN(e,n,s,r,a)},vN=function(e,t,n,r,a){switch(a){case 0:break;case 1:{r===0?e.stack[n].setnilvalue():se.setobjs2s(e,n,t);break}case Rc:{for(let u=0;u<r;u++)se.setobjs2s(e,n+u,t+u);for(let u=e.top;u>=n+r;u--)delete e.stack[u];return e.top=n+r,!1}default:{let u;if(a<=r)for(u=0;u<a;u++)se.setobjs2s(e,n+u,t+u);else{for(u=0;u<r;u++)se.setobjs2s(e,n+u,t+u);for(;u<a;u++)n+u>=e.top?e.stack[n+u]=new se.TValue(pa,null):e.stack[n+u].setnilvalue()}break}}let s=n+a;for(let u=e.top;u>=s;u--)delete e.stack[u];return e.top=s,!0},ll=function(e,t,n){let r=e.hook;if(r&&e.allowhook){let a=e.ci,s=e.top,u=a.top,l=new gN;l.event=t,l.currentline=n,l.i_ci=a,fa(e,tl),a.top=e.top+tl,ot(a.top<=e.stack_last),e.allowhook=0,a.callstatus|=ue.CIST_HOOKED,r(e,l),ot(!e.allowhook),e.allowhook=1,a.top=u,yc(e,s),a.callstatus&=~ue.CIST_HOOKED}},UN=function(e,t){let n=Ix;t.l_savedpc++,t.previous.callstatus&ue.CIST_LUA&&t.previous.l_code[t.previous.l_savedpc-1].opcode==kN.OpCodesI.OP_TAILCALL&&(t.callstatus|=ue.CIST_TAIL,n=_N),ll(e,n,-1),t.l_savedpc--},RN=function(e,t,n){let r=t.numparams,a=e.top-n,s=e.top,u;for(u=0;u<r&&u<n;u++)se.pushobj2s(e,e.stack[a+u]),e.stack[a+u].setnilvalue();for(;u<r;u++)e.stack[e.top++]=new se.TValue(pa,null);return s},SN=function(e,t,n){let r=Nx.luaT_gettmbyobj(e,n,Nx.TMS.TM_CALL);r.ttisfunction(r)||Ns.luaG_typeerror(e,n,Bn("call",!0)),se.pushobj2s(e,e.stack[e.top-1]);for(let a=e.top-2;a>t;a--)se.setobjs2s(e,a,a-1);se.setobj2s(e,t,r)},NN=function(e){e.nCcalls===Ss?Ns.luaG_runerror(e,Bn("JS stack overflow",!0)):e.nCcalls>=Ss+(Ss>>3)&&ha(e,Sc)},Kx=function(e,t,n){++e.nCcalls>=Ss&&NN(e),sl(e,t,n)||ws.luaV_execute(e),e.nCcalls--},ha=function(e,t){if(e.errorJmp)throw e.errorJmp.status=t,e.errorJmp;{let n=e.l_G;if(e.status=t,n.mainthread.errorJmp)n.mainthread.stack[n.mainthread.top++]=e.stack[e.top-1],ha(n.mainthread,t);else{let r=n.panic;throw r&&(al(e,t,e.top),e.ci.top<e.top&&(e.ci.top=e.top),r(e)),new Error(`Aborted ${t}`)}}},rl=function(e,t,n){let r=e.nCcalls,a={status:fn,previous:e.errorJmp};e.errorJmp=a;try{t(e,n)}catch(s){if(a.status===fn){let u=e.l_G.atnativeerror;if(u)try{if(a.status=fn,br.lua_pushcfunction(e,u),br.lua_pushlightuserdata(e,s),vc(e,e.top-2,1),e.errfunc!==0){let l=e.errfunc;se.pushobj2s(e,e.stack[e.top-1]),se.setobjs2s(e,e.top-2,l),vc(e,e.top-2,1)}a.status=Nc}catch{a.status===fn&&(a.status=-1)}else a.status=-1}}return e.errorJmp=a.previous,e.nCcalls=r,a.status},wx=function(e,t){let n=e.ci;ot(n.c_k!==null&&e.nny===0),ot(n.callstatus&ue.CIST_YPCALL||t===pn),n.callstatus&ue.CIST_YPCALL&&(n.callstatus&=~ue.CIST_YPCALL,e.errfunc=n.c_old_errfunc),n.nresults===Rc&&e.ci.top<e.top&&(e.ci.top=e.top);let r=n.c_k,a=r(e,t,n.c_ctx);br.api_checknelems(e,a),ul(e,n,e.top-a,a)},Vx=function(e,t){for(t!==null&&wx(e,t);e.ci!==e.base_ci;)e.ci.callstatus&ue.CIST_LUA?(ws.luaV_finishOp(e),ws.luaV_execute(e)):wx(e,pn)},wN=function(e){for(let t=e.ci;t!==null;t=t.previous)if(t.callstatus&ue.CIST_YPCALL)return t;return null},yN=function(e,t){let n=wN(e);if(n===null)return 0;let r=n.extra;return wc.luaF_close(e,r),al(e,t,r),e.ci=n,e.allowhook=n.callstatus&ue.CIST_OAH,e.nny=0,Bx(e),e.errfunc=n.c_old_errfunc,1},Ec=function(e,t,n){let r=mc(e,t);if(n===0)se.pushsvalue2s(e,r),Mx(e,e.top<=e.ci.top,"stack overflow");else{for(let a=1;a<n;a++)delete e.stack[--e.top];se.setsvalue2s(e,e.top-1,r)}return Nc},IN=function(e,t){let n=e.top-t,r=e.ci;e.status===fn?sl(e,n-1,Rc)||ws.luaV_execute(e):(ot(e.status===pn),e.status=fn,r.funcOff=r.extra,r.func=e.stack[r.funcOff],r.callstatus&ue.CIST_LUA?ws.luaV_execute(e):(r.c_k!==null&&(t=r.c_k(e,pn,r.c_ctx),br.api_checknelems(e,t),n=e.top-t),ul(e,r,n,t)),Vx(e,null))},MN=function(e,t,n){let r=e.nny;if(e.status===fn){if(e.ci!==e.base_ci)return Ec(e,"cannot resume non-suspended coroutine",n)}else if(e.status!==pn)return Ec(e,"cannot resume dead coroutine",n);if(e.nCcalls=t?t.nCcalls+1:1,e.nCcalls>=Ss)return Ec(e,"JS stack overflow",n);e.nny=0,br.api_checknelems(e,e.status===fn?n+1:n);let a=rl(e,IN,n);if(a===-1)a=Nc;else{for(;a>pn&&yN(e,a);)a=rl(e,Vx,a);a>pn?(e.status=a,al(e,a,e.top),e.ci.top=e.top):ot(a===e.status)}return e.nny=r,e.nCcalls--,ot(e.nCcalls===(t?t.nCcalls:0)),a},PN=function(e){return e.nny===0},Fx=function(e,t,n,r){let a=e.ci;return br.api_checknelems(e,t),e.nny>0&&(e!==e.l_G.mainthread?Ns.luaG_runerror(e,Bn("attempt to yield across a JS-call boundary",!0)):Ns.luaG_runerror(e,Bn("attempt to yield from outside a coroutine",!0))),e.status=pn,a.extra=a.funcOff,a.callstatus&ue.CIST_LUA?Mx(e,r===null,"hooks cannot continue after yielding"):(a.c_k=r,r!==null&&(a.c_ctx=n),a.funcOff=e.top-t-1,a.func=e.stack[a.funcOff],ha(e,pn)),ot(a.callstatus&ue.CIST_HOOKED),0},CN=function(e,t){Fx(e,t,0,null)},Gx=function(e,t,n,r,a){let s=e.ci,u=e.allowhook,l=e.nny,o=e.errfunc;e.errfunc=a;let c=rl(e,t,n);return c!==fn&&(wc.luaF_close(e,r),al(e,c,r),e.ci=s,e.allowhook=u,e.nny=l,Bx(e)),e.errfunc=o,c},vc=function(e,t,n){e.nny++,Kx(e,t,n),e.nny--},Uc=class{constructor(t,n,r){this.z=t,this.buff=new ON,this.dyd=new Px.Dyndata,this.mode=r,this.name=n}},yx=function(e,t,n){t&&TN(t,n[0])===-1&&(se.luaO_pushfstring(e,Bn("attempt to load a %s chunk (mode is '%s')"),n,t),ha(e,AN))},DN=function(e,t){let n,r=t.z.zgetc();r===pN[0]?(yx(e,t.mode,Bn("binary",!0)),n=bN.luaU_undump(e,t.z,t.name)):(yx(e,t.mode,Bn("text",!0)),n=Px.luaY_parser(e,t.z,t.buff,t.dyd,t.name,r)),ot(n.nupvalues===n.p.upvalues.length),wc.luaF_initupvals(e,n)},BN=function(e,t,n,r){let a=new Uc(t,n,r);e.nny++;let s=Gx(e,DN,a,e.top,e.errfunc);return e.nny--,s};Te.exports.adjust_top=yc;Te.exports.luaD_call=Kx;Te.exports.luaD_callnoyield=vc;Te.exports.luaD_checkstack=fa;Te.exports.luaD_growstack=Dx;Te.exports.luaD_hook=ll;Te.exports.luaD_inctop=mN;Te.exports.luaD_pcall=Gx;Te.exports.luaD_poscall=ul;Te.exports.luaD_precall=sl;Te.exports.luaD_protectedparser=BN;Te.exports.luaD_rawrunprotected=rl;Te.exports.luaD_reallocstack=nl;Te.exports.luaD_throw=ha;Te.exports.lua_isyieldable=PN;Te.exports.lua_resume=MN;Te.exports.lua_yield=CN;Te.exports.lua_yieldk=Fx});var en=U((H4,Ue)=>{"use strict";var{LUA_HOOKCOUNT:KN,LUA_HOOKLINE:VN,LUA_MASKCOUNT:FN,LUA_MASKLINE:qx,constant_types:{LUA_TBOOLEAN:GN,LUA_TNIL:qN,LUA_TTABLE:HN},thread_status:{LUA_ERRRUN:jN,LUA_YIELD:Ic},from_userstring:XN,luastring_eq:Zx,luastring_indexOf:Hx,to_luastring:q}=_e(),{api_check:Mc,lua_assert:Cc}=We(),{LUA_IDSIZE:Yx}=Ye(),jx=_s(),ys=Et(),il=hr(),zN=Ku(),Ke=rt(),da=cr(),Le=Lt(),Xx=Ct(),ee=pr(),Dc=fr(),cl=function(e){return Cc(e.callstatus&Le.CIST_LUA),e.l_savedpc-1},Jx=function(e){return e.func.value.p.lineinfo.length!==0?e.func.value.p.lineinfo[cl(e)]:-1},xa=function(e){if(e.status===Ic){let t=e.ci,n=t.funcOff;t.func=e.stack[t.extra],t.funcOff=t.extra,t.extra=n}},ZN=function(e,t,n,r){(t===null||n===0)&&(n=0,t=null),e.ci.callstatus&Le.CIST_LUA&&(e.oldpc=e.ci.l_savedpc),e.hook=t,e.basehookcount=r,e.hookcount=e.basehookcount,e.hookmask=n},YN=function(e){return e.hook},JN=function(e){return e.hookmask},WN=function(e){return e.basehookcount},$N=function(e,t,n){let r,a;if(t<0)return 0;for(r=e.ci;t>0&&r!==e.base_ci;r=r.previous)t--;return t===0&&r!==e.base_ci?(a=1,n.i_ci=r):a=0,a},Pc=function(e,t){Cc(t<e.upvalues.length);let n=e.upvalues[t].name;return n===null?q("?",!0):n.getstr()},QN=function(e,t){let n=e.func.value.p.numparams;return t>=e.l_base-e.funcOff-n?null:{pos:e.funcOff+n+t,name:q("(*vararg)",!0)}},Wx=function(e,t,n){let r,a=null;if(t.callstatus&Le.CIST_LUA){if(n<0)return QN(t,-n);r=t.l_base,a=il.luaF_getlocalname(t.func.value.p,n,cl(t))}else r=t.funcOff+1;if(a===null)if((t===e.ci?e.top:t.next.funcOff)-r>=n&&n>0)a=q("(*temporary)",!0);else return null;return{pos:r+(n-1),name:a}},LN=function(e,t,n){let r;if(xa(e),t===null)e.stack[e.top-1].ttisLclosure()?r=il.luaF_getlocalname(e.stack[e.top-1].value.p,n,0):r=null;else{let a=Wx(e,t.i_ci,n);a?(r=a.name,Ke.pushobj2s(e,e.stack[a.pos]),Mc(e,e.top<=e.ci.top,"stack overflow")):r=null}return xa(e),r},ew=function(e,t,n){let r;xa(e);let a=Wx(e,t.i_ci,n);return a?(r=a.name,Ke.setobjs2s(e,a.pos,e.top-1),delete e.stack[--e.top]):r=null,xa(e),r},tw=function(e,t){if(t===null||t instanceof Ke.CClosure)e.source=q("=[JS]",!0),e.linedefined=-1,e.lastlinedefined=-1,e.what=q("J",!0);else{let n=t.p;e.source=n.source?n.source.getstr():q("=?",!0),e.linedefined=n.linedefined,e.lastlinedefined=n.lastlinedefined,e.what=e.linedefined===0?q("main",!0):q("Lua",!0)}e.short_src=Ke.luaO_chunkid(e.source,Yx)},nw=function(e,t){if(t===null||t instanceof Ke.CClosure)e.stack[e.top]=new Ke.TValue(qN,null),jx.api_incr_top(e);else{let n=t.p.lineinfo,r=Xx.luaH_new(e);e.stack[e.top]=new Ke.TValue(HN,r),jx.api_incr_top(e);let a=new Ke.TValue(GN,!0);for(let s=0;s<n.length;s++)Xx.luaH_setint(r,n[s],a)}},rw=function(e,t){let n={name:null,funcname:null};return t===null?null:t.callstatus&Le.CIST_FIN?(n.name=q("__gc",!0),n.funcname=q("metamethod",!0),n):!(t.callstatus&Le.CIST_TAIL)&&t.previous.callstatus&Le.CIST_LUA?lw(e,t.previous):null},aw=function(e,t,n,r,a){let s=1;for(;t.length>0;t=t.subarray(1))switch(t[0]){case 83:{tw(n,r);break}case 108:{n.currentline=a&&a.callstatus&Le.CIST_LUA?Jx(a):-1;break}case 117:{n.nups=r===null?0:r.nupvalues,r===null||r instanceof Ke.CClosure?(n.isvararg=!0,n.nparams=0):(n.isvararg=r.p.is_vararg,n.nparams=r.p.numparams);break}case 116:{n.istailcall=a?a.callstatus&Le.CIST_TAIL:0;break}case 110:{let u=rw(e,a);u===null?(n.namewhat=q("",!0),n.name=null):(n.namewhat=u.funcname,n.name=u.name);break}case 76:case 102:break;default:s=0}return s},sw=function(e,t,n){t=XN(t);let r,a,s,u;return xa(e),t[0]===62?(s=null,u=e.stack[e.top-1],Mc(e,u.ttisfunction(),"function expected"),t=t.subarray(1),e.top--):(s=n.i_ci,u=s.func,Cc(s.func.ttisfunction())),a=u.ttisclosure()?u.value:null,r=aw(e,t,n,a,s),Hx(t,102)>=0&&(Ke.pushobj2s(e,u),Mc(e,e.top<=e.ci.top,"stack overflow")),xa(e),Hx(t,76)>=0&&nw(e,a),r},zx=function(e,t,n){let r={name:null,funcname:null};if(da.ISK(n)){let a=e.k[da.INDEXK(n)];if(a.ttisstring())return r.name=a.svalue(),r}else{let a=_l(e,t,n);if(a&&a.funcname[0]===99)return a}return r.name=q("?",!0),r},ol=function(e,t){return e<t?-1:e},uw=function(e,t,n){let r=-1,a=0,s=da.OpCodesI;for(let u=0;u<t;u++){let l=e.code[u],o=l.A;switch(l.opcode){case s.OP_LOADNIL:{let c=l.B;o<=n&&n<=o+c&&(r=ol(u,a));break}case s.OP_TFORCALL:{n>=o+2&&(r=ol(u,a));break}case s.OP_CALL:case s.OP_TAILCALL:{n>=o&&(r=ol(u,a));break}case s.OP_JMP:{let c=l.sBx,i=u+1+c;u<i&&i<=t&&i>a&&(a=i);break}default:da.testAMode(l.opcode)&&n===o&&(r=ol(u,a));break}}return r},_l=function(e,t,n){let r={name:il.luaF_getlocalname(e,n+1,t),funcname:null};if(r.name)return r.funcname=q("local",!0),r;let a=uw(e,t,n),s=da.OpCodesI;if(a!==-1){let u=e.code[a];switch(u.opcode){case s.OP_MOVE:{let l=u.B;if(l<u.A)return _l(e,a,l);break}case s.OP_GETTABUP:case s.OP_GETTABLE:{let l=u.C,o=u.B,c=u.opcode===s.OP_GETTABLE?il.luaF_getlocalname(e,o+1,a):Pc(e,o);return r.name=zx(e,a,l).name,r.funcname=c&&Zx(c,zN.LUA_ENV)?q("global",!0):q("field",!0),r}case s.OP_GETUPVAL:return r.name=Pc(e,u.B),r.funcname=q("upvalue",!0),r;case s.OP_LOADK:case s.OP_LOADKX:{let l=u.opcode===s.OP_LOADK?u.Bx:e.code[a+1].Ax;if(e.k[l].ttisstring())return r.name=e.k[l].svalue(),r.funcname=q("constant",!0),r;break}case s.OP_SELF:{let l=u.C;return r.name=zx(e,a,l).name,r.funcname=q("method",!0),r}default:break}}return null},lw=function(e,t){let n={name:null,funcname:null},r=0,a=t.func.value.p,s=cl(t),u=a.code[s],l=da.OpCodesI;if(t.callstatus&Le.CIST_HOOKED)return n.name=q("?",!0),n.funcname=q("hook",!0),n;switch(u.opcode){case l.OP_CALL:case l.OP_TAILCALL:return _l(a,s,u.A);case l.OP_TFORCALL:return n.name=q("for iterator",!0),n.funcname=q("for iterator",!0),n;case l.OP_SELF:case l.OP_GETTABUP:case l.OP_GETTABLE:r=ee.TMS.TM_INDEX;break;case l.OP_SETTABUP:case l.OP_SETTABLE:r=ee.TMS.TM_NEWINDEX;break;case l.OP_ADD:r=ee.TMS.TM_ADD;break;case l.OP_SUB:r=ee.TMS.TM_SUB;break;case l.OP_MUL:r=ee.TMS.TM_MUL;break;case l.OP_MOD:r=ee.TMS.TM_MOD;break;case l.OP_POW:r=ee.TMS.TM_POW;break;case l.OP_DIV:r=ee.TMS.TM_DIV;break;case l.OP_IDIV:r=ee.TMS.TM_IDIV;break;case l.OP_BAND:r=ee.TMS.TM_BAND;break;case l.OP_BOR:r=ee.TMS.TM_BOR;break;case l.OP_BXOR:r=ee.TMS.TM_BXOR;break;case l.OP_SHL:r=ee.TMS.TM_SHL;break;case l.OP_SHR:r=ee.TMS.TM_SHR;break;case l.OP_UNM:r=ee.TMS.TM_UNM;break;case l.OP_BNOT:r=ee.TMS.TM_BNOT;break;case l.OP_LEN:r=ee.TMS.TM_LEN;break;case l.OP_CONCAT:r=ee.TMS.TM_CONCAT;break;case l.OP_EQ:r=ee.TMS.TM_EQ;break;case l.OP_LT:r=ee.TMS.TM_LT;break;case l.OP_LE:r=ee.TMS.TM_LE;break;default:return null}return n.name=e.l_G.tmname[r].getstr(),n.funcname=q("metamethod",!0),n},ow=function(e,t,n){for(let r=t.l_base;r<t.top;r++)if(e.stack[r]===n)return r;return!1},iw=function(e,t,n){let r=t.func.value;for(let a=0;a<r.nupvalues;a++)if(r.upvals[a]===n)return{name:Pc(r.p,a),funcname:q("upvalue",!0)};return null},$x=function(e,t){let n=e.ci,r=null;if(n.callstatus&Le.CIST_LUA){r=iw(e,n,t);let a=ow(e,n,t);!r&&a&&(r=_l(n.func.value.p,cl(n),a-n.l_base))}return r?Ke.luaO_pushfstring(e,q(" (%s '%s')",!0),r.funcname,r.name):q("",!0)},Bc=function(e,t,n){let r=ee.luaT_objtypename(e,t);Is(e,q("attempt to %s a %s value%s",!0),n,r,$x(e,t))},cw=function(e,t,n){(t.ttisstring()||Dc.cvt2str(t))&&(t=n),Bc(e,t,q("concatenate",!0))},_w=function(e,t,n,r){Dc.tonumber(t)===!1&&(n=t),Bc(e,n,r)},fw=function(e,t,n){let r=ee.luaT_objtypename(e,t),a=ee.luaT_objtypename(e,n);Zx(r,a)?Is(e,q("attempt to compare two %s values",!0),r):Is(e,q("attempt to compare %s with %s",!0),r,a)},Qx=function(e,t,n,r){let a;return n?a=Ke.luaO_chunkid(n.getstr(),Yx):a=q("?",!0),Ke.luaO_pushfstring(e,q("%s:%d: %s",!0),a,r,t)},Is=function(e,t,...n){let r=e.ci,a=Ke.luaO_pushvfstring(e,t,n);r.callstatus&Le.CIST_LUA&&Qx(e,a,r.func.value.p.source,Jx(r)),Lx(e)},Lx=function(e){if(e.errfunc!==0){let t=e.errfunc;Ke.pushobj2s(e,e.stack[e.top-1]),Ke.setobjs2s(e,e.top-2,t),ys.luaD_callnoyield(e,e.top-2,1)}ys.luaD_throw(e,jN)},pw=function(e,t,n){Dc.tointeger(t)===!1&&(n=t),Is(e,q("number%s has no integer representation",!0),$x(e,n))},hw=function(e){let t=e.ci,n=e.hookmask,r=--e.hookcount===0&&n&FN;if(r)e.hookcount=e.basehookcount;else if(!(n&qx))return;if(t.callstatus&Le.CIST_HOOKYIELD){t.callstatus&=~Le.CIST_HOOKYIELD;return}if(r&&ys.luaD_hook(e,KN,-1),n&qx){let a=t.func.value.p,s=t.l_savedpc-1,u=a.lineinfo.length!==0?a.lineinfo[s]:-1;(s===0||t.l_savedpc<=e.oldpc||u!==(a.lineinfo.length!==0?a.lineinfo[e.oldpc-1]:-1))&&ys.luaD_hook(e,VN,u)}e.oldpc=t.l_savedpc,e.status===Ic&&(r&&(e.hookcount=1),t.l_savedpc--,t.callstatus|=Le.CIST_HOOKYIELD,t.funcOff=e.top-1,t.func=e.stack[t.funcOff],ys.luaD_throw(e,Ic))};Ue.exports.luaG_addinfo=Qx;Ue.exports.luaG_concaterror=cw;Ue.exports.luaG_errormsg=Lx;Ue.exports.luaG_opinterror=_w;Ue.exports.luaG_ordererror=fw;Ue.exports.luaG_runerror=Is;Ue.exports.luaG_tointerror=pw;Ue.exports.luaG_traceexec=hw;Ue.exports.luaG_typeerror=Bc;Ue.exports.lua_gethook=YN;Ue.exports.lua_gethookcount=WN;Ue.exports.lua_gethookmask=JN;Ue.exports.lua_getinfo=sw;Ue.exports.lua_getlocal=LN;Ue.exports.lua_getstack=$N;Ue.exports.lua_sethook=ZN;Ue.exports.lua_setlocal=ew});var uA=U((j4,sA)=>{"use strict";var{LUA_SIGNATURE:eA,LUA_VERSION_MAJOR:dw,LUA_VERSION_MINOR:xw,constant_types:{LUA_TBOOLEAN:Aw,LUA_TLNGSTR:gw,LUA_TNIL:Tw,LUA_TNUMFLT:kw,LUA_TNUMINT:bw,LUA_TSHRSTR:Ow},luastring_of:nA}=_e(),tA=nA(25,147,13,10,26,10),Ew=22136,mw=370.5,vw=Number(dw)*16+Number(xw),Uw=0,Kc=class{constructor(){this.L=null,this.write=null,this.data=null,this.strip=NaN,this.status=NaN}},Or=function(e,t,n){n.status===0&&t>0&&(n.status=n.writer(n.L,e,t,n.data))},Re=function(e,t){Or(nA(e),1,t)},it=function(e,t){let n=new ArrayBuffer(4);new DataView(n).setInt32(0,e,!0);let a=new Uint8Array(n);Or(a,4,t)},Vc=function(e,t){let n=new ArrayBuffer(4);new DataView(n).setInt32(0,e,!0);let a=new Uint8Array(n);Or(a,4,t)},rA=function(e,t){let n=new ArrayBuffer(8);new DataView(n).setFloat64(0,e,!0);let a=new Uint8Array(n);Or(a,8,t)},Ms=function(e,t){if(e===null)Re(0,t);else{let n=e.tsslen()+1,r=e.getstr();n<255?Re(n,t):(Re(255,t),Vc(n,t)),Or(r,n-1,t)}},Rw=function(e,t){let n=e.code.map(r=>r.code);it(n.length,t);for(let r=0;r<n.length;r++)it(n[r],t)},Sw=function(e,t){let n=e.k.length;it(n,t);for(let r=0;r<n;r++){let a=e.k[r];switch(Re(a.ttype(),t),a.ttype()){case Tw:break;case Aw:Re(a.value?1:0,t);break;case kw:rA(a.value,t);break;case bw:Vc(a.value,t);break;case Ow:case gw:Ms(a.tsvalue(),t);break}}},Nw=function(e,t){let n=e.p.length;it(n,t);for(let r=0;r<n;r++)aA(e.p[r],e.source,t)},ww=function(e,t){let n=e.upvalues.length;it(n,t);for(let r=0;r<n;r++)Re(e.upvalues[r].instack?1:0,t),Re(e.upvalues[r].idx,t)},yw=function(e,t){let n=t.strip?0:e.lineinfo.length;it(n,t);for(let r=0;r<n;r++)it(e.lineinfo[r],t);n=t.strip?0:e.locvars.length,it(n,t);for(let r=0;r<n;r++)Ms(e.locvars[r].varname,t),it(e.locvars[r].startpc,t),it(e.locvars[r].endpc,t);n=t.strip?0:e.upvalues.length,it(n,t);for(let r=0;r<n;r++)Ms(e.upvalues[r].name,t)},aA=function(e,t,n){n.strip||e.source===t?Ms(null,n):Ms(e.source,n),it(e.linedefined,n),it(e.lastlinedefined,n),Re(e.numparams,n),Re(e.is_vararg?1:0,n),Re(e.maxstacksize,n),Rw(e,n),Sw(e,n),ww(e,n),Nw(e,n),yw(e,n)},Iw=function(e){Or(eA,eA.length,e),Re(vw,e),Re(Uw,e),Or(tA,tA.length,e),Re(4,e),Re(4,e),Re(4,e),Re(4,e),Re(8,e),Vc(Ew,e),rA(mw,e)},Mw=function(e,t,n,r,a){let s=new Kc;return s.L=e,s.writer=n,s.data=r,s.strip=a,s.status=0,Iw(s),Re(t.upvalues.length,s),aA(t,null,s),s.status};sA.exports.luaU_dump=Mw});var _s=U((X4,p)=>{"use strict";var{LUA_MULTRET:qc,LUA_OPBNOT:Pw,LUA_OPEQ:Cw,LUA_OPLE:Dw,LUA_OPLT:Bw,LUA_OPUNM:Kw,LUA_REGISTRYINDEX:mr,LUA_RIDX_GLOBALS:pl,LUA_VERSION_NUM:Vw,constant_types:{LUA_NUMTAGS:Fw,LUA_TBOOLEAN:lA,LUA_TCCL:Hc,LUA_TFUNCTION:Gw,LUA_TLCF:oA,LUA_TLCL:jc,LUA_TLIGHTUSERDATA:Ta,LUA_TLNGSTR:qw,LUA_TNIL:hl,LUA_TNONE:Xc,LUA_TNUMFLT:Hw,LUA_TNUMINT:zc,LUA_TSHRSTR:jw,LUA_TTABLE:Aa,LUA_TTHREAD:Zc,LUA_TUSERDATA:ka},thread_status:{LUA_OK:fl},from_userstring:Kn,to_luastring:Ps}=_e(),{api_check:m}=We(),Xw=en(),Vn=Et(),{luaU_dump:zw}=uA(),iA=hr(),j=rt(),Er=Lt(),{luaS_bless:cA,luaS_new:dl,luaS_newliteral:Zw}=Pt(),Yw=pr(),{LUAI_MAXSTACK:Jw}=Ye(),Se=fr(),ct=Ct(),{ZIO:Ww}=ps(),xe=j.TValue,$w=j.CClosure,Ne=function(e){e.top++,m(e,e.top<=e.ci.top,"stack overflow")},ke=function(e,t){m(e,t<e.top-e.ci.funcOff,"not enough elements in the stack")},xl=function(e){if(!e)throw TypeError("invalid argument")},hn=function(e){xl(typeof e=="number"&&(e|0)===e)},ga=function(e){return e!==j.luaO_nilobject},Qw=function(e){return e===null?Vw:e.l_G.version},Lw=function(e,t){let n=e.l_G.panic;return e.l_G.panic=t,n},ey=function(e,t){let n=e.l_G.atnativeerror;return e.l_G.atnativeerror=t,n},R=function(e,t){let n=e.ci;if(t>0){let r=n.funcOff+t;return m(e,t<=n.top-(n.funcOff+1),"unacceptable index"),r>=e.top?j.luaO_nilobject:e.stack[r]}else return t>mr?(m(e,t!==0&&-t<=e.top,"invalid index"),e.stack[e.top+t]):t===mr?e.l_G.l_registry:(t=mr-t,m(e,t<=iA.MAXUPVAL+1,"upvalue index too large"),n.func.ttislcf()?j.luaO_nilobject:t<=n.func.value.nupvalues?n.func.value.upvalue[t-1]:j.luaO_nilobject)},_A=function(e,t){let n=e.ci;if(t>0){let r=n.funcOff+t;return m(e,t<=n.top-(n.funcOff+1),"unacceptable index"),r>=e.top?null:r}else{if(t>mr)return m(e,t!==0&&-t<=e.top,"invalid index"),e.top+t;throw Error("attempt to use pseudo-index")}},ty=function(e,t){let n,r=e.ci;return m(e,t>=0,"negative 'n'"),e.stack_last-e.top>t?n=!0:e.top+Er.EXTRA_STACK>Jw-t?n=!1:(Vn.luaD_growstack(e,t),n=!0),n&&r.top<e.top+t&&(r.top=e.top+t),n},ny=function(e,t,n){if(e!==t){ke(e,n),m(e,e.l_G===t.l_G,"moving among independent states"),m(e,t.ci.top-t.top>=n,"stack overflow"),e.top-=n;for(let r=0;r<n;r++)t.stack[t.top]=new j.TValue,j.setobj2s(t,t.top,e.stack[e.top+r]),delete e.stack[e.top+r],t.top++}},ry=function(e,t){return t>0||t<=mr?t:e.top-e.ci.funcOff+t},ay=function(e){return e.top-(e.ci.funcOff+1)},sy=function(e,t){j.pushobj2s(e,R(e,t)),m(e,e.top<=e.ci.top,"stack overflow")},fA=function(e,t){let n=e.ci.funcOff,r;t>=0?(m(e,t<=e.stack_last-(n+1),"new top too large"),r=n+1+t):(m(e,-(t+1)<=e.top-(n+1),"invalid new top"),r=e.top+t+1),Vn.adjust_top(e,r)},Yc=function(e,t){fA(e,-t-1)},Fc=function(e,t,n){for(;t<n;t++,n--){let r=e.stack[t],a=new xe(r.type,r.value);j.setobjs2s(e,t,n),j.setobj2s(e,n,a)}},Jc=function(e,t,n){let r=e.top-1,a=_A(e,t),s=e.stack[a];m(e,ga(s)&&t>mr,"index not in the stack"),m(e,(n>=0?n:-n)<=r-a+1,"invalid 'n'");let u=n>=0?r-n:a-n-1;Fc(e,a,u),Fc(e,u+1,e.top-1),Fc(e,a,e.top-1)},pA=function(e,t,n){let r=R(e,t);R(e,n).setfrom(r)},uy=function(e,t){Jc(e,t,-1),Yc(e,1)},ly=function(e,t){Jc(e,t,1)},oy=function(e,t){pA(e,-1,t),Yc(e,1)},iy=function(e){e.stack[e.top]=new xe(hl,null),Ne(e)},cy=function(e,t){xl(typeof t=="number"),e.stack[e.top]=new xe(Hw,t),Ne(e)},_y=function(e,t){hn(t),e.stack[e.top]=new xe(zc,t),Ne(e)},fy=function(e,t,n){hn(n);let r;return n===0?(t=Ps("",!0),r=cA(e,t)):(t=Kn(t),m(e,t.length>=n,"invalid length to lua_pushlstring"),r=dl(e,t.subarray(0,n))),j.pushsvalue2s(e,r),m(e,e.top<=e.ci.top,"stack overflow"),r.value},py=function(e,t){if(t==null)e.stack[e.top]=new xe(hl,null),e.top++;else{let n=dl(e,Kn(t));j.pushsvalue2s(e,n),t=n.getstr()}return m(e,e.top<=e.ci.top,"stack overflow"),t},hy=function(e,t,n){return t=Kn(t),j.luaO_pushvfstring(e,t,n)},dy=function(e,t,...n){return t=Kn(t),j.luaO_pushvfstring(e,t,n)},xy=function(e,t){if(t==null)e.stack[e.top]=new xe(hl,null),e.top++;else{xl(typeof t=="string");let n=Zw(e,t);j.pushsvalue2s(e,n),t=n.getstr()}return m(e,e.top<=e.ci.top,"stack overflow"),t},Wc=function(e,t,n){if(xl(typeof t=="function"),hn(n),n===0)e.stack[e.top]=new xe(oA,t);else{ke(e,n),m(e,n<=iA.MAXUPVAL,"upvalue index too large");let r=new $w(e,t,n);for(let a=0;a<n;a++)r.upvalue[a].setfrom(e.stack[e.top-n+a]);for(let a=1;a<n;a++)delete e.stack[--e.top];n>0&&--e.top,e.stack[e.top].setclCvalue(r)}Ne(e)},Ay=Wc,$c=function(e,t){Wc(e,t,0)},gy=$c,Ty=function(e,t){e.stack[e.top]=new xe(lA,!!t),Ne(e)},ky=function(e,t){e.stack[e.top]=new xe(Ta,t),Ne(e)},by=function(e){return e.stack[e.top]=new xe(Zc,e),Ne(e),e.l_G.mainthread===e},Oy=function(e){AA(e,mr,pl)},hA=function(e,t,n){let r=dl(e,Kn(n));ke(e,1),j.pushsvalue2s(e,r),m(e,e.top<=e.ci.top,"stack overflow"),Se.settable(e,t,e.stack[e.top-1],e.stack[e.top-2]),delete e.stack[--e.top],delete e.stack[--e.top]},dA=function(e,t){hA(e,ct.luaH_getint(e.l_G.l_registry.value,pl),t)},Ey=function(e,t){ke(e,1);let n,r=R(e,t);switch(e.stack[e.top-1].ttisnil()?n=null:(m(e,e.stack[e.top-1].ttistable(),"table expected"),n=e.stack[e.top-1].value),r.ttnov()){case ka:case Aa:{r.value.metatable=n;break}default:{e.l_G.mt[r.ttnov()]=n;break}}return delete e.stack[--e.top],!0},my=function(e,t){ke(e,2);let n=R(e,t);Se.settable(e,n,e.stack[e.top-2],e.stack[e.top-1]),delete e.stack[--e.top],delete e.stack[--e.top]},vy=function(e,t,n){hA(e,R(e,t),n)},Uy=function(e,t,n){hn(n),ke(e,1);let r=R(e,t);e.stack[e.top]=new xe(zc,n),Ne(e),Se.settable(e,r,e.stack[e.top-1],e.stack[e.top-2]),delete e.stack[--e.top],delete e.stack[--e.top]},Ry=function(e,t){ke(e,2);let n=R(e,t);m(e,n.ttistable(),"table expected");let r=e.stack[e.top-2],a=e.stack[e.top-1];ct.luaH_setfrom(e,n.value,r,a),ct.invalidateTMcache(n.value),delete e.stack[--e.top],delete e.stack[--e.top]},Sy=function(e,t,n){hn(n),ke(e,1);let r=R(e,t);m(e,r.ttistable(),"table expected"),ct.luaH_setint(r.value,n,e.stack[e.top-1]),delete e.stack[--e.top]},Ny=function(e,t,n){ke(e,1);let r=R(e,t);m(e,r.ttistable(),"table expected");let a=new xe(Ta,n),s=e.stack[e.top-1];ct.luaH_setfrom(e,r.value,a,s),delete e.stack[--e.top]},xA=function(e,t,n){let r=dl(e,Kn(n));return j.pushsvalue2s(e,r),m(e,e.top<=e.ci.top,"stack overflow"),Se.luaV_gettable(e,t,e.stack[e.top-1],e.top-1),e.stack[e.top-1].ttnov()},AA=function(e,t,n){let r=R(e,t);return hn(n),m(e,r.ttistable(),"table expected"),j.pushobj2s(e,ct.luaH_getint(r.value,n)),m(e,e.top<=e.ci.top,"stack overflow"),e.stack[e.top-1].ttnov()},wy=function(e,t,n){let r=R(e,t);m(e,r.ttistable(),"table expected");let a=new xe(Ta,n);return j.pushobj2s(e,ct.luaH_get(e,r.value,a)),m(e,e.top<=e.ci.top,"stack overflow"),e.stack[e.top-1].ttnov()},yy=function(e,t){let n=R(e,t);return m(e,n.ttistable(n),"table expected"),j.setobj2s(e,e.top-1,ct.luaH_get(e,n.value,e.stack[e.top-1])),e.stack[e.top-1].ttnov()},gA=function(e,t,n){let r=new j.TValue(Aa,ct.luaH_new(e));e.stack[e.top]=r,Ne(e)},Iy=function(e,t){return new j.Udata(e,t)},My=function(e,t){let n=Iy(e,t);return e.stack[e.top]=new j.TValue(ka,n),Ne(e),n.data},TA=function(e,t,n){switch(hn(n),t.ttype()){case Hc:{let r=t.value;return 1<=n&&n<=r.nupvalues?{name:Ps("",!0),val:r.upvalue[n-1]}:null}case jc:{let r=t.value,a=r.p;if(!(1<=n&&n<=a.upvalues.length))return null;let s=a.upvalues[n-1].name;return{name:s?s.getstr():Ps("(*no name)",!0),val:r.upvals[n-1]}}default:return null}},Py=function(e,t,n){let r=TA(e,R(e,t),n);if(r){let a=r.name,s=r.val;return j.pushobj2s(e,s),m(e,e.top<=e.ci.top,"stack overflow"),a}return null},Cy=function(e,t,n){let r=R(e,t);ke(e,1);let a=TA(e,r,n);if(a){let s=a.name;return a.val.setfrom(e.stack[e.top-1]),delete e.stack[--e.top],s}return null},Dy=function(e){gA(e,0,0)},By=function(e,t,n){$c(e,n),dA(e,t)},Ky=function(e,t){let n=R(e,t),r,a=!1;switch(n.ttnov()){case Aa:case ka:r=n.value.metatable;break;default:r=e.l_G.mt[n.ttnov()];break}return r!=null&&(e.stack[e.top]=new xe(Aa,r),Ne(e),a=!0),a},Vy=function(e,t){let n=R(e,t);m(e,n.ttisfulluserdata(),"full userdata expected");let r=n.value.uservalue;return e.stack[e.top]=new xe(r.type,r.value),Ne(e),e.stack[e.top-1].ttnov()},Fy=function(e,t){let n=R(e,t);return Se.luaV_gettable(e,n,e.stack[e.top-1],e.top-1),e.stack[e.top-1].ttnov()},Gy=function(e,t,n){return xA(e,R(e,t),n)},qy=function(e,t,n){let r=R(e,t);return hn(n),e.stack[e.top]=new xe(zc,n),Ne(e),Se.luaV_gettable(e,r,e.stack[e.top-1],e.top-1),e.stack[e.top-1].ttnov()},Hy=function(e,t){return xA(e,ct.luaH_getint(e.l_G.l_registry.value,pl),t)},jy=function(e,t){return!R(e,t).l_isfalse()},Qc=function(e,t){let n=R(e,t);if(!n.ttisstring()){if(!Se.cvt2str(n))return null;j.luaO_tostring(e,n)}return n.svalue()},Xy=Qc,zy=function(e,t){let n=R(e,t);if(!n.ttisstring()){if(!Se.cvt2str(n))return null;j.luaO_tostring(e,n)}return n.jsstring()},Zy=function(e,t){let n=Qc(e,t);return new DataView(n.buffer,n.byteOffset,n.byteLength)},Yy=function(e,t){let n=R(e,t);switch(n.ttype()){case jw:case qw:return n.vslen();case ka:return n.value.len;case Aa:return ct.luaH_getn(n.value);default:return 0}},Jy=function(e,t){let n=R(e,t);return n.ttislcf()||n.ttisCclosure()?n.value:null},Wy=function(e,t){let n=kA(e,t);return n===!1?0:n},kA=function(e,t){return Se.tointeger(R(e,t))},$y=function(e,t){let n=bA(e,t);return n===!1?0:n},bA=function(e,t){return Se.tonumber(R(e,t))},Qy=function(e,t){let n=R(e,t);switch(n.ttnov()){case ka:return n.value.data;case Ta:return n.value;default:return null}},Ly=function(e,t){let n=R(e,t);return n.ttisthread()?n.value:null},eI=function(e,t){let n=R(e,t);switch(n.ttype()){case Aa:case jc:case Hc:case oA:case Zc:case ka:case Ta:return n.value;default:return null}},OA=new WeakMap,tI=function(e,t){let n=OA.get(e);return n?t===null||t.l_G===n:!1},nI=function(e,t,n){let r=function(a){m(a,a instanceof Er.lua_State&&e===a.l_G,"must be from same global state"),a.stack[a.top]=new xe(t,n),Ne(a)};return OA.set(r,e),r},rI=function(e,t){let n=R(e,t);return nI(e.l_G,n.type,n.value)},aI=function(e,t,n,r){let a=R(e,t),s=R(e,n),u=0;if(ga(a)&&ga(s))switch(r){case Cw:u=Se.luaV_equalobj(e,a,s);break;case Bw:u=Se.luaV_lessthan(e,a,s);break;case Dw:u=Se.luaV_lessequal(e,a,s);break;default:m(e,!1,"invalid option")}return u},sI=function(e,t){let n=new xe,r=j.luaO_str2num(t,n);return r!==0&&(e.stack[e.top]=n,Ne(e)),r},uI=function(e,t){Vn.luaD_callnoyield(e,t.funcOff,t.nresults)},Fn=function(e,t){let n=R(e,t);return ga(n)?n.ttnov():Xc},lI=function(e,t){return m(e,Xc<=t&&t<Fw,"invalid tag"),Yw.ttypename(t)},oI=function(e,t){let n=R(e,t);return n.ttislcf(n)||n.ttisCclosure()},iI=function(e,t){return Fn(e,t)===hl},cI=function(e,t){return Fn(e,t)===lA},_I=function(e,t){return Fn(e,t)===Xc},fI=function(e,t){return Fn(e,t)<=0},pI=function(e,t){return R(e,t).ttistable()},hI=function(e,t){return R(e,t).ttisinteger()},dI=function(e,t){return Se.tonumber(R(e,t))!==!1},xI=function(e,t){let n=R(e,t);return n.ttisstring()||Se.cvt2str(n)},AI=function(e,t){let n=R(e,t);return n.ttisfulluserdata(n)||n.ttislightuserdata()},gI=function(e,t){return Fn(e,t)===Zc},TI=function(e,t){return Fn(e,t)===Gw},kI=function(e,t){return Fn(e,t)===Ta},bI=function(e,t,n){let r=R(e,t),a=R(e,n);return ga(r)&&ga(a)?Se.luaV_equalobj(null,r,a):0},OI=function(e,t){t!==Kw&&t!==Pw?ke(e,2):(ke(e,1),j.pushobj2s(e,e.stack[e.top-1]),m(e,e.top<=e.ci.top,"stack overflow")),j.luaO_arith(e,t,e.stack[e.top-2],e.stack[e.top-1],e.stack[e.top-2]),delete e.stack[--e.top]},EI=Ps("?"),mI=function(e,t,n,r,a){r?r=Kn(r):r=EI,a!==null&&(a=Kn(a));let s=new Ww(e,t,n),u=Vn.luaD_protectedparser(e,s,r,a);if(u===fl){let l=e.stack[e.top-1].value;if(l.nupvalues>=1){let o=ct.luaH_getint(e.l_G.l_registry.value,pl);l.upvals[0].setfrom(o)}}return u},vI=function(e,t,n,r){ke(e,1);let a=e.stack[e.top-1];return a.ttisLclosure()?zw(e,a.value.p,t,n,r):1},UI=function(e){return e.status},RI=function(e,t){ke(e,1);let n=R(e,t);m(e,n.ttisfulluserdata(),"full userdata expected"),n.value.uservalue.setfrom(e.stack[e.top-1]),delete e.stack[--e.top]},EA=function(e,t,n){m(e,n===qc||e.ci.top-e.top>=n-t,"results from function overflow current stack size")},mA=function(e,t,n,r,a){m(e,a===null||!(e.ci.callstatus&Er.CIST_LUA),"cannot use continuations inside hooks"),ke(e,t+1),m(e,e.status===fl,"cannot do calls on non-normal thread"),EA(e,t,n);let s=e.top-(t+1);a!==null&&e.nny===0?(e.ci.c_k=a,e.ci.c_ctx=r,Vn.luaD_call(e,s,n)):Vn.luaD_callnoyield(e,s,n),n===qc&&e.ci.top<e.top&&(e.ci.top=e.top)},SI=function(e,t,n){mA(e,t,n,0,null)},vA=function(e,t,n,r,a,s){m(e,s===null||!(e.ci.callstatus&Er.CIST_LUA),"cannot use continuations inside hooks"),ke(e,t+1),m(e,e.status===fl,"cannot do calls on non-normal thread"),EA(e,t,n);let u,l;r===0?l=0:l=_A(e,r);let o=e.top-(t+1);if(s===null||e.nny>0){let c={funcOff:o,nresults:n};u=Vn.luaD_pcall(e,uI,c,o,l)}else{let c=e.ci;c.c_k=s,c.c_ctx=a,c.extra=o,c.c_old_errfunc=e.errfunc,e.errfunc=l,c.callstatus&=~Er.CIST_OAH|e.allowhook,c.callstatus|=Er.CIST_YPCALL,Vn.luaD_call(e,o,n),c.callstatus&=~Er.CIST_YPCALL,e.errfunc=c.c_old_errfunc,u=fl}return n===qc&&e.ci.top<e.top&&(e.ci.top=e.top),u},NI=function(e,t,n,r){return vA(e,t,n,r,0,null)},wI=function(e){ke(e,1),Xw.luaG_errormsg(e)},yI=function(e,t){let n=R(e,t);return m(e,n.ttistable(),"table expected"),e.stack[e.top]=new xe,ct.luaH_next(e,n.value,e.top-1)?(Ne(e),1):(delete e.stack[e.top],delete e.stack[--e.top],0)},II=function(e,t){ke(e,t),t>=2?Se.luaV_concat(e,t):t===0&&(j.pushsvalue2s(e,cA(e,Ps("",!0))),m(e,e.top<=e.ci.top,"stack overflow"))},MI=function(e,t){let n=R(e,t),r=new xe;Se.luaV_objlen(e,r,n),e.stack[e.top]=r,Ne(e)},Gc=function(e,t,n){let r=R(e,t);m(e,r.ttisLclosure(),"Lua function expected");let a=r.value;return hn(n),m(e,1<=n&&n<=a.p.upvalues.length,"invalid upvalue index"),{f:a,i:n-1}},PI=function(e,t,n){let r=R(e,t);switch(r.ttype()){case jc:{let a=Gc(e,t,n);return a.f.upvals[a.i]}case Hc:{let a=r.value;return m(e,(n|0)===n&&n>0&&n<=a.nupvalues,"invalid upvalue index"),a.upvalue[n-1]}default:return m(e,!1,"closure expected"),null}},CI=function(e,t,n,r,a){let s=Gc(e,t,n),u=Gc(e,r,a),l=u.f.upvals[u.i];s.f.upvals[s.i]=l},DI=function(){},BI=function(){return console.warn("lua_getallocf is not available"),0},KI=function(){return console.warn("lua_setallocf is not available"),0},VI=function(){return console.warn("lua_getextraspace is not available"),0};p.exports.api_incr_top=Ne;p.exports.api_checknelems=ke;p.exports.lua_absindex=ry;p.exports.lua_arith=OI;p.exports.lua_atpanic=Lw;p.exports.lua_atnativeerror=ey;p.exports.lua_call=SI;p.exports.lua_callk=mA;p.exports.lua_checkstack=ty;p.exports.lua_compare=aI;p.exports.lua_concat=II;p.exports.lua_copy=pA;p.exports.lua_createtable=gA;p.exports.lua_dump=vI;p.exports.lua_error=wI;p.exports.lua_gc=DI;p.exports.lua_getallocf=BI;p.exports.lua_getextraspace=VI;p.exports.lua_getfield=Gy;p.exports.lua_getglobal=Hy;p.exports.lua_geti=qy;p.exports.lua_getmetatable=Ky;p.exports.lua_gettable=Fy;p.exports.lua_gettop=ay;p.exports.lua_getupvalue=Py;p.exports.lua_getuservalue=Vy;p.exports.lua_insert=ly;p.exports.lua_isboolean=cI;p.exports.lua_iscfunction=oI;p.exports.lua_isfunction=TI;p.exports.lua_isinteger=hI;p.exports.lua_islightuserdata=kI;p.exports.lua_isnil=iI;p.exports.lua_isnone=_I;p.exports.lua_isnoneornil=fI;p.exports.lua_isnumber=dI;p.exports.lua_isproxy=tI;p.exports.lua_isstring=xI;p.exports.lua_istable=pI;p.exports.lua_isthread=gI;p.exports.lua_isuserdata=AI;p.exports.lua_len=MI;p.exports.lua_load=mI;p.exports.lua_newtable=Dy;p.exports.lua_newuserdata=My;p.exports.lua_next=yI;p.exports.lua_pcall=NI;p.exports.lua_pcallk=vA;p.exports.lua_pop=Yc;p.exports.lua_pushboolean=Ty;p.exports.lua_pushcclosure=Wc;p.exports.lua_pushcfunction=$c;p.exports.lua_pushfstring=dy;p.exports.lua_pushglobaltable=Oy;p.exports.lua_pushinteger=_y;p.exports.lua_pushjsclosure=Ay;p.exports.lua_pushjsfunction=gy;p.exports.lua_pushlightuserdata=ky;p.exports.lua_pushliteral=xy;p.exports.lua_pushlstring=fy;p.exports.lua_pushnil=iy;p.exports.lua_pushnumber=cy;p.exports.lua_pushstring=py;p.exports.lua_pushthread=by;p.exports.lua_pushvalue=sy;p.exports.lua_pushvfstring=hy;p.exports.lua_rawequal=bI;p.exports.lua_rawget=yy;p.exports.lua_rawgeti=AA;p.exports.lua_rawgetp=wy;p.exports.lua_rawlen=Yy;p.exports.lua_rawset=Ry;p.exports.lua_rawseti=Sy;p.exports.lua_rawsetp=Ny;p.exports.lua_register=By;p.exports.lua_remove=uy;p.exports.lua_replace=oy;p.exports.lua_rotate=Jc;p.exports.lua_setallocf=KI;p.exports.lua_setfield=vy;p.exports.lua_setglobal=dA;p.exports.lua_seti=Uy;p.exports.lua_setmetatable=Ey;p.exports.lua_settable=my;p.exports.lua_settop=fA;p.exports.lua_setupvalue=Cy;p.exports.lua_setuservalue=RI;p.exports.lua_status=UI;p.exports.lua_stringtonumber=sI;p.exports.lua_toboolean=jy;p.exports.lua_tocfunction=Jy;p.exports.lua_todataview=Zy;p.exports.lua_tointeger=Wy;p.exports.lua_tointegerx=kA;p.exports.lua_tojsstring=zy;p.exports.lua_tolstring=Qc;p.exports.lua_tonumber=$y;p.exports.lua_tonumberx=bA;p.exports.lua_topointer=eI;p.exports.lua_toproxy=rI;p.exports.lua_tostring=Xy;p.exports.lua_tothread=Ly;p.exports.lua_touserdata=Qy;p.exports.lua_type=Fn;p.exports.lua_typename=lI;p.exports.lua_upvalueid=PI;p.exports.lua_upvaluejoin=CI;p.exports.lua_version=Qw;p.exports.lua_xmove=ny});var Ve=U((z4,_)=>{"use strict";var A=_e(),h=_s(),Gn=en(),Cs=Et(),Lc=Lt();_.exports.LUA_AUTHORS=A.LUA_AUTHORS;_.exports.LUA_COPYRIGHT=A.LUA_COPYRIGHT;_.exports.LUA_ERRERR=A.thread_status.LUA_ERRERR;_.exports.LUA_ERRGCMM=A.thread_status.LUA_ERRGCMM;_.exports.LUA_ERRMEM=A.thread_status.LUA_ERRMEM;_.exports.LUA_ERRRUN=A.thread_status.LUA_ERRRUN;_.exports.LUA_ERRSYNTAX=A.thread_status.LUA_ERRSYNTAX;_.exports.LUA_HOOKCALL=A.LUA_HOOKCALL;_.exports.LUA_HOOKCOUNT=A.LUA_HOOKCOUNT;_.exports.LUA_HOOKLINE=A.LUA_HOOKLINE;_.exports.LUA_HOOKRET=A.LUA_HOOKRET;_.exports.LUA_HOOKTAILCALL=A.LUA_HOOKTAILCALL;_.exports.LUA_MASKCALL=A.LUA_MASKCALL;_.exports.LUA_MASKCOUNT=A.LUA_MASKCOUNT;_.exports.LUA_MASKLINE=A.LUA_MASKLINE;_.exports.LUA_MASKRET=A.LUA_MASKRET;_.exports.LUA_MINSTACK=A.LUA_MINSTACK;_.exports.LUA_MULTRET=A.LUA_MULTRET;_.exports.LUA_NUMTAGS=A.constant_types.LUA_NUMTAGS;_.exports.LUA_OK=A.thread_status.LUA_OK;_.exports.LUA_OPADD=A.LUA_OPADD;_.exports.LUA_OPBAND=A.LUA_OPBAND;_.exports.LUA_OPBNOT=A.LUA_OPBNOT;_.exports.LUA_OPBOR=A.LUA_OPBOR;_.exports.LUA_OPBXOR=A.LUA_OPBXOR;_.exports.LUA_OPDIV=A.LUA_OPDIV;_.exports.LUA_OPEQ=A.LUA_OPEQ;_.exports.LUA_OPIDIV=A.LUA_OPIDIV;_.exports.LUA_OPLE=A.LUA_OPLE;_.exports.LUA_OPLT=A.LUA_OPLT;_.exports.LUA_OPMOD=A.LUA_OPMOD;_.exports.LUA_OPMUL=A.LUA_OPMUL;_.exports.LUA_OPPOW=A.LUA_OPPOW;_.exports.LUA_OPSHL=A.LUA_OPSHL;_.exports.LUA_OPSHR=A.LUA_OPSHR;_.exports.LUA_OPSUB=A.LUA_OPSUB;_.exports.LUA_OPUNM=A.LUA_OPUNM;_.exports.LUA_REGISTRYINDEX=A.LUA_REGISTRYINDEX;_.exports.LUA_RELEASE=A.LUA_RELEASE;_.exports.LUA_RIDX_GLOBALS=A.LUA_RIDX_GLOBALS;_.exports.LUA_RIDX_LAST=A.LUA_RIDX_LAST;_.exports.LUA_RIDX_MAINTHREAD=A.LUA_RIDX_MAINTHREAD;_.exports.LUA_SIGNATURE=A.LUA_SIGNATURE;_.exports.LUA_TNONE=A.constant_types.LUA_TNONE;_.exports.LUA_TNIL=A.constant_types.LUA_TNIL;_.exports.LUA_TBOOLEAN=A.constant_types.LUA_TBOOLEAN;_.exports.LUA_TLIGHTUSERDATA=A.constant_types.LUA_TLIGHTUSERDATA;_.exports.LUA_TNUMBER=A.constant_types.LUA_TNUMBER;_.exports.LUA_TSTRING=A.constant_types.LUA_TSTRING;_.exports.LUA_TTABLE=A.constant_types.LUA_TTABLE;_.exports.LUA_TFUNCTION=A.constant_types.LUA_TFUNCTION;_.exports.LUA_TUSERDATA=A.constant_types.LUA_TUSERDATA;_.exports.LUA_TTHREAD=A.constant_types.LUA_TTHREAD;_.exports.LUA_VERSION=A.LUA_VERSION;_.exports.LUA_VERSION_MAJOR=A.LUA_VERSION_MAJOR;_.exports.LUA_VERSION_MINOR=A.LUA_VERSION_MINOR;_.exports.LUA_VERSION_NUM=A.LUA_VERSION_NUM;_.exports.LUA_VERSION_RELEASE=A.LUA_VERSION_RELEASE;_.exports.LUA_YIELD=A.thread_status.LUA_YIELD;_.exports.lua_Debug=A.lua_Debug;_.exports.lua_upvalueindex=A.lua_upvalueindex;_.exports.lua_absindex=h.lua_absindex;_.exports.lua_arith=h.lua_arith;_.exports.lua_atpanic=h.lua_atpanic;_.exports.lua_atnativeerror=h.lua_atnativeerror;_.exports.lua_call=h.lua_call;_.exports.lua_callk=h.lua_callk;_.exports.lua_checkstack=h.lua_checkstack;_.exports.lua_close=Lc.lua_close;_.exports.lua_compare=h.lua_compare;_.exports.lua_concat=h.lua_concat;_.exports.lua_copy=h.lua_copy;_.exports.lua_createtable=h.lua_createtable;_.exports.lua_dump=h.lua_dump;_.exports.lua_error=h.lua_error;_.exports.lua_gc=h.lua_gc;_.exports.lua_getallocf=h.lua_getallocf;_.exports.lua_getextraspace=h.lua_getextraspace;_.exports.lua_getfield=h.lua_getfield;_.exports.lua_getglobal=h.lua_getglobal;_.exports.lua_gethook=Gn.lua_gethook;_.exports.lua_gethookcount=Gn.lua_gethookcount;_.exports.lua_gethookmask=Gn.lua_gethookmask;_.exports.lua_geti=h.lua_geti;_.exports.lua_getinfo=Gn.lua_getinfo;_.exports.lua_getlocal=Gn.lua_getlocal;_.exports.lua_getmetatable=h.lua_getmetatable;_.exports.lua_getstack=Gn.lua_getstack;_.exports.lua_gettable=h.lua_gettable;_.exports.lua_gettop=h.lua_gettop;_.exports.lua_getupvalue=h.lua_getupvalue;_.exports.lua_getuservalue=h.lua_getuservalue;_.exports.lua_insert=h.lua_insert;_.exports.lua_isboolean=h.lua_isboolean;_.exports.lua_iscfunction=h.lua_iscfunction;_.exports.lua_isfunction=h.lua_isfunction;_.exports.lua_isinteger=h.lua_isinteger;_.exports.lua_islightuserdata=h.lua_islightuserdata;_.exports.lua_isnil=h.lua_isnil;_.exports.lua_isnone=h.lua_isnone;_.exports.lua_isnoneornil=h.lua_isnoneornil;_.exports.lua_isnumber=h.lua_isnumber;_.exports.lua_isproxy=h.lua_isproxy;_.exports.lua_isstring=h.lua_isstring;_.exports.lua_istable=h.lua_istable;_.exports.lua_isthread=h.lua_isthread;_.exports.lua_isuserdata=h.lua_isuserdata;_.exports.lua_isyieldable=Cs.lua_isyieldable;_.exports.lua_len=h.lua_len;_.exports.lua_load=h.lua_load;_.exports.lua_newstate=Lc.lua_newstate;_.exports.lua_newtable=h.lua_newtable;_.exports.lua_newthread=Lc.lua_newthread;_.exports.lua_newuserdata=h.lua_newuserdata;_.exports.lua_next=h.lua_next;_.exports.lua_pcall=h.lua_pcall;_.exports.lua_pcallk=h.lua_pcallk;_.exports.lua_pop=h.lua_pop;_.exports.lua_pushboolean=h.lua_pushboolean;_.exports.lua_pushcclosure=h.lua_pushcclosure;_.exports.lua_pushcfunction=h.lua_pushcfunction;_.exports.lua_pushfstring=h.lua_pushfstring;_.exports.lua_pushglobaltable=h.lua_pushglobaltable;_.exports.lua_pushinteger=h.lua_pushinteger;_.exports.lua_pushjsclosure=h.lua_pushjsclosure;_.exports.lua_pushjsfunction=h.lua_pushjsfunction;_.exports.lua_pushlightuserdata=h.lua_pushlightuserdata;_.exports.lua_pushliteral=h.lua_pushliteral;_.exports.lua_pushlstring=h.lua_pushlstring;_.exports.lua_pushnil=h.lua_pushnil;_.exports.lua_pushnumber=h.lua_pushnumber;_.exports.lua_pushstring=h.lua_pushstring;_.exports.lua_pushthread=h.lua_pushthread;_.exports.lua_pushvalue=h.lua_pushvalue;_.exports.lua_pushvfstring=h.lua_pushvfstring;_.exports.lua_rawequal=h.lua_rawequal;_.exports.lua_rawget=h.lua_rawget;_.exports.lua_rawgeti=h.lua_rawgeti;_.exports.lua_rawgetp=h.lua_rawgetp;_.exports.lua_rawlen=h.lua_rawlen;_.exports.lua_rawset=h.lua_rawset;_.exports.lua_rawseti=h.lua_rawseti;_.exports.lua_rawsetp=h.lua_rawsetp;_.exports.lua_register=h.lua_register;_.exports.lua_remove=h.lua_remove;_.exports.lua_replace=h.lua_replace;_.exports.lua_resume=Cs.lua_resume;_.exports.lua_rotate=h.lua_rotate;_.exports.lua_setallof=Cs.lua_setallof;_.exports.lua_setfield=h.lua_setfield;_.exports.lua_setglobal=h.lua_setglobal;_.exports.lua_sethook=Gn.lua_sethook;_.exports.lua_seti=h.lua_seti;_.exports.lua_setlocal=Gn.lua_setlocal;_.exports.lua_setmetatable=h.lua_setmetatable;_.exports.lua_settable=h.lua_settable;_.exports.lua_settop=h.lua_settop;_.exports.lua_setupvalue=h.lua_setupvalue;_.exports.lua_setuservalue=h.lua_setuservalue;_.exports.lua_status=h.lua_status;_.exports.lua_stringtonumber=h.lua_stringtonumber;_.exports.lua_toboolean=h.lua_toboolean;_.exports.lua_todataview=h.lua_todataview;_.exports.lua_tointeger=h.lua_tointeger;_.exports.lua_tointegerx=h.lua_tointegerx;_.exports.lua_tojsstring=h.lua_tojsstring;_.exports.lua_tolstring=h.lua_tolstring;_.exports.lua_tonumber=h.lua_tonumber;_.exports.lua_tonumberx=h.lua_tonumberx;_.exports.lua_topointer=h.lua_topointer;_.exports.lua_toproxy=h.lua_toproxy;_.exports.lua_tostring=h.lua_tostring;_.exports.lua_tothread=h.lua_tothread;_.exports.lua_touserdata=h.lua_touserdata;_.exports.lua_type=h.lua_type;_.exports.lua_typename=h.lua_typename;_.exports.lua_upvalueid=h.lua_upvalueid;_.exports.lua_upvaluejoin=h.lua_upvaluejoin;_.exports.lua_version=h.lua_version;_.exports.lua_xmove=h.lua_xmove;_.exports.lua_yield=Cs.lua_yield;_.exports.lua_yieldk=Cs.lua_yieldk;_.exports.lua_tocfunction=h.lua_tocfunction});var vr=U((Z4,UA)=>{var Al=()=>{throw new Error("fs unavailable in the single-file shell")};UA.exports={readFileSync:Al,writeFileSync:Al,existsSync:()=>!1,createReadStream:Al,createWriteStream:Al,constants:{}}});var et=U((Y4,x)=>{"use strict";var{LUAL_BUFFERSIZE:FI}=Ye(),{LUA_ERRERR:GI,LUA_MULTRET:MA,LUA_REGISTRYINDEX:ml,LUA_SIGNATURE:RA,LUA_TBOOLEAN:qI,LUA_TLIGHTUSERDATA:HI,LUA_TNIL:Oa,LUA_TNONE:jI,LUA_TNUMBER:a_,LUA_TSTRING:Ds,LUA_TTABLE:XI,LUA_VERSION_NUM:zI,lua_Debug:vl,lua_absindex:Ul,lua_atpanic:ZI,lua_call:PA,lua_checkstack:YI,lua_concat:Tl,lua_copy:JI,lua_createtable:s_,lua_error:WI,lua_getfield:Rl,lua_getinfo:Sl,lua_getmetatable:CA,lua_getstack:Bs,lua_gettop:ba,lua_insert:$I,lua_isinteger:QI,lua_isnil:LI,lua_isnumber:eM,lua_isstring:tM,lua_istable:nM,lua_len:rM,lua_load:e_,lua_newstate:aM,lua_newtable:sM,lua_next:uM,lua_pcall:DA,lua_pop:ft,lua_pushboolean:BA,lua_pushcclosure:lM,lua_pushcfunction:oM,lua_pushfstring:Xe,lua_pushinteger:kl,lua_pushliteral:_t,lua_pushlstring:iM,lua_pushnil:u_,lua_pushstring:ma,lua_pushvalue:Ur,lua_pushvfstring:cM,lua_rawequal:KA,lua_rawget:_M,lua_rawgeti:t_,lua_rawlen:fM,lua_rawseti:bl,lua_remove:dn,lua_setfield:Ks,lua_setglobal:pM,lua_setmetatable:hM,lua_settop:n_,lua_toboolean:VA,lua_tointeger:FA,lua_tointegerx:GA,lua_tojsstring:dM,lua_tolstring:qA,lua_tonumber:xM,lua_tonumberx:AM,lua_topointer:gM,lua_tostring:Xt,lua_touserdata:TM,lua_type:qn,lua_typename:HA,lua_version:SA}=Ve(),{from_userstring:l_,luastring_eq:jA,to_luastring:S,to_uristring:kM}=Je(),XA=GI+1,o_=S("_LOADED"),bM=S("_PRELOAD"),OM=S("FILE*"),zA=4*16+8,i_=S("__name"),EM=S("__tostring"),c_=new Uint8Array(0),Ol=class{constructor(){this.L=null,this.b=c_,this.n=0}},NA=10,wA=11,ZA=function(e,t,n){if(n===0||!nM(e,-1))return 0;for(u_(e);uM(e,-2);){if(qn(e,-2)===Ds){if(KA(e,t,-1))return ft(e,1),1;if(ZA(e,t,n-1))return dn(e,-2),_t(e,"."),$I(e,-2),Tl(e,3),1}ft(e,1)}return 0},YA=function(e,t){let n=ba(e);if(Sl(e,S("f"),t),Rl(e,ml,o_),ZA(e,n+1,2)){let r=Xt(e,-1);return r[0]===95&&r[1]===71&&r[2]===46&&(ma(e,r.subarray(3)),dn(e,-2)),JI(e,-1,n+1),ft(e,2),1}else return n_(e,n),0},mM=function(e,t){YA(e,t)?(Xe(e,S("function '%s'"),Xt(e,-1)),dn(e,-2)):t.namewhat.length!==0?Xe(e,S("%s '%s'"),t.namewhat,t.name):t.what&&t.what[0]===109?_t(e,"main chunk"):t.what&&t.what[0]===76?Xe(e,S("function <%s:%d>"),t.short_src,t.linedefined):_t(e,"?")},vM=function(e){let t=new vl,n=1,r=1;for(;Bs(e,r,t);)n=r,r*=2;for(;n<r;){let a=Math.floor((n+r)/2);Bs(e,a,t)?n=a+1:r=a}return r-1},UM=function(e,t,n,r){let a=new vl,s=ba(e),u=vM(t),l=u-r>NA+wA?NA:-1;for(n&&Xe(e,S(`%s
-`),n),A_(e,10,null),_t(e,"stack traceback:");Bs(t,r++,a);)l--===0?(_t(e,`
-	...`),r=u-wA+1):(Sl(t,S("Slnt",!0),a),Xe(e,S(`
-	%s:`),a.short_src),a.currentline>0&&_t(e,`${a.currentline}:`),_t(e," in "),mM(e,a),a.istailcall&&_t(e,`
-	(...tail calls..)`),Tl(e,ba(e)-s));Tl(e,ba(e)-s)},RM=function(e){let t="PANIC: unprotected error in call to Lua API ("+dM(e,-1)+")";throw new Error(t)},va=function(e,t,n){let r=new vl;return Bs(e,0,r)?(Sl(e,S("n"),r),jA(r.namewhat,S("method"))&&(t--,t===0)?vt(e,S("calling '%s' on bad self (%s)"),r.name,n):(r.name===null&&(r.name=YA(e,r)?Xt(e,-1):S("?")),vt(e,S("bad argument #%d to '%s' (%s)"),t,r.name,n))):vt(e,S("bad argument #%d (%s)"),t,n)},JA=function(e,t,n){let r;Il(e,t,i_)===Ds?r=Xt(e,-1):qn(e,t)===HI?r=S("light userdata",!0):r=__(e,t);let a=Xe(e,S("%s expected, got %s"),n,r);return va(e,t,a)},WA=function(e,t){let n=new vl;if(Bs(e,t,n)&&(Sl(e,S("Sl",!0),n),n.currentline>0)){Xe(e,S("%s:%d: "),n.short_src,n.currentline);return}ma(e,S(""))},vt=function(e,t,...n){return WA(e,1),cM(e,t,n),Tl(e,2),WI(e)},$A=function(e,t,n,r){if(t)return BA(e,1),1;{u_(e);let a,s;return r?(a=r.message,s=-r.errno):(a="Success",s=0),n?Xe(e,S("%s: %s"),n,S(a)):ma(e,S(a)),kl(e,s),3}},SM=function(e,t){let n,r;if(t===null)return BA(e,1),_t(e,"exit"),kl(e,0),3;if(t.status)n="exit",r=t.status;else if(t.signal)n="signal",r=t.signal;else return $A(e,0,null,t);return u_(e),_t(e,n),kl(e,r),3},Nl=function(e,t){return Rl(e,ml,t)},NM=function(e,t){return Nl(e,t)!==Oa?0:(ft(e,1),s_(e,0,2),ma(e,t),Ks(e,-2,i_),Ur(e,-1),Ks(e,ml,t),1)},wM=function(e,t){Nl(e,t),hM(e,-2)},QA=function(e,t,n){let r=TM(e,t);return r!==null&&CA(e,t)?(Nl(e,n),KA(e,-1,-2)||(r=null),ft(e,2),r):null},yM=function(e,t,n){let r=QA(e,t,n);return r===null&&JA(e,t,n),r},IM=function(e,t,n,r){let a=n!==null?tg(e,t,n):LA(e,t);for(let s=0;r[s];s++)if(jA(r[s],a))return s;return va(e,t,Xe(e,S("invalid option '%s'"),a))},wl=function(e,t,n){JA(e,t,HA(e,n))},MM=function(){let e=aM();return e&&ZI(e,RM),e},__=function(e,t){return HA(e,qn(e,t))},PM=function(e,t,n,r){t||va(e,n,r)},CM=function(e,t){qn(e,t)===jI&&va(e,t,S("value expected",!0))},DM=function(e,t,n){qn(e,t)!==n&&wl(e,t,n)},f_=function(e,t){let n=qA(e,t);return n==null&&wl(e,t,Ds),n},LA=f_,eg=function(e,t,n){return qn(e,t)<=0?n===null?null:l_(n):f_(e,t)},tg=eg,BM=function(e,t){eM(e,t)?va(e,t,S("number has no integer representation",!0)):wl(e,t,a_)},ng=function(e,t){let n=AM(e,t);return n===!1&&wl(e,t,a_),n},KM=function(e,t,n){return x_(e,ng,t,n)},rg=function(e,t){let n=GA(e,t);return n===!1&&BM(e,t),n},VM=function(e,t,n){return x_(e,rg,t,n)},Vs=function(e,t){let n=e.n+t;if(e.b.length<n){let r=Math.max(e.b.length*2,n),a=new Uint8Array(r);a.set(e.b),e.b=a}return e.b.subarray(e.n,n)},p_=function(e,t){t.L=e,t.b=c_},FM=function(e,t,n){return p_(e,t),Vs(t,n)},GM=function(e){return Vs(e,FI)},yl=function(e,t,n){n>0&&(t=l_(t),Vs(e,n).set(t.subarray(0,n)),d_(e,n))},r_=function(e,t){t=l_(t),yl(e,t,t.length)},h_=function(e){iM(e.L,e.b,e.n),e.n=0,e.b=c_},qM=function(e,t){Vs(e,1),e.b[e.n++]=t},d_=function(e,t){e.n+=t},HM=function(e,t){d_(e,t),h_(e)},jM=function(e){let t=e.L,n=Xt(t,-1);yl(e,n,n.length),ft(t,1)},x_=function(e,t,n,r){return qn(e,n)<=0?r:t(e,n)},XM=function(e,t){let n=t.string;return t.string=null,n},ag=function(e,t,n,r,a){return e_(e,XM,{string:t},r,a)},sg=function(e,t,n,r){return ag(e,t,n,r,null)},ug=function(e,t){return sg(e,t,t.length,t)},zM=function(e,t){return ug(e,t)||DA(e,0,MA,0)},Il=function(e,t,n){if(CA(e,t)){ma(e,n);let r=_M(e,-2);return r===Oa?ft(e,2):dn(e,-2),r}else return Oa},lg=function(e,t,n){return t=Ul(e,t),Il(e,t,n)===Oa?!1:(Ur(e,t),PA(e,1,1),!0)},ZM=function(e,t){rM(e,t);let n=GA(e,-1);return n===!1&&vt(e,S("object length is not an integer",!0)),ft(e,1),n},YM=S("%I"),JM=S("%f"),WM=function(e,t){if(lg(e,t,EM))tM(e,-1)||vt(e,S("'__tostring' must return a string"));else switch(qn(e,t)){case a_:{QI(e,t)?Xe(e,YM,FA(e,t)):Xe(e,JM,xM(e,t));break}case Ds:Ur(e,t);break;case qI:_t(e,VA(e,t)?"true":"false");break;case Oa:_t(e,"nil");break;default:{let r=Il(e,t,i_),a=r===Ds?Xt(e,-1):__(e,t);Xe(e,S("%s: %p"),a,gM(e,t)),r!==Oa&&dn(e,-2);break}}return qA(e,-1)},$M=function(e,t,n,r){og(e,ml,o_),Rl(e,-1,t),VA(e,-1)||(ft(e,1),oM(e,n),ma(e,t),PA(e,1,1),Ur(e,-1),Ks(e,-3,t)),dn(e,-2),r&&(Ur(e,-1),pM(e,t))},QM=function(e,t,n){var r=n>>>0,a=t.length,s=e.length+1-a;e:for(;r<s;r++){for(let u=0;u<a;u++)if(e[r+u]!==t[u])continue e;return r}return-1},LM=function(e,t,n,r){let a,s=new Ol;for(p_(e,s);(a=QM(t,n))>=0;)yl(s,t,a),r_(s,r),t=t.subarray(a+n.length);return r_(s,t),h_(s),Xt(e,-1)},og=function(e,t,n){return Rl(e,t,n)===XI?!0:(ft(e,1),t=Ul(e,t),sM(e),Ur(e,-1),Ks(e,t,n),!1)},ig=function(e,t,n){A_(e,n,S("too many upvalues",!0));for(let r in t){for(let a=0;a<n;a++)Ur(e,-n);lM(e,t[r],n),Ks(e,-(n+2),S(r))}ft(e,n)},A_=function(e,t,n){YI(e,t)||(n?vt(e,S("stack overflow (%s)"),n):vt(e,S("stack overflow",!0)))},e2=function(e){s_(e)},t2=function(e,t){s_(e),ig(e,t,0)},n2=-2,cg=-1,r2=function(e,t){let n;return LI(e,-1)?(ft(e,1),cg):(t=Ul(e,t),t_(e,t,0),n=FA(e,-1),ft(e,1),n!==0?(t_(e,t,n),bl(e,t,0)):n=fM(e,t)+1,bl(e,t,n),n)},a2=function(e,t,n){n>=0&&(t=Ul(e,t),t_(e,t,0),bl(e,t,n),kl(e,n),bl(e,t,0))},gl=function(e,t,n,r){let a=r.message,s=Xt(e,n).subarray(1);return Xe(e,S("cannot %s %s: %s"),S(t),s,S(a)),dn(e,n),XA},Ea,yA=[239,187,191],s2=function(e){e.n=0;let t,n=0;do{if(t=Ea(e),t===null||t!==yA[n])return t;n++,e.buff[e.n++]=t}while(n<yA.length);return e.n=0,Ea(e)},IA=function(e){let t=s2(e);if(t===35){do t=Ea(e);while(t&&t!==10);return{skipped:!0,c:Ea(e)}}else return{skipped:!1,c:t}},El;if(typeof process>"u"){class e{constructor(){this.n=NaN,this.f=null,this.buff=new Uint8Array(1024),this.pos=0,this.err=void 0}}let t=function(n,r){let a=r;if(a.f!==null&&a.n>0){let u=a.n;return a.n=0,a.f=a.f.subarray(a.pos),a.buff.subarray(0,u)}let s=a.f;return a.f=null,s};Ea=function(n){return n.pos<n.f.length?n.f[n.pos++]:null},El=function(n,r,a){let s=new e,u=ba(n)+1;if(r===null)throw new Error("Can't read stdin in the browser");{Xe(n,S("@%s"),r);let i=kM(r),f=new XMLHttpRequest;if(f.open("GET",i,!1),typeof window>"u"&&(f.responseType="arraybuffer"),f.send(),f.status>=200&&f.status<=299)typeof f.response=="string"?s.f=S(f.response):s.f=new Uint8Array(f.response);else return s.err=f.status,gl(n,"open",u,{message:`${f.status}: ${f.statusText}`})}let l=IA(s);l.c===RA[0]&&r||l.skipped&&(s.buff[s.n++]=10),l.c!==null&&(s.buff[s.n++]=l.c);let o=e_(n,t,s,Xt(n,-1),a),c=s.err;return c?(n_(n,u),gl(n,"read",u,c)):(dn(n,u),o)}}else{let e=vr();class t{constructor(){this.n=NaN,this.f=null,this.buff=Buffer.alloc(1024),this.pos=0,this.err=void 0}}let n=function(r,a){let s=a,u=0;if(s.n>0)u=s.n,s.n=0;else{try{u=e.readSync(s.f,s.buff,0,s.buff.length,s.pos)}catch(l){s.err=l,u=0}s.pos+=u}return u>0?s.buff.subarray(0,u):null};Ea=function(r){let a=Buffer.alloc(1),s;try{s=e.readSync(r.f,a,0,1,r.pos)}catch(u){return r.err=u,null}return r.pos+=s,s>0?a.readUInt8():null},El=function(r,a,s){let u=new t,l=ba(r)+1;if(a===null)_t(r,"=stdin"),u.f=process.stdin.fd;else{Xe(r,S("@%s"),a);try{u.f=e.openSync(a,"r")}catch(f){return gl(r,"open",l,f)}}let o=IA(u);o.c===RA[0]&&a||o.skipped&&(u.buff[u.n++]=10),o.c!==null&&(u.buff[u.n++]=o.c);let c=e_(r,n,u,Xt(r,-1),s),i=u.err;if(a)try{e.closeSync(u.f)}catch{}return i?(n_(r,l),gl(r,"read",l,i)):(dn(r,l),c)}}var _g=function(e,t){return El(e,t,null)},u2=function(e,t){return _g(e,t)||DA(e,0,MA,0)},l2=function(){for(let e=0;e<arguments.length;e++){let t=arguments[e];if(typeof process>"u")do{let n=/([^\n]*)\n?([\d\D]*)/.exec(t);console.error(n[1]),t=n[2]}while(t!=="");else process.stderr.write(t)}},fg=function(e,t,n){let r=SA(e);n!=zA&&vt(e,S("core and library have incompatible numeric types")),r!=SA(null)?vt(e,S("multiple Lua VMs detected")):r!==t&&vt(e,S("version mismatch: app. needs %f, Lua core provides %f"),t,r)},o2=function(e){fg(e,zI,zA)};x.exports.LUA_ERRFILE=XA;x.exports.LUA_FILEHANDLE=OM;x.exports.LUA_LOADED_TABLE=o_;x.exports.LUA_NOREF=n2;x.exports.LUA_PRELOAD_TABLE=bM;x.exports.LUA_REFNIL=cg;x.exports.luaL_Buffer=Ol;x.exports.luaL_addchar=qM;x.exports.luaL_addlstring=yl;x.exports.luaL_addsize=d_;x.exports.luaL_addstring=r_;x.exports.luaL_addvalue=jM;x.exports.luaL_argcheck=PM;x.exports.luaL_argerror=va;x.exports.luaL_buffinit=p_;x.exports.luaL_buffinitsize=FM;x.exports.luaL_callmeta=lg;x.exports.luaL_checkany=CM;x.exports.luaL_checkinteger=rg;x.exports.luaL_checklstring=f_;x.exports.luaL_checknumber=ng;x.exports.luaL_checkoption=IM;x.exports.luaL_checkstack=A_;x.exports.luaL_checkstring=LA;x.exports.luaL_checktype=DM;x.exports.luaL_checkudata=yM;x.exports.luaL_checkversion=o2;x.exports.luaL_checkversion_=fg;x.exports.luaL_dofile=u2;x.exports.luaL_dostring=zM;x.exports.luaL_error=vt;x.exports.luaL_execresult=SM;x.exports.luaL_fileresult=$A;x.exports.luaL_getmetafield=Il;x.exports.luaL_getmetatable=Nl;x.exports.luaL_getsubtable=og;x.exports.luaL_gsub=LM;x.exports.luaL_len=ZM;x.exports.luaL_loadbuffer=sg;x.exports.luaL_loadbufferx=ag;x.exports.luaL_loadfile=_g;x.exports.luaL_loadfilex=El;x.exports.luaL_loadstring=ug;x.exports.luaL_newlib=t2;x.exports.luaL_newlibtable=e2;x.exports.luaL_newmetatable=NM;x.exports.luaL_newstate=MM;x.exports.luaL_opt=x_;x.exports.luaL_optinteger=VM;x.exports.luaL_optlstring=eg;x.exports.luaL_optnumber=KM;x.exports.luaL_optstring=tg;x.exports.luaL_prepbuffer=GM;x.exports.luaL_prepbuffsize=Vs;x.exports.luaL_pushresult=h_;x.exports.luaL_pushresultsize=HM;x.exports.luaL_ref=r2;x.exports.luaL_requiref=$M;x.exports.luaL_setfuncs=ig;x.exports.luaL_setmetatable=wM;x.exports.luaL_testudata=QA;x.exports.luaL_tolstring=WM;x.exports.luaL_traceback=UM;x.exports.luaL_typename=__;x.exports.luaL_unref=a2;x.exports.luaL_where=WA;x.exports.lua_writestringerror=l2});var v_=U((J4,Rg)=>{"use strict";var{LUA_MULTRET:T_,LUA_OK:k_,LUA_TFUNCTION:dg,LUA_TNIL:Pl,LUA_TNONE:i2,LUA_TNUMBER:c2,LUA_TSTRING:Dl,LUA_TTABLE:Ra,LUA_VERSION:_2,LUA_YIELD:f2,lua_call:b_,lua_callk:p2,lua_concat:h2,lua_error:xg,lua_getglobal:d2,lua_geti:x2,lua_getmetatable:A2,lua_gettop:Sr,lua_insert:Ag,lua_isnil:g2,lua_isnone:gg,lua_isstring:T2,lua_load:k2,lua_next:b2,lua_pcallk:Tg,lua_pop:O_,lua_pushboolean:Bl,lua_pushcfunction:kg,lua_pushglobaltable:O2,lua_pushinteger:Sa,lua_pushliteral:bg,lua_pushnil:qs,lua_pushstring:E2,lua_pushvalue:Ut,lua_rawequal:m2,lua_rawget:v2,lua_rawlen:U2,lua_rawset:R2,lua_remove:S2,lua_replace:N2,lua_rotate:w2,lua_setfield:pg,lua_setmetatable:y2,lua_settop:xn,lua_setupvalue:I2,lua_stringtonumber:M2,lua_toboolean:P2,lua_tolstring:C2,lua_tostring:Gs,lua_type:Rr,lua_typename:D2}=Ve(),{luaL_argcheck:Hs,luaL_checkany:gt,luaL_checkinteger:E_,luaL_checkoption:B2,luaL_checkstack:K2,luaL_checktype:Nr,luaL_error:Kl,luaL_getmetafield:m_,luaL_loadbufferx:V2,luaL_loadfile:F2,luaL_loadfilex:G2,luaL_optinteger:Og,luaL_optstring:Ua,luaL_setfuncs:q2,luaL_tolstring:H2,luaL_where:j2}=et(),{to_jsstring:Eg,to_luastring:At}=Je(),Fs,Ml;if(typeof process>"u")if(typeof TextDecoder=="function"){let e="",t=new TextDecoder("utf-8");Fs=function(r){e+=t.decode(r,{stream:!0})};let n=new Uint8Array(0);Ml=function(){e+=t.decode(n),console.log(e),e=""}}else{let e=[];Fs=function(t){try{t=Eg(t)}catch{let r=new Uint8Array(t.length);r.set(t),t=r}e.push(t)},Ml=function(){console.log.apply(console.log,e),e=[]}}else Fs=function(e){process.stdout.write(Buffer.from(e))},Ml=function(){process.stdout.write(`
-`)};var X2=function(e){let t=Sr(e);d2(e,At("tostring",!0));for(let n=1;n<=t;n++){Ut(e,-1),Ut(e,n),b_(e,1,1);let r=C2(e,-1);if(r===null)return Kl(e,At("'tostring' must return a string to 'print'"));n>1&&Fs(At("	")),Fs(r),O_(e,1)}return Ml(),0},z2=function(e){return gt(e,1),H2(e,1),1},Z2=function(e){return gt(e,1),A2(e,1)?(m_(e,1,At("__metatable",!0)),1):(qs(e),1)},Y2=function(e){let t=Rr(e,2);return Nr(e,1,Ra),Hs(e,t===Pl||t===Ra,2,"nil or table expected"),m_(e,1,At("__metatable",!0))!==Pl?Kl(e,At("cannot change a protected metatable")):(xn(e,2),y2(e,1),1)},J2=function(e){return gt(e,1),gt(e,2),Bl(e,m2(e,1,2)),1},W2=function(e){let t=Rr(e,1);return Hs(e,t===Ra||t===Dl,1,"table or string expected"),Sa(e,U2(e,1)),1},$2=function(e){return Nr(e,1,Ra),gt(e,2),xn(e,2),v2(e,1),1},Q2=function(e){return Nr(e,1,Ra),gt(e,2),gt(e,3),xn(e,3),R2(e,1),1},L2=["stop","restart","collect","count","step","setpause","setstepmul","isrunning"].map(e=>At(e)),eP=function(e){B2(e,1,"collect",L2),Og(e,2,0),Kl(e,At("lua_gc not implemented"))},tP=function(e){let t=Rr(e,1);return Hs(e,t!==i2,1,"value expected"),E2(e,D2(e,t)),1},nP=function(e,t,n,r){return gt(e,1),m_(e,1,t)===Pl?(kg(e,r),Ut(e,1),n?Sa(e,0):qs(e)):(Ut(e,1),b_(e,1,3)),3},mg=function(e){return Nr(e,1,Ra),xn(e,2),b2(e,1)?2:(qs(e),1)},rP=function(e){return nP(e,At("__pairs",!0),0,mg)},aP=function(e){let t=E_(e,2)+1;return Sa(e,t),x2(e,1,t)===Pl?1:2},sP=function(e){return gt(e,1),kg(e,aP),Ut(e,1),Sa(e,0),3},uP=function(e,t){try{e=Eg(e)}catch{return null}let n=/^[\t\v\f \n\r]*([+-]?)0*([0-9A-Za-z]+)[\t\v\f \n\r]*$/.exec(e);if(!n)return null;let r=parseInt(n[1]+n[2],t);return isNaN(r)?null:r|0},lP=function(e){if(Rr(e,2)<=0){if(gt(e,1),Rr(e,1)===c2)return xn(e,1),1;{let t=Gs(e,1);if(t!==null&&M2(e,t)===t.length+1)return 1}}else{let t=E_(e,2);Nr(e,1,Dl);let n=Gs(e,1);Hs(e,2<=t&&t<=36,2,"base out of range");let r=uP(n,t);if(r!==null)return Sa(e,r),1}return qs(e),1},vg=function(e){let t=Og(e,2,1);return xn(e,1),Rr(e,1)===Dl&&t>0&&(j2(e,t),Ut(e,1),h2(e,2)),xg(e)},oP=function(e){return P2(e,1)?Sr(e):(gt(e,1),S2(e,1),bg(e,"assertion failed!"),xn(e,1),vg(e))},iP=function(e){let t=Sr(e);if(Rr(e,1)===Dl&&Gs(e,1)[0]===35)return Sa(e,t-1),1;{let n=E_(e,1);return n<0?n=t+n:n>t&&(n=t),Hs(e,1<=n,1,"index out of range"),t-n}},Cl=function(e,t,n){return t!==k_&&t!==f2?(Bl(e,0),Ut(e,-2),2):Sr(e)-n},cP=function(e){gt(e,1),Bl(e,1),Ag(e,1);let t=Tg(e,Sr(e)-2,T_,0,0,Cl);return Cl(e,t,0)},_P=function(e){let t=Sr(e);Nr(e,2,dg),Bl(e,1),Ut(e,1),w2(e,3,2);let n=Tg(e,t-2,T_,2,2,Cl);return Cl(e,n,2)},Ug=function(e,t,n){return t===k_?(n!==0&&(Ut(e,n),I2(e,-2,1)||O_(e,1)),1):(qs(e),Ag(e,-2),2)},g_=5,fP=function(e,t){return K2(e,2,"too many nested functions"),Ut(e,1),b_(e,0,1),g2(e,-1)?(O_(e,1),null):(T2(e,-1)||Kl(e,At("reader function must return a string")),N2(e,g_),Gs(e,g_))},pP=function(e){let t=Gs(e,1),n=Ua(e,3,"bt"),r=gg(e,4)?0:4,a;if(t!==null){let s=Ua(e,2,t);a=V2(e,t,t.length,s,n)}else{let s=Ua(e,2,"=(load)");Nr(e,1,dg),xn(e,g_),a=k2(e,fP,null,s,n)}return Ug(e,a,r)},hP=function(e){let t=Ua(e,1,null),n=Ua(e,2,null),r=gg(e,3)?0:3,a=G2(e,t,n);return Ug(e,a,r)},hg=function(e,t,n){return Sr(e)-1},dP=function(e){let t=Ua(e,1,null);return xn(e,1),F2(e,t)!==k_?xg(e):(p2(e,0,T_,0,hg),hg(e,0,0))},xP={assert:oP,collectgarbage:eP,dofile:dP,error:vg,getmetatable:Z2,ipairs:sP,load:pP,loadfile:hP,next:mg,pairs:rP,pcall:cP,print:X2,rawequal:J2,rawget:$2,rawlen:W2,rawset:Q2,select:iP,setmetatable:Y2,tonumber:lP,tostring:z2,type:tP,xpcall:_P},AP=function(e){return O2(e),q2(e,xP,0),Ut(e,-1),pg(e,-2,At("_G")),bg(e,_2),pg(e,-2,At("_VERSION")),1};Rg.exports.luaopen_base=AP});var S_=U((W4,Cg)=>{"use strict";var{LUA_OK:U_,LUA_TFUNCTION:gP,LUA_TSTRING:TP,LUA_YIELD:Ng,lua_Debug:kP,lua_checkstack:Sg,lua_concat:bP,lua_error:OP,lua_getstack:EP,lua_gettop:Na,lua_insert:R_,lua_isyieldable:mP,lua_newthread:vP,lua_pop:UP,lua_pushboolean:Fl,lua_pushcclosure:RP,lua_pushliteral:An,lua_pushthread:SP,lua_pushvalue:NP,lua_resume:wP,lua_status:wg,lua_tothread:yg,lua_type:yP,lua_upvalueindex:IP,lua_xmove:Vl,lua_yield:MP}=Ve(),{luaL_argcheck:PP,luaL_checktype:CP,luaL_newlib:DP,luaL_where:BP}=et(),Ig=function(e){let t=yg(e,1);return PP(e,t,1,"thread expected"),t},Mg=function(e,t,n){if(!Sg(t,n))return An(e,"too many arguments to resume"),-1;if(wg(t)===U_&&Na(t)===0)return An(e,"cannot resume dead coroutine"),-1;Vl(e,t,n);let r=wP(t,e,n);if(r===U_||r===Ng){let a=Na(t);return Sg(e,a+1)?(Vl(t,e,a),a):(UP(t,a),An(e,"too many results to resume"),-1)}else return Vl(t,e,1),-1},KP=function(e){let t=Ig(e),n=Mg(e,t,Na(e)-1);return n<0?(Fl(e,0),R_(e,-2),2):(Fl(e,1),R_(e,-(n+1)),n+1)},VP=function(e){let t=yg(e,IP(1)),n=Mg(e,t,Na(e));return n<0?(yP(e,-1)===TP&&(BP(e,1),R_(e,-2),bP(e,2)),OP(e)):n},Pg=function(e){CP(e,1,gP);let t=vP(e);return NP(e,1),Vl(e,t,1),1},FP=function(e){return Pg(e),RP(e,VP,1),1},GP=function(e){return MP(e,Na(e))},qP=function(e){let t=Ig(e);if(e===t)An(e,"running");else switch(wg(t)){case Ng:An(e,"suspended");break;case U_:{let n=new kP;EP(t,0,n)>0?An(e,"normal"):Na(t)===0?An(e,"dead"):An(e,"suspended");break}default:An(e,"dead");break}return 1},HP=function(e){return Fl(e,mP(e)),1},jP=function(e){return Fl(e,SP(e)),2},XP={create:Pg,isyieldable:HP,resume:KP,running:jP,status:qP,wrap:FP,yield:GP},zP=function(e){return DP(e,XP),1};Cg.exports.luaopen_coroutine=zP});var C_=U(($4,jg)=>{"use strict";var{LUA_MAXINTEGER:w_}=Ye(),{LUA_OPEQ:ZP,LUA_OPLT:YP,LUA_TFUNCTION:JP,LUA_TNIL:WP,LUA_TTABLE:Dg,lua_call:$P,lua_checkstack:QP,lua_compare:Kg,lua_createtable:LP,lua_geti:Ce,lua_getmetatable:eC,lua_gettop:Vg,lua_insert:tC,lua_isnil:nC,lua_isnoneornil:Fg,lua_isstring:rC,lua_pop:Hn,lua_pushinteger:aC,lua_pushnil:sC,lua_pushstring:uC,lua_pushvalue:js,lua_rawget:lC,lua_setfield:oC,lua_seti:gn,lua_settop:iC,lua_toboolean:cC,lua_type:_C}=Ve(),{luaL_Buffer:fC,luaL_addlstring:pC,luaL_addvalue:hC,luaL_argcheck:Zs,luaL_buffinit:dC,luaL_checkinteger:Xs,luaL_checktype:Gg,luaL_error:Ys,luaL_len:qg,luaL_newlib:xC,luaL_opt:AC,luaL_optinteger:Gl,luaL_optlstring:gC,luaL_pushresult:TC,luaL_typename:kC}=et(),bC=Xn(),{to_luastring:jn}=Je(),ql=1,M_=2,Hg=4,P_=ql|M_,N_=function(e,t,n){return uC(e,t),lC(e,-n)!==WP},y_=function(e,t,n){if(_C(e,t)!==Dg){let r=1;eC(e,t)&&(!(n&ql)||N_(e,jn("__index",!0),++r))&&(!(n&M_)||N_(e,jn("__newindex",!0),++r))&&(!(n&Hg)||N_(e,jn("__len",!0),++r))?Hn(e,r):Gg(e,t,Dg)}},Hl=function(e,t,n){return y_(e,t,n|Hg),qg(e,t)},Bg=function(e,t,n){Ce(e,1,n),rC(e,-1)||Ys(e,jn("invalid value (%s) at index %d in table for 'concat'"),kC(e,-1),n),hC(t)},OC=function(e){let t=Hl(e,1,P_)+1,n;switch(Vg(e)){case 2:n=t;break;case 3:{n=Xs(e,2),Zs(e,1<=n&&n<=t,2,"position out of bounds");for(let r=t;r>n;r--)Ce(e,1,r-1),gn(e,1,r);break}default:return Ys(e,"wrong number of arguments to 'insert'")}return gn(e,1,n),0},EC=function(e){let t=Hl(e,1,P_),n=Gl(e,2,t);for(n!==t&&Zs(e,1<=n&&n<=t+1,1,"position out of bounds"),Ce(e,1,n);n<t;n++)Ce(e,1,n+1),gn(e,1,n);return sC(e),gn(e,1,n),1},mC=function(e){let t=Xs(e,2),n=Xs(e,3),r=Xs(e,4),a=Fg(e,5)?1:5;if(y_(e,1,ql),y_(e,a,M_),n>=t){Zs(e,t>0||n<w_+t,3,"too many elements to move");let s=n-t+1;if(Zs(e,r<=w_-s+1,4,"destination wrap around"),r>n||r<=t||a!==1&&Kg(e,1,a,ZP)!==1)for(let u=0;u<s;u++)Ce(e,1,t+u),gn(e,a,r+u);else for(let u=s-1;u>=0;u--)Ce(e,1,t+u),gn(e,a,r+u)}return js(e,a),1},vC=function(e){let t=Hl(e,1,ql),n=gC(e,2,""),r=n.length,a=Gl(e,3,1);t=Gl(e,4,t);let s=new fC;for(dC(e,s);a<t;a++)Bg(e,s,a),pC(s,n,r);return a===t&&Bg(e,s,a),TC(s),1},UC=function(e){let t=Vg(e);LP(e,t,1),tC(e,1);for(let n=t;n>=1;n--)gn(e,1,n);return aC(e,t),oC(e,1,jn("n")),1},RC=function(e){let t=Gl(e,2,1),n=AC(e,Xs,3,qg(e,1));if(t>n)return 0;let r=n-t;if(r>=Number.MAX_SAFE_INTEGER||!QP(e,++r))return Ys(e,jn("too many results to unpack"));for(;t<n;t++)Ce(e,1,t);return Ce(e,1,n),r},SC=function(){return Math.floor(Math.random()*4294967296)},NC=100,wa=function(e,t,n){gn(e,1,t),gn(e,1,n)},zs=function(e,t,n){if(nC(e,2))return Kg(e,t,n,YP);{js(e,2),js(e,t-1),js(e,n-2),$P(e,2,1);let r=cC(e,-1);return Hn(e,1),r}},wC=function(e,t,n){let r=t,a=n-1;for(;;){for(;Ce(e,1,++r),zs(e,-1,-2);)r==n-1&&Ys(e,jn("invalid order function for sorting")),Hn(e,1);for(;Ce(e,1,--a),zs(e,-3,-1);)a<r&&Ys(e,jn("invalid order function for sorting")),Hn(e,1);if(a<r)return Hn(e,1),wa(e,n-1,r),r;wa(e,r,a)}},yC=function(e,t,n){let r=Math.floor((t-e)/4),a=n%(r*2)+(e+r);return bC.lua_assert(e+r<=a&&a<=t-r),a},I_=function(e,t,n,r){for(;t<n;){if(Ce(e,1,t),Ce(e,1,n),zs(e,-1,-2)?wa(e,t,n):Hn(e,2),n-t==1)return;let a;if(n-t<NC||r===0?a=Math.floor((t+n)/2):a=yC(t,n,r),Ce(e,1,a),Ce(e,1,t),zs(e,-2,-1)?wa(e,a,t):(Hn(e,1),Ce(e,1,n),zs(e,-1,-2)?wa(e,a,n):Hn(e,2)),n-t==2)return;Ce(e,1,a),js(e,-1),Ce(e,1,n-1),wa(e,a,n-1),a=wC(e,t,n);let s;a-t<n-a?(I_(e,t,a-1,r),s=a-t,t=a+1):(I_(e,a+1,n,r),s=n-a,n=a-1),(n-t)/128>s&&(r=SC())}},IC=function(e){let t=Hl(e,1,P_);return t>1&&(Zs(e,t<w_,1,"array too big"),Fg(e,2)||Gg(e,2,JP),iC(e,2),I_(e,1,t,0)),0},MC={concat:vC,insert:OC,move:mC,pack:UC,remove:EC,sort:IC,unpack:RC},PC=function(e){return xC(e,MC),1};jg.exports.luaopen_table=PC});var G_=U((Q4,Qg)=>{"use strict";var CC=vr(),{LUA_REGISTRYINDEX:Js,lua_getfield:B_,lua_gettop:DC,lua_isnone:BC,lua_isnoneornil:KC,lua_newuserdata:VC,lua_pop:FC,lua_pushliteral:jl,lua_pushnil:Xg,lua_pushstring:GC,lua_pushvalue:zl,lua_setfield:Xl,lua_tostring:qC,lua_touserdata:HC}=Ve(),{LUA_FILEHANDLE:Zl,luaL_checkany:jC,luaL_checklstring:XC,luaL_checkudata:zC,luaL_error:K_,luaL_fileresult:V_,luaL_newlib:ZC,luaL_newmetatable:YC,luaL_setfuncs:JC,luaL_setmetatable:WC,luaL_testudata:$C}=et(),QC=Xn(),{to_luastring:zt}=Je(),F_="_IO_",LC=F_.length,zg=zt(F_+"input"),Ws=zt(F_+"output"),Yl=function(e){return zC(e,1,Zl)},Jl=function(e){return e.closef===null},eD=function(e){jC(e,1);let t=$C(e,1,Zl);return t===null?Xg(e):Jl(t)?jl(e,"closed file"):jl(e,"file"),1},tD=function(e){let t=Yl(e);return Jl(t)?jl(e,"file (closed)"):GC(e,zt(`file (${t.f.toString()})`)),1},Wl=function(e){let t=Yl(e);return Jl(t)&&K_(e,zt("attempt to use a closed file")),QC.lua_assert(t.f),t.f},nD=function(e){let t=VC(e);return t.f=null,t.closef=null,WC(e,Zl),t},rD=function(e){let t=Yl(e),n=t.closef;return t.closef=null,n(e)},Zg=function(e){return BC(e,1)&&B_(e,Js,Ws),Wl(e),rD(e)},Yg=function(e,t){B_(e,Js,t);let n=HC(e,-1);return Jl(n)&&K_(e,zt("standard %s file is closed"),t.subarray(LC)),n.f},Jg=function(e,t,n){return KC(e,1)||(qC(e,1)?K_(e,zt("opening files not yet implemented")):(Wl(e),zl(e,1)),Xl(e,Js,t)),B_(e,Js,t),1},aD=function(e){return Jg(e,zg,"r")},sD=function(e){return Jg(e,Ws,"w")},uD=process.versions.node>6?e=>e:e=>Buffer.from(e.buffer,e.byteOffset,e.byteLength),Wg=function(e,t,n){let r=DC(e)-n,a=!0,s;for(;r--;n++){let u=XC(e,n);try{a=a&&CC.writeSync(t.fd,uD(u),0,u.length)===u.length}catch(l){a=!1,s=l}}return a?1:V_(e,a,null,s)},lD=function(e){return Wg(e,Yg(e,Ws),1)},oD=function(e){let t=Wl(e);return zl(e,1),Wg(e,t,2)},iD=function(e){return Yg(e,Ws),V_(e,!0,null,null)},cD=function(e){return Wl(e),V_(e,!0,null,null)},_D={close:Zg,flush:iD,input:aD,output:sD,type:eD,write:lD},fD={close:Zg,flush:cD,write:oD,__tostring:tD},pD=function(e){YC(e,Zl),zl(e,-1),Xl(e,-2,zt("__index",!0)),JC(e,fD,0),FC(e,1)},$g=function(e){let t=Yl(e);return t.closef=$g,Xg(e),jl(e,"cannot close standard file"),2},D_=function(e,t,n,r){let a=nD(e);a.f=t,a.closef=$g,n!==null&&(zl(e,-1),Xl(e,Js,n)),Xl(e,-2,r)},hD=function(e){return ZC(e,_D),pD(e),D_(e,process.stdin,zg,zt("stdin")),D_(e,process.stdout,Ws,zt("stdout")),D_(e,process.stderr,null,zt("stderr")),1};Qg.exports.luaopen_io=hD});var $l=U((L4,Lg)=>{Lg.exports={sep:"/",delimiter:":",join:(...e)=>e.filter(t=>t&&t.length).join("/"),resolve:(...e)=>e.filter(t=>t&&t.length).join("/"),dirname:e=>e.replace(/\/[^/]*$/,"")||"/",basename:e=>e.replace(/.*\//,""),extname:e=>{let t=/\.[^./]*$/.exec(e);return t?t[0]:""}}});var q_=U((eq,e1)=>{e1.exports={randomBytes:e=>new Uint8Array(e),getRandomValues:e=>e}});var r1=U((tq,n1)=>{"use strict";var t1=process.platform==="win32",dD=t1?/[^:]\\$/:/.\/$/;n1.exports=function(){var e;return t1?e=process.env.TEMP||process.env.TMP||(process.env.SystemRoot||process.env.windir)+"\\temp":e=process.env.TMPDIR||process.env.TMP||process.env.TEMP||"/tmp",dD.test(e)&&(e=e.slice(0,-1)),e}});var g1=U((nq,Tn)=>{var De=vr(),H_=$l(),a1=q_(),xD=r1(),Zt=process.binding("constants"),j_=xD(),s1="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",z_=/XXXXXX/,l1=3,o1=(Zt.O_CREAT||Zt.fs.O_CREAT)|(Zt.O_EXCL||Zt.fs.O_EXCL)|(Zt.O_RDWR||Zt.fs.O_RDWR),AD=Zt.EBADF||Zt.os.errno.EBADF,gD=Zt.ENOENT||Zt.os.errno.ENOENT,i1=448,c1=384,ya=[],_1=!1,Z_=!1;function u1(e){var t=[],n=null;try{n=a1.randomBytes(e)}catch{n=a1.pseudoRandomBytes(e)}for(var r=0;r<e;r++)t.push(s1[n[r]%s1.length]);return t.join("")}function f1(e){return typeof e>"u"}function Ia(e,t){return typeof e=="function"?[t||{},e]:f1(e)?[{},t]:[e,t]}function p1(e){if(e.name)return H_.join(e.dir||j_,e.name);if(e.template)return e.template.replace(z_,u1(6));let t=[e.prefix||"tmp-",process.pid,u1(12),e.postfix||""].join("");return H_.join(e.dir||j_,t)}function Y_(e,t){var n=Ia(e,t),r=n[0],a=n[1],s=r.name?1:r.tries||l1;if(isNaN(s)||s<0)return a(new Error("Invalid tries"));if(r.template&&!r.template.match(z_))return a(new Error("Invalid template provided"));(function u(){let l=p1(r);De.stat(l,function(o){if(!o)return s-- >0?u():a(new Error("Could not get a unique tmp filename, max tries reached "+l));a(null,l)})})()}function J_(e){var t=Ia(e),n=t[0],r=n.name?1:n.tries||l1;if(isNaN(r)||r<0)throw new Error("Invalid tries");if(n.template&&!n.template.match(z_))throw new Error("Invalid template provided");do{let a=p1(n);try{De.statSync(a)}catch{return a}}while(r-- >0);throw new Error("Could not get a unique tmp filename, max tries reached")}function TD(e,t){var n=Ia(e,t),r=n[0],a=n[1];r.postfix=f1(r.postfix)?".tmp":r.postfix,Y_(r,function(u,l){if(u)return a(u);De.open(l,o1,r.mode||c1,function(c,i){if(c)return a(c);if(r.discardDescriptor)return De.close(i,function(T){if(T){try{De.unlinkSync(l)}catch(v){X_(v)||(T=v)}return a(T)}a(null,l,void 0,Ll(l,-1,r))});if(r.detachDescriptor)return a(null,l,i,Ll(l,-1,r));a(null,l,i,Ll(l,i,r))})})}function kD(e){var t=Ia(e),n=t[0];n.postfix=n.postfix||".tmp";let r=n.discardDescriptor||n.detachDescriptor,a=J_(n);var s=De.openSync(a,o1,n.mode||c1);return n.discardDescriptor&&(De.closeSync(s),s=void 0),{name:a,fd:s,removeCallback:Ll(a,r?-1:s,n)}}function bD(e){let t=[e];do{for(var n=t.pop(),r=!1,a=De.readdirSync(n),s=0,u=a.length;s<u;s++){var l=H_.join(n,a[s]),o=De.lstatSync(l);o.isDirectory()?(r||(r=!0,t.push(n)),t.push(l)):De.unlinkSync(l)}r||De.rmdirSync(n)}while(t.length!==0)}function OD(e,t){var n=Ia(e,t),r=n[0],a=n[1];Y_(r,function(u,l){if(u)return a(u);De.mkdir(l,r.mode||i1,function(c){if(c)return a(c);a(null,l,h1(l,r))})})}function ED(e){var t=Ia(e),n=t[0];let r=J_(n);return De.mkdirSync(r,n.mode||i1),{name:r,removeCallback:h1(r,n)}}function Ll(e,t,n){let r=d1(function(s){try{0<=s[0]&&De.closeSync(s[0])}catch(u){if(!mD(u)&&!X_(u))throw u}try{De.unlinkSync(s[1])}catch(u){if(!X_(u))throw u}},[t,e]);return n.keep||ya.unshift(r),r}function h1(e,t){let n=t.unsafeCleanup?bD:De.rmdirSync.bind(De),r=d1(n,e);return t.keep||ya.unshift(r),r}function d1(e,t){var n=!1;return function r(a){if(!n){let s=ya.indexOf(r);s>=0&&ya.splice(s,1),n=!0,e(t)}a&&a(null)}}function x1(){if(!(Z_&&!_1))for(;ya.length;)try{ya[0].call(null)}catch{}}function mD(e){return A1(e,-AD,"EBADF")}function X_(e){return A1(e,-gD,"ENOENT")}function A1(e,t,n){return e.code==t||e.code==n}function vD(){_1=!0}var Ql=process.versions.node.split(".").map(function(e){return parseInt(e,10)});Ql[0]===0&&(Ql[1]<9||Ql[1]===9&&Ql[2]<5)&&process.addListener("uncaughtException",function(t){throw Z_=!0,x1(),t});process.addListener("exit",function(t){t&&(Z_=!0),x1()});Tn.exports.tmpdir=j_;Tn.exports.dir=OD;Tn.exports.dirSync=ED;Tn.exports.file=TD;Tn.exports.fileSync=kD;Tn.exports.tmpName=Y_;Tn.exports.tmpNameSync=J_;Tn.exports.setGracefulCleanup=vD});var W_=U((rq,T1)=>{var eo=()=>{throw new Error("child_process unavailable in the shell")};T1.exports={exec:eo,execSync:eo,spawn:eo,spawnSync:eo}});var L_=U((aq,R1)=>{"use strict";var{LUA_TNIL:UD,LUA_TTABLE:RD,lua_close:SD,lua_createtable:ND,lua_getfield:wD,lua_isboolean:yD,lua_isnoneornil:m1,lua_pop:ID,lua_pushboolean:MD,lua_pushfstring:PD,lua_pushinteger:v1,lua_pushliteral:CD,lua_pushnil:DD,lua_pushnumber:$_,lua_pushstring:BD,lua_setfield:KD,lua_settop:VD,lua_toboolean:k1,lua_tointegerx:FD}=Ve(),{luaL_Buffer:GD,luaL_addchar:kn,luaL_addstring:pt,luaL_argerror:qD,luaL_buffinit:HD,luaL_checkinteger:jD,luaL_checkstring:to,luaL_checktype:XD,luaL_error:no,luaL_execresult:b1,luaL_fileresult:$s,luaL_newlib:zD,luaL_optinteger:ZD,luaL_optlstring:YD,luaL_optstring:JD,luaL_pushresult:WD}=et(),{luastring_eq:$D,to_jsstring:QD,to_luastring:H}=Je(),LD=H("aAbBcCdDeFhHIjklmMnpPrRStTuUwWxXyYzZ%"),zn=function(e,t,n){v1(e,n),KD(e,-2,H(t,!0))},U1=function(e,t,n){zn(e,"sec",n?t.getUTCSeconds():t.getSeconds()),zn(e,"min",n?t.getUTCMinutes():t.getMinutes()),zn(e,"hour",n?t.getUTCHours():t.getHours()),zn(e,"day",n?t.getUTCDate():t.getDate()),zn(e,"month",(n?t.getUTCMonth():t.getMonth())+1),zn(e,"year",n?t.getUTCFullYear():t.getFullYear()),zn(e,"wday",(n?t.getUTCDay():t.getDay())+1),zn(e,"yday",Math.floor((t-new Date(t.getFullYear(),0,0))/864e5))},O1=Number.MAX_SAFE_INTEGER/2,Ma=function(e,t,n,r){let a=wD(e,-1,H(t,!0)),s=FD(e,-1);if(s===!1){if(a!==UD)return no(e,H("field '%s' is not an integer"),t);if(n<0)return no(e,H("field '%s' missing in date table"),t);s=n}else{if(!(-O1<=s&&s<=O1))return no(e,H("field '%s' is out-of-bound"),t);s-=r}return ID(e,1),s},Fe={days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"].map(e=>H(e)),shortDays:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(e=>H(e)),months:["January","February","March","April","May","June","July","August","September","October","November","December"].map(e=>H(e)),shortMonths:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].map(e=>H(e)),AM:H("AM"),PM:H("PM"),am:H("am"),pm:H("pm"),formats:{c:H("%a %b %e %H:%M:%S %Y"),D:H("%m/%d/%y"),F:H("%Y-%m-%d"),R:H("%H:%M"),r:H("%I:%M:%S %p"),T:H("%H:%M:%S"),X:H("%T"),x:H("%D")}},E1=function(e,t){let n=e.getDay();t==="monday"&&(n===0?n=6:n--);let r=(e-new Date(e.getFullYear(),0,1))/864e5;return Math.floor((r+7-n)/7)},ze=function(e,t,n){t<10&&kn(e,n),pt(e,H(String(t)))},bn=function(e,t,n,r){let a=0;for(;a<n.length;)if(n[a]!==37)kn(t,n[a++]);else{a++;let s=eB(e,n,a);switch(n[a]){case 37:kn(t,37);break;case 65:pt(t,Fe.days[r.getDay()]);break;case 66:pt(t,Fe.months[r.getMonth()]);break;case 67:ze(t,Math.floor(r.getFullYear()/100),48);break;case 68:bn(e,t,Fe.formats.D,r);break;case 70:bn(e,t,Fe.formats.F,r);break;case 72:ze(t,r.getHours(),48);break;case 73:ze(t,(r.getHours()+11)%12+1,48);break;case 77:ze(t,r.getMinutes(),48);break;case 80:pt(t,r.getHours()<12?Fe.am:Fe.pm);break;case 82:bn(e,t,Fe.formats.R,r);break;case 83:ze(t,r.getSeconds(),48);break;case 84:bn(e,t,Fe.formats.T,r);break;case 85:ze(t,E1(r,"sunday"),48);break;case 87:ze(t,E1(r,"monday"),48);break;case 88:bn(e,t,Fe.formats.X,r);break;case 89:pt(t,H(String(r.getFullYear())));break;case 90:{let u=r.toString().match(/\(([\w\s]+)\)/);u&&pt(t,H(u[1]));break}case 97:pt(t,Fe.shortDays[r.getDay()]);break;case 98:case 104:pt(t,Fe.shortMonths[r.getMonth()]);break;case 99:bn(e,t,Fe.formats.c,r);break;case 100:ze(t,r.getDate(),48);break;case 101:ze(t,r.getDate(),32);break;case 106:{let u=Math.floor((r-new Date(r.getFullYear(),0,1))/864e5);u<100&&(u<10&&kn(t,48),kn(t,48)),pt(t,H(String(u)));break}case 107:ze(t,r.getHours(),32);break;case 108:ze(t,(r.getHours()+11)%12+1,32);break;case 109:ze(t,r.getMonth()+1,48);break;case 110:kn(t,10);break;case 112:pt(t,r.getHours()<12?Fe.AM:Fe.PM);break;case 114:bn(e,t,Fe.formats.r,r);break;case 115:pt(t,H(String(Math.floor(r/1e3))));break;case 116:kn(t,8);break;case 117:{let u=r.getDay();pt(t,H(String(u===0?7:u)));break}case 119:pt(t,H(String(r.getDay())));break;case 120:bn(e,t,Fe.formats.x,r);break;case 121:ze(t,r.getFullYear()%100,48);break;case 122:{let u=r.getTimezoneOffset();u>0?kn(t,45):(u=-u,kn(t,43)),ze(t,Math.floor(u/60),48),ze(t,u%60,48);break}}a+=s}},eB=function(e,t,n){let r=LD,a=0,s=1;for(;a<r.length&&s<=t.length-n;a+=s)if(r[a]===124)s++;else if($D(t.subarray(n,n+s),r.subarray(a,a+s)))return s;qD(e,1,PD(e,H("invalid conversion specifier '%%%s'"),t))},tB=function(e){let t=YD(e,1,"%c"),n=m1(e,2)?new Date:new Date(Q_(e,2)*1e3),r=!1,a=0;if(t[a]===33&&(r=!0,a++),t[a]===42&&t[a+1]===116)ND(e,0,9),U1(e,n,r);else{let s=new Uint8Array(4);s[0]=37;let u=new GD;HD(e,u),bn(e,u,t,n),WD(u)}return 1},nB=function(e){let t;return m1(e,1)?t=new Date:(XD(e,1,RD),VD(e,1),t=new Date(Ma(e,"year",-1,0),Ma(e,"month",-1,1),Ma(e,"day",-1,0),Ma(e,"hour",12,0),Ma(e,"min",0,0),Ma(e,"sec",0,0)),U1(e,t)),v1(e,Math.floor(t/1e3)),1},Q_=function(e,t){return jD(e,t)},rB=function(e){let t=Q_(e,1),n=Q_(e,2);return $_(e,t-n),1},On={date:tB,difftime:rB,time:nB};if(typeof process>"u")On.clock=function(e){return $_(e,performance.now()/1e3),1};else{let e=vr(),t=g1(),n=W_();On.exit=function(a){let s;return yD(a,1)?s=k1(a,1)?0:1:s=ZD(a,1,0),k1(a,2)&&SD(a),a&&process.exit(s),0},On.getenv=function(a){let s=to(a,1);return s=QD(s),Object.prototype.hasOwnProperty.call(process.env,s)?CD(a,process.env[s]):DD(a),1},On.clock=function(a){return $_(a,process.uptime()),1};let r=function(){return t.tmpNameSync()};On.remove=function(a){let s=to(a,1);try{e.unlinkSync(s)}catch(u){if(u.code==="EISDIR")try{e.rmdirSync(s)}catch(l){return $s(a,!1,s,l)}else return $s(a,!1,s,u)}return $s(a,!0)},On.rename=function(a){let s=to(a,1),u=to(a,2);try{e.renameSync(s,u)}catch(l){return $s(a,!1,!1,l)}return $s(a,!0)},On.tmpname=function(a){let s=r();return s?(BD(a,H(s)),1):no(a,H("unable to generate a unique filename"))},On.execute=function(a){let s=JD(a,1,null);if(s!==null){try{n.execSync(s,{stdio:[process.stdin,process.stdout,process.stderr]})}catch(u){return b1(a,u)}return b1(a,null)}else return MD(a,1),1}}var aB=function(e){return zD(e,On),1};R1.exports.luaopen_os=aB});var S1=U(ro=>{(function(){"use strict";var e={not_string:/[^s]/,not_bool:/[^t]/,not_type:/[^T]/,not_primitive:/[^v]/,number:/[diefg]/,numeric_arg:/[bcdiefguxX]/,json:/[j]/,not_json:/[^j]/,text:/^[^\x25]+/,modulo:/^\x25{2}/,placeholder:/^\x25(?:([1-9]\d*)\$|\(([^)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-gijostTuvxX])/,key:/^([a-z_][a-z_\d]*)/i,key_access:/^\.([a-z_][a-z_\d]*)/i,index_access:/^\[(\d+)\]/,sign:/^[+-]/};function t(u){return r(s(u),arguments)}function n(u,l){return t.apply(null,[u].concat(l||[]))}function r(u,l){var o=1,c=u.length,i,f="",T,v,O,nt,Rn,Tt,Hr,yt;for(T=0;T<c;T++)if(typeof u[T]=="string")f+=u[T];else if(typeof u[T]=="object"){if(O=u[T],O.keys)for(i=l[o],v=0;v<O.keys.length;v++){if(i==null)throw new Error(t('[sprintf] Cannot access property "%s" of undefined value "%s"',O.keys[v],O.keys[v-1]));i=i[O.keys[v]]}else O.param_no?i=l[O.param_no]:i=l[o++];if(e.not_type.test(O.type)&&e.not_primitive.test(O.type)&&i instanceof Function&&(i=i()),e.numeric_arg.test(O.type)&&typeof i!="number"&&isNaN(i))throw new TypeError(t("[sprintf] expecting number but found %T",i));switch(e.number.test(O.type)&&(Hr=i>=0),O.type){case"b":i=parseInt(i,10).toString(2);break;case"c":i=String.fromCharCode(parseInt(i,10));break;case"d":case"i":i=parseInt(i,10);break;case"j":i=JSON.stringify(i,null,O.width?parseInt(O.width):0);break;case"e":i=O.precision?parseFloat(i).toExponential(O.precision):parseFloat(i).toExponential();break;case"f":i=O.precision?parseFloat(i).toFixed(O.precision):parseFloat(i);break;case"g":i=O.precision?String(Number(i.toPrecision(O.precision))):parseFloat(i);break;case"o":i=(parseInt(i,10)>>>0).toString(8);break;case"s":i=String(i),i=O.precision?i.substring(0,O.precision):i;break;case"t":i=String(!!i),i=O.precision?i.substring(0,O.precision):i;break;case"T":i=Object.prototype.toString.call(i).slice(8,-1).toLowerCase(),i=O.precision?i.substring(0,O.precision):i;break;case"u":i=parseInt(i,10)>>>0;break;case"v":i=i.valueOf(),i=O.precision?i.substring(0,O.precision):i;break;case"x":i=(parseInt(i,10)>>>0).toString(16);break;case"X":i=(parseInt(i,10)>>>0).toString(16).toUpperCase();break}e.json.test(O.type)?f+=i:(e.number.test(O.type)&&(!Hr||O.sign)?(yt=Hr?"+":"-",i=i.toString().replace(e.sign,"")):yt="",Rn=O.pad_char?O.pad_char==="0"?"0":O.pad_char.charAt(1):" ",Tt=O.width-(yt+i).length,nt=O.width&&Tt>0?Rn.repeat(Tt):"",f+=O.align?yt+i+nt:Rn==="0"?yt+nt+i:nt+yt+i)}return f}var a=Object.create(null);function s(u){if(a[u])return a[u];for(var l=u,o,c=[],i=0;l;){if((o=e.text.exec(l))!==null)c.push(o[0]);else if((o=e.modulo.exec(l))!==null)c.push("%");else if((o=e.placeholder.exec(l))!==null){if(o[2]){i|=1;var f=[],T=o[2],v=[];if((v=e.key.exec(T))!==null)for(f.push(v[1]);(T=T.substring(v[0].length))!=="";)if((v=e.key_access.exec(T))!==null)f.push(v[1]);else if((v=e.index_access.exec(T))!==null)f.push(v[1]);else throw new SyntaxError("[sprintf] failed to parse named argument key");else throw new SyntaxError("[sprintf] failed to parse named argument key");o[2]=f}else i|=2;if(i===3)throw new Error("[sprintf] mixing positional and named placeholders is not (yet) supported");c.push({placeholder:o[0],param_no:o[1],keys:o[2],sign:o[3],pad_char:o[4],align:o[5],width:o[6],precision:o[7],type:o[8]})}else throw new SyntaxError("[sprintf] unexpected placeholder");l=l.substring(o[0].length)}return a[u]=c}typeof ro<"u"&&(ro.sprintf=t,ro.vsprintf=n),typeof window<"u"&&(window.sprintf=t,window.vsprintf=n,typeof define=="function"&&define.amd&&define(function(){return{sprintf:t,vsprintf:n}}))})()});var Sf=U((uq,lT)=>{"use strict";var{sprintf:Ca}=S1(),{LUA_INTEGER_FMT:sB,LUA_INTEGER_FRMLEN:Qs,LUA_MININTEGER:uB,LUA_NUMBER_FMT:lB,LUA_NUMBER_FRMLEN:oB,frexp:iB,lua_getlocaledecpoint:cB}=Ye(),{LUA_TBOOLEAN:_B,LUA_TFUNCTION:df,LUA_TNIL:fB,LUA_TNUMBER:q1,LUA_TSTRING:H1,LUA_TTABLE:j1,lua_call:pB,lua_createtable:hB,lua_dump:dB,lua_gettable:xB,lua_gettop:X1,lua_isinteger:AB,lua_isstring:gB,lua_pop:uo,lua_pushcclosure:TB,lua_pushinteger:St,lua_pushlightuserdata:kB,lua_pushliteral:xf,lua_pushlstring:rf,lua_pushnil:af,lua_pushnumber:bB,lua_pushstring:wr,lua_pushvalue:sf,lua_remove:OB,lua_setfield:EB,lua_setmetatable:mB,lua_settop:z1,lua_toboolean:Af,lua_tointeger:vB,lua_tonumber:UB,lua_tostring:Z1,lua_touserdata:RB,lua_type:Y1,lua_upvalueindex:SB}=Ve(),{luaL_Buffer:Fa,luaL_addchar:Ze,luaL_addlstring:Da,luaL_addsize:J1,luaL_addstring:Pa,luaL_addvalue:eu,luaL_argcheck:Rt,luaL_argerror:yr,luaL_buffinit:oo,luaL_buffinitsize:W1,luaL_checkinteger:Ir,luaL_checknumber:uf,luaL_checkstack:gf,luaL_checkstring:ie,luaL_checktype:NB,luaL_error:re,luaL_newlib:wB,luaL_optinteger:Ba,luaL_optstring:yB,luaL_prepbuffsize:$1,luaL_pushresult:io,luaL_pushresultsize:Q1,luaL_tolstring:Tf,luaL_typename:IB}=et(),L1=Xn(),{luastring_eq:eT,luastring_indexOf:Wn,to_jsstring:MB,to_luastring:w}=Je(),PB="%",Jt=PB.charCodeAt(0),CB=32,kf=2147483647,DB=function(e){let t=Wn(e,0);return t>-1?t:e.length},Ka=function(e,t){return e>=0?e:0-e>t?0:t+e+1},BB=function(e){let t=ie(e,1),n=t.length,r=Ka(Ir(e,2),n),a=Ka(Ba(e,3,-1),n);return r<1&&(r=1),a>n&&(a=n),r<=a?wr(e,t.subarray(r-1,r-1+(a-r+1))):xf(e,""),1},KB=function(e){return St(e,ie(e,1).length),1},VB=function(e){let t=X1(e),n=new Fa,r=W1(e,n,t);for(let a=1;a<=t;a++){let s=Ir(e,a);Rt(e,s>=0&&s<=255,"value out of range"),r[a-1]=s}return Q1(n,t),1},FB=function(e,t,n,r){return Da(r,t,n),0},GB=function(e){let t=new Fa,n=Af(e,2);return NB(e,1,df),z1(e,1),oo(e,t),dB(e,FB,t,n)!==0?re(e,w("unable to dump given function")):(io(t),1)},N1=oB.length+1,w1=1,qB=function(e){if(Object.is(e,1/0))return w("inf");if(Object.is(e,-1/0))return w("-inf");if(Number.isNaN(e))return w("nan");if(e===0){let t=Ca(lB+"x0p+0",e);return Object.is(e,-0)&&(t="-"+t),w(t)}else{let t="",n=iB(e),r=n[0],a=n[1];return r<0&&(t+="-",r=-r),t+="0x",t+=(r*(1<<w1)).toString(16),a-=w1,t+=Ca("p%+d",a),w(t)}},tT=function(e,t,n){let r=qB(n);if(t[N1]===65)for(let a=0;a<r.length;a++){let s=r[a];s>=97&&(r[a]=s&223)}else t[N1]!==97&&re(e,w("modifiers for format '%%a'/'%%A' not implemented"));return r},y1=w("-+ #0"),I1=e=>97<=e&&e<=122||65<=e&&e<=90,Yt=e=>48<=e&&e<=57,lf=e=>0<=e&&e<=31||e===127,of=e=>33<=e&&e<=126,cf=e=>97<=e&&e<=122,_f=e=>65<=e&&e<=90,ff=e=>97<=e&&e<=122||65<=e&&e<=90||48<=e&&e<=57,M1=e=>of(e)&&!ff(e),P1=e=>e===32||e>=9&&e<=13,C1=e=>48<=e&&e<=57||65<=e&&e<=70||97<=e&&e<=102,HB=function(e,t,n){Ze(e,34);let r=0;for(;n--;){if(t[r]===34||t[r]===92||t[r]===10)Ze(e,92),Ze(e,t[r]);else if(lf(t[r])){let a=""+t[r];Yt(t[r+1])&&(a="0".repeat(3-a.length)+a),Pa(e,w("\\"+a))}else Ze(e,t[r]);r++}Ze(e,34)},jB=function(e){if(Wn(e,46)<0){let t=cB(),n=Wn(e,t);n&&(e[n]=46)}},XB=function(e,t,n){switch(Y1(e,n)){case H1:{let r=Z1(e,n);HB(t,r,r.length);break}case q1:{let r;if(AB(e,n)){let a=vB(e,n),s=a===uB?"0x%"+Qs+"x":sB;r=w(Ca(s,a))}else{let a=UB(e,n);r=tT(e,w(`%${Qs}a`),a),jB(r)}Pa(t,r);break}case fB:case _B:{Tf(e,n),eu(t);break}default:yr(e,n,w("value has no literal form"))}},zB=function(e,t,n,r){let a=n;for(;t[a]!==0&&Wn(y1,t[a])>=0;)a++;a-n>=y1.length&&re(e,w("invalid format (repeated flags)")),Yt(t[a])&&a++,Yt(t[a])&&a++,t[a]===46&&(a++,Yt(t[a])&&a++,Yt(t[a])&&a++),Yt(t[a])&&re(e,w("invalid format (width or precision too long)")),r[0]=37;for(let s=0;s<a-n+1;s++)r[s+1]=t[n+s];return a},ef=function(e,t){let n=e.length,r=t.length,a=e[n-1];for(let s=0;s<r;s++)e[s+n-1]=t[s];e[n+r-1]=a},ZB=function(e){let t=X1(e),n=1,r=ie(e,n),a=0,s=new Fa;for(oo(e,s);a<r.length;)if(r[a]!==Jt)Ze(s,r[a++]);else if(r[++a]===Jt)Ze(s,r[a++]);else{let u=[];switch(++n>t&&yr(e,n,w("no value")),a=zB(e,r,a,u),String.fromCharCode(r[a++])){case"c":{Ze(s,Ir(e,n));break}case"d":case"i":case"o":case"u":case"x":case"X":{let l=Ir(e,n);ef(u,w(Qs,!0)),Pa(s,w(Ca(String.fromCharCode(...u),l)));break}case"a":case"A":{ef(u,w(Qs,!0)),Pa(s,tT(e,u,uf(e,n)));break}case"e":case"E":case"f":case"g":case"G":{let l=uf(e,n);ef(u,w(Qs,!0)),Pa(s,w(Ca(String.fromCharCode(...u),l)));break}case"q":{XB(e,s,n);break}case"s":{let l=Tf(e,n);u.length<=2||u[2]===0?eu(s):(Rt(e,l.length===DB(l),n,"string contains zeros"),Wn(u,46)<0&&l.length>=100?eu(s):(Pa(s,w(Ca(String.fromCharCode(...u),MB(l)))),uo(e,1)));break}default:return re(e,w("invalid option '%%%c' to 'format'"),r[a-1])}}return io(s),1},tf=0,D1=16,Jn=4,Va=8,so=(1<<Va)-1,YB=8,tu=class{constructor(t){this.L=t,this.islittle=!0,this.maxalign=1}},Yn=0,Zn=1,Ls=2,nu=3,co=4,_o=5,bf=6,fo=7,Of=8,B1=Yt,nT=function(e,t){if(e.off>=e.s.length||!B1(e.s[e.off]))return t;{let n=0;do n=n*10+(e.s[e.off++]-48);while(e.off<e.s.length&&B1(e.s[e.off])&&n<=(kf-9)/10);return n}},ao=function(e,t,n){let r=nT(t,n);return(r>D1||r<=0)&&re(e.L,w("integral size (%d) out of limits [1,%d]"),r,D1),r},K1=function(e,t){let n={opt:t.s[t.off++],size:0};switch(n.opt){case 98:return n.size=1,n.opt=Yn,n;case 66:return n.size=1,n.opt=Zn,n;case 104:return n.size=2,n.opt=Yn,n;case 72:return n.size=2,n.opt=Zn,n;case 108:return n.size=4,n.opt=Yn,n;case 76:return n.size=4,n.opt=Zn,n;case 106:return n.size=4,n.opt=Yn,n;case 74:return n.size=4,n.opt=Zn,n;case 84:return n.size=4,n.opt=Zn,n;case 102:return n.size=4,n.opt=Ls,n;case 100:return n.size=8,n.opt=Ls,n;case 110:return n.size=8,n.opt=Ls,n;case 105:return n.size=ao(e,t,4),n.opt=Yn,n;case 73:return n.size=ao(e,t,4),n.opt=Zn,n;case 115:return n.size=ao(e,t,4),n.opt=co,n;case 99:return n.size=nT(t,-1),n.size===-1&&re(e.L,w("missing size for format option 'c'")),n.opt=nu,n;case 122:return n.opt=_o,n;case 120:return n.size=1,n.opt=bf,n;case 88:return n.opt=fo,n;case 32:break;case 60:e.islittle=!0;break;case 62:e.islittle=!1;break;case 61:e.islittle=!0;break;case 33:e.maxalign=ao(e,t,YB);break;default:re(e.L,w("invalid format option '%c'"),n.opt)}return n.opt=Of,n},Ef=function(e,t,n){let r={opt:NaN,size:NaN,ntoalign:NaN},a=K1(e,n);r.size=a.size,r.opt=a.opt;let s=r.size;if(r.opt===fo)if(n.off>=n.s.length||n.s[n.off]===0)yr(e.L,1,w("invalid next option for option 'X'"));else{let u=K1(e,n);s=u.size,u=u.opt,(u===nu||s===0)&&yr(e.L,1,w("invalid next option for option 'X'"))}return s<=1||r.opt===nu?r.ntoalign=0:(s>e.maxalign&&(s=e.maxalign),s&s-1&&yr(e.L,1,w("format asks for alignment not power of 2")),r.ntoalign=s-(t&s-1)&s-1),r},nf=function(e,t,n,r,a){let s=$1(e,r);s[n?0:r-1]=t&so;for(let u=1;u<r;u++)t>>=Va,s[n?u:r-1-u]=t&so;if(a&&r>Jn)for(let u=Jn;u<r;u++)s[n?u:r-1-u]=so;J1(e,r)},JB=function(e){let t=new Fa,n=new tu(e),r={s:ie(e,1),off:0},a=1,s=0;for(af(e),oo(e,t);r.off<r.s.length;){let u=Ef(n,s,r),l=u.opt,o=u.size,c=u.ntoalign;for(s+=c+o;c-- >0;)Ze(t,tf);switch(a++,l){case Yn:{let i=Ir(e,a);if(o<Jn){let f=1<<o*8-1;Rt(e,-f<=i&&i<f,a,"integer overflow")}nf(t,i,n.islittle,o,i<0);break}case Zn:{let i=Ir(e,a);o<Jn&&Rt(e,i>>>0<1<<o*Va,a,"unsigned overflow"),nf(t,i>>>0,n.islittle,o,!1);break}case Ls:{let i=$1(t,o),f=uf(e,a),T=new DataView(i.buffer,i.byteOffset,i.byteLength);o===4?T.setFloat32(0,f,n.islittle):T.setFloat64(0,f,n.islittle),J1(t,o);break}case nu:{let i=ie(e,a),f=i.length;for(Rt(e,f<=o,a,"string longer than given size"),Da(t,i,f);f++<o;)Ze(t,tf);break}case co:{let i=ie(e,a),f=i.length;Rt(e,o>=4||f<1<<o*Va,a,"string length does not fit in given size"),nf(t,f,n.islittle,o,0),Da(t,i,f),s+=f;break}case _o:{let i=ie(e,a),f=i.length;Rt(e,Wn(i,0)<0,a,"strings contains zeros"),Da(t,i,f),Ze(t,0),s+=f+1;break}case bf:Ze(t,tf);case fo:case Of:a--;break}}return io(t),1},WB=function(e){let t=ie(e,1),n=t.length,r=new Uint8Array(n);for(let a=0;a<n;a++)r[a]=t[n-1-a];return wr(e,r),1},$B=function(e){let t=ie(e,1),n=t.length,r=new Uint8Array(n);for(let a=0;a<n;a++){let s=t[a];_f(s)&&(s=s|32),r[a]=s}return wr(e,r),1},QB=function(e){let t=ie(e,1),n=t.length,r=new Uint8Array(n);for(let a=0;a<n;a++){let s=t[a];cf(s)&&(s=s&223),r[a]=s}return wr(e,r),1},LB=function(e){let t=ie(e,1),n=t.length,r=Ir(e,2),a=yB(e,3,""),s=a.length;if(r<=0)xf(e,"");else{if(n+s<n||n+s>kf/r)return re(e,w("resulting string too large"));{let u=r*n+(r-1)*s,l=new Fa,o=W1(e,l,u),c=0;for(;r-- >1;)o.set(t,c),c+=n,s>0&&(o.set(a,c),c+=s);o.set(t,c),Q1(l,u)}}return 1},eK=function(e){let t=ie(e,1),n=t.length,r=Ka(Ba(e,2,1),n),a=Ka(Ba(e,3,r),n);if(r<1&&(r=1),a>n&&(a=n),r>a)return 0;if(a-r>=Number.MAX_SAFE_INTEGER)return re(e,"string slice too long");let s=a-r+1;gf(e,s,"string slice too long");for(let u=0;u<s;u++)St(e,t[r+u-1]);return s},tK=function(e){let t=new tu(e),n={s:ie(e,1),off:0},r=0;for(;n.off<n.s.length;){let a=Ef(t,r,n),s=a.opt,u=a.size,l=a.ntoalign;switch(u+=l,Rt(e,r<=kf-u,1,"format result too large"),r+=u,s){case co:case _o:yr(e,1,"variable-length format");default:break}}return St(e,r),1},V1=function(e,t,n,r,a){let s=0,u=r<=Jn?r:Jn;for(let l=u-1;l>=0;l--)s<<=Va,s|=t[n?l:r-1-l];if(r<Jn){if(a){let l=1<<r*Va-1;s=(s^l)-l}}else if(r>Jn){let l=!a||s>=0?0:so;for(let o=u;o<r;o++)t[n?o:r-1-o]!==l&&re(e,w("%d-byte integer does not fit into Lua Integer"),r)}return s},nK=function(e,t,n,r){L1.lua_assert(t.length>=r);let a=new DataView(new ArrayBuffer(r));for(let s=0;s<r;s++)a.setUint8(s,t[s],n);return r==4?a.getFloat32(0,n):a.getFloat64(0,n)},rK=function(e){let t=new tu(e),n={s:ie(e,1),off:0},r=ie(e,2),a=r.length,s=Ka(Ba(e,3,1),a)-1,u=0;for(Rt(e,s<=a&&s>=0,3,"initial position out of string");n.off<n.s.length;){let l=Ef(t,s,n),o=l.opt,c=l.size,i=l.ntoalign;switch(s+i+c>a&&yr(e,2,w("data string too short")),s+=i,gf(e,2,"too many results"),u++,o){case Yn:case Zn:{let f=V1(e,r.subarray(s),t.islittle,c,o===Yn);St(e,f);break}case Ls:{let f=nK(e,r.subarray(s),t.islittle,c);bB(e,f);break}case nu:{wr(e,r.subarray(s,s+c));break}case co:{let f=V1(e,r.subarray(s),t.islittle,c,0);Rt(e,s+f+c<=a,2,"data string too short"),wr(e,r.subarray(s+c,s+c+f)),s+=f;break}case _o:{let f=Wn(r,0,s);f===-1&&(f=r.length-s),wr(e,r.subarray(s,f)),s=f+1;break}case fo:case bf:case Of:u--;break}s+=c}return St(e,s+1),u+1},au=-1,rT=-2,aT=200,aK=w("^$*+?.([%-"),ru=class{constructor(t){this.src=null,this.src_init=null,this.src_end=null,this.p=null,this.p_end=null,this.L=t,this.matchdepth=NaN,this.level=NaN,this.capture=[]}},sK=function(e,t){return t=t-49,t<0||t>=e.level||e.capture[t].len===au?re(e.L,w("invalid capture index %%%d"),t+1):t},uK=function(e){let t=e.level;for(t--;t>=0;t--)if(e.capture[t].len===au)return t;return re(e.L,w("invalid pattern capture"))},F1=function(e,t){switch(e.p[t++]){case Jt:return t===e.p_end&&re(e.L,w("malformed pattern (ends with '%%')")),t+1;case 91:{e.p[t]===94&&t++;do t===e.p_end&&re(e.L,w("malformed pattern (missing ']')")),e.p[t++]===Jt&&t<e.p_end&&t++;while(e.p[t]!==93);return t+1}default:return t}},sT=function(e,t){switch(t){case 97:return I1(e);case 65:return!I1(e);case 99:return lf(e);case 67:return!lf(e);case 100:return Yt(e);case 68:return!Yt(e);case 103:return of(e);case 71:return!of(e);case 108:return cf(e);case 76:return!cf(e);case 112:return M1(e);case 80:return!M1(e);case 115:return P1(e);case 83:return!P1(e);case 117:return _f(e);case 85:return!_f(e);case 119:return ff(e);case 87:return!ff(e);case 120:return C1(e);case 88:return!C1(e);case 122:return e===0;case 90:return e!==0;default:return t===e}},pf=function(e,t,n,r){let a=!0;for(e.p[n+1]===94&&(a=!1,n++);++n<r;)if(e.p[n]===Jt){if(n++,sT(t,e.p[n]))return a}else if(e.p[n+1]===45&&n+2<r){if(n+=2,e.p[n-2]<=t&&t<=e.p[n])return a}else if(e.p[n]===t)return a;return!a},mf=function(e,t,n,r){if(t>=e.src_end)return!1;{let a=e.src[t];switch(e.p[n]){case 46:return!0;case Jt:return sT(a,e.p[n+1]);case 91:return pf(e,a,n,r-1);default:return e.p[n]===a}}},lK=function(e,t,n){if(n>=e.p_end-1&&re(e.L,w("malformed pattern (missing arguments to '%%b'")),e.src[t]!==e.p[n])return null;{let r=e.p[n],a=e.p[n+1],s=1;for(;++t<e.src_end;)if(e.src[t]===a){if(--s===0)return t+1}else e.src[t]===r&&s++}return null},oK=function(e,t,n,r){let a=0;for(;mf(e,t+a,n,r);)a++;for(;a>=0;){let s=$n(e,t+a,r+1);if(s)return s;a--}return null},iK=function(e,t,n,r){for(;;){let a=$n(e,t,r+1);if(a!==null)return a;if(mf(e,t,n,r))t++;else return null}},G1=function(e,t,n,r){let a=e.level;a>=CB&&re(e.L,w("too many captures")),e.capture[a]=e.capture[a]?e.capture[a]:{},e.capture[a].init=t,e.capture[a].len=r,e.level=a+1;let s;return(s=$n(e,t,n))===null&&e.level--,s},cK=function(e,t,n){let r=uK(e);e.capture[r].len=t-e.capture[r].init;let a;return(a=$n(e,t,n))===null&&(e.capture[r].len=au),a},_K=function(e,t,n,r,a){return eT(e.subarray(t,t+a),n.subarray(r,r+a))},fK=function(e,t,n){n=sK(e,n);let r=e.capture[n].len;return e.src_end-t>=r&&_K(e.src,e.capture[n].init,e.src,t,r)?t+r:null},$n=function(e,t,n){let r=!1,a=!0;for(e.matchdepth--===0&&re(e.L,w("pattern too complex"));a||r;)if(a=!1,n!==e.p_end)switch(r?void 0:e.p[n]){case 40:{e.p[n+1]===41?t=G1(e,t,n+2,rT):t=G1(e,t,n+1,au);break}case 41:{t=cK(e,t,n+1);break}case 36:{if(n+1!==e.p_end){r=!0;break}t=e.src.length-t===0?t:null;break}case Jt:{switch(e.p[n+1]){case 98:{t=lK(e,t,n+2),t!==null&&(n+=4,a=!0);break}case 102:{n+=2,e.p[n]!==91&&re(e.L,w("missing '[' after '%%f' in pattern"));let s=F1(e,n),u=t===e.src_init?0:e.src[t-1];if(!pf(e,u,n,s-1)&&pf(e,t===e.src_end?0:e.src[t],n,s-1)){n=s,a=!0;break}t=null;break}case 48:case 49:case 50:case 51:case 52:case 53:case 54:case 55:case 56:case 57:{t=fK(e,t,e.p[n+1]),t!==null&&(n+=2,a=!0);break}default:r=!0}break}default:{r=!1;let s=F1(e,n);if(mf(e,t,n,s))switch(e.p[s]){case 63:{let u;(u=$n(e,t+1,s+1))!==null?t=u:(n=s+1,a=!0);break}case 43:t++;case 42:t=oK(e,t,n,s);break;case 45:t=iK(e,t,n,s);break;default:t++,n=s,a=!0}else if(e.p[s]===42||e.p[s]===63||e.p[s]===45){n=s+1,a=!0;break}else t=null;break}}return e.matchdepth++,t},vf=function(e,t,n,r){if(t>=e.level)t===0?rf(e.L,e.src.subarray(n,r),r-n):re(e.L,w("invalid capture index %%%d"),t+1);else{let a=e.capture[t].len;a===au&&re(e.L,w("unfinished capture")),a===rT?St(e.L,e.capture[t].init-e.src_init+1):rf(e.L,e.src.subarray(e.capture[t].init),a)}},lo=function(e,t,n){let r=e.level===0&&e.src.subarray(t)?1:e.level;gf(e.L,r,"too many captures");for(let a=0;a<r;a++)vf(e,a,t,n);return r},pK=function(e,t){for(let n=0;n<t;n++)if(Wn(aK,e[n])!==-1)return!1;return!0},Uf=function(e,t,n,r,a,s){e.L=t,e.matchdepth=aT,e.src=n,e.src_init=0,e.src_end=r,e.p=a,e.p_end=s},Rf=function(e){e.level=0,L1.lua_assert(e.matchdepth===aT)},hK=function(e,t,n){var r=n>>>0,a=t.length;if(a===0)return r;for(;(r=e.indexOf(t[0],r))!==-1;r++)if(eT(e.subarray(r,r+a),t))return r;return-1},uT=function(e,t){let n=ie(e,1),r=ie(e,2),a=n.length,s=r.length,u=Ka(Ba(e,3,1),a);if(u<1)u=1;else if(u>a+1)return af(e),1;if(t&&(Af(e,4)||pK(r,s))){let l=hK(n.subarray(u-1),r,0);if(l>-1)return St(e,u+l),St(e,u+l+s-1),2}else{let l=new ru(e),o=u-1,c=r[0]===94;c&&(r=r.subarray(1),s--),Uf(l,e,n,a,r,s);do{let i;if(Rf(l),(i=$n(l,o,0))!==null)return t?(St(e,o+1),St(e,i),lo(l,null,0)+2):lo(l,o,i)}while(o++<l.src_end&&!c)}return af(e),1},dK=function(e){return uT(e,1)},xK=function(e){return uT(e,0)},hf=class{constructor(){this.src=NaN,this.p=NaN,this.lastmatch=NaN,this.ms=new ru}},AK=function(e){let t=RB(e,SB(3));t.ms.L=e;for(let n=t.src;n<=t.ms.src_end;n++){Rf(t.ms);let r;if((r=$n(t.ms,n,t.p))!==null&&r!==t.lastmatch)return t.src=t.lastmatch=r,lo(t.ms,n,r)}return 0},gK=function(e){let t=ie(e,1),n=ie(e,2),r=t.length,a=n.length;z1(e,2);let s=new hf;return kB(e,s),Uf(s.ms,e,t,r,n,a),s.src=0,s.p=0,s.lastmatch=null,TB(e,AK,3),1},TK=function(e,t,n,r){let a=e.L,s=Z1(a,3),u=s.length;for(let l=0;l<u;l++)s[l]!==Jt?Ze(t,s[l]):(l++,Yt(s[l])?s[l]===48?Da(t,e.src.subarray(n,r),r-n):(vf(e,s[l]-49,n,r),Tf(a,-1),OB(a,-2),eu(t)):(s[l]!==Jt&&re(a,w("invalid use of '%c' in replacement string"),Jt),Ze(t,s[l])))},kK=function(e,t,n,r,a){let s=e.L;switch(a){case df:{sf(s,3);let u=lo(e,n,r);pB(s,u,1);break}case j1:{vf(e,0,n,r),xB(s,3);break}default:{TK(e,t,n,r);return}}Af(s,-1)?gB(s,-1)||re(s,w("invalid replacement value (a %s)"),IB(s,-1)):(uo(s,1),rf(s,e.src.subarray(n,r),r-n)),eu(t)},bK=function(e){let t=ie(e,1),n=t.length,r=ie(e,2),a=r.length,s=null,u=Y1(e,3),l=Ba(e,4,n+1),o=r[0]===94,c=0,i=new ru(e),f=new Fa;for(Rt(e,u===q1||u===H1||u===df||u===j1,3,"string/function/table expected"),oo(e,f),o&&(r=r.subarray(1),a--),Uf(i,e,t,n,r,a),t=0,r=0;c<l;){let T;if(Rf(i),(T=$n(i,t,r))!==null&&T!==s)c++,kK(i,f,t,T,u),t=s=T;else if(t<i.src_end)Ze(f,i.src[t++]);else break;if(o)break}return Da(f,i.src.subarray(t,i.src_end),i.src_end-t),io(f),St(e,c),2},OK={byte:eK,char:VB,dump:GB,find:dK,format:ZB,gmatch:gK,gsub:bK,len:KB,lower:$B,match:xK,pack:JB,packsize:tK,rep:LB,reverse:WB,sub:BB,unpack:rK,upper:QB},EK=function(e){hB(e,0,1),xf(e,""),sf(e,-2),mB(e,-2),uo(e,1),sf(e,-2),EB(e,-2,w("__index",!0)),uo(e,1)},mK=function(e){return wB(e,OK),EK(e),1};lT.exports.luaopen_string=mK});var yf=U((lq,fT)=>{"use strict";var{lua_gettop:vK,lua_pushcfunction:UK,lua_pushfstring:RK,lua_pushinteger:Mr,lua_pushnil:iT,lua_pushstring:SK,lua_pushvalue:NK,lua_setfield:wK,lua_tointeger:yK}=Ve(),{luaL_Buffer:IK,luaL_addvalue:MK,luaL_argcheck:qa,luaL_buffinit:PK,luaL_checkinteger:cT,luaL_checkstack:CK,luaL_checkstring:lu,luaL_error:po,luaL_newlib:DK,luaL_optinteger:su,luaL_pushresult:BK}=et(),{luastring_of:KK,to_luastring:Nf}=Je(),_T=1114111,Ga=function(e){return(e&192)===128},uu=function(e,t){return e>=0?e:0-e>t?0:t+e+1},VK=[255,127,2047,65535],wf=function(e,t){let n=e[t],r=0;if(n<128)r=n;else{let a=0;for(;n&64;){let s=e[t+ ++a];if((s&192)!==128)return null;r=r<<6|s&63,n<<=1}if(r|=(n&127)<<a*5,a>3||r>_T||r<=VK[a])return null;t+=a}return{code:r,pos:t+1}},FK=function(e){let t=0,n=lu(e,1),r=n.length,a=uu(su(e,2,1),r),s=uu(su(e,3,-1),r);for(qa(e,1<=a&&--a<=r,2,"initial position out of string"),qa(e,--s<r,3,"final position out of string");a<=s;){let u=wf(n,a);if(u===null)return iT(e),Mr(e,a+1),2;a=u.pos,t++}return Mr(e,t),1},GK=Nf("%U"),oT=function(e,t){let n=cT(e,t);qa(e,0<=n&&n<=_T,t,"value out of range"),RK(e,GK,n)},qK=function(e){let t=vK(e);if(t===1)oT(e,1);else{let n=new IK;PK(e,n);for(let r=1;r<=t;r++)oT(e,r),MK(n);BK(n)}return 1},HK=function(e){let t=lu(e,1),n=cT(e,2),r=n>=0?1:t.length+1;if(r=uu(su(e,3,r),t.length),qa(e,1<=r&&--r<=t.length,3,"position out of range"),n===0)for(;r>0&&Ga(t[r]);)r--;else if(Ga(t[r])&&po(e,"initial position is a continuation byte"),n<0)for(;n<0&&r>0;){do r--;while(r>0&&Ga(t[r]));n++}else for(n--;n>0&&r<t.length;){do r++;while(Ga(t[r]));n--}return n===0?Mr(e,r+1):iT(e),1},jK=function(e){let t=lu(e,1),n=uu(su(e,2,1),t.length),r=uu(su(e,3,n),t.length);if(qa(e,n>=1,2,"out of range"),qa(e,r<=t.length,3,"out of range"),n>r)return 0;if(r-n>=Number.MAX_SAFE_INTEGER)return po(e,"string slice too long");let a=r-n+1;for(CK(e,a,"string slice too long"),a=0,n-=1;n<r;){let s=wf(t,n);if(s===null)return po(e,"invalid UTF-8 code");Mr(e,s.code),n=s.pos,a++}return a},XK=function(e){let t=lu(e,1),n=t.length,r=yK(e,2)-1;if(r<0)r=0;else if(r<n)for(r++;Ga(t[r]);)r++;if(r>=n)return 0;{let a=wf(t,r);return a===null||Ga(t[a.pos])?po(e,Nf("invalid UTF-8 code")):(Mr(e,r+1),Mr(e,a.code),2)}},zK=function(e){return lu(e,1),UK(e,XK),NK(e,1),Mr(e,0),3},ZK={char:qK,codepoint:jK,codes:zK,len:FK,offset:HK},YK=KK(91,0,45,127,194,45,244,93,91,128,45,191,93,42),JK=function(e){return DK(e,ZK),SK(e,YK),wK(e,-2,Nf("charpattern",!0)),1};fT.exports.luaopen_utf8=JK});var Df=U((oq,bT)=>{"use strict";var{LUA_OPLT:hT,LUA_TNUMBER:WK,lua_compare:dT,lua_gettop:Mf,lua_isinteger:Cr,lua_isnoneornil:$K,lua_pushboolean:QK,lua_pushinteger:Dr,lua_pushliteral:pT,lua_pushnil:xT,lua_pushnumber:be,lua_pushvalue:AT,lua_setfield:ho,lua_settop:Pf,lua_tointeger:If,lua_tointegerx:LK,lua_type:eV}=Ve(),{luaL_argcheck:Ao,luaL_argerror:tV,luaL_checkany:gT,luaL_checkinteger:ou,luaL_checknumber:Oe,luaL_error:nV,luaL_newlib:rV,luaL_optnumber:aV}=et(),{LUA_MAXINTEGER:TT,LUA_MININTEGER:sV,lua_numbertointeger:uV}=Ye(),{to_luastring:xo}=Je(),Pr,kT=function(){return Pr=1103515245*Pr+12345&2147483647,Pr},lV=function(e){Pr=e|0,Pr===0&&(Pr=1)},oV=function(e){let t,n,r=Pr===void 0?Math.random():kT()/2147483648;switch(Mf(e)){case 0:return be(e,r),1;case 1:{t=1,n=ou(e,1);break}case 2:{t=ou(e,1),n=ou(e,2);break}default:return nV(e,"wrong number of arguments")}return Ao(e,t<=n,1,"interval is empty"),Ao(e,t>=0||n<=TT+t,1,"interval too large"),r*=n-t+1,Dr(e,Math.floor(r)+t),1},iV=function(e){return lV(Oe(e,1)),kT(),0},cV=function(e){if(Cr(e,1)){let t=If(e,1);t<0&&(t=-t|0),Dr(e,t)}else be(e,Math.abs(Oe(e,1)));return 1},_V=function(e){return be(e,Math.sin(Oe(e,1))),1},fV=function(e){return be(e,Math.cos(Oe(e,1))),1},pV=function(e){return be(e,Math.tan(Oe(e,1))),1},hV=function(e){return be(e,Math.asin(Oe(e,1))),1},dV=function(e){return be(e,Math.acos(Oe(e,1))),1},xV=function(e){let t=Oe(e,1),n=aV(e,2,1);return be(e,Math.atan2(t,n)),1},AV=function(e){let t=LK(e,1);return t!==!1?Dr(e,t):(gT(e,1),xT(e)),1},Cf=function(e,t){let n=uV(t);n!==!1?Dr(e,n):be(e,t)},gV=function(e){return Cr(e,1)?Pf(e,1):Cf(e,Math.floor(Oe(e,1))),1},TV=function(e){return Cr(e,1)?Pf(e,1):Cf(e,Math.ceil(Oe(e,1))),1},kV=function(e){return be(e,Math.sqrt(Oe(e,1))),1},bV=function(e){let t=ou(e,1),n=ou(e,2);return QK(e,t>=0?n<0||t<n:n<0&&t<n),1},OV=function(e){let t=Oe(e,1),n;if($K(e,2))n=Math.log(t);else{let r=Oe(e,2);r===2?n=Math.log2(t):r===10?n=Math.log10(t):n=Math.log(t)/Math.log(r)}return be(e,n),1},EV=function(e){return be(e,Math.exp(Oe(e,1))),1},mV=function(e){return be(e,Oe(e,1)*(180/Math.PI)),1},vV=function(e){return be(e,Oe(e,1)*(Math.PI/180)),1},UV=function(e){let t=Mf(e),n=1;Ao(e,t>=1,1,"value expected");for(let r=2;r<=t;r++)dT(e,r,n,hT)&&(n=r);return AT(e,n),1},RV=function(e){let t=Mf(e),n=1;Ao(e,t>=1,1,"value expected");for(let r=2;r<=t;r++)dT(e,n,r,hT)&&(n=r);return AT(e,n),1},SV=function(e){return eV(e,1)===WK?Cr(e,1)?pT(e,"integer"):pT(e,"float"):(gT(e,1),xT(e)),1},NV=function(e){if(Cr(e,1)&&Cr(e,2)){let t=If(e,2);t===0?tV(e,2,"zero"):Dr(e,If(e,1)%t|0)}else{let t=Oe(e,1),n=Oe(e,2);be(e,t%n)}return 1},wV=function(e){if(Cr(e,1))Pf(e,1),be(e,0);else{let t=Oe(e,1),n=t<0?Math.ceil(t):Math.floor(t);Cf(e,n),be(e,t===n?0:t-n)}return 2},yV={abs:cV,acos:dV,asin:hV,atan:xV,ceil:TV,cos:fV,deg:mV,exp:EV,floor:gV,fmod:NV,log:OV,max:RV,min:UV,modf:wV,rad:vV,random:oV,randomseed:iV,sin:_V,sqrt:kV,tan:pV,tointeger:AV,type:SV,ult:bV},IV=function(e){return rV(e,yV),be(e,Math.PI),ho(e,-2,xo("pi",!0)),be(e,1/0),ho(e,-2,xo("huge",!0)),Dr(e,TT),ho(e,-2,xo("maxinteger",!0)),Dr(e,sV),ho(e,-2,xo("mininteger",!0)),1};bT.exports.luaopen_math=IV});var DT=U(C=>{"use strict";var Kr=process.platform==="win32",Bf="aes-256-cbc",MV="sha256",mT="The current environment doesn't support interactive reading from TTY.",Z=vr(),OT=process.binding("tty_wrap").TTY,Vf=W_(),Ln=$l(),Ff={prompt:"> ",hideEchoBack:!1,mask:"*",limit:[],limitMessage:"Input another, please.$<( [)limit(])>",defaultInput:"",trueValue:[],falseValue:[],caseSensitive:!1,keepWhitespace:!1,encoding:"utf8",bufferSize:1024,print:void 0,history:!0,cd:!1,phContent:void 0,preCheck:void 0},En="none",ET=!1,PV=0,Xf="",Br=[],vT=!1,Gf=!1,iu=!1,Nt,Ha,Qn,go,Kf,To;function UT(e){function t(n){return n.replace(/[^\w\u0080-\uFFFF]/g,function(r){return"#"+r.charCodeAt(0)+";"})}return go.concat(function(n){var r=[];return Object.keys(n).forEach(function(a){n[a]==="boolean"?e[a]&&r.push("--"+a):n[a]==="string"&&e[a]&&r.push("--"+a,t(e[a]))}),r}({display:"string",displayOnly:"boolean",keyIn:"boolean",hideEchoBack:"boolean",mask:"string",limit:"string",caseSensitive:"boolean"}))}function CV(e,t){function n(Tt){var Hr="",yt,kp;for(Kf=Kf||yo().tmpdir();;){yt=Ln.join(Kf,Tt+Hr);try{kp=Z.openSync(yt,"wx")}catch(bp){if(bp.code==="EEXIST"){Hr++;continue}else throw bp}Z.closeSync(kp);break}return yt}var r={},a=n("readline-sync.stdout"),s=n("readline-sync.stderr"),u=n("readline-sync.exit"),l=n("readline-sync.done"),o=q_(),c,i,f,T,v,O,nt,Rn;O=o.createHash(MV),O.update(""+process.pid+PV+++Math.random()),Rn=O.digest("hex"),nt=o.createDecipher(Bf,Rn),c=UT(e),Kr?(i=process.env.ComSpec||"cmd.exe",process.env.Q='"',f=["/V:ON","/S","/C","(%Q%"+i+"%Q% /V:ON /S /C %Q%%Q%"+Qn+"%Q%"+c.map(function(Tt){return" %Q%"+Tt+"%Q%"}).join("")+" & (echo !ERRORLEVEL!)>%Q%"+u+"%Q%%Q%) 2>%Q%"+s+"%Q% |%Q%"+process.execPath+"%Q% %Q%"+__dirname+"\\encrypt.js%Q% %Q%"+Bf+"%Q% %Q%"+Rn+"%Q% >%Q%"+a+"%Q% & (echo 1)>%Q%"+l+"%Q%"]):(i="/bin/sh",f=["-c",'("'+Qn+'"'+c.map(function(Tt){return" '"+Tt.replace(/'/g,"'\\''")+"'"}).join("")+'; echo $?>"'+u+'") 2>"'+s+'" |"'+process.execPath+'" "'+__dirname+'/encrypt.js" "'+Bf+'" "'+Rn+'" >"'+a+'"; echo 1 >"'+l+'"']),iu&&iu("_execFileSync",c);try{Vf.spawn(i,f,t)}catch(Tt){r.error=new Error(Tt.message),r.error.method="_execFileSync - spawn",r.error.program=i,r.error.args=f}for(;Z.readFileSync(l,{encoding:e.encoding}).trim()!=="1";);return(T=Z.readFileSync(u,{encoding:e.encoding}).trim())==="0"?r.input=nt.update(Z.readFileSync(a,{encoding:"binary"}),"hex",e.encoding)+nt.final(e.encoding):(v=Z.readFileSync(s,{encoding:e.encoding}).trim(),r.error=new Error(mT+(v?`
-`+v:"")),r.error.method="_execFileSync",r.error.program=i,r.error.args=f,r.error.extMessage=v,r.error.exitCode=+T),Z.unlinkSync(a),Z.unlinkSync(s),Z.unlinkSync(u),Z.unlinkSync(l),r}function DV(e){var t={},n={env:process.env,encoding:e.encoding},r,a;if(Qn||(Kr?process.env.PSModulePath?(Qn="powershell.exe",go=["-ExecutionPolicy","Bypass","-File",__dirname+"\\read.ps1"]):(Qn="cscript.exe",go=["//nologo",__dirname+"\\read.cs.js"]):(Qn="/bin/sh",go=[__dirname+"/read.sh"])),Kr&&!process.env.PSModulePath&&(n.stdio=[process.stdin]),Vf.execFileSync){r=UT(e),iu&&iu("execFileSync",r);try{t.input=Vf.execFileSync(Qn,r,n)}catch(s){a=s.stderr?(s.stderr+"").trim():"",t.error=new Error(mT+(a?`
-`+a:"")),t.error.method="execFileSync",t.error.program=Qn,t.error.args=r,t.error.extMessage=a,t.error.exitCode=s.status,t.error.code=s.code,t.error.signal=s.signal}}else t=CV(e,n);return t.error||(t.input=t.input.replace(/^\s*'|'\s*$/g,""),e.display=""),t}function qf(e){var t="",n=e.display,r=!e.display&&e.keyIn&&e.hideEchoBack&&!e.mask;function a(){var s=DV(e);if(s.error)throw s.error;return s.input}return Gf&&Gf(e),function(){var s,u,l;function o(){return s||(s=process.binding("fs"),u=process.binding("constants"),u=u&&u.fs&&typeof u.fs.O_RDWR=="number"?u.fs:u),s}if(typeof En=="string")if(En=null,Kr){if(l=function(c){var i=c.replace(/^\D+/,"").split("."),f=0;return(i[0]=+i[0])&&(f+=i[0]*1e4),(i[1]=+i[1])&&(f+=i[1]*100),(i[2]=+i[2])&&(f+=i[2]),f}(process.version),!(l>=20302&&l<40204||l>=5e4&&l<50100||l>=50600&&l<60200)&&process.stdin.isTTY)process.stdin.pause(),En=process.stdin.fd,Ha=process.stdin._handle;else try{En=o().open("CONIN$",u.O_RDWR,parseInt("0666",8)),Ha=new OT(En,!0)}catch{}if(process.stdout.isTTY)Nt=process.stdout.fd;else{try{Nt=Z.openSync("\\\\.\\CON","w")}catch{}if(typeof Nt!="number")try{Nt=o().open("CONOUT$",u.O_RDWR,parseInt("0666",8))}catch{}}}else{if(process.stdin.isTTY){process.stdin.pause();try{En=Z.openSync("/dev/tty","r"),Ha=process.stdin._handle}catch{}}else try{En=Z.openSync("/dev/tty","r"),Ha=new OT(En,!1)}catch{}if(process.stdout.isTTY)Nt=process.stdout.fd;else try{Nt=Z.openSync("/dev/tty","w")}catch{}}}(),function(){var s=!e.hideEchoBack&&!e.keyIn,u,l,o,c,i,f,T;To="";function v(O){return O===ET?!0:Ha.setRawMode(O)!==0?!1:(ET=O,!0)}if(vT||!Ha||typeof Nt!="number"&&(e.display||!s)){t=a();return}if(e.display&&(Z.writeSync(Nt,e.display),e.display=""),!e.displayOnly){if(!v(!s)){t=a();return}for(c=e.keyIn?1:e.bufferSize,o=Buffer.allocUnsafe&&Buffer.alloc?Buffer.alloc(c):new Buffer(c),e.keyIn&&e.limit&&(l=new RegExp("[^"+e.limit+"]","g"+(e.caseSensitive?"":"i")));;){i=0;try{i=Z.readSync(En,o,0,c)}catch(O){if(O.code!=="EOF"){v(!1),t+=a();return}}if(i>0?(f=o.toString(e.encoding,0,i),To+=f):(f=`
-`,To+="\0"),f&&typeof(T=(f.match(/^(.*?)[\r\n]/)||[])[1])=="string"&&(f=T,u=!0),f&&(f=f.replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g,"")),f&&l&&(f=f.replace(l,"")),f&&(s||(e.hideEchoBack?e.mask&&Z.writeSync(Nt,new Array(f.length+1).join(e.mask)):Z.writeSync(Nt,f)),t+=f),!e.keyIn&&u||e.keyIn&&t.length>=c)break}!s&&!r&&Z.writeSync(Nt,`
-`),v(!1)}}(),e.print&&!r&&e.print(n+(e.displayOnly?"":(e.hideEchoBack?new Array(t.length+1).join(e.mask):t)+`
-`),e.encoding),e.displayOnly?"":Xf=e.keepWhitespace||e.keyIn?t:t.trim()}function BV(e,t){var n=[];function r(a){a!=null&&(Array.isArray(a)?a.forEach(r):(!t||t(a))&&n.push(a))}return r(e),n}function zf(e){return e.replace(/[\x00-\x7f]/g,function(t){return"\\x"+("00"+t.charCodeAt().toString(16)).substr(-2)})}function we(){var e=Array.prototype.slice.call(arguments),t,n;return e.length&&typeof e[0]=="boolean"&&(n=e.shift(),n&&(t=Object.keys(Ff),e.unshift(Ff))),e.reduce(function(r,a){return a==null||(a.hasOwnProperty("noEchoBack")&&!a.hasOwnProperty("hideEchoBack")&&(a.hideEchoBack=a.noEchoBack,delete a.noEchoBack),a.hasOwnProperty("noTrim")&&!a.hasOwnProperty("keepWhitespace")&&(a.keepWhitespace=a.noTrim,delete a.noTrim),n||(t=Object.keys(a)),t.forEach(function(s){var u;if(a.hasOwnProperty(s))switch(u=a[s],s){case"mask":case"limitMessage":case"defaultInput":case"encoding":u=u!=null?u+"":"",u&&s!=="limitMessage"&&(u=u.replace(/[\r\n]/g,"")),r[s]=u;break;case"bufferSize":!isNaN(u=parseInt(u,10))&&typeof u=="number"&&(r[s]=u);break;case"displayOnly":case"keyIn":case"hideEchoBack":case"caseSensitive":case"keepWhitespace":case"history":case"cd":r[s]=!!u;break;case"limit":case"trueValue":case"falseValue":r[s]=BV(u,function(l){var o=typeof l;return o==="string"||o==="number"||o==="function"||l instanceof RegExp}).map(function(l){return typeof l=="string"?l.replace(/[\r\n]/g,""):l});break;case"print":case"phContent":case"preCheck":r[s]=typeof u=="function"?u:void 0;break;case"prompt":case"display":r[s]=u??"";break}})),r},{})}function Hf(e,t,n){return t.some(function(r){var a=typeof r;return a==="string"?n?e===r:e.toLowerCase()===r.toLowerCase():a==="number"?parseFloat(e)===r:a==="function"?r(e):r instanceof RegExp?r.test(e):!1})}function Zf(e,t){var n=Ln.normalize(Kr?(process.env.HOMEDRIVE||"")+(process.env.HOMEPATH||""):process.env.HOME||"").replace(/[/\\]+$/,"");return e=Ln.normalize(e),t?e.replace(/^~(?=\/|\\|$)/,n):e.replace(new RegExp("^"+zf(n)+"(?=\\/|\\\\|$)",Kr?"i":""),"~")}function ja(e,t){var n="(?:\\(([\\s\\S]*?)\\))?(\\w+|.-.)(?:\\(([\\s\\S]*?)\\))?",r=new RegExp("(\\$)?(\\$<"+n+">)","g"),a=new RegExp("(\\$)?(\\$\\{"+n+"\\})","g");function s(u,l,o,c,i,f){var T;return l||typeof(T=t(i))!="string"?o:T?(c||"")+T+(f||""):""}return e.replace(r,s).replace(a,s)}function RT(e,t,n){var r=[],a=-1,s=0,u="",l,o;function c(i,f){return f.length>3?(i.push(f[0]+"..."+f[f.length-1]),o=!0):f.length&&(i=i.concat(f)),i}return l=e.reduce(function(i,f){return i.concat((f+"").split(""))},[]).reduce(function(i,f){var T,v;return t||(f=f.toLowerCase()),T=/^\d$/.test(f)?1:/^[A-Z]$/.test(f)?2:/^[a-z]$/.test(f)?3:0,n&&T===0?u+=f:(v=f.charCodeAt(0),T&&T===a&&v===s+1?r.push(f):(i=c(i,r),r=[f],a=T),s=v),i},[]),l=c(l,r),u&&(l.push(u),o=!0),{values:l,suppressed:o}}function ST(e,t){return e.join(e.length>2?", ":t?" / ":"/")}function NT(e,t){var n={},r,a,s;if(t.phContent&&(r=t.phContent(e,t)),typeof r!="string")switch(e){case"hideEchoBack":case"mask":case"defaultInput":case"caseSensitive":case"keepWhitespace":case"encoding":case"bufferSize":case"history":case"cd":r=t.hasOwnProperty(e)?typeof t[e]=="boolean"?t[e]?"on":"off":t[e]+"":"";break;case"limit":case"trueValue":case"falseValue":a=t[t.hasOwnProperty(e+"Src")?e+"Src":e],t.keyIn?(n=RT(a,t.caseSensitive),a=n.values):a=a.filter(function(u){var l=typeof u;return l==="string"||l==="number"}),r=ST(a,n.suppressed);break;case"limitCount":case"limitCountNotZero":r=t[t.hasOwnProperty("limitSrc")?"limitSrc":"limit"].length,r=r||e!=="limitCountNotZero"?r+"":"";break;case"lastInput":r=Xf;break;case"cwd":case"CWD":case"cwdHome":r=process.cwd(),e==="CWD"?r=Ln.basename(r):e==="cwdHome"&&(r=Zf(r));break;case"date":case"time":case"localeDate":case"localeTime":r=new Date()["to"+e.replace(/^./,function(u){return u.toUpperCase()})+"String"]();break;default:typeof(s=(e.match(/^history_m(\d+)$/)||[])[1])=="string"&&(r=Br[Br.length-s]||"")}return r}function wT(e){var t=/^(.)-(.)$/.exec(e),n="",r,a,s,u;if(!t)return null;for(r=t[1].charCodeAt(0),a=t[2].charCodeAt(0),u=r<a?1:-1,s=r;s!==a+u;s+=u)n+=String.fromCharCode(s);return n}function jf(e){var t=new RegExp(/(\s*)(?:("|')(.*?)(?:\2|$)|(\S+))/g),n="",r=[],a,s;for(e=e.trim();a=t.exec(e);)s=a[3]||a[4]||"",a[1]&&(r.push(n),n=""),n+=s;return n&&r.push(n),r}function yT(e,t){return t.trueValue.length&&Hf(e,t.trueValue,t.caseSensitive)?!0:t.falseValue.length&&Hf(e,t.falseValue,t.caseSensitive)?!1:e}function IT(e){var t,n,r,a,s,u,l;function o(i){return NT(i,e)}function c(i){e.display+=(/[^\r\n]$/.test(e.display)?`
-`:"")+i}for(e.limitSrc=e.limit,e.displaySrc=e.display,e.limit="",e.display=ja(e.display+"",o);;){if(t=qf(e),n=!1,r="",e.defaultInput&&!t&&(t=e.defaultInput),e.history&&((a=/^\s*!(?:!|-1)(:p)?\s*$/.exec(t))?(s=Br[0]||"",a[1]?n=!0:t=s,c(s+`
-`),n||(e.displayOnly=!0,qf(e),e.displayOnly=!1)):t&&t!==Br[Br.length-1]&&(Br=[t])),!n&&e.cd&&t)switch(u=jf(t),u[0].toLowerCase()){case"cd":if(u[1])try{process.chdir(Zf(u[1],!0))}catch(i){c(i+"")}n=!0;break;case"pwd":c(process.cwd()),n=!0;break}if(!n&&e.preCheck&&(l=e.preCheck(t,e),t=l.res,l.forceNext&&(n=!0)),!n){if(!e.limitSrc.length||Hf(t,e.limitSrc,e.caseSensitive))break;e.limitMessage&&(r=ja(e.limitMessage,o))}c((r?r+`
-`:"")+ja(e.displaySrc+"",o))}return yT(t,e)}C._DBG_set_useExt=function(e){vT=e};C._DBG_set_checkOptions=function(e){Gf=e};C._DBG_set_checkMethod=function(e){iu=e};C._DBG_clearHistory=function(){Xf="",Br=[]};C.setDefaultOptions=function(e){return Ff=we(!0,e),we(!0)};C.question=function(e,t){return IT(we(we(!0,t),{display:e}))};C.prompt=function(e){var t=we(!0,e);return t.display=t.prompt,IT(t)};C.keyIn=function(e,t){var n=we(we(!0,t),{display:e,keyIn:!0,keepWhitespace:!0});return n.limitSrc=n.limit.filter(function(r){var a=typeof r;return a==="string"||a==="number"}).map(function(r){return ja(r+"",wT)}),n.limit=zf(n.limitSrc.join("")),["trueValue","falseValue"].forEach(function(r){n[r]=n[r].reduce(function(a,s){var u=typeof s;return u==="string"||u==="number"?a=a.concat((s+"").split("")):a.push(s),a},[])}),n.display=ja(n.display+"",function(r){return NT(r,n)}),yT(qf(n),n)};C.questionEMail=function(e,t){return e==null&&(e="Input e-mail address: "),C.question(e,we({hideEchoBack:!1,limit:/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,limitMessage:"Input valid e-mail address, please.",trueValue:null,falseValue:null},t,{keepWhitespace:!1,cd:!1}))};C.questionNewPassword=function(e,t){var n,r,a,s=we({hideEchoBack:!0,mask:"*",limitMessage:`It can include: $<charlist>
-And the length must be: $<length>`,trueValue:null,falseValue:null,caseSensitive:!0},t,{history:!1,cd:!1,phContent:function(v){return v==="charlist"?n.text:v==="length"?r+"..."+a:null}}),u,l,o,c,i,f,T;for(t=t||{},u=ja(t.charlist?t.charlist+"":"$<!-~>",wT),(isNaN(r=parseInt(t.min,10))||typeof r!="number")&&(r=12),(isNaN(a=parseInt(t.max,10))||typeof a!="number")&&(a=24),c=new RegExp("^["+zf(u)+"]{"+r+","+a+"}$"),n=RT([u],s.caseSensitive,!0),n.text=ST(n.values,n.suppressed),l=t.confirmMessage!=null?t.confirmMessage:"Reinput a same one to confirm it: ",o=t.unmatchMessage!=null?t.unmatchMessage:"It differs from first one. Hit only the Enter key if you want to retry from first one.",e==null&&(e="Input new password: "),i=s.limitMessage;!T;)s.limit=c,s.limitMessage=i,f=C.question(e,s),s.limit=[f,""],s.limitMessage=o,T=C.question(l,s);return f};function MT(e,t,n){var r;function a(s){return r=n(s),!isNaN(r)&&typeof r=="number"}return C.question(e,we({limitMessage:"Input valid number, please."},t,{limit:a,cd:!1})),r}C.questionInt=function(e,t){return MT(e,t,function(n){return parseInt(n,10)})};C.questionFloat=function(e,t){return MT(e,t,parseFloat)};C.questionPath=function(e,t){var n="",r,a=we({hideEchoBack:!1,limitMessage:`$<error(
-)>Input valid path, please.$<( Min:)min>$<( Max:)max>`,history:!0,cd:!0},t,{keepWhitespace:!1,limit:function(s){var u,l,o;s=Zf(s,!0),n="";function c(i){i.split(/\/|\\/).reduce(function(f,T){var v=Ln.resolve(f+=T+Ln.sep);if(!Z.existsSync(v))Z.mkdirSync(v);else if(!Z.statSync(v).isDirectory())throw new Error("Non directory already exists: "+v);return f},"")}try{if(u=Z.existsSync(s),r=u?Z.realpathSync(s):Ln.resolve(s),!t.hasOwnProperty("exists")&&!u||typeof t.exists=="boolean"&&t.exists!==u)return n=(u?"Already exists":"No such file or directory")+": "+r,!1;if(!u&&t.create&&(t.isDirectory?c(r):(c(Ln.dirname(r)),Z.closeSync(Z.openSync(r,"w"))),r=Z.realpathSync(r)),u&&(t.min||t.max||t.isFile||t.isDirectory)){if(l=Z.statSync(r),t.isFile&&!l.isFile())return n="Not file: "+r,!1;if(t.isDirectory&&!l.isDirectory())return n="Not directory: "+r,!1;if(t.min&&l.size<+t.min||t.max&&l.size>+t.max)return n="Size "+l.size+" is out of range: "+r,!1}if(typeof t.validate=="function"&&(o=t.validate(r))!==!0)return typeof o=="string"&&(n=o),!1}catch(i){return n=i+"",!1}return!0},phContent:function(s){return s==="error"?n:s!=="min"&&s!=="max"?null:t.hasOwnProperty(s)?t[s]+"":""}});return t=t||{},e==null&&(e='Input path (you can "cd" and "pwd"): '),C.question(e,a),r};function PT(e,t){var n={},r={};return typeof e=="object"?(Object.keys(e).forEach(function(a){typeof e[a]=="function"&&(r[t.caseSensitive?a:a.toLowerCase()]=e[a])}),n.preCheck=function(a){var s;return n.args=jf(a),s=n.args[0]||"",t.caseSensitive||(s=s.toLowerCase()),n.hRes=s!=="_"&&r.hasOwnProperty(s)?r[s].apply(a,n.args.slice(1)):r.hasOwnProperty("_")?r._.apply(a,n.args):null,{res:a,forceNext:!1}},r.hasOwnProperty("_")||(n.limit=function(){var a=n.args[0]||"";return t.caseSensitive||(a=a.toLowerCase()),r.hasOwnProperty(a)})):n.preCheck=function(a){return n.args=jf(a),n.hRes=typeof e=="function"?e.apply(a,n.args):!0,{res:a,forceNext:!1}},n}C.promptCL=function(e,t){var n=we({hideEchoBack:!1,limitMessage:"Requested command is not available.",caseSensitive:!1,history:!0},t),r=PT(e,n);return n.limit=r.limit,n.preCheck=r.preCheck,C.prompt(n),r.args};C.promptLoop=function(e,t){for(var n=we({hideEchoBack:!1,trueValue:null,falseValue:null,caseSensitive:!1,history:!0},t);!e(C.prompt(n)););};C.promptCLLoop=function(e,t){var n=we({hideEchoBack:!1,limitMessage:"Requested command is not available.",caseSensitive:!1,history:!0},t),r=PT(e,n);for(n.limit=r.limit,n.preCheck=r.preCheck;C.prompt(n),!r.hRes;);};C.promptSimShell=function(e){return C.prompt(we({hideEchoBack:!1,history:!0},e,{prompt:function(){return Kr?"$<cwd>>":(process.env.USER||"")+(process.env.HOSTNAME?"@"+process.env.HOSTNAME.replace(/\..*$/,""):"")+":$<cwdHome>$ "}()}))};function CT(e,t,n){var r;return e==null&&(e="Are you sure? "),(!t||t.guide!==!1)&&(e+="")&&(e=e.replace(/\s*:?\s*$/,"")+" [y/n]: "),r=C.keyIn(e,we(t,{hideEchoBack:!1,limit:n,trueValue:"y",falseValue:"n",caseSensitive:!1})),typeof r=="boolean"?r:""}C.keyInYN=function(e,t){return CT(e,t)};C.keyInYNStrict=function(e,t){return CT(e,t,"yn")};C.keyInPause=function(e,t){e==null&&(e="Continue..."),(!t||t.guide!==!1)&&(e+="")&&(e=e.replace(/\s+$/,"")+" (Hit any key)"),C.keyIn(e,we({limit:null},t,{hideEchoBack:!0,mask:""}))};C.keyInSelect=function(e,t,n){var r=we({hideEchoBack:!1},n,{trueValue:null,falseValue:null,caseSensitive:!1,phContent:function(o){return o==="itemsCount"?e.length+"":o==="firstItem"?(e[0]+"").trim():o==="lastItem"?(e[e.length-1]+"").trim():null}}),a="",s={},u=49,l=`
-`;if(!Array.isArray(e)||!e.length||e.length>35)throw"`items` must be Array (max length: 35).";return e.forEach(function(o,c){var i=String.fromCharCode(u);a+=i,s[i]=c,l+="["+i+"] "+(o+"").trim()+`
-`,u=u===57?97:u+1}),(!n||n.cancel!==!1)&&(a+="0",s[0]=-1,l+="[0] "+(n&&n.cancel!=null&&typeof n.cancel!="boolean"?(n.cancel+"").trim():"CANCEL")+`
-`),r.limit=a,l+=`
-`,t==null&&(t="Choose one from list: "),(t+="")&&((!n||n.guide!==!1)&&(t=t.replace(/\s*:?\s*$/,"")+" [$<limit>]: "),l+=t),s[C.keyIn(l,r).toLowerCase()]};C.getRawInput=function(){return To};function cu(e,t){var n;return t.length&&(n={},n[e]=t[0]),C.setDefaultOptions(n)[e]}C.setPrint=function(){return cu("print",arguments)};C.setPrompt=function(){return cu("prompt",arguments)};C.setEncoding=function(){return cu("encoding",arguments)};C.setMask=function(){return cu("mask",arguments)};C.setBufferSize=function(){return cu("bufferSize",arguments)}});var rp=U((cq,rk)=>{"use strict";var{LUA_MASKCALL:GT,LUA_MASKCOUNT:KV,LUA_MASKLINE:qT,LUA_MASKRET:HT,LUA_REGISTRYINDEX:pu,LUA_TFUNCTION:Jf,LUA_TNIL:jT,LUA_TTABLE:VV,LUA_TUSERDATA:XT,lua_Debug:Wf,lua_call:FV,lua_checkstack:GV,lua_gethook:qV,lua_gethookcount:HV,lua_gethookmask:jV,lua_getinfo:zT,lua_getlocal:BT,lua_getmetatable:XV,lua_getstack:$f,lua_getupvalue:ZT,lua_getuservalue:zV,lua_insert:ZV,lua_iscfunction:KT,lua_isfunction:YT,lua_isnoneornil:JT,lua_isthread:YV,lua_newtable:JV,lua_pcall:WV,lua_pop:$V,lua_pushboolean:QV,lua_pushfstring:LV,lua_pushinteger:Qf,lua_pushlightuserdata:WT,lua_pushliteral:eF,lua_pushnil:Xa,lua_pushstring:Vr,lua_pushvalue:Eo,lua_rawgetp:Lf,lua_rawsetp:tF,lua_rotate:$T,lua_setfield:mo,lua_sethook:nF,lua_setlocal:rF,lua_setmetatable:aF,lua_settop:hu,lua_setupvalue:sF,lua_setuservalue:uF,lua_tojsstring:lF,lua_toproxy:oF,lua_tostring:iF,lua_tothread:cF,lua_touserdata:ep,lua_type:QT,lua_upvalueid:_F,lua_upvaluejoin:fF,lua_xmove:vo}=Ve(),{luaL_argcheck:ko,luaL_argerror:tp,luaL_checkany:Uo,luaL_checkinteger:Fr,luaL_checkstring:pF,luaL_checktype:Ro,luaL_error:hF,luaL_loadbuffer:dF,luaL_newlib:xF,luaL_optinteger:LT,luaL_optstring:AF,luaL_traceback:gF,lua_writestringerror:TF}=et(),kF=Xn(),{luastring_indexOf:Wt,to_luastring:ce}=Je(),np=function(e,t,n){e!==t&&!GV(t,n)&&hF(e,ce("stack overflow",!0))},bF=function(e){return Eo(e,pu),1},OF=function(e){return Uo(e,1),XV(e,1)||Xa(e),1},EF=function(e){let t=QT(e,2);return ko(e,t==jT||t==VV,2,"nil or table expected"),hu(e,2),aF(e,1),1},mF=function(e){return QT(e,1)!==XT?Xa(e):zV(e,1),1},vF=function(e){return Ro(e,1,XT),Uo(e,2),hu(e,2),uF(e,1),1},za=function(e){return YV(e,1)?{arg:1,thread:cF(e,1)}:{arg:0,thread:e}},_u=function(e,t,n){Vr(e,n),mo(e,-2,t)},fu=function(e,t,n){Qf(e,n),mo(e,-2,t)},VT=function(e,t,n){QV(e,n),mo(e,-2,t)},FT=function(e,t,n){e==t?$T(e,-2,1):vo(t,e,1),mo(e,-2,n)},UF=function(e){let t=new Wf,n=za(e),r=n.arg,a=n.thread,s=AF(e,r+2,"flnStu");if(np(e,a,3),YT(e,r+1))s=LV(e,ce(">%s"),s),Eo(e,r+1),vo(e,a,1);else if(!$f(a,Fr(e,r+1),t))return Xa(e),1;return zT(a,s,t)||tp(e,r+2,"invalid option"),JV(e),Wt(s,83)>-1&&(_u(e,ce("source",!0),t.source),_u(e,ce("short_src",!0),t.short_src),fu(e,ce("linedefined",!0),t.linedefined),fu(e,ce("lastlinedefined",!0),t.lastlinedefined),_u(e,ce("what",!0),t.what)),Wt(s,108)>-1&&fu(e,ce("currentline",!0),t.currentline),Wt(s,117)>-1&&(fu(e,ce("nups",!0),t.nups),fu(e,ce("nparams",!0),t.nparams),VT(e,ce("isvararg",!0),t.isvararg)),Wt(s,110)>-1&&(_u(e,ce("name",!0),t.name),_u(e,ce("namewhat",!0),t.namewhat)),Wt(s,116)>-1&&VT(e,ce("istailcall",!0),t.istailcall),Wt(s,76)>-1&&FT(e,a,ce("activelines",!0)),Wt(s,102)>-1&&FT(e,a,ce("func",!0)),1},RF=function(e){let t=za(e),n=t.thread,r=t.arg,a=new Wf,s=Fr(e,r+2);if(YT(e,r+1))return Eo(e,r+1),Vr(e,BT(e,null,s)),1;{let u=Fr(e,r+1);if(!$f(n,u,a))return tp(e,r+1,"level out of range");np(e,n,1);let l=BT(n,a,s);return l?(vo(n,e,1),Vr(e,l),$T(e,-2,1),2):(Xa(e),1)}},SF=function(e){let t=za(e),n=t.thread,r=t.arg,a=new Wf,s=Fr(e,r+1),u=Fr(e,r+2);if(!$f(n,s,a))return tp(e,r+1,"level out of range");Uo(e,r+3),hu(e,r+3),np(e,n,1),vo(e,n,1);let l=rF(n,a,u);return l===null&&$V(n,1),Vr(e,l),1},ek=function(e,t){let n=Fr(e,2);Ro(e,1,Jf);let r=t?ZT(e,1,n):sF(e,1,n);return r===null?0:(Vr(e,r),ZV(e,-(t+1)),t+1)},NF=function(e){return ek(e,1)},wF=function(e){return Uo(e,3),ek(e,0)},Yf=function(e,t,n){let r=Fr(e,n);return Ro(e,t,Jf),ko(e,ZT(e,t,r)!==null,n,"invalid upvalue index"),r},yF=function(e){let t=Yf(e,1,2);return WT(e,_F(e,1,t)),1},IF=function(e){let t=Yf(e,1,2),n=Yf(e,3,4);return ko(e,!KT(e,1),1,"Lua function expected"),ko(e,!KT(e,3),3,"Lua function expected"),fF(e,1,t,3,n),0},bo=ce("__hooks__",!0),MF=["call","return","line","count","tail call"].map(e=>ce(e)),tk=function(e,t){Lf(e,pu,bo);let r=ep(e,-1).get(e);r&&(r(e),Vr(e,MF[t.event]),t.currentline>=0?Qf(e,t.currentline):Xa(e),kF.lua_assert(zT(e,ce("lS"),t)),FV(e,2,0))},PF=function(e,t){let n=0;return Wt(e,99)>-1&&(n|=GT),Wt(e,114)>-1&&(n|=HT),Wt(e,108)>-1&&(n|=qT),t>0&&(n|=KV),n},CF=function(e,t){let n=0;return e&GT&&(t[n++]=99),e&HT&&(t[n++]=114),e&qT&&(t[n++]=108),t.subarray(0,n)},DF=function(e){let t,n,r,a=za(e),s=a.thread,u=a.arg;if(JT(e,u+1))hu(e,u+1),r=null,t=0,n=0;else{let c=pF(e,u+2);Ro(e,u+1,Jf),n=LT(e,u+3,0),r=tk,t=PF(c,n)}let l;Lf(e,pu,bo)===jT?(l=new WeakMap,WT(e,l),tF(e,pu,bo)):l=ep(e,-1);let o=oF(e,u+1);return l.set(s,o),nF(s,r,t,n),0},BF=function(e){let n=za(e).thread,r=new Uint8Array(5),a=jV(n),s=qV(n);return s===null?Xa(e):s!==tk?eF(e,"external hook"):(Lf(e,pu,bo),ep(e,-1).get(n)(e)),Vr(e,CF(a,r)),Qf(e,HV(n)),3},KF=function(e){let t=za(e),n=t.thread,r=t.arg,a=iF(e,r+1);if(a===null&&!JT(e,r+1))Eo(e,r+1);else{let s=LT(e,r+2,e===n?1:0);gF(e,n,a,s)}return 1},nk={gethook:BF,getinfo:UF,getlocal:RF,getmetatable:OF,getregistry:bF,getupvalue:NF,getuservalue:mF,sethook:DF,setlocal:SF,setmetatable:EF,setupvalue:wF,setuservalue:vF,traceback:KF,upvalueid:yF,upvaluejoin:IF},Oo;if(typeof process<"u"){let e=DT();e.setDefaultOptions({prompt:"lua_debug> "}),Oo=function(){return e.prompt()}}else typeof window<"u"&&(Oo=function(){let e=prompt("lua_debug>","");return e!==null?e:""});Oo&&(nk.debug=function(e){for(;;){let t=Oo();if(t==="cont")return 0;if(t.length===0)continue;let n=ce(t);(dF(e,n,n.length,ce("=(debug command)",!0))||WV(e,0,0,0))&&TF(lF(e,-1),`
-`),hu(e,0)}});var VF=function(e){return xF(e,nk),1};rk.exports.luaopen_debug=VF});var Ap=U((_q,Ck)=>{"use strict";var{LUA_DIRSEP:So,LUA_EXEC_DIR:FF,LUA_JSPATH_DEFAULT:GF,LUA_PATH_DEFAULT:qF,LUA_PATH_MARK:_k,LUA_PATH_SEP:Gr}=Ye(),{LUA_OK:Za,LUA_REGISTRYINDEX:tr,LUA_TNIL:op,LUA_TTABLE:HF,lua_callk:fk,lua_createtable:pk,lua_getfield:vn,lua_insert:ip,lua_isfunction:jF,lua_isnil:XF,lua_isstring:zF,lua_newtable:ZF,lua_pop:mn,lua_pushboolean:hk,lua_pushcclosure:YF,lua_pushcfunction:JF,lua_pushfstring:du,lua_pushglobaltable:WF,lua_pushlightuserdata:$F,lua_pushliteral:dk,lua_pushlstring:cp,lua_pushnil:xk,lua_pushstring:wt,lua_pushvalue:No,lua_rawgeti:QF,lua_rawgetp:Ak,lua_rawseti:gk,lua_rawsetp:LF,lua_remove:ap,lua_setfield:er,lua_setmetatable:eG,lua_settop:tG,lua_toboolean:Tk,lua_tostring:Ya,lua_touserdata:nG,lua_upvalueindex:kk}=Ve(),{LUA_LOADED_TABLE:bk,LUA_PRELOAD_TABLE:Ok,luaL_Buffer:Ek,luaL_addvalue:mk,luaL_buffinit:vk,luaL_checkstring:Un,luaL_error:wo,luaL_getsubtable:ak,luaL_gsub:xu,luaL_len:rG,luaL_loadfile:aG,luaL_newlib:sG,luaL_optstring:sk,luaL_pushresult:Uk,luaL_setfuncs:uG}=et(),lG=Xn(),{luastring_indexOf:_p,to_jsstring:fp,to_luastring:V,to_uristring:Rk}=Je(),oG=gp(),Sk=function(){return typeof process<"u"?global:typeof window<"u"?window:typeof WorkerGlobalScope<"u"&&self instanceof WorkerGlobalScope?self:(0,eval)("this")}(),pp=V("__JSLIBS__"),iG="LUA_PATH",cG="LUA_JSPATH",Nk="-",wk=So,_G=So,uk=V("luaopen_"),fG=V("_"),pG="open",lk=V(""),sp;if(typeof process>"u")sp=function(e,t,n){t=Rk(t);let r=new XMLHttpRequest;if(r.open("GET",t,!1),r.send(),r.status<200||r.status>=300)return wt(e,V(`${r.status}: ${r.statusText}`)),null;let a=r.response;/\/\/[#@] sourceURL=/.test(a)||(a+=" //# sourceURL="+t);let s;try{s=Function("fengari",a)}catch(l){return wt(e,V(`${l.name}: ${l.message}`)),null}let u=s(oG);return typeof u=="function"||typeof u=="object"&&u!==null?u:u===void 0?Sk:(wt(e,V(`library returned unexpected type (${typeof u})`)),null)};else{let e=$l();sp=function(t,n,r){n=fp(n),n=e.resolve(process.cwd(),n);try{return Op(n)}catch(a){return wt(t,V(a.message)),null}}}var hG=function(e,t,n){let r=t[fp(n)];return r&&typeof r=="function"?r:(du(e,V("undefined symbol: %s"),n),null)},dG=function(e){vn(e,tr,V("LUA_NOENV"));let t=Tk(e,-1);return mn(e,1),t},up;if(typeof process<"u"){let e=vr();up=function(t){try{let n=e.openSync(t,"r");e.closeSync(n)}catch{return!1}return!0}}else up=function(e){e=Rk(e);let t=new XMLHttpRequest;return t.open("GET",e,!1),t.send(),t.status>=200&&t.status<=299};var yk=1,hp=2,lp=function(e,t,n){let r=AG(e,t);if(r===null){if(r=sp(e,t,n[0]===42),r===null)return yk;gG(e,t,r)}if(n[0]===42)return hk(e,1),0;{let a=hG(e,r,n);return a===null?hp:(JF(e,a),0)}},xG=function(e){let t=Un(e,1),n=Un(e,2),r=lp(e,t,n);return r===0?1:(xk(e),ip(e,-2),dk(e,r===yk?pG:"init"),3)},ok=function(){return typeof process<"u"?process.env:Sk}(),ik=function(e,t,n,r){let a=`${n}${lG.LUA_VERSUFFIX}`;wt(e,V(a));let s=ok[a];s===void 0&&(s=ok[n]),s===void 0||dG(e)?wt(e,r):(s=xu(e,V(s),V(Gr+Gr,!0),V(Gr+fp(lk)+Gr,!0)),xu(e,s,lk,r),ap(e,-2)),er(e,-3,t),mn(e,1)},AG=function(e,t){Ak(e,tr,pp),vn(e,-1,t);let n=nG(e,-1);return mn(e,2),n},gG=function(e,t,n){Ak(e,tr,pp),$F(e,n),No(e,-1),er(e,-3,t),gk(e,-2,rG(e,-2)+1),mn(e,1)},TG=function(e,t){for(;t[0]===Gr.charCodeAt(0);)t=t.subarray(1);if(t.length===0)return null;let n=_p(t,Gr.charCodeAt(0));return n<0&&(n=t.length),cp(e,t,n),t.subarray(n)},Ik=function(e,t,n,r,a){let s=new Ek;for(vk(e,s),r[0]!==0&&(t=xu(e,t,r,a));(n=TG(e,n))!==null;){let u=xu(e,Ya(e,-1),V(_k,!0),t);if(ap(e,-2),up(u))return u;du(e,V(`
-	no file '%s'`),u),ap(e,-2),mk(s)}return Uk(s),null},kG=function(e){return Ik(e,Un(e,1),Un(e,2),sk(e,3,"."),sk(e,4,So))!==null?1:(xk(e),ip(e,-2),2)},dp=function(e,t,n,r){vn(e,kk(1),n);let a=Ya(e,-1);return a===null&&wo(e,V("'package.%s' must be a string"),n),Ik(e,t,a,V("."),r)},xp=function(e,t,n){return t?(wt(e,n),2):wo(e,V(`error loading module '%s' from file '%s':
-	%s`),Ya(e,1),n,Ya(e,-1))},bG=function(e){let t=Un(e,1),n=dp(e,t,V("path",!0),V(_G,!0));return n===null?1:xp(e,aG(e,n)===Za,n)},Mk=function(e,t,n){let r;n=xu(e,n,V("."),fG);let a=_p(n,Nk.charCodeAt(0));if(a>=0){r=cp(e,n,a),r=du(e,V("%s%s"),uk,r);let s=lp(e,t,r);if(s!==hp)return s;n=a+1}return r=du(e,V("%s%s"),uk,n),lp(e,t,r)},OG=function(e){let t=Un(e,1),n=dp(e,t,V("jspath",!0),V(wk,!0));return n===null?1:xp(e,Mk(e,n,t)===0,n)},EG=function(e){let t=Un(e,1),n=_p(t,46),r;if(n<0)return 0;cp(e,t,n);let a=dp(e,Ya(e,-1),V("jspath",!0),V(wk,!0));return a===null?1:(r=Mk(e,a,t))!==0?r!=hp?xp(e,0,a):(wt(e,V(`
-	no module '%s' in file '%s'`),t,a),1):(wt(e,a),2)},mG=function(e){let t=Un(e,1);return vn(e,tr,Ok),vn(e,-1,t)===op&&du(e,V(`
-	no field package.preload['%s']`),t),1},vG=function(e,t,n,r){let a=new Ek;return vk(e,a),vn(e,kk(1),V("searchers",!0))!==HF&&wo(e,V("'package.searchers' must be a table")),Pk(e,Za,{name:t,i:1,msg:a,ctx:n,k:r})},Pk=function(e,t,n){for(;t===Za?(QF(e,3,n.i)===op&&(mn(e,1),Uk(n.msg),wo(e,V("module '%s' not found:%s"),n.name,Ya(e,-1))),wt(e,n.name),fk(e,1,2,n,Pk)):t=Za,!jF(e,-2);n.i++)zF(e,-2)?(mn(e,1),mk(n.msg)):mn(e,2);return n.k(e,Za,n.ctx)},UG=function(e){let t=Un(e,1);return tG(e,1),vn(e,tr,bk),vn(e,2,t),Tk(e,-1)?1:(mn(e,1),vG(e,t,t,RG))},RG=function(e,t,n){return wt(e,n),ip(e,-2),fk(e,2,1,n,ck),ck(e,Za,n)},ck=function(e,t,n){let r=n;return XF(e,-1)||er(e,2,r),vn(e,2,r)==op&&(hk(e,1),No(e,-1),er(e,2,r)),1},SG={loadlib:xG,searchpath:kG},NG={require:UG},wG=function(e){let t=[mG,bG,OG,EG,null];pk(e);for(let n=0;t[n];n++)No(e,-2),YF(e,t[n],1),gk(e,-2,n+1);er(e,-2,V("searchers",!0))},yG=function(e){ZF(e),pk(e,0,1),eG(e,-2),LF(e,tr,pp)},IG=function(e){return yG(e),sG(e,SG),wG(e),ik(e,V("path",!0),iG,qF),ik(e,V("jspath",!0),cG,GF),dk(e,So+`
-`+Gr+`
-`+_k+`
-`+FF+`
-`+Nk+`
-`),er(e,-2,V("config",!0)),ak(e,tr,bk),er(e,-2,V("loaded",!0)),ak(e,tr,Ok),er(e,-2,V("preload",!0)),WF(e),No(e,-2),uG(e,NG,1),mn(e,1),1};Ck.exports.luaopen_package=IG});var Tp=U((pq,Dk)=>{var{lua_pushinteger:MG,lua_pushliteral:qr,lua_setfield:nr}=Ve(),{luaL_newlib:PG}=et(),{FENGARI_AUTHORS:CG,FENGARI_COPYRIGHT:DG,FENGARI_RELEASE:BG,FENGARI_VERSION:KG,FENGARI_VERSION_MAJOR:VG,FENGARI_VERSION_MINOR:FG,FENGARI_VERSION_NUM:GG,FENGARI_VERSION_RELEASE:qG,to_luastring:rr}=Je(),HG=function(e){return PG(e,{}),qr(e,CG),nr(e,-2,rr("AUTHORS")),qr(e,DG),nr(e,-2,rr("COPYRIGHT")),qr(e,BG),nr(e,-2,rr("RELEASE")),qr(e,KG),nr(e,-2,rr("VERSION")),qr(e,VG),nr(e,-2,rr("VERSION_MAJOR")),qr(e,FG),nr(e,-2,rr("VERSION_MINOR")),MG(e,GG),nr(e,-2,rr("VERSION_NUM")),qr(e,qG),nr(e,-2,rr("VERSION_RELEASE")),1};Dk.exports.luaopen_fengari=HG});var Kk=U((hq,Bk)=>{"use strict";var{lua_pop:jG}=Ve(),{luaL_requiref:XG}=et(),{to_luastring:zG}=Je(),ht={},ZG=function(e){for(let t in ht)XG(e,zG(t),ht[t],1),jG(e,1)};Bk.exports.luaL_openlibs=ZG;var $t=Xn(),{luaopen_base:YG}=v_(),{luaopen_coroutine:JG}=S_(),{luaopen_debug:WG}=rp(),{luaopen_math:$G}=Df(),{luaopen_package:QG}=Ap(),{luaopen_os:LG}=L_(),{luaopen_string:e4}=Sf(),{luaopen_table:t4}=C_(),{luaopen_utf8:n4}=yf();ht._G=YG,ht[$t.LUA_LOADLIBNAME]=QG;ht[$t.LUA_COLIBNAME]=JG;ht[$t.LUA_TABLIBNAME]=t4;ht[$t.LUA_OSLIBNAME]=LG;ht[$t.LUA_STRLIBNAME]=e4;ht[$t.LUA_MATHLIBNAME]=$G;ht[$t.LUA_UTF8LIBNAME]=n4;ht[$t.LUA_DBLIBNAME]=WG;typeof process<"u"&&(ht[$t.LUA_IOLIBNAME]=G_().luaopen_io);var{luaopen_fengari:r4}=Tp();ht[$t.LUA_FENGARILIBNAME]=r4});var Xn=U((dq,W)=>{"use strict";var{LUA_VERSION_MAJOR:a4,LUA_VERSION_MINOR:s4}=Ve(),u4="_"+a4+"_"+s4;W.exports.LUA_VERSUFFIX=u4;W.exports.lua_assert=function(e){};W.exports.luaopen_base=v_().luaopen_base;var l4="coroutine";W.exports.LUA_COLIBNAME=l4;W.exports.luaopen_coroutine=S_().luaopen_coroutine;var o4="table";W.exports.LUA_TABLIBNAME=o4;W.exports.luaopen_table=C_().luaopen_table;if(typeof process<"u"){let e="io";W.exports.LUA_IOLIBNAME=e,W.exports.luaopen_io=G_().luaopen_io}var i4="os";W.exports.LUA_OSLIBNAME=i4;W.exports.luaopen_os=L_().luaopen_os;var c4="string";W.exports.LUA_STRLIBNAME=c4;W.exports.luaopen_string=Sf().luaopen_string;var _4="utf8";W.exports.LUA_UTF8LIBNAME=_4;W.exports.luaopen_utf8=yf().luaopen_utf8;var f4="bit32";W.exports.LUA_BITLIBNAME=f4;var p4="math";W.exports.LUA_MATHLIBNAME=p4;W.exports.luaopen_math=Df().luaopen_math;var h4="debug";W.exports.LUA_DBLIBNAME=h4;W.exports.luaopen_debug=rp().luaopen_debug;var d4="package";W.exports.LUA_LOADLIBNAME=d4;W.exports.luaopen_package=Ap().luaopen_package;var x4="fengari";W.exports.LUA_FENGARILIBNAME=x4;W.exports.luaopen_fengari=Tp().luaopen_fengari;var A4=Kk();W.exports.luaL_openlibs=A4.luaL_openlibs});var gp=U((xq,Ee)=>{"use strict";var tt=Je();Ee.exports.FENGARI_AUTHORS=tt.FENGARI_AUTHORS;Ee.exports.FENGARI_COPYRIGHT=tt.FENGARI_COPYRIGHT;Ee.exports.FENGARI_RELEASE=tt.FENGARI_RELEASE;Ee.exports.FENGARI_VERSION=tt.FENGARI_VERSION;Ee.exports.FENGARI_VERSION_MAJOR=tt.FENGARI_VERSION_MAJOR;Ee.exports.FENGARI_VERSION_MINOR=tt.FENGARI_VERSION_MINOR;Ee.exports.FENGARI_VERSION_NUM=tt.FENGARI_VERSION_NUM;Ee.exports.FENGARI_VERSION_RELEASE=tt.FENGARI_VERSION_RELEASE;Ee.exports.luastring_eq=tt.luastring_eq;Ee.exports.luastring_indexOf=tt.luastring_indexOf;Ee.exports.luastring_of=tt.luastring_of;Ee.exports.to_jsstring=tt.to_jsstring;Ee.exports.to_luastring=tt.to_luastring;Ee.exports.to_uristring=tt.to_uristring;var g4=Ye(),T4=Ve(),k4=et(),b4=Xn();Ee.exports.luaconf=g4;Ee.exports.lua=T4;Ee.exports.lauxlib=k4;Ee.exports.lualib=b4});window.Fengari=gp();})();
-/*! Bundled license information:
+(() => {
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
+  }) : x)(function(x) {
+    if (typeof require !== "undefined") return require.apply(this, arguments);
+    throw Error('Dynamic require of "' + x + '" is not supported');
+  });
+  var __commonJS = (cb, mod) => function __require2() {
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  };
 
-tmp/lib/tmp.js:
-  (*!
-   * Tmp
-   *
-   * Copyright (c) 2011-2017 KARASZI Istvan <github@spam.raszi.hu>
-   *
-   * MIT Licensed
-   *)
+  // stubs/node-os.js
+  var require_node_os = __commonJS({
+    "stubs/node-os.js"(exports, module) {
+      module.exports = {
+        platform: () => "browser",
+        tmpdir: () => "/tmp",
+        hostname: () => "jam",
+        EOL: "\n",
+        arch: () => "wasm",
+        release: () => "0"
+      };
+    }
+  });
+
+  // node_modules/fengari/src/luaconf.js
+  var require_luaconf = __commonJS({
+    "node_modules/fengari/src/luaconf.js"(exports, module) {
+      "use strict";
+      var conf = void 0 ? JSON.parse(void 0) : {};
+      var {
+        LUA_VERSION_MAJOR,
+        LUA_VERSION_MINOR,
+        to_luastring
+      } = require_defs();
+      var LUA_PATH_SEP = ";";
+      module.exports.LUA_PATH_SEP = LUA_PATH_SEP;
+      var LUA_PATH_MARK = "?";
+      module.exports.LUA_PATH_MARK = LUA_PATH_MARK;
+      var LUA_EXEC_DIR = "!";
+      module.exports.LUA_EXEC_DIR = LUA_EXEC_DIR;
+      var LUA_VDIR = LUA_VERSION_MAJOR + "." + LUA_VERSION_MINOR;
+      module.exports.LUA_VDIR = LUA_VDIR;
+      if (typeof process === "undefined") {
+        const LUA_DIRSEP = "/";
+        module.exports.LUA_DIRSEP = LUA_DIRSEP;
+        const LUA_LDIR = "./lua/" + LUA_VDIR + "/";
+        module.exports.LUA_LDIR = LUA_LDIR;
+        const LUA_JSDIR = LUA_LDIR;
+        module.exports.LUA_JSDIR = LUA_JSDIR;
+        const LUA_PATH_DEFAULT = to_luastring(
+          LUA_LDIR + "?.lua;" + LUA_LDIR + "?/init.lua;./?.lua;./?/init.lua"
+        );
+        module.exports.LUA_PATH_DEFAULT = LUA_PATH_DEFAULT;
+        const LUA_JSPATH_DEFAULT = to_luastring(
+          LUA_JSDIR + "?.js;" + LUA_JSDIR + "loadall.js;./?.js"
+        );
+        module.exports.LUA_JSPATH_DEFAULT = LUA_JSPATH_DEFAULT;
+      } else if (require_node_os().platform() === "win32") {
+        const LUA_DIRSEP = "\\";
+        module.exports.LUA_DIRSEP = LUA_DIRSEP;
+        const LUA_LDIR = "!\\lua\\";
+        module.exports.LUA_LDIR = LUA_LDIR;
+        const LUA_JSDIR = "!\\";
+        module.exports.LUA_JSDIR = LUA_JSDIR;
+        const LUA_SHRDIR = "!\\..\\share\\lua\\" + LUA_VDIR + "\\";
+        module.exports.LUA_SHRDIR = LUA_SHRDIR;
+        const LUA_PATH_DEFAULT = to_luastring(
+          LUA_LDIR + "?.lua;" + LUA_LDIR + "?\\init.lua;" + LUA_JSDIR + "?.lua;" + LUA_JSDIR + "?\\init.lua;" + LUA_SHRDIR + "?.lua;" + LUA_SHRDIR + "?\\init.lua;.\\?.lua;.\\?\\init.lua"
+        );
+        module.exports.LUA_PATH_DEFAULT = LUA_PATH_DEFAULT;
+        const LUA_JSPATH_DEFAULT = to_luastring(
+          LUA_JSDIR + "?.js;" + LUA_JSDIR + "..\\share\\lua\\" + LUA_VDIR + "\\?.js;" + LUA_JSDIR + "loadall.js;.\\?.js"
+        );
+        module.exports.LUA_JSPATH_DEFAULT = LUA_JSPATH_DEFAULT;
+      } else {
+        const LUA_DIRSEP = "/";
+        module.exports.LUA_DIRSEP = LUA_DIRSEP;
+        const LUA_ROOT = "/usr/local/";
+        module.exports.LUA_ROOT = LUA_ROOT;
+        const LUA_ROOT2 = "/usr/";
+        const LUA_LDIR = LUA_ROOT + "share/lua/" + LUA_VDIR + "/";
+        const LUA_LDIR2 = LUA_ROOT2 + "share/lua/" + LUA_VDIR + "/";
+        module.exports.LUA_LDIR = LUA_LDIR;
+        const LUA_JSDIR = LUA_LDIR;
+        module.exports.LUA_JSDIR = LUA_JSDIR;
+        const LUA_JSDIR2 = LUA_LDIR2;
+        const LUA_PATH_DEFAULT = to_luastring(
+          LUA_LDIR + "?.lua;" + LUA_LDIR + "?/init.lua;" + LUA_LDIR2 + "?.lua;" + LUA_LDIR2 + "?/init.lua;./?.lua;./?/init.lua"
+        );
+        module.exports.LUA_PATH_DEFAULT = LUA_PATH_DEFAULT;
+        const LUA_JSPATH_DEFAULT = to_luastring(
+          LUA_JSDIR + "?.js;" + LUA_JSDIR + "loadall.js;" + LUA_JSDIR2 + "?.js;" + LUA_JSDIR2 + "loadall.js;./?.js"
+        );
+        module.exports.LUA_JSPATH_DEFAULT = LUA_JSPATH_DEFAULT;
+      }
+      var LUA_COMPAT_FLOATSTRING = conf.LUA_COMPAT_FLOATSTRING || false;
+      var LUA_MAXINTEGER = 2147483647;
+      var LUA_MININTEGER = -2147483648;
+      var LUAI_MAXSTACK = conf.LUAI_MAXSTACK || 1e6;
+      var LUA_IDSIZE = conf.LUA_IDSIZE || 60 - 1;
+      var lua_integer2str = function(n) {
+        return String(n);
+      };
+      var lua_number2str = function(n) {
+        return String(Number(n.toPrecision(14)));
+      };
+      var lua_numbertointeger = function(n) {
+        return n >= LUA_MININTEGER && n < -LUA_MININTEGER ? n : false;
+      };
+      var LUA_INTEGER_FRMLEN = "";
+      var LUA_NUMBER_FRMLEN = "";
+      var LUA_INTEGER_FMT = `%${LUA_INTEGER_FRMLEN}d`;
+      var LUA_NUMBER_FMT = "%.14g";
+      var lua_getlocaledecpoint = function() {
+        return 46;
+      };
+      var luai_apicheck = function(l, e) {
+        if (!e) throw Error(e);
+      };
+      var LUAL_BUFFERSIZE = conf.LUAL_BUFFERSIZE || 8192;
+      var frexp = function(value) {
+        if (value === 0) return [value, 0];
+        var data = new DataView(new ArrayBuffer(8));
+        data.setFloat64(0, value);
+        var bits = data.getUint32(0) >>> 20 & 2047;
+        if (bits === 0) {
+          data.setFloat64(0, value * Math.pow(2, 64));
+          bits = (data.getUint32(0) >>> 20 & 2047) - 64;
+        }
+        var exponent = bits - 1022;
+        var mantissa = ldexp(value, -exponent);
+        return [mantissa, exponent];
+      };
+      var ldexp = function(mantissa, exponent) {
+        var steps = Math.min(3, Math.ceil(Math.abs(exponent) / 1023));
+        var result = mantissa;
+        for (var i = 0; i < steps; i++)
+          result *= Math.pow(2, Math.floor((exponent + i) / steps));
+        return result;
+      };
+      module.exports.LUAI_MAXSTACK = LUAI_MAXSTACK;
+      module.exports.LUA_COMPAT_FLOATSTRING = LUA_COMPAT_FLOATSTRING;
+      module.exports.LUA_IDSIZE = LUA_IDSIZE;
+      module.exports.LUA_INTEGER_FMT = LUA_INTEGER_FMT;
+      module.exports.LUA_INTEGER_FRMLEN = LUA_INTEGER_FRMLEN;
+      module.exports.LUA_MAXINTEGER = LUA_MAXINTEGER;
+      module.exports.LUA_MININTEGER = LUA_MININTEGER;
+      module.exports.LUA_NUMBER_FMT = LUA_NUMBER_FMT;
+      module.exports.LUA_NUMBER_FRMLEN = LUA_NUMBER_FRMLEN;
+      module.exports.LUAL_BUFFERSIZE = LUAL_BUFFERSIZE;
+      module.exports.frexp = frexp;
+      module.exports.ldexp = ldexp;
+      module.exports.lua_getlocaledecpoint = lua_getlocaledecpoint;
+      module.exports.lua_integer2str = lua_integer2str;
+      module.exports.lua_number2str = lua_number2str;
+      module.exports.lua_numbertointeger = lua_numbertointeger;
+      module.exports.luai_apicheck = luai_apicheck;
+    }
+  });
+
+  // node_modules/fengari/src/defs.js
+  var require_defs = __commonJS({
+    "node_modules/fengari/src/defs.js"(exports, module) {
+      "use strict";
+      var luastring_from;
+      if (typeof Uint8Array.from === "function") {
+        luastring_from = Uint8Array.from.bind(Uint8Array);
+      } else {
+        luastring_from = function(a) {
+          let i = 0;
+          let len = a.length;
+          let r = new Uint8Array(len);
+          while (len > i) r[i] = a[i++];
+          return r;
+        };
+      }
+      var luastring_indexOf;
+      if (typeof new Uint8Array().indexOf === "function") {
+        luastring_indexOf = function(s, v, i) {
+          return s.indexOf(v, i);
+        };
+      } else {
+        let array_indexOf = [].indexOf;
+        if (array_indexOf.call(new Uint8Array(1), 0) !== 0) throw Error("missing .indexOf");
+        luastring_indexOf = function(s, v, i) {
+          return array_indexOf.call(s, v, i);
+        };
+      }
+      var luastring_of;
+      if (typeof Uint8Array.of === "function") {
+        luastring_of = Uint8Array.of.bind(Uint8Array);
+      } else {
+        luastring_of = function() {
+          return luastring_from(arguments);
+        };
+      }
+      var is_luastring = function(s) {
+        return s instanceof Uint8Array;
+      };
+      var luastring_eq = function(a, b) {
+        if (a !== b) {
+          let len = a.length;
+          if (len !== b.length) return false;
+          for (let i = 0; i < len; i++)
+            if (a[i] !== b[i]) return false;
+        }
+        return true;
+      };
+      var unicode_error_message = "cannot convert invalid utf8 to javascript string";
+      var to_jsstring = function(value, from, to, replacement_char) {
+        if (!is_luastring(value)) throw new TypeError("to_jsstring expects a Uint8Array");
+        if (to === void 0) {
+          to = value.length;
+        } else {
+          to = Math.min(value.length, to);
+        }
+        let str = "";
+        for (let i = from !== void 0 ? from : 0; i < to; ) {
+          let u0 = value[i++];
+          if (u0 < 128) {
+            str += String.fromCharCode(u0);
+          } else if (u0 < 194 || u0 > 244) {
+            if (!replacement_char) throw RangeError(unicode_error_message);
+            str += "\uFFFD";
+          } else if (u0 <= 223) {
+            if (i >= to) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            let u1 = value[i++];
+            if ((u1 & 192) !== 128) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            str += String.fromCharCode(((u0 & 31) << 6) + (u1 & 63));
+          } else if (u0 <= 239) {
+            if (i + 1 >= to) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            let u1 = value[i++];
+            if ((u1 & 192) !== 128) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            let u2 = value[i++];
+            if ((u2 & 192) !== 128) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            let u = ((u0 & 15) << 12) + ((u1 & 63) << 6) + (u2 & 63);
+            if (u <= 65535) {
+              str += String.fromCharCode(u);
+            } else {
+              u -= 65536;
+              let s1 = (u >> 10) + 55296;
+              let s2 = u % 1024 + 56320;
+              str += String.fromCharCode(s1, s2);
+            }
+          } else {
+            if (i + 2 >= to) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            let u1 = value[i++];
+            if ((u1 & 192) !== 128) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            let u2 = value[i++];
+            if ((u2 & 192) !== 128) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            let u3 = value[i++];
+            if ((u3 & 192) !== 128) {
+              if (!replacement_char) throw RangeError(unicode_error_message);
+              str += "\uFFFD";
+              continue;
+            }
+            let u = ((u0 & 7) << 18) + ((u1 & 63) << 12) + ((u2 & 63) << 6) + (u3 & 63);
+            u -= 65536;
+            let s1 = (u >> 10) + 55296;
+            let s2 = u % 1024 + 56320;
+            str += String.fromCharCode(s1, s2);
+          }
+        }
+        return str;
+      };
+      var uri_allowed = ";,/?:@&=+$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,-_.!~*'()#".split("").reduce(function(uri_allowed2, c) {
+        uri_allowed2[c.charCodeAt(0)] = true;
+        return uri_allowed2;
+      }, {});
+      var to_uristring = function(a) {
+        if (!is_luastring(a)) throw new TypeError("to_uristring expects a Uint8Array");
+        let s = "";
+        for (let i = 0; i < a.length; i++) {
+          let v = a[i];
+          if (uri_allowed[v]) {
+            s += String.fromCharCode(v);
+          } else {
+            s += "%" + (v < 16 ? "0" : "") + v.toString(16);
+          }
+        }
+        return s;
+      };
+      var to_luastring_cache = {};
+      var to_luastring = function(str, cache) {
+        if (typeof str !== "string") throw new TypeError("to_luastring expects a javascript string");
+        if (cache) {
+          let cached = to_luastring_cache[str];
+          if (is_luastring(cached)) return cached;
+        }
+        let len = str.length;
+        let outU8Array = Array(len);
+        let outIdx = 0;
+        for (let i = 0; i < len; ++i) {
+          let u = str.charCodeAt(i);
+          if (u <= 127) {
+            outU8Array[outIdx++] = u;
+          } else if (u <= 2047) {
+            outU8Array[outIdx++] = 192 | u >> 6;
+            outU8Array[outIdx++] = 128 | u & 63;
+          } else {
+            if (u >= 55296 && u <= 56319 && i + 1 < len) {
+              let v = str.charCodeAt(i + 1);
+              if (v >= 56320 && v <= 57343) {
+                i++;
+                u = (u - 55296) * 1024 + v + 9216;
+              }
+            }
+            if (u <= 65535) {
+              outU8Array[outIdx++] = 224 | u >> 12;
+              outU8Array[outIdx++] = 128 | u >> 6 & 63;
+              outU8Array[outIdx++] = 128 | u & 63;
+            } else {
+              outU8Array[outIdx++] = 240 | u >> 18;
+              outU8Array[outIdx++] = 128 | u >> 12 & 63;
+              outU8Array[outIdx++] = 128 | u >> 6 & 63;
+              outU8Array[outIdx++] = 128 | u & 63;
+            }
+          }
+        }
+        outU8Array = luastring_from(outU8Array);
+        if (cache) to_luastring_cache[str] = outU8Array;
+        return outU8Array;
+      };
+      var from_userstring = function(str) {
+        if (!is_luastring(str)) {
+          if (typeof str === "string") {
+            str = to_luastring(str);
+          } else {
+            throw new TypeError("expects an array of bytes or javascript string");
+          }
+        }
+        return str;
+      };
+      module.exports.luastring_from = luastring_from;
+      module.exports.luastring_indexOf = luastring_indexOf;
+      module.exports.luastring_of = luastring_of;
+      module.exports.is_luastring = is_luastring;
+      module.exports.luastring_eq = luastring_eq;
+      module.exports.to_jsstring = to_jsstring;
+      module.exports.to_uristring = to_uristring;
+      module.exports.to_luastring = to_luastring;
+      module.exports.from_userstring = from_userstring;
+      var LUA_SIGNATURE = to_luastring("\x1BLua");
+      var LUA_VERSION_MAJOR = "5";
+      var LUA_VERSION_MINOR = "3";
+      var LUA_VERSION_NUM = 503;
+      var LUA_VERSION_RELEASE = "4";
+      var LUA_VERSION = "Lua " + LUA_VERSION_MAJOR + "." + LUA_VERSION_MINOR;
+      var LUA_RELEASE = LUA_VERSION + "." + LUA_VERSION_RELEASE;
+      var LUA_COPYRIGHT = LUA_RELEASE + "  Copyright (C) 1994-2017 Lua.org, PUC-Rio";
+      var LUA_AUTHORS = "R. Ierusalimschy, L. H. de Figueiredo, W. Celes";
+      module.exports.LUA_SIGNATURE = LUA_SIGNATURE;
+      module.exports.LUA_VERSION_MAJOR = LUA_VERSION_MAJOR;
+      module.exports.LUA_VERSION_MINOR = LUA_VERSION_MINOR;
+      module.exports.LUA_VERSION_NUM = LUA_VERSION_NUM;
+      module.exports.LUA_VERSION_RELEASE = LUA_VERSION_RELEASE;
+      module.exports.LUA_VERSION = LUA_VERSION;
+      module.exports.LUA_RELEASE = LUA_RELEASE;
+      module.exports.LUA_COPYRIGHT = LUA_COPYRIGHT;
+      module.exports.LUA_AUTHORS = LUA_AUTHORS;
+      var thread_status = {
+        LUA_OK: 0,
+        LUA_YIELD: 1,
+        LUA_ERRRUN: 2,
+        LUA_ERRSYNTAX: 3,
+        LUA_ERRMEM: 4,
+        LUA_ERRGCMM: 5,
+        LUA_ERRERR: 6
+      };
+      var constant_types = {
+        LUA_TNONE: -1,
+        LUA_TNIL: 0,
+        LUA_TBOOLEAN: 1,
+        LUA_TLIGHTUSERDATA: 2,
+        LUA_TNUMBER: 3,
+        LUA_TSTRING: 4,
+        LUA_TTABLE: 5,
+        LUA_TFUNCTION: 6,
+        LUA_TUSERDATA: 7,
+        LUA_TTHREAD: 8,
+        LUA_NUMTAGS: 9
+      };
+      constant_types.LUA_TSHRSTR = constant_types.LUA_TSTRING | 0 << 4;
+      constant_types.LUA_TLNGSTR = constant_types.LUA_TSTRING | 1 << 4;
+      constant_types.LUA_TNUMFLT = constant_types.LUA_TNUMBER | 0 << 4;
+      constant_types.LUA_TNUMINT = constant_types.LUA_TNUMBER | 1 << 4;
+      constant_types.LUA_TLCL = constant_types.LUA_TFUNCTION | 0 << 4;
+      constant_types.LUA_TLCF = constant_types.LUA_TFUNCTION | 1 << 4;
+      constant_types.LUA_TCCL = constant_types.LUA_TFUNCTION | 2 << 4;
+      var LUA_OPADD = 0;
+      var LUA_OPSUB = 1;
+      var LUA_OPMUL = 2;
+      var LUA_OPMOD = 3;
+      var LUA_OPPOW = 4;
+      var LUA_OPDIV = 5;
+      var LUA_OPIDIV = 6;
+      var LUA_OPBAND = 7;
+      var LUA_OPBOR = 8;
+      var LUA_OPBXOR = 9;
+      var LUA_OPSHL = 10;
+      var LUA_OPSHR = 11;
+      var LUA_OPUNM = 12;
+      var LUA_OPBNOT = 13;
+      var LUA_OPEQ = 0;
+      var LUA_OPLT = 1;
+      var LUA_OPLE = 2;
+      var LUA_MINSTACK = 20;
+      var { LUAI_MAXSTACK } = require_luaconf();
+      var LUA_REGISTRYINDEX = -LUAI_MAXSTACK - 1e3;
+      var lua_upvalueindex = function(i) {
+        return LUA_REGISTRYINDEX - i;
+      };
+      var LUA_RIDX_MAINTHREAD = 1;
+      var LUA_RIDX_GLOBALS = 2;
+      var LUA_RIDX_LAST = LUA_RIDX_GLOBALS;
+      var lua_Debug = class {
+        constructor() {
+          this.event = NaN;
+          this.name = null;
+          this.namewhat = null;
+          this.what = null;
+          this.source = null;
+          this.currentline = NaN;
+          this.linedefined = NaN;
+          this.lastlinedefined = NaN;
+          this.nups = NaN;
+          this.nparams = NaN;
+          this.isvararg = NaN;
+          this.istailcall = NaN;
+          this.short_src = null;
+          this.i_ci = null;
+        }
+      };
+      var LUA_HOOKCALL = 0;
+      var LUA_HOOKRET = 1;
+      var LUA_HOOKLINE = 2;
+      var LUA_HOOKCOUNT = 3;
+      var LUA_HOOKTAILCALL = 4;
+      var LUA_MASKCALL = 1 << LUA_HOOKCALL;
+      var LUA_MASKRET = 1 << LUA_HOOKRET;
+      var LUA_MASKLINE = 1 << LUA_HOOKLINE;
+      var LUA_MASKCOUNT = 1 << LUA_HOOKCOUNT;
+      module.exports.LUA_HOOKCALL = LUA_HOOKCALL;
+      module.exports.LUA_HOOKCOUNT = LUA_HOOKCOUNT;
+      module.exports.LUA_HOOKLINE = LUA_HOOKLINE;
+      module.exports.LUA_HOOKRET = LUA_HOOKRET;
+      module.exports.LUA_HOOKTAILCALL = LUA_HOOKTAILCALL;
+      module.exports.LUA_MASKCALL = LUA_MASKCALL;
+      module.exports.LUA_MASKCOUNT = LUA_MASKCOUNT;
+      module.exports.LUA_MASKLINE = LUA_MASKLINE;
+      module.exports.LUA_MASKRET = LUA_MASKRET;
+      module.exports.LUA_MINSTACK = LUA_MINSTACK;
+      module.exports.LUA_MULTRET = -1;
+      module.exports.LUA_OPADD = LUA_OPADD;
+      module.exports.LUA_OPBAND = LUA_OPBAND;
+      module.exports.LUA_OPBNOT = LUA_OPBNOT;
+      module.exports.LUA_OPBOR = LUA_OPBOR;
+      module.exports.LUA_OPBXOR = LUA_OPBXOR;
+      module.exports.LUA_OPDIV = LUA_OPDIV;
+      module.exports.LUA_OPEQ = LUA_OPEQ;
+      module.exports.LUA_OPIDIV = LUA_OPIDIV;
+      module.exports.LUA_OPLE = LUA_OPLE;
+      module.exports.LUA_OPLT = LUA_OPLT;
+      module.exports.LUA_OPMOD = LUA_OPMOD;
+      module.exports.LUA_OPMUL = LUA_OPMUL;
+      module.exports.LUA_OPPOW = LUA_OPPOW;
+      module.exports.LUA_OPSHL = LUA_OPSHL;
+      module.exports.LUA_OPSHR = LUA_OPSHR;
+      module.exports.LUA_OPSUB = LUA_OPSUB;
+      module.exports.LUA_OPUNM = LUA_OPUNM;
+      module.exports.LUA_REGISTRYINDEX = LUA_REGISTRYINDEX;
+      module.exports.LUA_RIDX_GLOBALS = LUA_RIDX_GLOBALS;
+      module.exports.LUA_RIDX_LAST = LUA_RIDX_LAST;
+      module.exports.LUA_RIDX_MAINTHREAD = LUA_RIDX_MAINTHREAD;
+      module.exports.constant_types = constant_types;
+      module.exports.lua_Debug = lua_Debug;
+      module.exports.lua_upvalueindex = lua_upvalueindex;
+      module.exports.thread_status = thread_status;
+    }
+  });
+
+  // node_modules/fengari/src/fengaricore.js
+  var require_fengaricore = __commonJS({
+    "node_modules/fengari/src/fengaricore.js"(exports, module) {
+      var defs = require_defs();
+      var FENGARI_VERSION_MAJOR = "0";
+      var FENGARI_VERSION_MINOR = "1";
+      var FENGARI_VERSION_NUM = 1;
+      var FENGARI_VERSION_RELEASE = "4";
+      var FENGARI_VERSION = "Fengari " + FENGARI_VERSION_MAJOR + "." + FENGARI_VERSION_MINOR;
+      var FENGARI_RELEASE = FENGARI_VERSION + "." + FENGARI_VERSION_RELEASE;
+      var FENGARI_AUTHORS = "B. Giannangeli, Daurnimator";
+      var FENGARI_COPYRIGHT = FENGARI_RELEASE + "  Copyright (C) 2017-2018 " + FENGARI_AUTHORS + "\nBased on: " + defs.LUA_COPYRIGHT;
+      module.exports.FENGARI_AUTHORS = FENGARI_AUTHORS;
+      module.exports.FENGARI_COPYRIGHT = FENGARI_COPYRIGHT;
+      module.exports.FENGARI_RELEASE = FENGARI_RELEASE;
+      module.exports.FENGARI_VERSION = FENGARI_VERSION;
+      module.exports.FENGARI_VERSION_MAJOR = FENGARI_VERSION_MAJOR;
+      module.exports.FENGARI_VERSION_MINOR = FENGARI_VERSION_MINOR;
+      module.exports.FENGARI_VERSION_NUM = FENGARI_VERSION_NUM;
+      module.exports.FENGARI_VERSION_RELEASE = FENGARI_VERSION_RELEASE;
+      module.exports.is_luastring = defs.is_luastring;
+      module.exports.luastring_eq = defs.luastring_eq;
+      module.exports.luastring_from = defs.luastring_from;
+      module.exports.luastring_indexOf = defs.luastring_indexOf;
+      module.exports.luastring_of = defs.luastring_of;
+      module.exports.to_jsstring = defs.to_jsstring;
+      module.exports.to_luastring = defs.to_luastring;
+      module.exports.to_uristring = defs.to_uristring;
+      module.exports.from_userstring = defs.from_userstring;
+    }
+  });
+
+  // node_modules/fengari/src/llimits.js
+  var require_llimits = __commonJS({
+    "node_modules/fengari/src/llimits.js"(exports, module) {
+      "use strict";
+      var { luai_apicheck } = require_luaconf();
+      var lua_assert = function(c) {
+        if (!c) throw Error("assertion failed");
+      };
+      module.exports.lua_assert = lua_assert;
+      module.exports.luai_apicheck = luai_apicheck || function(l, e) {
+        return lua_assert(e);
+      };
+      var api_check = function(l, e, msg) {
+        return luai_apicheck(l, e && msg);
+      };
+      module.exports.api_check = api_check;
+      var LUAI_MAXCCALLS = 200;
+      module.exports.LUAI_MAXCCALLS = LUAI_MAXCCALLS;
+      var LUA_MINBUFFER = 32;
+      module.exports.LUA_MINBUFFER = LUA_MINBUFFER;
+      var luai_nummod = function(L, a, b) {
+        let m = a % b;
+        if (m * b < 0)
+          m += b;
+        return m;
+      };
+      module.exports.luai_nummod = luai_nummod;
+      var MAX_INT = 2147483647;
+      module.exports.MAX_INT = MAX_INT;
+      var MIN_INT = -2147483648;
+      module.exports.MIN_INT = MIN_INT;
+    }
+  });
+
+  // node_modules/fengari/src/ljstype.js
+  var require_ljstype = __commonJS({
+    "node_modules/fengari/src/ljstype.js"(exports, module) {
+      "use strict";
+      var { luastring_of } = require_defs();
+      var luai_ctype_ = luastring_of(
+        0,
+        /* EOZ */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* 0. */
+        0,
+        8,
+        8,
+        8,
+        8,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* 1. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        /* 2. */
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        22,
+        22,
+        22,
+        22,
+        22,
+        22,
+        22,
+        22,
+        /* 3. */
+        22,
+        22,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        21,
+        21,
+        21,
+        21,
+        21,
+        21,
+        5,
+        /* 4. */
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        /* 5. */
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4,
+        21,
+        21,
+        21,
+        21,
+        21,
+        21,
+        5,
+        /* 6. */
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        /* 7. */
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* 8. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* 9. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* a. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* b. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* c. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* d. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* e. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        /* f. */
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      );
+      var ALPHABIT = 0;
+      var DIGITBIT = 1;
+      var PRINTBIT = 2;
+      var SPACEBIT = 3;
+      var XDIGITBIT = 4;
+      var lisdigit = function(c) {
+        return (luai_ctype_[c + 1] & 1 << DIGITBIT) !== 0;
+      };
+      var lisxdigit = function(c) {
+        return (luai_ctype_[c + 1] & 1 << XDIGITBIT) !== 0;
+      };
+      var lisprint = function(c) {
+        return (luai_ctype_[c + 1] & 1 << PRINTBIT) !== 0;
+      };
+      var lisspace = function(c) {
+        return (luai_ctype_[c + 1] & 1 << SPACEBIT) !== 0;
+      };
+      var lislalpha = function(c) {
+        return (luai_ctype_[c + 1] & 1 << ALPHABIT) !== 0;
+      };
+      var lislalnum = function(c) {
+        return (luai_ctype_[c + 1] & (1 << ALPHABIT | 1 << DIGITBIT)) !== 0;
+      };
+      module.exports.lisdigit = lisdigit;
+      module.exports.lislalnum = lislalnum;
+      module.exports.lislalpha = lislalpha;
+      module.exports.lisprint = lisprint;
+      module.exports.lisspace = lisspace;
+      module.exports.lisxdigit = lisxdigit;
+    }
+  });
+
+  // node_modules/fengari/src/lstring.js
+  var require_lstring = __commonJS({
+    "node_modules/fengari/src/lstring.js"(exports, module) {
+      "use strict";
+      var {
+        is_luastring,
+        luastring_eq,
+        luastring_from,
+        to_luastring
+      } = require_defs();
+      var { lua_assert } = require_llimits();
+      var TString = class {
+        constructor(L, str) {
+          this.hash = null;
+          this.realstring = str;
+        }
+        getstr() {
+          return this.realstring;
+        }
+        tsslen() {
+          return this.realstring.length;
+        }
+      };
+      var luaS_eqlngstr = function(a, b) {
+        lua_assert(a instanceof TString);
+        lua_assert(b instanceof TString);
+        return a == b || luastring_eq(a.realstring, b.realstring);
+      };
+      var luaS_hash = function(str) {
+        lua_assert(is_luastring(str));
+        let len = str.length;
+        let s = "|";
+        for (let i = 0; i < len; i++)
+          s += str[i].toString(16);
+        return s;
+      };
+      var luaS_hashlongstr = function(ts) {
+        lua_assert(ts instanceof TString);
+        if (ts.hash === null) {
+          ts.hash = luaS_hash(ts.getstr());
+        }
+        return ts.hash;
+      };
+      var luaS_bless = function(L, str) {
+        lua_assert(str instanceof Uint8Array);
+        return new TString(L, str);
+      };
+      var luaS_new = function(L, str) {
+        return luaS_bless(L, luastring_from(str));
+      };
+      var luaS_newliteral = function(L, str) {
+        return luaS_bless(L, to_luastring(str));
+      };
+      module.exports.luaS_eqlngstr = luaS_eqlngstr;
+      module.exports.luaS_hash = luaS_hash;
+      module.exports.luaS_hashlongstr = luaS_hashlongstr;
+      module.exports.luaS_bless = luaS_bless;
+      module.exports.luaS_new = luaS_new;
+      module.exports.luaS_newliteral = luaS_newliteral;
+      module.exports.TString = TString;
+    }
+  });
+
+  // node_modules/fengari/src/ltable.js
+  var require_ltable = __commonJS({
+    "node_modules/fengari/src/ltable.js"(exports, module) {
+      "use strict";
+      var {
+        constant_types: {
+          LUA_TBOOLEAN,
+          LUA_TCCL,
+          LUA_TLCF,
+          LUA_TLCL,
+          LUA_TLIGHTUSERDATA,
+          LUA_TLNGSTR,
+          LUA_TNIL,
+          LUA_TNUMFLT,
+          LUA_TNUMINT,
+          LUA_TSHRSTR,
+          LUA_TTABLE,
+          LUA_TTHREAD,
+          LUA_TUSERDATA
+        },
+        to_luastring
+      } = require_defs();
+      var { lua_assert } = require_llimits();
+      var ldebug = require_ldebug();
+      var lobject = require_lobject();
+      var {
+        luaS_hashlongstr,
+        TString
+      } = require_lstring();
+      var lstate = require_lstate();
+      var lightuserdata_hashes = /* @__PURE__ */ new WeakMap();
+      var get_lightuserdata_hash = function(v) {
+        let hash = lightuserdata_hashes.get(v);
+        if (!hash) {
+          hash = {};
+          lightuserdata_hashes.set(v, hash);
+        }
+        return hash;
+      };
+      var table_hash = function(L, key) {
+        switch (key.type) {
+          case LUA_TNIL:
+            return ldebug.luaG_runerror(L, to_luastring("table index is nil", true));
+          case LUA_TNUMFLT:
+            if (isNaN(key.value))
+              return ldebug.luaG_runerror(L, to_luastring("table index is NaN", true));
+          /* fall through */
+          case LUA_TNUMINT:
+          /* takes advantage of floats and integers being same in JS */
+          case LUA_TBOOLEAN:
+          case LUA_TTABLE:
+          case LUA_TLCL:
+          case LUA_TLCF:
+          case LUA_TCCL:
+          case LUA_TUSERDATA:
+          case LUA_TTHREAD:
+            return key.value;
+          case LUA_TSHRSTR:
+          case LUA_TLNGSTR:
+            return luaS_hashlongstr(key.tsvalue());
+          case LUA_TLIGHTUSERDATA: {
+            let v = key.value;
+            switch (typeof v) {
+              case "string":
+                return "*" + v;
+              case "number":
+                return "#" + v;
+              case "boolean":
+                return v ? "?true" : "?false";
+              case "function":
+                return get_lightuserdata_hash(v);
+              case "object":
+                if (v instanceof lstate.lua_State && v.l_G === L.l_G || v instanceof Table || v instanceof lobject.Udata || v instanceof lobject.LClosure || v instanceof lobject.CClosure) {
+                  return get_lightuserdata_hash(v);
+                }
+              /* fall through */
+              default:
+                return v;
+            }
+          }
+          default:
+            throw new Error("unknown key type: " + key.type);
+        }
+      };
+      var Table = class {
+        constructor(L) {
+          this.id = L.l_G.id_counter++;
+          this.strong = /* @__PURE__ */ new Map();
+          this.dead_strong = /* @__PURE__ */ new Map();
+          this.dead_weak = void 0;
+          this.f = void 0;
+          this.l = void 0;
+          this.metatable = null;
+          this.flags = ~0;
+        }
+      };
+      var invalidateTMcache = function(t) {
+        t.flags = 0;
+      };
+      var add = function(t, hash, key, value) {
+        t.dead_strong.clear();
+        t.dead_weak = void 0;
+        let prev = null;
+        let entry = {
+          key,
+          value,
+          p: prev = t.l,
+          n: void 0
+        };
+        if (!t.f) t.f = entry;
+        if (prev) prev.n = entry;
+        t.strong.set(hash, entry);
+        t.l = entry;
+      };
+      var is_valid_weakmap_key = function(k) {
+        return typeof k === "object" ? k !== null : typeof k === "function";
+      };
+      var mark_dead = function(t, hash) {
+        let e = t.strong.get(hash);
+        if (e) {
+          e.key.setdeadvalue();
+          e.value = void 0;
+          let next = e.n;
+          let prev = e.p;
+          e.p = void 0;
+          if (prev) prev.n = next;
+          if (next) next.p = prev;
+          if (t.f === e) t.f = next;
+          if (t.l === e) t.l = prev;
+          t.strong.delete(hash);
+          if (is_valid_weakmap_key(hash)) {
+            if (!t.dead_weak) t.dead_weak = /* @__PURE__ */ new WeakMap();
+            t.dead_weak.set(hash, e);
+          } else {
+            t.dead_strong.set(hash, e);
+          }
+        }
+      };
+      var luaH_new = function(L) {
+        return new Table(L);
+      };
+      var getgeneric = function(t, hash) {
+        let v = t.strong.get(hash);
+        return v ? v.value : lobject.luaO_nilobject;
+      };
+      var luaH_getint = function(t, key) {
+        lua_assert(typeof key == "number" && (key | 0) === key);
+        return getgeneric(t, key);
+      };
+      var luaH_getstr = function(t, key) {
+        lua_assert(key instanceof TString);
+        return getgeneric(t, luaS_hashlongstr(key));
+      };
+      var luaH_get = function(L, t, key) {
+        lua_assert(key instanceof lobject.TValue);
+        if (key.ttisnil() || key.ttisfloat() && isNaN(key.value))
+          return lobject.luaO_nilobject;
+        return getgeneric(t, table_hash(L, key));
+      };
+      var luaH_setint = function(t, key, value) {
+        lua_assert(typeof key == "number" && (key | 0) === key && value instanceof lobject.TValue);
+        let hash = key;
+        if (value.ttisnil()) {
+          mark_dead(t, hash);
+          return;
+        }
+        let e = t.strong.get(hash);
+        if (e) {
+          let tv = e.value;
+          tv.setfrom(value);
+        } else {
+          let k = new lobject.TValue(LUA_TNUMINT, key);
+          let v = new lobject.TValue(value.type, value.value);
+          add(t, hash, k, v);
+        }
+      };
+      var luaH_setfrom = function(L, t, key, value) {
+        lua_assert(key instanceof lobject.TValue);
+        let hash = table_hash(L, key);
+        if (value.ttisnil()) {
+          mark_dead(t, hash);
+          return;
+        }
+        let e = t.strong.get(hash);
+        if (e) {
+          e.value.setfrom(value);
+        } else {
+          let k;
+          let kv = key.value;
+          if (key.ttisfloat() && (kv | 0) === kv) {
+            k = new lobject.TValue(LUA_TNUMINT, kv);
+          } else {
+            k = new lobject.TValue(key.type, kv);
+          }
+          let v = new lobject.TValue(value.type, value.value);
+          add(t, hash, k, v);
+        }
+      };
+      var luaH_getn = function(t) {
+        let i = 0;
+        let j = t.strong.size + 1;
+        while (j - i > 1) {
+          let m = Math.floor((i + j) / 2);
+          if (luaH_getint(t, m).ttisnil()) j = m;
+          else i = m;
+        }
+        return i;
+      };
+      var luaH_next = function(L, table, keyI) {
+        let keyO = L.stack[keyI];
+        let entry;
+        if (keyO.type === LUA_TNIL) {
+          entry = table.f;
+          if (!entry)
+            return false;
+        } else {
+          let hash = table_hash(L, keyO);
+          entry = table.strong.get(hash);
+          if (entry) {
+            entry = entry.n;
+            if (!entry)
+              return false;
+          } else {
+            entry = table.dead_weak && table.dead_weak.get(hash) || table.dead_strong.get(hash);
+            if (!entry)
+              return ldebug.luaG_runerror(L, to_luastring("invalid key to 'next'"));
+            do {
+              entry = entry.n;
+              if (!entry)
+                return false;
+            } while (entry.key.ttisdeadkey());
+          }
+        }
+        lobject.setobj2s(L, keyI, entry.key);
+        lobject.setobj2s(L, keyI + 1, entry.value);
+        return true;
+      };
+      module.exports.invalidateTMcache = invalidateTMcache;
+      module.exports.luaH_get = luaH_get;
+      module.exports.luaH_getint = luaH_getint;
+      module.exports.luaH_getn = luaH_getn;
+      module.exports.luaH_getstr = luaH_getstr;
+      module.exports.luaH_setfrom = luaH_setfrom;
+      module.exports.luaH_setint = luaH_setint;
+      module.exports.luaH_new = luaH_new;
+      module.exports.luaH_next = luaH_next;
+      module.exports.Table = Table;
+    }
+  });
+
+  // node_modules/fengari/src/lopcodes.js
+  var require_lopcodes = __commonJS({
+    "node_modules/fengari/src/lopcodes.js"(exports, module) {
+      "use strict";
+      var OpCodes = [
+        "MOVE",
+        "LOADK",
+        "LOADKX",
+        "LOADBOOL",
+        "LOADNIL",
+        "GETUPVAL",
+        "GETTABUP",
+        "GETTABLE",
+        "SETTABUP",
+        "SETUPVAL",
+        "SETTABLE",
+        "NEWTABLE",
+        "SELF",
+        "ADD",
+        "SUB",
+        "MUL",
+        "MOD",
+        "POW",
+        "DIV",
+        "IDIV",
+        "BAND",
+        "BOR",
+        "BXOR",
+        "SHL",
+        "SHR",
+        "UNM",
+        "BNOT",
+        "NOT",
+        "LEN",
+        "CONCAT",
+        "JMP",
+        "EQ",
+        "LT",
+        "LE",
+        "TEST",
+        "TESTSET",
+        "CALL",
+        "TAILCALL",
+        "RETURN",
+        "FORLOOP",
+        "FORPREP",
+        "TFORCALL",
+        "TFORLOOP",
+        "SETLIST",
+        "CLOSURE",
+        "VARARG",
+        "EXTRAARG"
+      ];
+      var OpCodesI = {
+        OP_MOVE: 0,
+        OP_LOADK: 1,
+        OP_LOADKX: 2,
+        OP_LOADBOOL: 3,
+        OP_LOADNIL: 4,
+        OP_GETUPVAL: 5,
+        OP_GETTABUP: 6,
+        OP_GETTABLE: 7,
+        OP_SETTABUP: 8,
+        OP_SETUPVAL: 9,
+        OP_SETTABLE: 10,
+        OP_NEWTABLE: 11,
+        OP_SELF: 12,
+        OP_ADD: 13,
+        OP_SUB: 14,
+        OP_MUL: 15,
+        OP_MOD: 16,
+        OP_POW: 17,
+        OP_DIV: 18,
+        OP_IDIV: 19,
+        OP_BAND: 20,
+        OP_BOR: 21,
+        OP_BXOR: 22,
+        OP_SHL: 23,
+        OP_SHR: 24,
+        OP_UNM: 25,
+        OP_BNOT: 26,
+        OP_NOT: 27,
+        OP_LEN: 28,
+        OP_CONCAT: 29,
+        OP_JMP: 30,
+        OP_EQ: 31,
+        OP_LT: 32,
+        OP_LE: 33,
+        OP_TEST: 34,
+        OP_TESTSET: 35,
+        OP_CALL: 36,
+        OP_TAILCALL: 37,
+        OP_RETURN: 38,
+        OP_FORLOOP: 39,
+        OP_FORPREP: 40,
+        OP_TFORCALL: 41,
+        OP_TFORLOOP: 42,
+        OP_SETLIST: 43,
+        OP_CLOSURE: 44,
+        OP_VARARG: 45,
+        OP_EXTRAARG: 46
+      };
+      var OpArgN = 0;
+      var OpArgU = 1;
+      var OpArgR = 2;
+      var OpArgK = 3;
+      var iABC = 0;
+      var iABx = 1;
+      var iAsBx = 2;
+      var iAx = 3;
+      var luaP_opmodes = [
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgN << 2 | iABC,
+        /* OP_MOVE */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgN << 2 | iABx,
+        /* OP_LOADK */
+        0 << 7 | 1 << 6 | OpArgN << 4 | OpArgN << 2 | iABx,
+        /* OP_LOADKX */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgU << 2 | iABC,
+        /* OP_LOADBOOL */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgN << 2 | iABC,
+        /* OP_LOADNIL */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgN << 2 | iABC,
+        /* OP_GETUPVAL */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgK << 2 | iABC,
+        /* OP_GETTABUP */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgK << 2 | iABC,
+        /* OP_GETTABLE */
+        0 << 7 | 0 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_SETTABUP */
+        0 << 7 | 0 << 6 | OpArgU << 4 | OpArgN << 2 | iABC,
+        /* OP_SETUPVAL */
+        0 << 7 | 0 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_SETTABLE */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgU << 2 | iABC,
+        /* OP_NEWTABLE */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgK << 2 | iABC,
+        /* OP_SELF */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_ADD */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_SUB */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_MUL */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_MOD */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_POW */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_DIV */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_IDIV */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_BAND */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_BOR */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_BXOR */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_SHL */
+        0 << 7 | 1 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_SHR */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgN << 2 | iABC,
+        /* OP_UNM */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgN << 2 | iABC,
+        /* OP_BNOT */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgN << 2 | iABC,
+        /* OP_NOT */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgN << 2 | iABC,
+        /* OP_LEN */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgR << 2 | iABC,
+        /* OP_CONCAT */
+        0 << 7 | 0 << 6 | OpArgR << 4 | OpArgN << 2 | iAsBx,
+        /* OP_JMP */
+        1 << 7 | 0 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_EQ */
+        1 << 7 | 0 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_LT */
+        1 << 7 | 0 << 6 | OpArgK << 4 | OpArgK << 2 | iABC,
+        /* OP_LE */
+        1 << 7 | 0 << 6 | OpArgN << 4 | OpArgU << 2 | iABC,
+        /* OP_TEST */
+        1 << 7 | 1 << 6 | OpArgR << 4 | OpArgU << 2 | iABC,
+        /* OP_TESTSET */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgU << 2 | iABC,
+        /* OP_CALL */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgU << 2 | iABC,
+        /* OP_TAILCALL */
+        0 << 7 | 0 << 6 | OpArgU << 4 | OpArgN << 2 | iABC,
+        /* OP_RETURN */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgN << 2 | iAsBx,
+        /* OP_FORLOOP */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgN << 2 | iAsBx,
+        /* OP_FORPREP */
+        0 << 7 | 0 << 6 | OpArgN << 4 | OpArgU << 2 | iABC,
+        /* OP_TFORCALL */
+        0 << 7 | 1 << 6 | OpArgR << 4 | OpArgN << 2 | iAsBx,
+        /* OP_TFORLOOP */
+        0 << 7 | 0 << 6 | OpArgU << 4 | OpArgU << 2 | iABC,
+        /* OP_SETLIST */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgN << 2 | iABx,
+        /* OP_CLOSURE */
+        0 << 7 | 1 << 6 | OpArgU << 4 | OpArgN << 2 | iABC,
+        /* OP_VARARG */
+        0 << 7 | 0 << 6 | OpArgU << 4 | OpArgU << 2 | iAx
+        /* OP_EXTRAARG */
+      ];
+      var getOpMode = function(m) {
+        return luaP_opmodes[m] & 3;
+      };
+      var getBMode = function(m) {
+        return luaP_opmodes[m] >> 4 & 3;
+      };
+      var getCMode = function(m) {
+        return luaP_opmodes[m] >> 2 & 3;
+      };
+      var testAMode = function(m) {
+        return luaP_opmodes[m] & 1 << 6;
+      };
+      var testTMode = function(m) {
+        return luaP_opmodes[m] & 1 << 7;
+      };
+      var SIZE_C = 9;
+      var SIZE_B = 9;
+      var SIZE_Bx = SIZE_C + SIZE_B;
+      var SIZE_A = 8;
+      var SIZE_Ax = SIZE_C + SIZE_B + SIZE_A;
+      var SIZE_OP = 6;
+      var POS_OP = 0;
+      var POS_A = POS_OP + SIZE_OP;
+      var POS_C = POS_A + SIZE_A;
+      var POS_B = POS_C + SIZE_C;
+      var POS_Bx = POS_C;
+      var POS_Ax = POS_A;
+      var MAXARG_Bx = (1 << SIZE_Bx) - 1;
+      var MAXARG_sBx = MAXARG_Bx >> 1;
+      var MAXARG_Ax = (1 << SIZE_Ax) - 1;
+      var MAXARG_A = (1 << SIZE_A) - 1;
+      var MAXARG_B = (1 << SIZE_B) - 1;
+      var MAXARG_C = (1 << SIZE_C) - 1;
+      var BITRK = 1 << SIZE_B - 1;
+      var MAXINDEXRK = BITRK - 1;
+      var NO_REG = MAXARG_A;
+      var ISK = function(x) {
+        return x & BITRK;
+      };
+      var INDEXK = function(r) {
+        return r & ~BITRK;
+      };
+      var RKASK = function(x) {
+        return x | BITRK;
+      };
+      var MASK1 = function(n, p) {
+        return ~(~0 << n) << p;
+      };
+      var MASK0 = function(n, p) {
+        return ~MASK1(n, p);
+      };
+      var GET_OPCODE = function(i) {
+        return i.opcode;
+      };
+      var SET_OPCODE = function(i, o) {
+        i.code = i.code & MASK0(SIZE_OP, POS_OP) | o << POS_OP & MASK1(SIZE_OP, POS_OP);
+        return fullins(i);
+      };
+      var setarg = function(i, v, pos, size) {
+        i.code = i.code & MASK0(size, pos) | v << pos & MASK1(size, pos);
+        return fullins(i);
+      };
+      var GETARG_A = function(i) {
+        return i.A;
+      };
+      var SETARG_A = function(i, v) {
+        return setarg(i, v, POS_A, SIZE_A);
+      };
+      var GETARG_B = function(i) {
+        return i.B;
+      };
+      var SETARG_B = function(i, v) {
+        return setarg(i, v, POS_B, SIZE_B);
+      };
+      var GETARG_C = function(i) {
+        return i.C;
+      };
+      var SETARG_C = function(i, v) {
+        return setarg(i, v, POS_C, SIZE_C);
+      };
+      var GETARG_Bx = function(i) {
+        return i.Bx;
+      };
+      var SETARG_Bx = function(i, v) {
+        return setarg(i, v, POS_Bx, SIZE_Bx);
+      };
+      var GETARG_Ax = function(i) {
+        return i.Ax;
+      };
+      var SETARG_Ax = function(i, v) {
+        return setarg(i, v, POS_Ax, SIZE_Ax);
+      };
+      var GETARG_sBx = function(i) {
+        return i.sBx;
+      };
+      var SETARG_sBx = function(i, b) {
+        return SETARG_Bx(i, b + MAXARG_sBx);
+      };
+      var fullins = function(ins) {
+        if (typeof ins === "number") {
+          return {
+            code: ins,
+            opcode: ins >> POS_OP & MASK1(SIZE_OP, 0),
+            A: ins >> POS_A & MASK1(SIZE_A, 0),
+            B: ins >> POS_B & MASK1(SIZE_B, 0),
+            C: ins >> POS_C & MASK1(SIZE_C, 0),
+            Bx: ins >> POS_Bx & MASK1(SIZE_Bx, 0),
+            Ax: ins >> POS_Ax & MASK1(SIZE_Ax, 0),
+            sBx: (ins >> POS_Bx & MASK1(SIZE_Bx, 0)) - MAXARG_sBx
+          };
+        } else {
+          let i = ins.code;
+          ins.opcode = i >> POS_OP & MASK1(SIZE_OP, 0);
+          ins.A = i >> POS_A & MASK1(SIZE_A, 0);
+          ins.B = i >> POS_B & MASK1(SIZE_B, 0);
+          ins.C = i >> POS_C & MASK1(SIZE_C, 0);
+          ins.Bx = i >> POS_Bx & MASK1(SIZE_Bx, 0);
+          ins.Ax = i >> POS_Ax & MASK1(SIZE_Ax, 0);
+          ins.sBx = (i >> POS_Bx & MASK1(SIZE_Bx, 0)) - MAXARG_sBx;
+          return ins;
+        }
+      };
+      var CREATE_ABC = function(o, a, b, c) {
+        return fullins(o << POS_OP | a << POS_A | b << POS_B | c << POS_C);
+      };
+      var CREATE_ABx = function(o, a, bc) {
+        return fullins(o << POS_OP | a << POS_A | bc << POS_Bx);
+      };
+      var CREATE_Ax = function(o, a) {
+        return fullins(o << POS_OP | a << POS_Ax);
+      };
+      var LFIELDS_PER_FLUSH = 50;
+      module.exports.BITRK = BITRK;
+      module.exports.CREATE_ABC = CREATE_ABC;
+      module.exports.CREATE_ABx = CREATE_ABx;
+      module.exports.CREATE_Ax = CREATE_Ax;
+      module.exports.GET_OPCODE = GET_OPCODE;
+      module.exports.GETARG_A = GETARG_A;
+      module.exports.GETARG_B = GETARG_B;
+      module.exports.GETARG_C = GETARG_C;
+      module.exports.GETARG_Bx = GETARG_Bx;
+      module.exports.GETARG_Ax = GETARG_Ax;
+      module.exports.GETARG_sBx = GETARG_sBx;
+      module.exports.INDEXK = INDEXK;
+      module.exports.ISK = ISK;
+      module.exports.LFIELDS_PER_FLUSH = LFIELDS_PER_FLUSH;
+      module.exports.MAXARG_A = MAXARG_A;
+      module.exports.MAXARG_Ax = MAXARG_Ax;
+      module.exports.MAXARG_B = MAXARG_B;
+      module.exports.MAXARG_Bx = MAXARG_Bx;
+      module.exports.MAXARG_C = MAXARG_C;
+      module.exports.MAXARG_sBx = MAXARG_sBx;
+      module.exports.MAXINDEXRK = MAXINDEXRK;
+      module.exports.NO_REG = NO_REG;
+      module.exports.OpArgK = OpArgK;
+      module.exports.OpArgN = OpArgN;
+      module.exports.OpArgR = OpArgR;
+      module.exports.OpArgU = OpArgU;
+      module.exports.OpCodes = OpCodes;
+      module.exports.OpCodesI = OpCodesI;
+      module.exports.POS_A = POS_A;
+      module.exports.POS_Ax = POS_Ax;
+      module.exports.POS_B = POS_B;
+      module.exports.POS_Bx = POS_Bx;
+      module.exports.POS_C = POS_C;
+      module.exports.POS_OP = POS_OP;
+      module.exports.RKASK = RKASK;
+      module.exports.SETARG_A = SETARG_A;
+      module.exports.SETARG_Ax = SETARG_Ax;
+      module.exports.SETARG_B = SETARG_B;
+      module.exports.SETARG_Bx = SETARG_Bx;
+      module.exports.SETARG_C = SETARG_C;
+      module.exports.SETARG_sBx = SETARG_sBx;
+      module.exports.SET_OPCODE = SET_OPCODE;
+      module.exports.SIZE_A = SIZE_A;
+      module.exports.SIZE_Ax = SIZE_Ax;
+      module.exports.SIZE_B = SIZE_B;
+      module.exports.SIZE_Bx = SIZE_Bx;
+      module.exports.SIZE_C = SIZE_C;
+      module.exports.SIZE_OP = SIZE_OP;
+      module.exports.fullins = fullins;
+      module.exports.getBMode = getBMode;
+      module.exports.getCMode = getCMode;
+      module.exports.getOpMode = getOpMode;
+      module.exports.iABC = iABC;
+      module.exports.iABx = iABx;
+      module.exports.iAsBx = iAsBx;
+      module.exports.iAx = iAx;
+      module.exports.testAMode = testAMode;
+      module.exports.testTMode = testTMode;
+    }
+  });
+
+  // node_modules/fengari/src/lvm.js
+  var require_lvm = __commonJS({
+    "node_modules/fengari/src/lvm.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_MASKLINE,
+        LUA_MASKCOUNT,
+        LUA_MULTRET,
+        constant_types: {
+          LUA_TBOOLEAN,
+          LUA_TLCF,
+          LUA_TLIGHTUSERDATA,
+          LUA_TLNGSTR,
+          LUA_TNIL,
+          LUA_TNUMBER,
+          LUA_TNUMFLT,
+          LUA_TNUMINT,
+          LUA_TSHRSTR,
+          LUA_TTABLE,
+          LUA_TUSERDATA
+        },
+        to_luastring
+      } = require_defs();
+      var {
+        INDEXK,
+        ISK,
+        LFIELDS_PER_FLUSH,
+        OpCodesI: {
+          OP_ADD,
+          OP_BAND,
+          OP_BNOT,
+          OP_BOR,
+          OP_BXOR,
+          OP_CALL,
+          OP_CLOSURE,
+          OP_CONCAT,
+          OP_DIV,
+          OP_EQ,
+          OP_EXTRAARG,
+          OP_FORLOOP,
+          OP_FORPREP,
+          OP_GETTABLE,
+          OP_GETTABUP,
+          OP_GETUPVAL,
+          OP_IDIV,
+          OP_JMP,
+          OP_LE,
+          OP_LEN,
+          OP_LOADBOOL,
+          OP_LOADK,
+          OP_LOADKX,
+          OP_LOADNIL,
+          OP_LT,
+          OP_MOD,
+          OP_MOVE,
+          OP_MUL,
+          OP_NEWTABLE,
+          OP_NOT,
+          OP_POW,
+          OP_RETURN,
+          OP_SELF,
+          OP_SETLIST,
+          OP_SETTABLE,
+          OP_SETTABUP,
+          OP_SETUPVAL,
+          OP_SHL,
+          OP_SHR,
+          OP_SUB,
+          OP_TAILCALL,
+          OP_TEST,
+          OP_TESTSET,
+          OP_TFORCALL,
+          OP_TFORLOOP,
+          OP_UNM,
+          OP_VARARG
+        }
+      } = require_lopcodes();
+      var {
+        LUA_MAXINTEGER,
+        LUA_MININTEGER,
+        lua_numbertointeger
+      } = require_luaconf();
+      var {
+        lua_assert,
+        luai_nummod
+      } = require_llimits();
+      var lobject = require_lobject();
+      var lfunc = require_lfunc();
+      var lstate = require_lstate();
+      var {
+        luaS_bless,
+        luaS_eqlngstr,
+        luaS_hashlongstr
+      } = require_lstring();
+      var ldo = require_ldo();
+      var ltm = require_ltm();
+      var ltable = require_ltable();
+      var ldebug = require_ldebug();
+      var luaV_finishOp = function(L) {
+        let ci = L.ci;
+        let base = ci.l_base;
+        let inst = ci.l_code[ci.l_savedpc - 1];
+        let op = inst.opcode;
+        switch (op) {
+          /* finish its execution */
+          case OP_ADD:
+          case OP_SUB:
+          case OP_MUL:
+          case OP_DIV:
+          case OP_IDIV:
+          case OP_BAND:
+          case OP_BOR:
+          case OP_BXOR:
+          case OP_SHL:
+          case OP_SHR:
+          case OP_MOD:
+          case OP_POW:
+          case OP_UNM:
+          case OP_BNOT:
+          case OP_LEN:
+          case OP_GETTABUP:
+          case OP_GETTABLE:
+          case OP_SELF: {
+            lobject.setobjs2s(L, base + inst.A, L.top - 1);
+            delete L.stack[--L.top];
+            break;
+          }
+          case OP_LE:
+          case OP_LT:
+          case OP_EQ: {
+            let res = !L.stack[L.top - 1].l_isfalse();
+            delete L.stack[--L.top];
+            if (ci.callstatus & lstate.CIST_LEQ) {
+              lua_assert(op === OP_LE);
+              ci.callstatus ^= lstate.CIST_LEQ;
+              res = !res;
+            }
+            lua_assert(ci.l_code[ci.l_savedpc].opcode === OP_JMP);
+            if (res !== (inst.A ? true : false))
+              ci.l_savedpc++;
+            break;
+          }
+          case OP_CONCAT: {
+            let top = L.top - 1;
+            let b = inst.B;
+            let total = top - 1 - (base + b);
+            lobject.setobjs2s(L, top - 2, top);
+            if (total > 1) {
+              L.top = top - 1;
+              luaV_concat(L, total);
+            }
+            lobject.setobjs2s(L, ci.l_base + inst.A, L.top - 1);
+            ldo.adjust_top(L, ci.top);
+            break;
+          }
+          case OP_TFORCALL: {
+            lua_assert(ci.l_code[ci.l_savedpc].opcode === OP_TFORLOOP);
+            ldo.adjust_top(L, ci.top);
+            break;
+          }
+          case OP_CALL: {
+            if (inst.C - 1 >= 0)
+              ldo.adjust_top(L, ci.top);
+            break;
+          }
+        }
+      };
+      var RA = function(L, base, i) {
+        return base + i.A;
+      };
+      var RB = function(L, base, i) {
+        return base + i.B;
+      };
+      var RKB = function(L, base, k, i) {
+        return ISK(i.B) ? k[INDEXK(i.B)] : L.stack[base + i.B];
+      };
+      var RKC = function(L, base, k, i) {
+        return ISK(i.C) ? k[INDEXK(i.C)] : L.stack[base + i.C];
+      };
+      var luaV_execute = function(L) {
+        let ci = L.ci;
+        ci.callstatus |= lstate.CIST_FRESH;
+        newframe:
+          for (; ; ) {
+            lua_assert(ci === L.ci);
+            let cl = ci.func.value;
+            let k = cl.p.k;
+            let base = ci.l_base;
+            let i = ci.l_code[ci.l_savedpc++];
+            if (L.hookmask & (LUA_MASKLINE | LUA_MASKCOUNT)) {
+              ldebug.luaG_traceexec(L);
+            }
+            let ra = RA(L, base, i);
+            let opcode = i.opcode;
+            switch (opcode) {
+              case OP_MOVE: {
+                lobject.setobjs2s(L, ra, RB(L, base, i));
+                break;
+              }
+              case OP_LOADK: {
+                let konst = k[i.Bx];
+                lobject.setobj2s(L, ra, konst);
+                break;
+              }
+              case OP_LOADKX: {
+                lua_assert(ci.l_code[ci.l_savedpc].opcode === OP_EXTRAARG);
+                let konst = k[ci.l_code[ci.l_savedpc++].Ax];
+                lobject.setobj2s(L, ra, konst);
+                break;
+              }
+              case OP_LOADBOOL: {
+                L.stack[ra].setbvalue(i.B !== 0);
+                if (i.C !== 0)
+                  ci.l_savedpc++;
+                break;
+              }
+              case OP_LOADNIL: {
+                for (let j = 0; j <= i.B; j++)
+                  L.stack[ra + j].setnilvalue();
+                break;
+              }
+              case OP_GETUPVAL: {
+                let b = i.B;
+                lobject.setobj2s(L, ra, cl.upvals[b]);
+                break;
+              }
+              case OP_GETTABUP: {
+                let upval = cl.upvals[i.B];
+                let rc = RKC(L, base, k, i);
+                luaV_gettable(L, upval, rc, ra);
+                break;
+              }
+              case OP_GETTABLE: {
+                let rb = L.stack[RB(L, base, i)];
+                let rc = RKC(L, base, k, i);
+                luaV_gettable(L, rb, rc, ra);
+                break;
+              }
+              case OP_SETTABUP: {
+                let upval = cl.upvals[i.A];
+                let rb = RKB(L, base, k, i);
+                let rc = RKC(L, base, k, i);
+                settable(L, upval, rb, rc);
+                break;
+              }
+              case OP_SETUPVAL: {
+                let uv = cl.upvals[i.B];
+                uv.setfrom(L.stack[ra]);
+                break;
+              }
+              case OP_SETTABLE: {
+                let table = L.stack[ra];
+                let key = RKB(L, base, k, i);
+                let v = RKC(L, base, k, i);
+                settable(L, table, key, v);
+                break;
+              }
+              case OP_NEWTABLE: {
+                L.stack[ra].sethvalue(ltable.luaH_new(L));
+                break;
+              }
+              case OP_SELF: {
+                let rb = RB(L, base, i);
+                let rc = RKC(L, base, k, i);
+                lobject.setobjs2s(L, ra + 1, rb);
+                luaV_gettable(L, L.stack[rb], rc, ra);
+                break;
+              }
+              case OP_ADD: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if (op1.ttisinteger() && op2.ttisinteger()) {
+                  L.stack[ra].setivalue(op1.value + op2.value | 0);
+                } else if ((numberop1 = tonumber(op1)) !== false && (numberop2 = tonumber(op2)) !== false) {
+                  L.stack[ra].setfltvalue(numberop1 + numberop2);
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_ADD);
+                }
+                break;
+              }
+              case OP_SUB: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if (op1.ttisinteger() && op2.ttisinteger()) {
+                  L.stack[ra].setivalue(op1.value - op2.value | 0);
+                } else if ((numberop1 = tonumber(op1)) !== false && (numberop2 = tonumber(op2)) !== false) {
+                  L.stack[ra].setfltvalue(numberop1 - numberop2);
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_SUB);
+                }
+                break;
+              }
+              case OP_MUL: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if (op1.ttisinteger() && op2.ttisinteger()) {
+                  L.stack[ra].setivalue(luaV_imul(op1.value, op2.value));
+                } else if ((numberop1 = tonumber(op1)) !== false && (numberop2 = tonumber(op2)) !== false) {
+                  L.stack[ra].setfltvalue(numberop1 * numberop2);
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_MUL);
+                }
+                break;
+              }
+              case OP_MOD: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if (op1.ttisinteger() && op2.ttisinteger()) {
+                  L.stack[ra].setivalue(luaV_mod(L, op1.value, op2.value));
+                } else if ((numberop1 = tonumber(op1)) !== false && (numberop2 = tonumber(op2)) !== false) {
+                  L.stack[ra].setfltvalue(luai_nummod(L, numberop1, numberop2));
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_MOD);
+                }
+                break;
+              }
+              case OP_POW: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if ((numberop1 = tonumber(op1)) !== false && (numberop2 = tonumber(op2)) !== false) {
+                  L.stack[ra].setfltvalue(Math.pow(numberop1, numberop2));
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_POW);
+                }
+                break;
+              }
+              case OP_DIV: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if ((numberop1 = tonumber(op1)) !== false && (numberop2 = tonumber(op2)) !== false) {
+                  L.stack[ra].setfltvalue(numberop1 / numberop2);
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_DIV);
+                }
+                break;
+              }
+              case OP_IDIV: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if (op1.ttisinteger() && op2.ttisinteger()) {
+                  L.stack[ra].setivalue(luaV_div(L, op1.value, op2.value));
+                } else if ((numberop1 = tonumber(op1)) !== false && (numberop2 = tonumber(op2)) !== false) {
+                  L.stack[ra].setfltvalue(Math.floor(numberop1 / numberop2));
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_IDIV);
+                }
+                break;
+              }
+              case OP_BAND: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if ((numberop1 = tointeger(op1)) !== false && (numberop2 = tointeger(op2)) !== false) {
+                  L.stack[ra].setivalue(numberop1 & numberop2);
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_BAND);
+                }
+                break;
+              }
+              case OP_BOR: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if ((numberop1 = tointeger(op1)) !== false && (numberop2 = tointeger(op2)) !== false) {
+                  L.stack[ra].setivalue(numberop1 | numberop2);
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_BOR);
+                }
+                break;
+              }
+              case OP_BXOR: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if ((numberop1 = tointeger(op1)) !== false && (numberop2 = tointeger(op2)) !== false) {
+                  L.stack[ra].setivalue(numberop1 ^ numberop2);
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_BXOR);
+                }
+                break;
+              }
+              case OP_SHL: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if ((numberop1 = tointeger(op1)) !== false && (numberop2 = tointeger(op2)) !== false) {
+                  L.stack[ra].setivalue(luaV_shiftl(numberop1, numberop2));
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_SHL);
+                }
+                break;
+              }
+              case OP_SHR: {
+                let op1 = RKB(L, base, k, i);
+                let op2 = RKC(L, base, k, i);
+                let numberop1, numberop2;
+                if ((numberop1 = tointeger(op1)) !== false && (numberop2 = tointeger(op2)) !== false) {
+                  L.stack[ra].setivalue(luaV_shiftl(numberop1, -numberop2));
+                } else {
+                  ltm.luaT_trybinTM(L, op1, op2, L.stack[ra], ltm.TMS.TM_SHR);
+                }
+                break;
+              }
+              case OP_UNM: {
+                let op = L.stack[RB(L, base, i)];
+                let numberop;
+                if (op.ttisinteger()) {
+                  L.stack[ra].setivalue(-op.value | 0);
+                } else if ((numberop = tonumber(op)) !== false) {
+                  L.stack[ra].setfltvalue(-numberop);
+                } else {
+                  ltm.luaT_trybinTM(L, op, op, L.stack[ra], ltm.TMS.TM_UNM);
+                }
+                break;
+              }
+              case OP_BNOT: {
+                let op = L.stack[RB(L, base, i)];
+                if (op.ttisinteger()) {
+                  L.stack[ra].setivalue(~op.value);
+                } else {
+                  ltm.luaT_trybinTM(L, op, op, L.stack[ra], ltm.TMS.TM_BNOT);
+                }
+                break;
+              }
+              case OP_NOT: {
+                let op = L.stack[RB(L, base, i)];
+                L.stack[ra].setbvalue(op.l_isfalse());
+                break;
+              }
+              case OP_LEN: {
+                luaV_objlen(L, L.stack[ra], L.stack[RB(L, base, i)]);
+                break;
+              }
+              case OP_CONCAT: {
+                let b = i.B;
+                let c = i.C;
+                L.top = base + c + 1;
+                luaV_concat(L, c - b + 1);
+                let rb = base + b;
+                lobject.setobjs2s(L, ra, rb);
+                ldo.adjust_top(L, ci.top);
+                break;
+              }
+              case OP_JMP: {
+                dojump(L, ci, i, 0);
+                break;
+              }
+              case OP_EQ: {
+                if (luaV_equalobj(L, RKB(L, base, k, i), RKC(L, base, k, i)) !== i.A)
+                  ci.l_savedpc++;
+                else
+                  donextjump(L, ci);
+                break;
+              }
+              case OP_LT: {
+                if (luaV_lessthan(L, RKB(L, base, k, i), RKC(L, base, k, i)) !== i.A)
+                  ci.l_savedpc++;
+                else
+                  donextjump(L, ci);
+                break;
+              }
+              case OP_LE: {
+                if (luaV_lessequal(L, RKB(L, base, k, i), RKC(L, base, k, i)) !== i.A)
+                  ci.l_savedpc++;
+                else
+                  donextjump(L, ci);
+                break;
+              }
+              case OP_TEST: {
+                if (i.C ? L.stack[ra].l_isfalse() : !L.stack[ra].l_isfalse())
+                  ci.l_savedpc++;
+                else
+                  donextjump(L, ci);
+                break;
+              }
+              case OP_TESTSET: {
+                let rbIdx = RB(L, base, i);
+                let rb = L.stack[rbIdx];
+                if (i.C ? rb.l_isfalse() : !rb.l_isfalse())
+                  ci.l_savedpc++;
+                else {
+                  lobject.setobjs2s(L, ra, rbIdx);
+                  donextjump(L, ci);
+                }
+                break;
+              }
+              case OP_CALL: {
+                let b = i.B;
+                let nresults = i.C - 1;
+                if (b !== 0) ldo.adjust_top(L, ra + b);
+                if (ldo.luaD_precall(L, ra, nresults)) {
+                  if (nresults >= 0)
+                    ldo.adjust_top(L, ci.top);
+                } else {
+                  ci = L.ci;
+                  continue newframe;
+                }
+                break;
+              }
+              case OP_TAILCALL: {
+                let b = i.B;
+                if (b !== 0) ldo.adjust_top(L, ra + b);
+                if (ldo.luaD_precall(L, ra, LUA_MULTRET)) {
+                } else {
+                  let nci = L.ci;
+                  let oci = nci.previous;
+                  let nfunc = nci.func;
+                  let nfuncOff = nci.funcOff;
+                  let ofuncOff = oci.funcOff;
+                  let lim = nci.l_base + nfunc.value.p.numparams;
+                  if (cl.p.p.length > 0) lfunc.luaF_close(L, oci.l_base);
+                  for (let aux = 0; nfuncOff + aux < lim; aux++)
+                    lobject.setobjs2s(L, ofuncOff + aux, nfuncOff + aux);
+                  oci.l_base = ofuncOff + (nci.l_base - nfuncOff);
+                  oci.top = ofuncOff + (L.top - nfuncOff);
+                  ldo.adjust_top(L, oci.top);
+                  oci.l_code = nci.l_code;
+                  oci.l_savedpc = nci.l_savedpc;
+                  oci.callstatus |= lstate.CIST_TAIL;
+                  oci.next = null;
+                  ci = L.ci = oci;
+                  lua_assert(L.top === oci.l_base + L.stack[ofuncOff].value.p.maxstacksize);
+                  continue newframe;
+                }
+                break;
+              }
+              case OP_RETURN: {
+                if (cl.p.p.length > 0) lfunc.luaF_close(L, base);
+                let b = ldo.luaD_poscall(L, ci, ra, i.B !== 0 ? i.B - 1 : L.top - ra);
+                if (ci.callstatus & lstate.CIST_FRESH)
+                  return;
+                ci = L.ci;
+                if (b) ldo.adjust_top(L, ci.top);
+                lua_assert(ci.callstatus & lstate.CIST_LUA);
+                lua_assert(ci.l_code[ci.l_savedpc - 1].opcode === OP_CALL);
+                continue newframe;
+              }
+              case OP_FORLOOP: {
+                if (L.stack[ra].ttisinteger()) {
+                  let step = L.stack[ra + 2].value;
+                  let idx = L.stack[ra].value + step | 0;
+                  let limit = L.stack[ra + 1].value;
+                  if (0 < step ? idx <= limit : limit <= idx) {
+                    ci.l_savedpc += i.sBx;
+                    L.stack[ra].chgivalue(idx);
+                    L.stack[ra + 3].setivalue(idx);
+                  }
+                } else {
+                  let step = L.stack[ra + 2].value;
+                  let idx = L.stack[ra].value + step;
+                  let limit = L.stack[ra + 1].value;
+                  if (0 < step ? idx <= limit : limit <= idx) {
+                    ci.l_savedpc += i.sBx;
+                    L.stack[ra].chgfltvalue(idx);
+                    L.stack[ra + 3].setfltvalue(idx);
+                  }
+                }
+                break;
+              }
+              case OP_FORPREP: {
+                let init = L.stack[ra];
+                let plimit = L.stack[ra + 1];
+                let pstep = L.stack[ra + 2];
+                let forlim;
+                if (init.ttisinteger() && pstep.ttisinteger() && (forlim = forlimit(plimit, pstep.value))) {
+                  let initv = forlim.stopnow ? 0 : init.value;
+                  plimit.value = forlim.ilimit;
+                  init.value = initv - pstep.value | 0;
+                } else {
+                  let nlimit, nstep, ninit;
+                  if ((nlimit = tonumber(plimit)) === false)
+                    ldebug.luaG_runerror(L, to_luastring("'for' limit must be a number", true));
+                  L.stack[ra + 1].setfltvalue(nlimit);
+                  if ((nstep = tonumber(pstep)) === false)
+                    ldebug.luaG_runerror(L, to_luastring("'for' step must be a number", true));
+                  L.stack[ra + 2].setfltvalue(nstep);
+                  if ((ninit = tonumber(init)) === false)
+                    ldebug.luaG_runerror(L, to_luastring("'for' initial value must be a number", true));
+                  L.stack[ra].setfltvalue(ninit - nstep);
+                }
+                ci.l_savedpc += i.sBx;
+                break;
+              }
+              case OP_TFORCALL: {
+                let cb = ra + 3;
+                lobject.setobjs2s(L, cb + 2, ra + 2);
+                lobject.setobjs2s(L, cb + 1, ra + 1);
+                lobject.setobjs2s(L, cb, ra);
+                ldo.adjust_top(L, cb + 3);
+                ldo.luaD_call(L, cb, i.C);
+                ldo.adjust_top(L, ci.top);
+                i = ci.l_code[ci.l_savedpc++];
+                ra = RA(L, base, i);
+                lua_assert(i.opcode === OP_TFORLOOP);
+              }
+              /* fall through */
+              case OP_TFORLOOP: {
+                if (!L.stack[ra + 1].ttisnil()) {
+                  lobject.setobjs2s(L, ra, ra + 1);
+                  ci.l_savedpc += i.sBx;
+                }
+                break;
+              }
+              case OP_SETLIST: {
+                let n = i.B;
+                let c = i.C;
+                if (n === 0) n = L.top - ra - 1;
+                if (c === 0) {
+                  lua_assert(ci.l_code[ci.l_savedpc].opcode === OP_EXTRAARG);
+                  c = ci.l_code[ci.l_savedpc++].Ax;
+                }
+                let h = L.stack[ra].value;
+                let last = (c - 1) * LFIELDS_PER_FLUSH + n;
+                for (; n > 0; n--) {
+                  ltable.luaH_setint(h, last--, L.stack[ra + n]);
+                }
+                ldo.adjust_top(L, ci.top);
+                break;
+              }
+              case OP_CLOSURE: {
+                let p = cl.p.p[i.Bx];
+                let ncl = getcached(p, cl.upvals, L.stack, base);
+                if (ncl === null)
+                  pushclosure(L, p, cl.upvals, base, ra);
+                else
+                  L.stack[ra].setclLvalue(ncl);
+                break;
+              }
+              case OP_VARARG: {
+                let b = i.B - 1;
+                let n = base - ci.funcOff - cl.p.numparams - 1;
+                let j;
+                if (n < 0)
+                  n = 0;
+                if (b < 0) {
+                  b = n;
+                  ldo.luaD_checkstack(L, n);
+                  ldo.adjust_top(L, ra + n);
+                }
+                for (j = 0; j < b && j < n; j++)
+                  lobject.setobjs2s(L, ra + j, base - n + j);
+                for (; j < b; j++)
+                  L.stack[ra + j].setnilvalue();
+                break;
+              }
+              case OP_EXTRAARG: {
+                throw Error("invalid opcode");
+              }
+            }
+          }
+      };
+      var dojump = function(L, ci, i, e) {
+        let a = i.A;
+        if (a !== 0) lfunc.luaF_close(L, ci.l_base + a - 1);
+        ci.l_savedpc += i.sBx + e;
+      };
+      var donextjump = function(L, ci) {
+        dojump(L, ci, ci.l_code[ci.l_savedpc], 1);
+      };
+      var luaV_lessthan = function(L, l, r) {
+        if (l.ttisnumber() && r.ttisnumber())
+          return LTnum(l, r) ? 1 : 0;
+        else if (l.ttisstring() && r.ttisstring())
+          return l_strcmp(l.tsvalue(), r.tsvalue()) < 0 ? 1 : 0;
+        else {
+          let res = ltm.luaT_callorderTM(L, l, r, ltm.TMS.TM_LT);
+          if (res === null)
+            ldebug.luaG_ordererror(L, l, r);
+          return res ? 1 : 0;
+        }
+      };
+      var luaV_lessequal = function(L, l, r) {
+        let res;
+        if (l.ttisnumber() && r.ttisnumber())
+          return LEnum(l, r) ? 1 : 0;
+        else if (l.ttisstring() && r.ttisstring())
+          return l_strcmp(l.tsvalue(), r.tsvalue()) <= 0 ? 1 : 0;
+        else {
+          res = ltm.luaT_callorderTM(L, l, r, ltm.TMS.TM_LE);
+          if (res !== null)
+            return res ? 1 : 0;
+        }
+        L.ci.callstatus |= lstate.CIST_LEQ;
+        res = ltm.luaT_callorderTM(L, r, l, ltm.TMS.TM_LT);
+        L.ci.callstatus ^= lstate.CIST_LEQ;
+        if (res === null)
+          ldebug.luaG_ordererror(L, l, r);
+        return res ? 0 : 1;
+      };
+      var luaV_equalobj = function(L, t1, t2) {
+        if (t1.ttype() !== t2.ttype()) {
+          if (t1.ttnov() !== t2.ttnov() || t1.ttnov() !== LUA_TNUMBER)
+            return 0;
+          else {
+            return t1.value === t2.value ? 1 : 0;
+          }
+        }
+        let tm;
+        switch (t1.ttype()) {
+          case LUA_TNIL:
+            return 1;
+          case LUA_TBOOLEAN:
+            return t1.value == t2.value ? 1 : 0;
+          // Might be 1 or true
+          case LUA_TLIGHTUSERDATA:
+          case LUA_TNUMINT:
+          case LUA_TNUMFLT:
+          case LUA_TLCF:
+            return t1.value === t2.value ? 1 : 0;
+          case LUA_TSHRSTR:
+          case LUA_TLNGSTR: {
+            return luaS_eqlngstr(t1.tsvalue(), t2.tsvalue()) ? 1 : 0;
+          }
+          case LUA_TUSERDATA:
+          case LUA_TTABLE:
+            if (t1.value === t2.value) return 1;
+            else if (L === null) return 0;
+            tm = ltm.fasttm(L, t1.value.metatable, ltm.TMS.TM_EQ);
+            if (tm === null)
+              tm = ltm.fasttm(L, t2.value.metatable, ltm.TMS.TM_EQ);
+            break;
+          default:
+            return t1.value === t2.value ? 1 : 0;
+        }
+        if (tm === null)
+          return 0;
+        let tv = new lobject.TValue();
+        ltm.luaT_callTM(L, tm, t1, t2, tv, 1);
+        return tv.l_isfalse() ? 0 : 1;
+      };
+      var luaV_rawequalobj = function(t1, t2) {
+        return luaV_equalobj(null, t1, t2);
+      };
+      var forlimit = function(obj, step) {
+        let stopnow = false;
+        let ilimit = luaV_tointeger(obj, step < 0 ? 2 : 1);
+        if (ilimit === false) {
+          let n = tonumber(obj);
+          if (n === false)
+            return false;
+          if (0 < n) {
+            ilimit = LUA_MAXINTEGER;
+            if (step < 0) stopnow = true;
+          } else {
+            ilimit = LUA_MININTEGER;
+            if (step >= 0) stopnow = true;
+          }
+        }
+        return {
+          stopnow,
+          ilimit
+        };
+      };
+      var luaV_tointeger = function(obj, mode) {
+        if (obj.ttisfloat()) {
+          let n = obj.value;
+          let f = Math.floor(n);
+          if (n !== f) {
+            if (mode === 0)
+              return false;
+            else if (mode > 1)
+              f += 1;
+          }
+          return lua_numbertointeger(f);
+        } else if (obj.ttisinteger()) {
+          return obj.value;
+        } else if (cvt2num(obj)) {
+          let v = new lobject.TValue();
+          if (lobject.luaO_str2num(obj.svalue(), v) === obj.vslen() + 1)
+            return luaV_tointeger(v, mode);
+        }
+        return false;
+      };
+      var tointeger = function(o) {
+        return o.ttisinteger() ? o.value : luaV_tointeger(o, 0);
+      };
+      var tonumber = function(o) {
+        if (o.ttnov() === LUA_TNUMBER)
+          return o.value;
+        if (cvt2num(o)) {
+          let v = new lobject.TValue();
+          if (lobject.luaO_str2num(o.svalue(), v) === o.vslen() + 1)
+            return v.value;
+        }
+        return false;
+      };
+      var LTnum = function(l, r) {
+        return l.value < r.value;
+      };
+      var LEnum = function(l, r) {
+        return l.value <= r.value;
+      };
+      var l_strcmp = function(ls, rs) {
+        let l = luaS_hashlongstr(ls);
+        let r = luaS_hashlongstr(rs);
+        if (l === r)
+          return 0;
+        else if (l < r)
+          return -1;
+        else
+          return 1;
+      };
+      var luaV_objlen = function(L, ra, rb) {
+        let tm;
+        switch (rb.ttype()) {
+          case LUA_TTABLE: {
+            let h = rb.value;
+            tm = ltm.fasttm(L, h.metatable, ltm.TMS.TM_LEN);
+            if (tm !== null) break;
+            ra.setivalue(ltable.luaH_getn(h));
+            return;
+          }
+          case LUA_TSHRSTR:
+          case LUA_TLNGSTR:
+            ra.setivalue(rb.vslen());
+            return;
+          default: {
+            tm = ltm.luaT_gettmbyobj(L, rb, ltm.TMS.TM_LEN);
+            if (tm.ttisnil())
+              ldebug.luaG_typeerror(L, rb, to_luastring("get length of", true));
+            break;
+          }
+        }
+        ltm.luaT_callTM(L, tm, rb, rb, ra, 1);
+      };
+      var luaV_imul = Math.imul || function(a, b) {
+        let aHi = a >>> 16 & 65535;
+        let aLo = a & 65535;
+        let bHi = b >>> 16 & 65535;
+        let bLo = b & 65535;
+        return aLo * bLo + (aHi * bLo + aLo * bHi << 16 >>> 0) | 0;
+      };
+      var luaV_div = function(L, m, n) {
+        if (n === 0)
+          ldebug.luaG_runerror(L, to_luastring("attempt to divide by zero"));
+        return Math.floor(m / n) | 0;
+      };
+      var luaV_mod = function(L, m, n) {
+        if (n === 0)
+          ldebug.luaG_runerror(L, to_luastring("attempt to perform 'n%%0'"));
+        return m - Math.floor(m / n) * n | 0;
+      };
+      var NBITS = 32;
+      var luaV_shiftl = function(x, y) {
+        if (y < 0) {
+          if (y <= -NBITS) return 0;
+          else return x >>> -y;
+        } else {
+          if (y >= NBITS) return 0;
+          else return x << y;
+        }
+      };
+      var getcached = function(p, encup, stack, base) {
+        let c = p.cache;
+        if (c !== null) {
+          let uv = p.upvalues;
+          let nup = uv.length;
+          for (let i = 0; i < nup; i++) {
+            let v = uv[i].instack ? stack[base + uv[i].idx] : encup[uv[i].idx];
+            if (c.upvals[i] !== v)
+              return null;
+          }
+        }
+        return c;
+      };
+      var pushclosure = function(L, p, encup, base, ra) {
+        let nup = p.upvalues.length;
+        let uv = p.upvalues;
+        let ncl = new lobject.LClosure(L, nup);
+        ncl.p = p;
+        L.stack[ra].setclLvalue(ncl);
+        for (let i = 0; i < nup; i++) {
+          if (uv[i].instack)
+            ncl.upvals[i] = lfunc.luaF_findupval(L, base + uv[i].idx);
+          else
+            ncl.upvals[i] = encup[uv[i].idx];
+        }
+        p.cache = ncl;
+      };
+      var cvt2str = function(o) {
+        return o.ttisnumber();
+      };
+      var cvt2num = function(o) {
+        return o.ttisstring();
+      };
+      var tostring = function(L, i) {
+        let o = L.stack[i];
+        if (o.ttisstring()) return true;
+        if (cvt2str(o)) {
+          lobject.luaO_tostring(L, o);
+          return true;
+        }
+        return false;
+      };
+      var isemptystr = function(o) {
+        return o.ttisstring() && o.vslen() === 0;
+      };
+      var copy2buff = function(L, top, n, buff) {
+        let tl = 0;
+        do {
+          let tv = L.stack[top - n];
+          let l = tv.vslen();
+          let s = tv.svalue();
+          buff.set(s, tl);
+          tl += l;
+        } while (--n > 0);
+      };
+      var luaV_concat = function(L, total) {
+        lua_assert(total >= 2);
+        do {
+          let top = L.top;
+          let n = 2;
+          if (!(L.stack[top - 2].ttisstring() || cvt2str(L.stack[top - 2])) || !tostring(L, top - 1)) {
+            ltm.luaT_trybinTM(L, L.stack[top - 2], L.stack[top - 1], L.stack[top - 2], ltm.TMS.TM_CONCAT);
+          } else if (isemptystr(L.stack[top - 1])) {
+            tostring(L, top - 2);
+          } else if (isemptystr(L.stack[top - 2])) {
+            lobject.setobjs2s(L, top - 2, top - 1);
+          } else {
+            let tl = L.stack[top - 1].vslen();
+            for (n = 1; n < total && tostring(L, top - n - 1); n++) {
+              let l = L.stack[top - n - 1].vslen();
+              tl += l;
+            }
+            let buff = new Uint8Array(tl);
+            copy2buff(L, top, n, buff);
+            let ts = luaS_bless(L, buff);
+            lobject.setsvalue2s(L, top - n, ts);
+          }
+          total -= n - 1;
+          for (; L.top > top - (n - 1); )
+            delete L.stack[--L.top];
+        } while (total > 1);
+      };
+      var MAXTAGLOOP = 2e3;
+      var luaV_gettable = function(L, t, key, ra) {
+        for (let loop = 0; loop < MAXTAGLOOP; loop++) {
+          let tm;
+          if (!t.ttistable()) {
+            tm = ltm.luaT_gettmbyobj(L, t, ltm.TMS.TM_INDEX);
+            if (tm.ttisnil())
+              ldebug.luaG_typeerror(L, t, to_luastring("index", true));
+          } else {
+            let slot = ltable.luaH_get(L, t.value, key);
+            if (!slot.ttisnil()) {
+              lobject.setobj2s(L, ra, slot);
+              return;
+            } else {
+              tm = ltm.fasttm(L, t.value.metatable, ltm.TMS.TM_INDEX);
+              if (tm === null) {
+                L.stack[ra].setnilvalue();
+                return;
+              }
+            }
+          }
+          if (tm.ttisfunction()) {
+            ltm.luaT_callTM(L, tm, t, key, L.stack[ra], 1);
+            return;
+          }
+          t = tm;
+        }
+        ldebug.luaG_runerror(L, to_luastring("'__index' chain too long; possible loop", true));
+      };
+      var settable = function(L, t, key, val) {
+        for (let loop = 0; loop < MAXTAGLOOP; loop++) {
+          let tm;
+          if (t.ttistable()) {
+            let h = t.value;
+            let slot = ltable.luaH_get(L, h, key);
+            if (!slot.ttisnil() || (tm = ltm.fasttm(L, h.metatable, ltm.TMS.TM_NEWINDEX)) === null) {
+              ltable.luaH_setfrom(L, h, key, val);
+              ltable.invalidateTMcache(h);
+              return;
+            }
+          } else {
+            if ((tm = ltm.luaT_gettmbyobj(L, t, ltm.TMS.TM_NEWINDEX)).ttisnil())
+              ldebug.luaG_typeerror(L, t, to_luastring("index", true));
+          }
+          if (tm.ttisfunction()) {
+            ltm.luaT_callTM(L, tm, t, key, val, 0);
+            return;
+          }
+          t = tm;
+        }
+        ldebug.luaG_runerror(L, to_luastring("'__newindex' chain too long; possible loop", true));
+      };
+      module.exports.cvt2str = cvt2str;
+      module.exports.cvt2num = cvt2num;
+      module.exports.luaV_gettable = luaV_gettable;
+      module.exports.luaV_concat = luaV_concat;
+      module.exports.luaV_div = luaV_div;
+      module.exports.luaV_equalobj = luaV_equalobj;
+      module.exports.luaV_execute = luaV_execute;
+      module.exports.luaV_finishOp = luaV_finishOp;
+      module.exports.luaV_imul = luaV_imul;
+      module.exports.luaV_lessequal = luaV_lessequal;
+      module.exports.luaV_lessthan = luaV_lessthan;
+      module.exports.luaV_mod = luaV_mod;
+      module.exports.luaV_objlen = luaV_objlen;
+      module.exports.luaV_rawequalobj = luaV_rawequalobj;
+      module.exports.luaV_shiftl = luaV_shiftl;
+      module.exports.luaV_tointeger = luaV_tointeger;
+      module.exports.settable = settable;
+      module.exports.tointeger = tointeger;
+      module.exports.tonumber = tonumber;
+    }
+  });
+
+  // node_modules/fengari/src/ltm.js
+  var require_ltm = __commonJS({
+    "node_modules/fengari/src/ltm.js"(exports, module) {
+      "use strict";
+      var {
+        constant_types: {
+          LUA_TTABLE,
+          LUA_TUSERDATA
+        },
+        to_luastring
+      } = require_defs();
+      var { lua_assert } = require_llimits();
+      var lobject = require_lobject();
+      var ldo = require_ldo();
+      var lstate = require_lstate();
+      var {
+        luaS_bless,
+        luaS_new
+      } = require_lstring();
+      var ltable = require_ltable();
+      var ldebug = require_ldebug();
+      var lvm = require_lvm();
+      var luaT_typenames_ = [
+        "no value",
+        "nil",
+        "boolean",
+        "userdata",
+        "number",
+        "string",
+        "table",
+        "function",
+        "userdata",
+        "thread",
+        "proto"
+        /* this last case is used for tests only */
+      ].map((e) => to_luastring(e));
+      var ttypename = function(t) {
+        return luaT_typenames_[t + 1];
+      };
+      var TMS = {
+        TM_INDEX: 0,
+        TM_NEWINDEX: 1,
+        TM_GC: 2,
+        TM_MODE: 3,
+        TM_LEN: 4,
+        TM_EQ: 5,
+        /* last tag method with fast access */
+        TM_ADD: 6,
+        TM_SUB: 7,
+        TM_MUL: 8,
+        TM_MOD: 9,
+        TM_POW: 10,
+        TM_DIV: 11,
+        TM_IDIV: 12,
+        TM_BAND: 13,
+        TM_BOR: 14,
+        TM_BXOR: 15,
+        TM_SHL: 16,
+        TM_SHR: 17,
+        TM_UNM: 18,
+        TM_BNOT: 19,
+        TM_LT: 20,
+        TM_LE: 21,
+        TM_CONCAT: 22,
+        TM_CALL: 23,
+        TM_N: 24
+        /* number of elements in the enum */
+      };
+      var luaT_init = function(L) {
+        L.l_G.tmname[TMS.TM_INDEX] = new luaS_new(L, to_luastring("__index", true));
+        L.l_G.tmname[TMS.TM_NEWINDEX] = new luaS_new(L, to_luastring("__newindex", true));
+        L.l_G.tmname[TMS.TM_GC] = new luaS_new(L, to_luastring("__gc", true));
+        L.l_G.tmname[TMS.TM_MODE] = new luaS_new(L, to_luastring("__mode", true));
+        L.l_G.tmname[TMS.TM_LEN] = new luaS_new(L, to_luastring("__len", true));
+        L.l_G.tmname[TMS.TM_EQ] = new luaS_new(L, to_luastring("__eq", true));
+        L.l_G.tmname[TMS.TM_ADD] = new luaS_new(L, to_luastring("__add", true));
+        L.l_G.tmname[TMS.TM_SUB] = new luaS_new(L, to_luastring("__sub", true));
+        L.l_G.tmname[TMS.TM_MUL] = new luaS_new(L, to_luastring("__mul", true));
+        L.l_G.tmname[TMS.TM_MOD] = new luaS_new(L, to_luastring("__mod", true));
+        L.l_G.tmname[TMS.TM_POW] = new luaS_new(L, to_luastring("__pow", true));
+        L.l_G.tmname[TMS.TM_DIV] = new luaS_new(L, to_luastring("__div", true));
+        L.l_G.tmname[TMS.TM_IDIV] = new luaS_new(L, to_luastring("__idiv", true));
+        L.l_G.tmname[TMS.TM_BAND] = new luaS_new(L, to_luastring("__band", true));
+        L.l_G.tmname[TMS.TM_BOR] = new luaS_new(L, to_luastring("__bor", true));
+        L.l_G.tmname[TMS.TM_BXOR] = new luaS_new(L, to_luastring("__bxor", true));
+        L.l_G.tmname[TMS.TM_SHL] = new luaS_new(L, to_luastring("__shl", true));
+        L.l_G.tmname[TMS.TM_SHR] = new luaS_new(L, to_luastring("__shr", true));
+        L.l_G.tmname[TMS.TM_UNM] = new luaS_new(L, to_luastring("__unm", true));
+        L.l_G.tmname[TMS.TM_BNOT] = new luaS_new(L, to_luastring("__bnot", true));
+        L.l_G.tmname[TMS.TM_LT] = new luaS_new(L, to_luastring("__lt", true));
+        L.l_G.tmname[TMS.TM_LE] = new luaS_new(L, to_luastring("__le", true));
+        L.l_G.tmname[TMS.TM_CONCAT] = new luaS_new(L, to_luastring("__concat", true));
+        L.l_G.tmname[TMS.TM_CALL] = new luaS_new(L, to_luastring("__call", true));
+      };
+      var __name = to_luastring("__name", true);
+      var luaT_objtypename = function(L, o) {
+        let mt;
+        if (o.ttistable() && (mt = o.value.metatable) !== null || o.ttisfulluserdata() && (mt = o.value.metatable) !== null) {
+          let name = ltable.luaH_getstr(mt, luaS_bless(L, __name));
+          if (name.ttisstring())
+            return name.svalue();
+        }
+        return ttypename(o.ttnov());
+      };
+      var luaT_callTM = function(L, f, p1, p2, p3, hasres) {
+        let func = L.top;
+        lobject.pushobj2s(L, f);
+        lobject.pushobj2s(L, p1);
+        lobject.pushobj2s(L, p2);
+        if (!hasres)
+          lobject.pushobj2s(L, p3);
+        if (L.ci.callstatus & lstate.CIST_LUA)
+          ldo.luaD_call(L, func, hasres);
+        else
+          ldo.luaD_callnoyield(L, func, hasres);
+        if (hasres) {
+          let tv = L.stack[L.top - 1];
+          delete L.stack[--L.top];
+          p3.setfrom(tv);
+        }
+      };
+      var luaT_callbinTM = function(L, p1, p2, res, event) {
+        let tm = luaT_gettmbyobj(L, p1, event);
+        if (tm.ttisnil())
+          tm = luaT_gettmbyobj(L, p2, event);
+        if (tm.ttisnil()) return false;
+        luaT_callTM(L, tm, p1, p2, res, 1);
+        return true;
+      };
+      var luaT_trybinTM = function(L, p1, p2, res, event) {
+        if (!luaT_callbinTM(L, p1, p2, res, event)) {
+          switch (event) {
+            case TMS.TM_CONCAT:
+              return ldebug.luaG_concaterror(L, p1, p2);
+            case TMS.TM_BAND:
+            case TMS.TM_BOR:
+            case TMS.TM_BXOR:
+            case TMS.TM_SHL:
+            case TMS.TM_SHR:
+            case TMS.TM_BNOT: {
+              let n1 = lvm.tonumber(p1);
+              let n2 = lvm.tonumber(p2);
+              if (n1 !== false && n2 !== false)
+                return ldebug.luaG_tointerror(L, p1, p2);
+              else
+                return ldebug.luaG_opinterror(L, p1, p2, to_luastring("perform bitwise operation on", true));
+            }
+            default:
+              return ldebug.luaG_opinterror(L, p1, p2, to_luastring("perform arithmetic on", true));
+          }
+        }
+      };
+      var luaT_callorderTM = function(L, p1, p2, event) {
+        let res = new lobject.TValue();
+        if (!luaT_callbinTM(L, p1, p2, res, event))
+          return null;
+        else
+          return !res.l_isfalse();
+      };
+      var fasttm = function(l, et, e) {
+        return et === null ? null : et.flags & 1 << e ? null : luaT_gettm(et, e, l.l_G.tmname[e]);
+      };
+      var luaT_gettm = function(events, event, ename) {
+        const tm = ltable.luaH_getstr(events, ename);
+        lua_assert(event <= TMS.TM_EQ);
+        if (tm.ttisnil()) {
+          events.flags |= 1 << event;
+          return null;
+        } else return tm;
+      };
+      var luaT_gettmbyobj = function(L, o, event) {
+        let mt;
+        switch (o.ttnov()) {
+          case LUA_TTABLE:
+          case LUA_TUSERDATA:
+            mt = o.value.metatable;
+            break;
+          default:
+            mt = L.l_G.mt[o.ttnov()];
+        }
+        return mt ? ltable.luaH_getstr(mt, L.l_G.tmname[event]) : lobject.luaO_nilobject;
+      };
+      module.exports.fasttm = fasttm;
+      module.exports.TMS = TMS;
+      module.exports.luaT_callTM = luaT_callTM;
+      module.exports.luaT_callbinTM = luaT_callbinTM;
+      module.exports.luaT_trybinTM = luaT_trybinTM;
+      module.exports.luaT_callorderTM = luaT_callorderTM;
+      module.exports.luaT_gettm = luaT_gettm;
+      module.exports.luaT_gettmbyobj = luaT_gettmbyobj;
+      module.exports.luaT_init = luaT_init;
+      module.exports.luaT_objtypename = luaT_objtypename;
+      module.exports.ttypename = ttypename;
+    }
+  });
+
+  // node_modules/fengari/src/lstate.js
+  var require_lstate = __commonJS({
+    "node_modules/fengari/src/lstate.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_MINSTACK,
+        LUA_RIDX_GLOBALS,
+        LUA_RIDX_MAINTHREAD,
+        constant_types: {
+          LUA_NUMTAGS,
+          LUA_TNIL,
+          LUA_TTABLE,
+          LUA_TTHREAD
+        },
+        thread_status: {
+          LUA_OK
+        }
+      } = require_defs();
+      var lobject = require_lobject();
+      var ldo = require_ldo();
+      var lapi = require_lapi();
+      var ltable = require_ltable();
+      var ltm = require_ltm();
+      var EXTRA_STACK = 5;
+      var BASIC_STACK_SIZE = 2 * LUA_MINSTACK;
+      var CallInfo = class {
+        constructor() {
+          this.func = null;
+          this.funcOff = NaN;
+          this.top = NaN;
+          this.previous = null;
+          this.next = null;
+          this.l_base = NaN;
+          this.l_code = null;
+          this.l_savedpc = NaN;
+          this.c_k = null;
+          this.c_old_errfunc = null;
+          this.c_ctx = null;
+          this.nresults = NaN;
+          this.callstatus = NaN;
+        }
+      };
+      var lua_State = class {
+        constructor(g) {
+          this.id = g.id_counter++;
+          this.base_ci = new CallInfo();
+          this.top = NaN;
+          this.stack_last = NaN;
+          this.oldpc = NaN;
+          this.l_G = g;
+          this.stack = null;
+          this.ci = null;
+          this.errorJmp = null;
+          this.nCcalls = 0;
+          this.hook = null;
+          this.hookmask = 0;
+          this.basehookcount = 0;
+          this.allowhook = 1;
+          this.hookcount = this.basehookcount;
+          this.nny = 1;
+          this.status = LUA_OK;
+          this.errfunc = 0;
+        }
+      };
+      var global_State = class {
+        constructor() {
+          this.id_counter = 1;
+          this.ids = /* @__PURE__ */ new WeakMap();
+          this.mainthread = null;
+          this.l_registry = new lobject.TValue(LUA_TNIL, null);
+          this.panic = null;
+          this.atnativeerror = null;
+          this.version = null;
+          this.tmname = new Array(ltm.TMS.TM_N);
+          this.mt = new Array(LUA_NUMTAGS);
+        }
+      };
+      var luaE_extendCI = function(L) {
+        let ci = new CallInfo();
+        L.ci.next = ci;
+        ci.previous = L.ci;
+        ci.next = null;
+        L.ci = ci;
+        return ci;
+      };
+      var luaE_freeCI = function(L) {
+        let ci = L.ci;
+        ci.next = null;
+      };
+      var stack_init = function(L1, L) {
+        L1.stack = new Array(BASIC_STACK_SIZE);
+        L1.top = 0;
+        L1.stack_last = BASIC_STACK_SIZE - EXTRA_STACK;
+        let ci = L1.base_ci;
+        ci.next = ci.previous = null;
+        ci.callstatus = 0;
+        ci.funcOff = L1.top;
+        ci.func = L1.stack[L1.top];
+        L1.stack[L1.top++] = new lobject.TValue(LUA_TNIL, null);
+        ci.top = L1.top + LUA_MINSTACK;
+        L1.ci = ci;
+      };
+      var freestack = function(L) {
+        L.ci = L.base_ci;
+        luaE_freeCI(L);
+        L.stack = null;
+      };
+      var init_registry = function(L, g) {
+        let registry = ltable.luaH_new(L);
+        g.l_registry.sethvalue(registry);
+        ltable.luaH_setint(registry, LUA_RIDX_MAINTHREAD, new lobject.TValue(LUA_TTHREAD, L));
+        ltable.luaH_setint(registry, LUA_RIDX_GLOBALS, new lobject.TValue(LUA_TTABLE, ltable.luaH_new(L)));
+      };
+      var f_luaopen = function(L) {
+        let g = L.l_G;
+        stack_init(L, L);
+        init_registry(L, g);
+        ltm.luaT_init(L);
+        g.version = lapi.lua_version(null);
+      };
+      var lua_newthread = function(L) {
+        let g = L.l_G;
+        let L1 = new lua_State(g);
+        L.stack[L.top] = new lobject.TValue(LUA_TTHREAD, L1);
+        lapi.api_incr_top(L);
+        L1.hookmask = L.hookmask;
+        L1.basehookcount = L.basehookcount;
+        L1.hook = L.hook;
+        L1.hookcount = L1.basehookcount;
+        stack_init(L1, L);
+        return L1;
+      };
+      var luaE_freethread = function(L, L1) {
+        freestack(L1);
+      };
+      var lua_newstate = function() {
+        let g = new global_State();
+        let L = new lua_State(g);
+        g.mainthread = L;
+        if (ldo.luaD_rawrunprotected(L, f_luaopen, null) !== LUA_OK) {
+          L = null;
+        }
+        return L;
+      };
+      var close_state = function(L) {
+        freestack(L);
+      };
+      var lua_close = function(L) {
+        L = L.l_G.mainthread;
+        close_state(L);
+      };
+      module.exports.lua_State = lua_State;
+      module.exports.CallInfo = CallInfo;
+      module.exports.CIST_OAH = 1 << 0;
+      module.exports.CIST_LUA = 1 << 1;
+      module.exports.CIST_HOOKED = 1 << 2;
+      module.exports.CIST_FRESH = 1 << 3;
+      module.exports.CIST_YPCALL = 1 << 4;
+      module.exports.CIST_TAIL = 1 << 5;
+      module.exports.CIST_HOOKYIELD = 1 << 6;
+      module.exports.CIST_LEQ = 1 << 7;
+      module.exports.CIST_FIN = 1 << 8;
+      module.exports.EXTRA_STACK = EXTRA_STACK;
+      module.exports.lua_close = lua_close;
+      module.exports.lua_newstate = lua_newstate;
+      module.exports.lua_newthread = lua_newthread;
+      module.exports.luaE_extendCI = luaE_extendCI;
+      module.exports.luaE_freeCI = luaE_freeCI;
+      module.exports.luaE_freethread = luaE_freethread;
+    }
+  });
+
+  // node_modules/fengari/src/lobject.js
+  var require_lobject = __commonJS({
+    "node_modules/fengari/src/lobject.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_OPADD,
+        LUA_OPBAND,
+        LUA_OPBNOT,
+        LUA_OPBOR,
+        LUA_OPBXOR,
+        LUA_OPDIV,
+        LUA_OPIDIV,
+        LUA_OPMOD,
+        LUA_OPMUL,
+        LUA_OPPOW,
+        LUA_OPSHL,
+        LUA_OPSHR,
+        LUA_OPSUB,
+        LUA_OPUNM,
+        constant_types: {
+          LUA_NUMTAGS,
+          LUA_TBOOLEAN,
+          LUA_TCCL,
+          LUA_TFUNCTION,
+          LUA_TLCF,
+          LUA_TLCL,
+          LUA_TLIGHTUSERDATA,
+          LUA_TLNGSTR,
+          LUA_TNIL,
+          LUA_TNUMBER,
+          LUA_TNUMFLT,
+          LUA_TNUMINT,
+          LUA_TSHRSTR,
+          LUA_TSTRING,
+          LUA_TTABLE,
+          LUA_TTHREAD,
+          LUA_TUSERDATA
+        },
+        from_userstring,
+        luastring_indexOf,
+        luastring_of,
+        to_jsstring,
+        to_luastring
+      } = require_defs();
+      var {
+        lisdigit,
+        lisprint,
+        lisspace,
+        lisxdigit
+      } = require_ljstype();
+      var ldebug = require_ldebug();
+      var ldo = require_ldo();
+      var lstate = require_lstate();
+      var {
+        luaS_bless,
+        luaS_new
+      } = require_lstring();
+      var ltable = require_ltable();
+      var {
+        LUA_COMPAT_FLOATSTRING,
+        ldexp,
+        lua_integer2str,
+        lua_number2str
+      } = require_luaconf();
+      var lvm = require_lvm();
+      var {
+        MAX_INT,
+        luai_nummod,
+        lua_assert
+      } = require_llimits();
+      var ltm = require_ltm();
+      var LUA_TPROTO = LUA_NUMTAGS;
+      var LUA_TDEADKEY = LUA_NUMTAGS + 1;
+      var TValue = class {
+        constructor(type, value) {
+          this.type = type;
+          this.value = value;
+        }
+        /* type tag of a TValue (bits 0-3 for tags + variant bits 4-5) */
+        ttype() {
+          return this.type & 63;
+        }
+        /* type tag of a TValue with no variants (bits 0-3) */
+        ttnov() {
+          return this.type & 15;
+        }
+        checktag(t) {
+          return this.type === t;
+        }
+        checktype(t) {
+          return this.ttnov() === t;
+        }
+        ttisnumber() {
+          return this.checktype(LUA_TNUMBER);
+        }
+        ttisfloat() {
+          return this.checktag(LUA_TNUMFLT);
+        }
+        ttisinteger() {
+          return this.checktag(LUA_TNUMINT);
+        }
+        ttisnil() {
+          return this.checktag(LUA_TNIL);
+        }
+        ttisboolean() {
+          return this.checktag(LUA_TBOOLEAN);
+        }
+        ttislightuserdata() {
+          return this.checktag(LUA_TLIGHTUSERDATA);
+        }
+        ttisstring() {
+          return this.checktype(LUA_TSTRING);
+        }
+        ttisshrstring() {
+          return this.checktag(LUA_TSHRSTR);
+        }
+        ttislngstring() {
+          return this.checktag(LUA_TLNGSTR);
+        }
+        ttistable() {
+          return this.checktag(LUA_TTABLE);
+        }
+        ttisfunction() {
+          return this.checktype(LUA_TFUNCTION);
+        }
+        ttisclosure() {
+          return (this.type & 31) === LUA_TFUNCTION;
+        }
+        ttisCclosure() {
+          return this.checktag(LUA_TCCL);
+        }
+        ttisLclosure() {
+          return this.checktag(LUA_TLCL);
+        }
+        ttislcf() {
+          return this.checktag(LUA_TLCF);
+        }
+        ttisfulluserdata() {
+          return this.checktag(LUA_TUSERDATA);
+        }
+        ttisthread() {
+          return this.checktag(LUA_TTHREAD);
+        }
+        ttisdeadkey() {
+          return this.checktag(LUA_TDEADKEY);
+        }
+        l_isfalse() {
+          return this.ttisnil() || this.ttisboolean() && this.value === false;
+        }
+        setfltvalue(x) {
+          this.type = LUA_TNUMFLT;
+          this.value = x;
+        }
+        chgfltvalue(x) {
+          lua_assert(this.type == LUA_TNUMFLT);
+          this.value = x;
+        }
+        setivalue(x) {
+          this.type = LUA_TNUMINT;
+          this.value = x;
+        }
+        chgivalue(x) {
+          lua_assert(this.type == LUA_TNUMINT);
+          this.value = x;
+        }
+        setnilvalue() {
+          this.type = LUA_TNIL;
+          this.value = null;
+        }
+        setfvalue(x) {
+          this.type = LUA_TLCF;
+          this.value = x;
+        }
+        setpvalue(x) {
+          this.type = LUA_TLIGHTUSERDATA;
+          this.value = x;
+        }
+        setbvalue(x) {
+          this.type = LUA_TBOOLEAN;
+          this.value = x;
+        }
+        setsvalue(x) {
+          this.type = LUA_TLNGSTR;
+          this.value = x;
+        }
+        setuvalue(x) {
+          this.type = LUA_TUSERDATA;
+          this.value = x;
+        }
+        setthvalue(x) {
+          this.type = LUA_TTHREAD;
+          this.value = x;
+        }
+        setclLvalue(x) {
+          this.type = LUA_TLCL;
+          this.value = x;
+        }
+        setclCvalue(x) {
+          this.type = LUA_TCCL;
+          this.value = x;
+        }
+        sethvalue(x) {
+          this.type = LUA_TTABLE;
+          this.value = x;
+        }
+        setdeadvalue() {
+          this.type = LUA_TDEADKEY;
+          this.value = null;
+        }
+        setfrom(tv) {
+          this.type = tv.type;
+          this.value = tv.value;
+        }
+        tsvalue() {
+          lua_assert(this.ttisstring());
+          return this.value;
+        }
+        svalue() {
+          return this.tsvalue().getstr();
+        }
+        vslen() {
+          return this.tsvalue().tsslen();
+        }
+        jsstring(from, to) {
+          return to_jsstring(this.svalue(), from, to, true);
+        }
+      };
+      var pushobj2s = function(L, tv) {
+        L.stack[L.top++] = new TValue(tv.type, tv.value);
+      };
+      var pushsvalue2s = function(L, ts) {
+        L.stack[L.top++] = new TValue(LUA_TLNGSTR, ts);
+      };
+      var setobjs2s = function(L, newidx, oldidx) {
+        L.stack[newidx].setfrom(L.stack[oldidx]);
+      };
+      var setobj2s = function(L, newidx, oldtv) {
+        L.stack[newidx].setfrom(oldtv);
+      };
+      var setsvalue2s = function(L, newidx, ts) {
+        L.stack[newidx].setsvalue(ts);
+      };
+      var luaO_nilobject = new TValue(LUA_TNIL, null);
+      Object.freeze(luaO_nilobject);
+      module.exports.luaO_nilobject = luaO_nilobject;
+      var LClosure = class {
+        constructor(L, n) {
+          this.id = L.l_G.id_counter++;
+          this.p = null;
+          this.nupvalues = n;
+          this.upvals = new Array(n);
+        }
+      };
+      var CClosure = class {
+        constructor(L, f, n) {
+          this.id = L.l_G.id_counter++;
+          this.f = f;
+          this.nupvalues = n;
+          this.upvalue = new Array(n);
+          while (n--) {
+            this.upvalue[n] = new TValue(LUA_TNIL, null);
+          }
+        }
+      };
+      var Udata = class {
+        constructor(L, size) {
+          this.id = L.l_G.id_counter++;
+          this.metatable = null;
+          this.uservalue = new TValue(LUA_TNIL, null);
+          this.len = size;
+          this.data = /* @__PURE__ */ Object.create(null);
+        }
+      };
+      var LocVar = class {
+        constructor() {
+          this.varname = null;
+          this.startpc = NaN;
+          this.endpc = NaN;
+        }
+      };
+      var RETS = to_luastring("...");
+      var PRE = to_luastring('[string "');
+      var POS = to_luastring('"]');
+      var luaO_chunkid = function(source, bufflen) {
+        let l = source.length;
+        let out;
+        if (source[0] === 61) {
+          if (l < bufflen) {
+            out = new Uint8Array(l - 1);
+            out.set(source.subarray(1));
+          } else {
+            out = new Uint8Array(bufflen);
+            out.set(source.subarray(1, bufflen + 1));
+          }
+        } else if (source[0] === 64) {
+          if (l <= bufflen) {
+            out = new Uint8Array(l - 1);
+            out.set(source.subarray(1));
+          } else {
+            out = new Uint8Array(bufflen);
+            out.set(RETS);
+            bufflen -= RETS.length;
+            out.set(source.subarray(l - bufflen), RETS.length);
+          }
+        } else {
+          out = new Uint8Array(bufflen);
+          let nli = luastring_indexOf(
+            source,
+            10
+            /* ('\n').charCodeAt(0) */
+          );
+          out.set(PRE);
+          let out_i = PRE.length;
+          bufflen -= PRE.length + RETS.length + POS.length;
+          if (l < bufflen && nli === -1) {
+            out.set(source, out_i);
+            out_i += source.length;
+          } else {
+            if (nli !== -1) l = nli;
+            if (l > bufflen) l = bufflen;
+            out.set(source.subarray(0, l), out_i);
+            out_i += l;
+            out.set(RETS, out_i);
+            out_i += RETS.length;
+          }
+          out.set(POS, out_i);
+          out_i += POS.length;
+          out = out.subarray(0, out_i);
+        }
+        return out;
+      };
+      var luaO_hexavalue = function(c) {
+        if (lisdigit(c)) return c - 48;
+        else return (c & 223) - 55;
+      };
+      var UTF8BUFFSZ = 8;
+      var luaO_utf8esc = function(buff, x) {
+        let n = 1;
+        lua_assert(x <= 1114111);
+        if (x < 128)
+          buff[UTF8BUFFSZ - 1] = x;
+        else {
+          let mfb = 63;
+          do {
+            buff[UTF8BUFFSZ - n++] = 128 | x & 63;
+            x >>= 6;
+            mfb >>= 1;
+          } while (x > mfb);
+          buff[UTF8BUFFSZ - n] = ~mfb << 1 | x;
+        }
+        return n;
+      };
+      var MAXSIGDIG = 30;
+      var lua_strx2number = function(s) {
+        let i = 0;
+        let r = 0;
+        let sigdig = 0;
+        let nosigdig = 0;
+        let e = 0;
+        let neg;
+        let hasdot = false;
+        while (lisspace(s[i])) i++;
+        if (neg = s[i] === 45) i++;
+        else if (s[i] === 43) i++;
+        if (!(s[i] === 48 && (s[i + 1] === 120 || s[i + 1] === 88)))
+          return null;
+        for (i += 2; ; i++) {
+          if (s[i] === 46) {
+            if (hasdot) break;
+            else hasdot = true;
+          } else if (lisxdigit(s[i])) {
+            if (sigdig === 0 && s[i] === 48)
+              nosigdig++;
+            else if (++sigdig <= MAXSIGDIG)
+              r = r * 16 + luaO_hexavalue(s[i]);
+            else e++;
+            if (hasdot) e--;
+          } else break;
+        }
+        if (nosigdig + sigdig === 0)
+          return null;
+        e *= 4;
+        if (s[i] === 112 || s[i] === 80) {
+          let exp1 = 0;
+          let neg1;
+          i++;
+          if (neg1 = s[i] === 45) i++;
+          else if (s[i] === 43) i++;
+          if (!lisdigit(s[i]))
+            return null;
+          while (lisdigit(s[i]))
+            exp1 = exp1 * 10 + s[i++] - 48;
+          if (neg1) exp1 = -exp1;
+          e += exp1;
+        }
+        if (neg) r = -r;
+        return {
+          n: ldexp(r, e),
+          i
+        };
+      };
+      var lua_str2number = function(s) {
+        try {
+          s = to_jsstring(s);
+        } catch (e) {
+          return null;
+        }
+        let r = /^[\t\v\f \n\r]*[+-]?(?:[0-9]+\.?[0-9]*|\.[0-9]*)(?:[eE][+-]?[0-9]+)?/.exec(s);
+        if (!r)
+          return null;
+        let flt = parseFloat(r[0]);
+        return !isNaN(flt) ? { n: flt, i: r[0].length } : null;
+      };
+      var l_str2dloc = function(s, mode) {
+        let result = mode === "x" ? lua_strx2number(s) : lua_str2number(s);
+        if (result === null) return null;
+        while (lisspace(s[result.i])) result.i++;
+        return result.i === s.length || s[result.i] === 0 ? result : null;
+      };
+      var SIGILS = [
+        46,
+        120,
+        88,
+        110,
+        78
+        /* ("N").charCodeAt(0) */
+      ];
+      var modes = {
+        [46]: ".",
+        [120]: "x",
+        [88]: "x",
+        [110]: "n",
+        [78]: "n"
+      };
+      var l_str2d = function(s) {
+        let l = s.length;
+        let pmode = 0;
+        for (let i = 0; i < l; i++) {
+          let v = s[i];
+          if (SIGILS.indexOf(v) !== -1) {
+            pmode = v;
+            break;
+          }
+        }
+        let mode = modes[pmode];
+        if (mode === "n")
+          return null;
+        let end = l_str2dloc(s, mode);
+        return end;
+      };
+      var MAXBY10 = Math.floor(MAX_INT / 10);
+      var MAXLASTD = MAX_INT % 10;
+      var l_str2int = function(s) {
+        let i = 0;
+        let a = 0;
+        let empty = true;
+        let neg;
+        while (lisspace(s[i])) i++;
+        if (neg = s[i] === 45) i++;
+        else if (s[i] === 43) i++;
+        if (s[i] === 48 && (s[i + 1] === 120 || s[i + 1] === 88)) {
+          i += 2;
+          for (; i < s.length && lisxdigit(s[i]); i++) {
+            a = a * 16 + luaO_hexavalue(s[i]) | 0;
+            empty = false;
+          }
+        } else {
+          for (; i < s.length && lisdigit(s[i]); i++) {
+            let d = s[i] - 48;
+            if (a >= MAXBY10 && (a > MAXBY10 || d > MAXLASTD + neg))
+              return null;
+            a = a * 10 + d | 0;
+            empty = false;
+          }
+        }
+        while (i < s.length && lisspace(s[i])) i++;
+        if (empty || i !== s.length && s[i] !== 0) return null;
+        else {
+          return {
+            n: (neg ? -a : a) | 0,
+            i
+          };
+        }
+      };
+      var luaO_str2num = function(s, o) {
+        let s2i = l_str2int(s);
+        if (s2i !== null) {
+          o.setivalue(s2i.n);
+          return s2i.i + 1;
+        } else {
+          s2i = l_str2d(s);
+          if (s2i !== null) {
+            o.setfltvalue(s2i.n);
+            return s2i.i + 1;
+          } else
+            return 0;
+        }
+      };
+      var luaO_tostring = function(L, obj) {
+        let buff;
+        if (obj.ttisinteger())
+          buff = to_luastring(lua_integer2str(obj.value));
+        else {
+          let str = lua_number2str(obj.value);
+          if (!LUA_COMPAT_FLOATSTRING && /^[-0123456789]+$/.test(str)) {
+            str += ".0";
+          }
+          buff = to_luastring(str);
+        }
+        obj.setsvalue(luaS_bless(L, buff));
+      };
+      var pushstr = function(L, str) {
+        ldo.luaD_inctop(L);
+        setsvalue2s(L, L.top - 1, luaS_new(L, str));
+      };
+      var luaO_pushvfstring = function(L, fmt, argp) {
+        let n = 0;
+        let i = 0;
+        let a = 0;
+        let e;
+        for (; ; ) {
+          e = luastring_indexOf(fmt, 37, i);
+          if (e == -1) break;
+          pushstr(L, fmt.subarray(i, e));
+          switch (fmt[e + 1]) {
+            case 115: {
+              let s = argp[a++];
+              if (s === null) s = to_luastring("(null)", true);
+              else {
+                s = from_userstring(s);
+                let i2 = luastring_indexOf(s, 0);
+                if (i2 !== -1)
+                  s = s.subarray(0, i2);
+              }
+              pushstr(L, s);
+              break;
+            }
+            case 99: {
+              let buff = argp[a++];
+              if (lisprint(buff))
+                pushstr(L, luastring_of(buff));
+              else
+                luaO_pushfstring(L, to_luastring("<\\%d>", true), buff);
+              break;
+            }
+            case 100:
+            case 73:
+              ldo.luaD_inctop(L);
+              L.stack[L.top - 1].setivalue(argp[a++]);
+              luaO_tostring(L, L.stack[L.top - 1]);
+              break;
+            case 102:
+              ldo.luaD_inctop(L);
+              L.stack[L.top - 1].setfltvalue(argp[a++]);
+              luaO_tostring(L, L.stack[L.top - 1]);
+              break;
+            case 112: {
+              let v = argp[a++];
+              if (v instanceof lstate.lua_State || v instanceof ltable.Table || v instanceof Udata || v instanceof LClosure || v instanceof CClosure) {
+                pushstr(L, to_luastring("0x" + v.id.toString(16)));
+              } else {
+                switch (typeof v) {
+                  case "undefined":
+                    pushstr(L, to_luastring("undefined"));
+                    break;
+                  case "number":
+                    pushstr(L, to_luastring("Number(" + v + ")"));
+                    break;
+                  case "string":
+                    pushstr(L, to_luastring("String(" + JSON.stringify(v) + ")"));
+                    break;
+                  case "boolean":
+                    pushstr(L, to_luastring(v ? "Boolean(true)" : "Boolean(false)"));
+                    break;
+                  case "object":
+                    if (v === null) {
+                      pushstr(L, to_luastring("null"));
+                      break;
+                    }
+                  /* fall through */
+                  case "function": {
+                    let id = L.l_G.ids.get(v);
+                    if (!id) {
+                      id = L.l_G.id_counter++;
+                      L.l_G.ids.set(v, id);
+                    }
+                    pushstr(L, to_luastring("0x" + id.toString(16)));
+                    break;
+                  }
+                  default:
+                    pushstr(L, to_luastring("<id NYI>"));
+                }
+              }
+              break;
+            }
+            case 85: {
+              let buff = new Uint8Array(UTF8BUFFSZ);
+              let l = luaO_utf8esc(buff, argp[a++]);
+              pushstr(L, buff.subarray(UTF8BUFFSZ - l));
+              break;
+            }
+            case 37:
+              pushstr(L, to_luastring("%", true));
+              break;
+            default:
+              ldebug.luaG_runerror(L, to_luastring("invalid option '%%%c' to 'lua_pushfstring'"), fmt[e + 1]);
+          }
+          n += 2;
+          i = e + 2;
+        }
+        ldo.luaD_checkstack(L, 1);
+        pushstr(L, fmt.subarray(i));
+        if (n > 0) lvm.luaV_concat(L, n + 1);
+        return L.stack[L.top - 1].svalue();
+      };
+      var luaO_pushfstring = function(L, fmt, ...argp) {
+        return luaO_pushvfstring(L, fmt, argp);
+      };
+      var luaO_int2fb = function(x) {
+        let e = 0;
+        if (x < 8) return x;
+        while (x >= 8 << 4) {
+          x = x + 15 >> 4;
+          e += 4;
+        }
+        while (x >= 8 << 1) {
+          x = x + 1 >> 1;
+          e++;
+        }
+        return e + 1 << 3 | x - 8;
+      };
+      var intarith = function(L, op, v1, v2) {
+        switch (op) {
+          case LUA_OPADD:
+            return v1 + v2 | 0;
+          case LUA_OPSUB:
+            return v1 - v2 | 0;
+          case LUA_OPMUL:
+            return lvm.luaV_imul(v1, v2);
+          case LUA_OPMOD:
+            return lvm.luaV_mod(L, v1, v2);
+          case LUA_OPIDIV:
+            return lvm.luaV_div(L, v1, v2);
+          case LUA_OPBAND:
+            return v1 & v2;
+          case LUA_OPBOR:
+            return v1 | v2;
+          case LUA_OPBXOR:
+            return v1 ^ v2;
+          case LUA_OPSHL:
+            return lvm.luaV_shiftl(v1, v2);
+          case LUA_OPSHR:
+            return lvm.luaV_shiftl(v1, -v2);
+          case LUA_OPUNM:
+            return 0 - v1 | 0;
+          case LUA_OPBNOT:
+            return ~0 ^ v1;
+          default:
+            lua_assert(0);
+        }
+      };
+      var numarith = function(L, op, v1, v2) {
+        switch (op) {
+          case LUA_OPADD:
+            return v1 + v2;
+          case LUA_OPSUB:
+            return v1 - v2;
+          case LUA_OPMUL:
+            return v1 * v2;
+          case LUA_OPDIV:
+            return v1 / v2;
+          case LUA_OPPOW:
+            return Math.pow(v1, v2);
+          case LUA_OPIDIV:
+            return Math.floor(v1 / v2);
+          case LUA_OPUNM:
+            return -v1;
+          case LUA_OPMOD:
+            return luai_nummod(L, v1, v2);
+          default:
+            lua_assert(0);
+        }
+      };
+      var luaO_arith = function(L, op, p1, p2, p3) {
+        let res = typeof p3 === "number" ? L.stack[p3] : p3;
+        switch (op) {
+          case LUA_OPBAND:
+          case LUA_OPBOR:
+          case LUA_OPBXOR:
+          case LUA_OPSHL:
+          case LUA_OPSHR:
+          case LUA_OPBNOT: {
+            let i1, i2;
+            if ((i1 = lvm.tointeger(p1)) !== false && (i2 = lvm.tointeger(p2)) !== false) {
+              res.setivalue(intarith(L, op, i1, i2));
+              return;
+            } else break;
+          }
+          case LUA_OPDIV:
+          case LUA_OPPOW: {
+            let n1, n2;
+            if ((n1 = lvm.tonumber(p1)) !== false && (n2 = lvm.tonumber(p2)) !== false) {
+              res.setfltvalue(numarith(L, op, n1, n2));
+              return;
+            } else break;
+          }
+          default: {
+            let n1, n2;
+            if (p1.ttisinteger() && p2.ttisinteger()) {
+              res.setivalue(intarith(L, op, p1.value, p2.value));
+              return;
+            } else if ((n1 = lvm.tonumber(p1)) !== false && (n2 = lvm.tonumber(p2)) !== false) {
+              res.setfltvalue(numarith(L, op, n1, n2));
+              return;
+            } else break;
+          }
+        }
+        lua_assert(L !== null);
+        ltm.luaT_trybinTM(L, p1, p2, p3, op - LUA_OPADD + ltm.TMS.TM_ADD);
+      };
+      module.exports.CClosure = CClosure;
+      module.exports.LClosure = LClosure;
+      module.exports.LUA_TDEADKEY = LUA_TDEADKEY;
+      module.exports.LUA_TPROTO = LUA_TPROTO;
+      module.exports.LocVar = LocVar;
+      module.exports.TValue = TValue;
+      module.exports.Udata = Udata;
+      module.exports.UTF8BUFFSZ = UTF8BUFFSZ;
+      module.exports.luaO_arith = luaO_arith;
+      module.exports.luaO_chunkid = luaO_chunkid;
+      module.exports.luaO_hexavalue = luaO_hexavalue;
+      module.exports.luaO_int2fb = luaO_int2fb;
+      module.exports.luaO_pushfstring = luaO_pushfstring;
+      module.exports.luaO_pushvfstring = luaO_pushvfstring;
+      module.exports.luaO_str2num = luaO_str2num;
+      module.exports.luaO_tostring = luaO_tostring;
+      module.exports.luaO_utf8esc = luaO_utf8esc;
+      module.exports.numarith = numarith;
+      module.exports.pushobj2s = pushobj2s;
+      module.exports.pushsvalue2s = pushsvalue2s;
+      module.exports.setobjs2s = setobjs2s;
+      module.exports.setobj2s = setobj2s;
+      module.exports.setsvalue2s = setsvalue2s;
+    }
+  });
+
+  // node_modules/fengari/src/lfunc.js
+  var require_lfunc = __commonJS({
+    "node_modules/fengari/src/lfunc.js"(exports, module) {
+      "use strict";
+      var { constant_types: { LUA_TNIL } } = require_defs();
+      var lobject = require_lobject();
+      var Proto = class {
+        constructor(L) {
+          this.id = L.l_G.id_counter++;
+          this.k = [];
+          this.p = [];
+          this.code = [];
+          this.cache = null;
+          this.lineinfo = [];
+          this.upvalues = [];
+          this.numparams = 0;
+          this.is_vararg = false;
+          this.maxstacksize = 0;
+          this.locvars = [];
+          this.linedefined = 0;
+          this.lastlinedefined = 0;
+          this.source = null;
+        }
+      };
+      var luaF_newLclosure = function(L, n) {
+        return new lobject.LClosure(L, n);
+      };
+      var luaF_findupval = function(L, level) {
+        return L.stack[level];
+      };
+      var luaF_close = function(L, level) {
+        for (let i = level; i < L.top; i++) {
+          let old = L.stack[i];
+          L.stack[i] = new lobject.TValue(old.type, old.value);
+        }
+      };
+      var luaF_initupvals = function(L, cl) {
+        for (let i = 0; i < cl.nupvalues; i++)
+          cl.upvals[i] = new lobject.TValue(LUA_TNIL, null);
+      };
+      var luaF_getlocalname = function(f, local_number, pc) {
+        for (let i = 0; i < f.locvars.length && f.locvars[i].startpc <= pc; i++) {
+          if (pc < f.locvars[i].endpc) {
+            local_number--;
+            if (local_number === 0)
+              return f.locvars[i].varname.getstr();
+          }
+        }
+        return null;
+      };
+      module.exports.MAXUPVAL = 255;
+      module.exports.Proto = Proto;
+      module.exports.luaF_findupval = luaF_findupval;
+      module.exports.luaF_close = luaF_close;
+      module.exports.luaF_getlocalname = luaF_getlocalname;
+      module.exports.luaF_initupvals = luaF_initupvals;
+      module.exports.luaF_newLclosure = luaF_newLclosure;
+    }
+  });
+
+  // node_modules/fengari/src/lzio.js
+  var require_lzio = __commonJS({
+    "node_modules/fengari/src/lzio.js"(exports, module) {
+      "use strict";
+      var { lua_assert } = require_llimits();
+      var MBuffer = class {
+        constructor() {
+          this.buffer = null;
+          this.n = 0;
+        }
+      };
+      var luaZ_buffer = function(buff) {
+        return buff.buffer.subarray(0, buff.n);
+      };
+      var luaZ_buffremove = function(buff, i) {
+        buff.n -= i;
+      };
+      var luaZ_resetbuffer = function(buff) {
+        buff.n = 0;
+      };
+      var luaZ_resizebuffer = function(L, buff, size) {
+        let newbuff = new Uint8Array(size);
+        if (buff.buffer)
+          newbuff.set(buff.buffer);
+        buff.buffer = newbuff;
+      };
+      var ZIO = class {
+        constructor(L, reader, data) {
+          this.L = L;
+          lua_assert(typeof reader == "function", "ZIO requires a reader");
+          this.reader = reader;
+          this.data = data;
+          this.n = 0;
+          this.buffer = null;
+          this.off = 0;
+        }
+        zgetc() {
+          return this.n-- > 0 ? this.buffer[this.off++] : luaZ_fill(this);
+        }
+      };
+      var EOZ = -1;
+      var luaZ_fill = function(z) {
+        let buff = z.reader(z.L, z.data);
+        if (buff === null)
+          return EOZ;
+        lua_assert(buff instanceof Uint8Array, "Should only load binary of array of bytes");
+        let size = buff.length;
+        if (size === 0)
+          return EOZ;
+        z.buffer = buff;
+        z.off = 0;
+        z.n = size - 1;
+        return z.buffer[z.off++];
+      };
+      var luaZ_read = function(z, b, b_offset, n) {
+        while (n) {
+          if (z.n === 0) {
+            if (luaZ_fill(z) === EOZ)
+              return n;
+            else {
+              z.n++;
+              z.off--;
+            }
+          }
+          let m = n <= z.n ? n : z.n;
+          for (let i = 0; i < m; i++) {
+            b[b_offset++] = z.buffer[z.off++];
+          }
+          z.n -= m;
+          if (z.n === 0)
+            z.buffer = null;
+          n -= m;
+        }
+        return 0;
+      };
+      module.exports.EOZ = EOZ;
+      module.exports.luaZ_buffer = luaZ_buffer;
+      module.exports.luaZ_buffremove = luaZ_buffremove;
+      module.exports.luaZ_fill = luaZ_fill;
+      module.exports.luaZ_read = luaZ_read;
+      module.exports.luaZ_resetbuffer = luaZ_resetbuffer;
+      module.exports.luaZ_resizebuffer = luaZ_resizebuffer;
+      module.exports.MBuffer = MBuffer;
+      module.exports.ZIO = ZIO;
+    }
+  });
+
+  // node_modules/fengari/src/llex.js
+  var require_llex = __commonJS({
+    "node_modules/fengari/src/llex.js"(exports, module) {
+      "use strict";
+      var {
+        constant_types: { LUA_TBOOLEAN, LUA_TLNGSTR },
+        thread_status: { LUA_ERRSYNTAX },
+        to_luastring
+      } = require_defs();
+      var {
+        LUA_MINBUFFER,
+        MAX_INT,
+        lua_assert
+      } = require_llimits();
+      var ldebug = require_ldebug();
+      var ldo = require_ldo();
+      var {
+        lisdigit,
+        lislalnum,
+        lislalpha,
+        lisspace,
+        lisxdigit
+      } = require_ljstype();
+      var lobject = require_lobject();
+      var {
+        luaS_bless,
+        luaS_hash,
+        luaS_hashlongstr,
+        luaS_new
+      } = require_lstring();
+      var ltable = require_ltable();
+      var {
+        EOZ,
+        luaZ_buffer,
+        luaZ_buffremove,
+        luaZ_resetbuffer,
+        luaZ_resizebuffer
+      } = require_lzio();
+      var FIRST_RESERVED = 257;
+      var LUA_ENV = to_luastring("_ENV", true);
+      var TK_AND = FIRST_RESERVED;
+      var TK_BREAK = FIRST_RESERVED + 1;
+      var TK_DO = FIRST_RESERVED + 2;
+      var TK_ELSE = FIRST_RESERVED + 3;
+      var TK_ELSEIF = FIRST_RESERVED + 4;
+      var TK_END = FIRST_RESERVED + 5;
+      var TK_FALSE = FIRST_RESERVED + 6;
+      var TK_FOR = FIRST_RESERVED + 7;
+      var TK_FUNCTION = FIRST_RESERVED + 8;
+      var TK_GOTO = FIRST_RESERVED + 9;
+      var TK_IF = FIRST_RESERVED + 10;
+      var TK_IN = FIRST_RESERVED + 11;
+      var TK_LOCAL = FIRST_RESERVED + 12;
+      var TK_NIL = FIRST_RESERVED + 13;
+      var TK_NOT = FIRST_RESERVED + 14;
+      var TK_OR = FIRST_RESERVED + 15;
+      var TK_REPEAT = FIRST_RESERVED + 16;
+      var TK_RETURN = FIRST_RESERVED + 17;
+      var TK_THEN = FIRST_RESERVED + 18;
+      var TK_TRUE = FIRST_RESERVED + 19;
+      var TK_UNTIL = FIRST_RESERVED + 20;
+      var TK_WHILE = FIRST_RESERVED + 21;
+      var TK_IDIV = FIRST_RESERVED + 22;
+      var TK_CONCAT = FIRST_RESERVED + 23;
+      var TK_DOTS = FIRST_RESERVED + 24;
+      var TK_EQ = FIRST_RESERVED + 25;
+      var TK_GE = FIRST_RESERVED + 26;
+      var TK_LE = FIRST_RESERVED + 27;
+      var TK_NE = FIRST_RESERVED + 28;
+      var TK_SHL = FIRST_RESERVED + 29;
+      var TK_SHR = FIRST_RESERVED + 30;
+      var TK_DBCOLON = FIRST_RESERVED + 31;
+      var TK_EOS = FIRST_RESERVED + 32;
+      var TK_FLT = FIRST_RESERVED + 33;
+      var TK_INT = FIRST_RESERVED + 34;
+      var TK_NAME = FIRST_RESERVED + 35;
+      var TK_STRING = FIRST_RESERVED + 36;
+      var RESERVED = {
+        "TK_AND": TK_AND,
+        "TK_BREAK": TK_BREAK,
+        "TK_DO": TK_DO,
+        "TK_ELSE": TK_ELSE,
+        "TK_ELSEIF": TK_ELSEIF,
+        "TK_END": TK_END,
+        "TK_FALSE": TK_FALSE,
+        "TK_FOR": TK_FOR,
+        "TK_FUNCTION": TK_FUNCTION,
+        "TK_GOTO": TK_GOTO,
+        "TK_IF": TK_IF,
+        "TK_IN": TK_IN,
+        "TK_LOCAL": TK_LOCAL,
+        "TK_NIL": TK_NIL,
+        "TK_NOT": TK_NOT,
+        "TK_OR": TK_OR,
+        "TK_REPEAT": TK_REPEAT,
+        "TK_RETURN": TK_RETURN,
+        "TK_THEN": TK_THEN,
+        "TK_TRUE": TK_TRUE,
+        "TK_UNTIL": TK_UNTIL,
+        "TK_WHILE": TK_WHILE,
+        "TK_IDIV": TK_IDIV,
+        "TK_CONCAT": TK_CONCAT,
+        "TK_DOTS": TK_DOTS,
+        "TK_EQ": TK_EQ,
+        "TK_GE": TK_GE,
+        "TK_LE": TK_LE,
+        "TK_NE": TK_NE,
+        "TK_SHL": TK_SHL,
+        "TK_SHR": TK_SHR,
+        "TK_DBCOLON": TK_DBCOLON,
+        "TK_EOS": TK_EOS,
+        "TK_FLT": TK_FLT,
+        "TK_INT": TK_INT,
+        "TK_NAME": TK_NAME,
+        "TK_STRING": TK_STRING
+      };
+      var luaX_tokens = [
+        "and",
+        "break",
+        "do",
+        "else",
+        "elseif",
+        "end",
+        "false",
+        "for",
+        "function",
+        "goto",
+        "if",
+        "in",
+        "local",
+        "nil",
+        "not",
+        "or",
+        "repeat",
+        "return",
+        "then",
+        "true",
+        "until",
+        "while",
+        "//",
+        "..",
+        "...",
+        "==",
+        ">=",
+        "<=",
+        "~=",
+        "<<",
+        ">>",
+        "::",
+        "<eof>",
+        "<number>",
+        "<integer>",
+        "<name>",
+        "<string>"
+      ].map((e, i) => to_luastring(e));
+      var SemInfo = class {
+        constructor() {
+          this.r = NaN;
+          this.i = NaN;
+          this.ts = null;
+        }
+      };
+      var Token = class {
+        constructor() {
+          this.token = NaN;
+          this.seminfo = new SemInfo();
+        }
+      };
+      var LexState = class {
+        constructor() {
+          this.current = NaN;
+          this.linenumber = NaN;
+          this.lastline = NaN;
+          this.t = new Token();
+          this.lookahead = new Token();
+          this.fs = null;
+          this.L = null;
+          this.z = null;
+          this.buff = null;
+          this.h = null;
+          this.dyd = null;
+          this.source = null;
+          this.envn = null;
+        }
+      };
+      var save = function(ls, c) {
+        let b = ls.buff;
+        if (b.n + 1 > b.buffer.length) {
+          if (b.buffer.length >= MAX_INT / 2)
+            lexerror(ls, to_luastring("lexical element too long", true), 0);
+          let newsize = b.buffer.length * 2;
+          luaZ_resizebuffer(ls.L, b, newsize);
+        }
+        b.buffer[b.n++] = c < 0 ? 255 + c + 1 : c;
+      };
+      var luaX_token2str = function(ls, token) {
+        if (token < FIRST_RESERVED) {
+          return lobject.luaO_pushfstring(ls.L, to_luastring("'%c'", true), token);
+        } else {
+          let s = luaX_tokens[token - FIRST_RESERVED];
+          if (token < TK_EOS)
+            return lobject.luaO_pushfstring(ls.L, to_luastring("'%s'", true), s);
+          else
+            return s;
+        }
+      };
+      var currIsNewline = function(ls) {
+        return ls.current === 10 || ls.current === 13;
+      };
+      var next = function(ls) {
+        ls.current = ls.z.zgetc();
+      };
+      var save_and_next = function(ls) {
+        save(ls, ls.current);
+        next(ls);
+      };
+      var TVtrue = new lobject.TValue(LUA_TBOOLEAN, true);
+      var luaX_newstring = function(ls, str) {
+        let L = ls.L;
+        let ts = luaS_new(L, str);
+        let tpair = ls.h.strong.get(luaS_hashlongstr(ts));
+        if (!tpair) {
+          let key = new lobject.TValue(LUA_TLNGSTR, ts);
+          ltable.luaH_setfrom(L, ls.h, key, TVtrue);
+        } else {
+          ts = tpair.key.tsvalue();
+        }
+        return ts;
+      };
+      var inclinenumber = function(ls) {
+        let old = ls.current;
+        lua_assert(currIsNewline(ls));
+        next(ls);
+        if (currIsNewline(ls) && ls.current !== old)
+          next(ls);
+        if (++ls.linenumber >= MAX_INT)
+          lexerror(ls, to_luastring("chunk has too many lines", true), 0);
+      };
+      var luaX_setinput = function(L, ls, z, source, firstchar) {
+        ls.t = {
+          token: 0,
+          seminfo: new SemInfo()
+        };
+        ls.L = L;
+        ls.current = firstchar;
+        ls.lookahead = {
+          token: TK_EOS,
+          seminfo: new SemInfo()
+        };
+        ls.z = z;
+        ls.fs = null;
+        ls.linenumber = 1;
+        ls.lastline = 1;
+        ls.source = source;
+        ls.envn = luaS_bless(L, LUA_ENV);
+        luaZ_resizebuffer(L, ls.buff, LUA_MINBUFFER);
+      };
+      var check_next1 = function(ls, c) {
+        if (ls.current === c) {
+          next(ls);
+          return true;
+        }
+        return false;
+      };
+      var check_next2 = function(ls, set) {
+        if (ls.current === set[0].charCodeAt(0) || ls.current === set[1].charCodeAt(0)) {
+          save_and_next(ls);
+          return true;
+        }
+        return false;
+      };
+      var read_numeral = function(ls, seminfo) {
+        let expo = "Ee";
+        let first = ls.current;
+        lua_assert(lisdigit(ls.current));
+        save_and_next(ls);
+        if (first === 48 && check_next2(ls, "xX"))
+          expo = "Pp";
+        for (; ; ) {
+          if (check_next2(ls, expo))
+            check_next2(ls, "-+");
+          if (lisxdigit(ls.current))
+            save_and_next(ls);
+          else if (ls.current === 46)
+            save_and_next(ls);
+          else break;
+        }
+        let obj = new lobject.TValue();
+        if (lobject.luaO_str2num(luaZ_buffer(ls.buff), obj) === 0)
+          lexerror(ls, to_luastring("malformed number", true), TK_FLT);
+        if (obj.ttisinteger()) {
+          seminfo.i = obj.value;
+          return TK_INT;
+        } else {
+          lua_assert(obj.ttisfloat());
+          seminfo.r = obj.value;
+          return TK_FLT;
+        }
+      };
+      var txtToken = function(ls, token) {
+        switch (token) {
+          case TK_NAME:
+          case TK_STRING:
+          case TK_FLT:
+          case TK_INT:
+            return lobject.luaO_pushfstring(ls.L, to_luastring("'%s'", true), luaZ_buffer(ls.buff));
+          default:
+            return luaX_token2str(ls, token);
+        }
+      };
+      var lexerror = function(ls, msg, token) {
+        msg = ldebug.luaG_addinfo(ls.L, msg, ls.source, ls.linenumber);
+        if (token)
+          lobject.luaO_pushfstring(ls.L, to_luastring("%s near %s"), msg, txtToken(ls, token));
+        ldo.luaD_throw(ls.L, LUA_ERRSYNTAX);
+      };
+      var luaX_syntaxerror = function(ls, msg) {
+        lexerror(ls, msg, ls.t.token);
+      };
+      var skip_sep = function(ls) {
+        let count = 0;
+        let s = ls.current;
+        lua_assert(
+          s === 91 || s === 93
+          /* (']').charCodeAt(0) */
+        );
+        save_and_next(ls);
+        while (ls.current === 61) {
+          save_and_next(ls);
+          count++;
+        }
+        return ls.current === s ? count : -count - 1;
+      };
+      var read_long_string = function(ls, seminfo, sep) {
+        let line = ls.linenumber;
+        save_and_next(ls);
+        if (currIsNewline(ls))
+          inclinenumber(ls);
+        let skip = false;
+        for (; !skip; ) {
+          switch (ls.current) {
+            case EOZ: {
+              let what = seminfo ? "string" : "comment";
+              let msg = `unfinished long ${what} (starting at line ${line})`;
+              lexerror(ls, to_luastring(msg), TK_EOS);
+              break;
+            }
+            case 93: {
+              if (skip_sep(ls) === sep) {
+                save_and_next(ls);
+                skip = true;
+              }
+              break;
+            }
+            case 10:
+            case 13: {
+              save(
+                ls,
+                10
+                /* ('\n').charCodeAt(0) */
+              );
+              inclinenumber(ls);
+              if (!seminfo) luaZ_resetbuffer(ls.buff);
+              break;
+            }
+            default: {
+              if (seminfo) save_and_next(ls);
+              else next(ls);
+            }
+          }
+        }
+        if (seminfo)
+          seminfo.ts = luaX_newstring(ls, ls.buff.buffer.subarray(2 + sep, ls.buff.n - (2 + sep)));
+      };
+      var esccheck = function(ls, c, msg) {
+        if (!c) {
+          if (ls.current !== EOZ)
+            save_and_next(ls);
+          lexerror(ls, msg, TK_STRING);
+        }
+      };
+      var gethexa = function(ls) {
+        save_and_next(ls);
+        esccheck(ls, lisxdigit(ls.current), to_luastring("hexadecimal digit expected", true));
+        return lobject.luaO_hexavalue(ls.current);
+      };
+      var readhexaesc = function(ls) {
+        let r = gethexa(ls);
+        r = (r << 4) + gethexa(ls);
+        luaZ_buffremove(ls.buff, 2);
+        return r;
+      };
+      var readutf8desc = function(ls) {
+        let i = 4;
+        save_and_next(ls);
+        esccheck(ls, ls.current === 123, to_luastring("missing '{'", true));
+        let r = gethexa(ls);
+        save_and_next(ls);
+        while (lisxdigit(ls.current)) {
+          i++;
+          r = (r << 4) + lobject.luaO_hexavalue(ls.current);
+          esccheck(ls, r <= 1114111, to_luastring("UTF-8 value too large", true));
+          save_and_next(ls);
+        }
+        esccheck(ls, ls.current === 125, to_luastring("missing '}'", true));
+        next(ls);
+        luaZ_buffremove(ls.buff, i);
+        return r;
+      };
+      var utf8esc = function(ls) {
+        let buff = new Uint8Array(lobject.UTF8BUFFSZ);
+        let n = lobject.luaO_utf8esc(buff, readutf8desc(ls));
+        for (; n > 0; n--)
+          save(ls, buff[lobject.UTF8BUFFSZ - n]);
+      };
+      var readdecesc = function(ls) {
+        let r = 0;
+        let i;
+        for (i = 0; i < 3 && lisdigit(ls.current); i++) {
+          r = 10 * r + ls.current - 48;
+          save_and_next(ls);
+        }
+        esccheck(ls, r <= 255, to_luastring("decimal escape too large", true));
+        luaZ_buffremove(ls.buff, i);
+        return r;
+      };
+      var read_string = function(ls, del, seminfo) {
+        save_and_next(ls);
+        while (ls.current !== del) {
+          switch (ls.current) {
+            case EOZ:
+              lexerror(ls, to_luastring("unfinished string", true), TK_EOS);
+              break;
+            case 10:
+            case 13:
+              lexerror(ls, to_luastring("unfinished string", true), TK_STRING);
+              break;
+            case 92: {
+              save_and_next(ls);
+              let will;
+              let c;
+              switch (ls.current) {
+                case 97:
+                  c = 7;
+                  will = "read_save";
+                  break;
+                case 98:
+                  c = 8;
+                  will = "read_save";
+                  break;
+                case 102:
+                  c = 12;
+                  will = "read_save";
+                  break;
+                case 110:
+                  c = 10;
+                  will = "read_save";
+                  break;
+                case 114:
+                  c = 13;
+                  will = "read_save";
+                  break;
+                case 116:
+                  c = 9;
+                  will = "read_save";
+                  break;
+                case 118:
+                  c = 11;
+                  will = "read_save";
+                  break;
+                case 120:
+                  c = readhexaesc(ls);
+                  will = "read_save";
+                  break;
+                case 117:
+                  utf8esc(ls);
+                  will = "no_save";
+                  break;
+                case 10:
+                case 13:
+                  inclinenumber(ls);
+                  c = 10;
+                  will = "only_save";
+                  break;
+                case 92:
+                case 34:
+                case 39:
+                  c = ls.current;
+                  will = "read_save";
+                  break;
+                case EOZ:
+                  will = "no_save";
+                  break;
+                /* will raise an error next loop */
+                case 122: {
+                  luaZ_buffremove(ls.buff, 1);
+                  next(ls);
+                  while (lisspace(ls.current)) {
+                    if (currIsNewline(ls)) inclinenumber(ls);
+                    else next(ls);
+                  }
+                  will = "no_save";
+                  break;
+                }
+                default: {
+                  esccheck(ls, lisdigit(ls.current), to_luastring("invalid escape sequence", true));
+                  c = readdecesc(ls);
+                  will = "only_save";
+                  break;
+                }
+              }
+              if (will === "read_save")
+                next(ls);
+              if (will === "read_save" || will === "only_save") {
+                luaZ_buffremove(ls.buff, 1);
+                save(ls, c);
+              }
+              break;
+            }
+            default:
+              save_and_next(ls);
+          }
+        }
+        save_and_next(ls);
+        seminfo.ts = luaX_newstring(ls, ls.buff.buffer.subarray(1, ls.buff.n - 1));
+      };
+      var token_to_index = /* @__PURE__ */ Object.create(null);
+      luaX_tokens.forEach((e, i) => token_to_index[luaS_hash(e)] = i);
+      var isreserved = function(w) {
+        let kidx = token_to_index[luaS_hashlongstr(w)];
+        return kidx !== void 0 && kidx <= 22;
+      };
+      var llex = function(ls, seminfo) {
+        luaZ_resetbuffer(ls.buff);
+        for (; ; ) {
+          lua_assert(typeof ls.current == "number");
+          switch (ls.current) {
+            case 10:
+            case 13: {
+              inclinenumber(ls);
+              break;
+            }
+            case 32:
+            case 12:
+            case 9:
+            case 11: {
+              next(ls);
+              break;
+            }
+            case 45: {
+              next(ls);
+              if (ls.current !== 45) return 45;
+              next(ls);
+              if (ls.current === 91) {
+                let sep = skip_sep(ls);
+                luaZ_resetbuffer(ls.buff);
+                if (sep >= 0) {
+                  read_long_string(ls, null, sep);
+                  luaZ_resetbuffer(ls.buff);
+                  break;
+                }
+              }
+              while (!currIsNewline(ls) && ls.current !== EOZ)
+                next(ls);
+              break;
+            }
+            case 91: {
+              let sep = skip_sep(ls);
+              if (sep >= 0) {
+                read_long_string(ls, seminfo, sep);
+                return TK_STRING;
+              } else if (sep !== -1)
+                lexerror(ls, to_luastring("invalid long string delimiter", true), TK_STRING);
+              return 91;
+            }
+            case 61: {
+              next(ls);
+              if (check_next1(
+                ls,
+                61
+                /* ('=').charCodeAt(0) */
+              )) return TK_EQ;
+              else return 61;
+            }
+            case 60: {
+              next(ls);
+              if (check_next1(
+                ls,
+                61
+                /* ('=').charCodeAt(0) */
+              )) return TK_LE;
+              else if (check_next1(
+                ls,
+                60
+                /* ('<').charCodeAt(0) */
+              )) return TK_SHL;
+              else return 60;
+            }
+            case 62: {
+              next(ls);
+              if (check_next1(
+                ls,
+                61
+                /* ('=').charCodeAt(0) */
+              )) return TK_GE;
+              else if (check_next1(
+                ls,
+                62
+                /* ('>').charCodeAt(0) */
+              )) return TK_SHR;
+              else return 62;
+            }
+            case 47: {
+              next(ls);
+              if (check_next1(
+                ls,
+                47
+                /* ('/').charCodeAt(0) */
+              )) return TK_IDIV;
+              else return 47;
+            }
+            case 126: {
+              next(ls);
+              if (check_next1(
+                ls,
+                61
+                /* ('=').charCodeAt(0) */
+              )) return TK_NE;
+              else return 126;
+            }
+            case 58: {
+              next(ls);
+              if (check_next1(
+                ls,
+                58
+                /* (':').charCodeAt(0) */
+              )) return TK_DBCOLON;
+              else return 58;
+            }
+            case 34:
+            case 39: {
+              read_string(ls, ls.current, seminfo);
+              return TK_STRING;
+            }
+            case 46: {
+              save_and_next(ls);
+              if (check_next1(
+                ls,
+                46
+                /* ('.').charCodeAt(0) */
+              )) {
+                if (check_next1(
+                  ls,
+                  46
+                  /* ('.').charCodeAt(0) */
+                ))
+                  return TK_DOTS;
+                else return TK_CONCAT;
+              } else if (!lisdigit(ls.current)) return 46;
+              else return read_numeral(ls, seminfo);
+            }
+            case 48:
+            case 49:
+            case 50:
+            case 51:
+            case 52:
+            case 53:
+            case 54:
+            case 55:
+            case 56:
+            case 57: {
+              return read_numeral(ls, seminfo);
+            }
+            case EOZ: {
+              return TK_EOS;
+            }
+            default: {
+              if (lislalpha(ls.current)) {
+                do {
+                  save_and_next(ls);
+                } while (lislalnum(ls.current));
+                let ts = luaX_newstring(ls, luaZ_buffer(ls.buff));
+                seminfo.ts = ts;
+                let kidx = token_to_index[luaS_hashlongstr(ts)];
+                if (kidx !== void 0 && kidx <= 22)
+                  return kidx + FIRST_RESERVED;
+                else
+                  return TK_NAME;
+              } else {
+                let c = ls.current;
+                next(ls);
+                return c;
+              }
+            }
+          }
+        }
+      };
+      var luaX_next = function(ls) {
+        ls.lastline = ls.linenumber;
+        if (ls.lookahead.token !== TK_EOS) {
+          ls.t.token = ls.lookahead.token;
+          ls.t.seminfo.i = ls.lookahead.seminfo.i;
+          ls.t.seminfo.r = ls.lookahead.seminfo.r;
+          ls.t.seminfo.ts = ls.lookahead.seminfo.ts;
+          ls.lookahead.token = TK_EOS;
+        } else
+          ls.t.token = llex(ls, ls.t.seminfo);
+      };
+      var luaX_lookahead = function(ls) {
+        lua_assert(ls.lookahead.token === TK_EOS);
+        ls.lookahead.token = llex(ls, ls.lookahead.seminfo);
+        return ls.lookahead.token;
+      };
+      module.exports.FIRST_RESERVED = FIRST_RESERVED;
+      module.exports.LUA_ENV = LUA_ENV;
+      module.exports.LexState = LexState;
+      module.exports.RESERVED = RESERVED;
+      module.exports.isreserved = isreserved;
+      module.exports.luaX_lookahead = luaX_lookahead;
+      module.exports.luaX_newstring = luaX_newstring;
+      module.exports.luaX_next = luaX_next;
+      module.exports.luaX_setinput = luaX_setinput;
+      module.exports.luaX_syntaxerror = luaX_syntaxerror;
+      module.exports.luaX_token2str = luaX_token2str;
+      module.exports.luaX_tokens = luaX_tokens;
+    }
+  });
+
+  // node_modules/fengari/src/lcode.js
+  var require_lcode = __commonJS({
+    "node_modules/fengari/src/lcode.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_MULTRET,
+        LUA_OPADD,
+        LUA_OPBAND,
+        LUA_OPBNOT,
+        LUA_OPBOR,
+        LUA_OPBXOR,
+        LUA_OPDIV,
+        LUA_OPIDIV,
+        LUA_OPMOD,
+        LUA_OPSHL,
+        LUA_OPSHR,
+        LUA_OPUNM,
+        constant_types: {
+          LUA_TBOOLEAN,
+          LUA_TLIGHTUSERDATA,
+          LUA_TLNGSTR,
+          LUA_TNIL,
+          LUA_TNUMFLT,
+          LUA_TNUMINT,
+          LUA_TTABLE
+        },
+        to_luastring
+      } = require_defs();
+      var { lua_assert } = require_llimits();
+      var llex = require_llex();
+      var lobject = require_lobject();
+      var lopcodes = require_lopcodes();
+      var lparser = require_lparser();
+      var ltable = require_ltable();
+      var lvm = require_lvm();
+      var OpCodesI = lopcodes.OpCodesI;
+      var TValue = lobject.TValue;
+      var MAXREGS = 255;
+      var NO_JUMP = -1;
+      var BinOpr = {
+        OPR_ADD: 0,
+        OPR_SUB: 1,
+        OPR_MUL: 2,
+        OPR_MOD: 3,
+        OPR_POW: 4,
+        OPR_DIV: 5,
+        OPR_IDIV: 6,
+        OPR_BAND: 7,
+        OPR_BOR: 8,
+        OPR_BXOR: 9,
+        OPR_SHL: 10,
+        OPR_SHR: 11,
+        OPR_CONCAT: 12,
+        OPR_EQ: 13,
+        OPR_LT: 14,
+        OPR_LE: 15,
+        OPR_NE: 16,
+        OPR_GT: 17,
+        OPR_GE: 18,
+        OPR_AND: 19,
+        OPR_OR: 20,
+        OPR_NOBINOPR: 21
+      };
+      var UnOpr = {
+        OPR_MINUS: 0,
+        OPR_BNOT: 1,
+        OPR_NOT: 2,
+        OPR_LEN: 3,
+        OPR_NOUNOPR: 4
+      };
+      var hasjumps = function(e) {
+        return e.t !== e.f;
+      };
+      var tonumeral = function(e, make_tvalue) {
+        let ek = lparser.expkind;
+        if (hasjumps(e))
+          return false;
+        switch (e.k) {
+          case ek.VKINT:
+            if (make_tvalue) {
+              return new TValue(LUA_TNUMINT, e.u.ival);
+            }
+            return true;
+          case ek.VKFLT:
+            if (make_tvalue) {
+              return new TValue(LUA_TNUMFLT, e.u.nval);
+            }
+            return true;
+          default:
+            return false;
+        }
+      };
+      var luaK_nil = function(fs, from, n) {
+        let previous;
+        let l = from + n - 1;
+        if (fs.pc > fs.lasttarget) {
+          previous = fs.f.code[fs.pc - 1];
+          if (previous.opcode === OpCodesI.OP_LOADNIL) {
+            let pfrom = previous.A;
+            let pl = pfrom + previous.B;
+            if (pfrom <= from && from <= pl + 1 || from <= pfrom && pfrom <= l + 1) {
+              if (pfrom < from) from = pfrom;
+              if (pl > l) l = pl;
+              lopcodes.SETARG_A(previous, from);
+              lopcodes.SETARG_B(previous, l - from);
+              return;
+            }
+          }
+        }
+        luaK_codeABC(fs, OpCodesI.OP_LOADNIL, from, n - 1, 0);
+      };
+      var getinstruction = function(fs, e) {
+        return fs.f.code[e.u.info];
+      };
+      var getjump = function(fs, pc) {
+        let offset = fs.f.code[pc].sBx;
+        if (offset === NO_JUMP)
+          return NO_JUMP;
+        else
+          return pc + 1 + offset;
+      };
+      var fixjump = function(fs, pc, dest) {
+        let jmp = fs.f.code[pc];
+        let offset = dest - (pc + 1);
+        lua_assert(dest !== NO_JUMP);
+        if (Math.abs(offset) > lopcodes.MAXARG_sBx)
+          llex.luaX_syntaxerror(fs.ls, to_luastring("control structure too long", true));
+        lopcodes.SETARG_sBx(jmp, offset);
+      };
+      var luaK_concat = function(fs, l1, l2) {
+        if (l2 === NO_JUMP) return l1;
+        else if (l1 === NO_JUMP)
+          l1 = l2;
+        else {
+          let list = l1;
+          let next = getjump(fs, list);
+          while (next !== NO_JUMP) {
+            list = next;
+            next = getjump(fs, list);
+          }
+          fixjump(fs, list, l2);
+        }
+        return l1;
+      };
+      var luaK_jump = function(fs) {
+        let jpc = fs.jpc;
+        fs.jpc = NO_JUMP;
+        let j = luaK_codeAsBx(fs, OpCodesI.OP_JMP, 0, NO_JUMP);
+        j = luaK_concat(fs, j, jpc);
+        return j;
+      };
+      var luaK_jumpto = function(fs, t) {
+        return luaK_patchlist(fs, luaK_jump(fs), t);
+      };
+      var luaK_ret = function(fs, first, nret) {
+        luaK_codeABC(fs, OpCodesI.OP_RETURN, first, nret + 1, 0);
+      };
+      var condjump = function(fs, op, A, B, C) {
+        luaK_codeABC(fs, op, A, B, C);
+        return luaK_jump(fs);
+      };
+      var luaK_getlabel = function(fs) {
+        fs.lasttarget = fs.pc;
+        return fs.pc;
+      };
+      var getjumpcontroloffset = function(fs, pc) {
+        if (pc >= 1 && lopcodes.testTMode(fs.f.code[pc - 1].opcode))
+          return pc - 1;
+        else
+          return pc;
+      };
+      var getjumpcontrol = function(fs, pc) {
+        return fs.f.code[getjumpcontroloffset(fs, pc)];
+      };
+      var patchtestreg = function(fs, node, reg) {
+        let pc = getjumpcontroloffset(fs, node);
+        let i = fs.f.code[pc];
+        if (i.opcode !== OpCodesI.OP_TESTSET)
+          return false;
+        if (reg !== lopcodes.NO_REG && reg !== i.B)
+          lopcodes.SETARG_A(i, reg);
+        else {
+          fs.f.code[pc] = lopcodes.CREATE_ABC(OpCodesI.OP_TEST, i.B, 0, i.C);
+        }
+        return true;
+      };
+      var removevalues = function(fs, list) {
+        for (; list !== NO_JUMP; list = getjump(fs, list))
+          patchtestreg(fs, list, lopcodes.NO_REG);
+      };
+      var patchlistaux = function(fs, list, vtarget, reg, dtarget) {
+        while (list !== NO_JUMP) {
+          let next = getjump(fs, list);
+          if (patchtestreg(fs, list, reg))
+            fixjump(fs, list, vtarget);
+          else
+            fixjump(fs, list, dtarget);
+          list = next;
+        }
+      };
+      var dischargejpc = function(fs) {
+        patchlistaux(fs, fs.jpc, fs.pc, lopcodes.NO_REG, fs.pc);
+        fs.jpc = NO_JUMP;
+      };
+      var luaK_patchtohere = function(fs, list) {
+        luaK_getlabel(fs);
+        fs.jpc = luaK_concat(fs, fs.jpc, list);
+      };
+      var luaK_patchlist = function(fs, list, target) {
+        if (target === fs.pc)
+          luaK_patchtohere(fs, list);
+        else {
+          lua_assert(target < fs.pc);
+          patchlistaux(fs, list, target, lopcodes.NO_REG, target);
+        }
+      };
+      var luaK_patchclose = function(fs, list, level) {
+        level++;
+        for (; list !== NO_JUMP; list = getjump(fs, list)) {
+          let ins = fs.f.code[list];
+          lua_assert(ins.opcode === OpCodesI.OP_JMP && (ins.A === 0 || ins.A >= level));
+          lopcodes.SETARG_A(ins, level);
+        }
+      };
+      var luaK_code = function(fs, i) {
+        let f = fs.f;
+        dischargejpc(fs);
+        f.code[fs.pc] = i;
+        f.lineinfo[fs.pc] = fs.ls.lastline;
+        return fs.pc++;
+      };
+      var luaK_codeABC = function(fs, o, a, b, c) {
+        lua_assert(lopcodes.getOpMode(o) === lopcodes.iABC);
+        lua_assert(lopcodes.getBMode(o) !== lopcodes.OpArgN || b === 0);
+        lua_assert(lopcodes.getCMode(o) !== lopcodes.OpArgN || c === 0);
+        lua_assert(a <= lopcodes.MAXARG_A && b <= lopcodes.MAXARG_B && c <= lopcodes.MAXARG_C);
+        return luaK_code(fs, lopcodes.CREATE_ABC(o, a, b, c));
+      };
+      var luaK_codeABx = function(fs, o, a, bc) {
+        lua_assert(lopcodes.getOpMode(o) === lopcodes.iABx || lopcodes.getOpMode(o) === lopcodes.iAsBx);
+        lua_assert(lopcodes.getCMode(o) === lopcodes.OpArgN);
+        lua_assert(a <= lopcodes.MAXARG_A && bc <= lopcodes.MAXARG_Bx);
+        return luaK_code(fs, lopcodes.CREATE_ABx(o, a, bc));
+      };
+      var luaK_codeAsBx = function(fs, o, A, sBx) {
+        return luaK_codeABx(fs, o, A, sBx + lopcodes.MAXARG_sBx);
+      };
+      var codeextraarg = function(fs, a) {
+        lua_assert(a <= lopcodes.MAXARG_Ax);
+        return luaK_code(fs, lopcodes.CREATE_Ax(OpCodesI.OP_EXTRAARG, a));
+      };
+      var luaK_codek = function(fs, reg, k) {
+        if (k <= lopcodes.MAXARG_Bx)
+          return luaK_codeABx(fs, OpCodesI.OP_LOADK, reg, k);
+        else {
+          let p = luaK_codeABx(fs, OpCodesI.OP_LOADKX, reg, 0);
+          codeextraarg(fs, k);
+          return p;
+        }
+      };
+      var luaK_checkstack = function(fs, n) {
+        let newstack = fs.freereg + n;
+        if (newstack > fs.f.maxstacksize) {
+          if (newstack >= MAXREGS)
+            llex.luaX_syntaxerror(fs.ls, to_luastring("function or expression needs too many registers", true));
+          fs.f.maxstacksize = newstack;
+        }
+      };
+      var luaK_reserveregs = function(fs, n) {
+        luaK_checkstack(fs, n);
+        fs.freereg += n;
+      };
+      var freereg = function(fs, reg) {
+        if (!lopcodes.ISK(reg) && reg >= fs.nactvar) {
+          fs.freereg--;
+          lua_assert(reg === fs.freereg);
+        }
+      };
+      var freeexp = function(fs, e) {
+        if (e.k === lparser.expkind.VNONRELOC)
+          freereg(fs, e.u.info);
+      };
+      var freeexps = function(fs, e1, e2) {
+        let r1 = e1.k === lparser.expkind.VNONRELOC ? e1.u.info : -1;
+        let r2 = e2.k === lparser.expkind.VNONRELOC ? e2.u.info : -1;
+        if (r1 > r2) {
+          freereg(fs, r1);
+          freereg(fs, r2);
+        } else {
+          freereg(fs, r2);
+          freereg(fs, r1);
+        }
+      };
+      var addk = function(fs, key, v) {
+        let f = fs.f;
+        let idx = ltable.luaH_get(fs.L, fs.ls.h, key);
+        if (idx.ttisinteger()) {
+          let k2 = idx.value;
+          if (k2 < fs.nk && f.k[k2].ttype() === v.ttype() && f.k[k2].value === v.value)
+            return k2;
+        }
+        let k = fs.nk;
+        ltable.luaH_setfrom(fs.L, fs.ls.h, key, new lobject.TValue(LUA_TNUMINT, k));
+        f.k[k] = v;
+        fs.nk++;
+        return k;
+      };
+      var luaK_stringK = function(fs, s) {
+        let o = new TValue(LUA_TLNGSTR, s);
+        return addk(fs, o, o);
+      };
+      var luaK_intK = function(fs, n) {
+        let k = new TValue(LUA_TLIGHTUSERDATA, n);
+        let o = new TValue(LUA_TNUMINT, n);
+        return addk(fs, k, o);
+      };
+      var luaK_numberK = function(fs, r) {
+        let o = new TValue(LUA_TNUMFLT, r);
+        return addk(fs, o, o);
+      };
+      var boolK = function(fs, b) {
+        let o = new TValue(LUA_TBOOLEAN, b);
+        return addk(fs, o, o);
+      };
+      var nilK = function(fs) {
+        let v = new TValue(LUA_TNIL, null);
+        let k = new TValue(LUA_TTABLE, fs.ls.h);
+        return addk(fs, k, v);
+      };
+      var luaK_setreturns = function(fs, e, nresults) {
+        let ek = lparser.expkind;
+        if (e.k === ek.VCALL) {
+          lopcodes.SETARG_C(getinstruction(fs, e), nresults + 1);
+        } else if (e.k === ek.VVARARG) {
+          let pc = getinstruction(fs, e);
+          lopcodes.SETARG_B(pc, nresults + 1);
+          lopcodes.SETARG_A(pc, fs.freereg);
+          luaK_reserveregs(fs, 1);
+        } else lua_assert(nresults === LUA_MULTRET);
+      };
+      var luaK_setmultret = function(fs, e) {
+        luaK_setreturns(fs, e, LUA_MULTRET);
+      };
+      var luaK_setoneret = function(fs, e) {
+        let ek = lparser.expkind;
+        if (e.k === ek.VCALL) {
+          lua_assert(getinstruction(fs, e).C === 2);
+          e.k = ek.VNONRELOC;
+          e.u.info = getinstruction(fs, e).A;
+        } else if (e.k === ek.VVARARG) {
+          lopcodes.SETARG_B(getinstruction(fs, e), 2);
+          e.k = ek.VRELOCABLE;
+        }
+      };
+      var luaK_dischargevars = function(fs, e) {
+        let ek = lparser.expkind;
+        switch (e.k) {
+          case ek.VLOCAL: {
+            e.k = ek.VNONRELOC;
+            break;
+          }
+          case ek.VUPVAL: {
+            e.u.info = luaK_codeABC(fs, OpCodesI.OP_GETUPVAL, 0, e.u.info, 0);
+            e.k = ek.VRELOCABLE;
+            break;
+          }
+          case ek.VINDEXED: {
+            let op;
+            freereg(fs, e.u.ind.idx);
+            if (e.u.ind.vt === ek.VLOCAL) {
+              freereg(fs, e.u.ind.t);
+              op = OpCodesI.OP_GETTABLE;
+            } else {
+              lua_assert(e.u.ind.vt === ek.VUPVAL);
+              op = OpCodesI.OP_GETTABUP;
+            }
+            e.u.info = luaK_codeABC(fs, op, 0, e.u.ind.t, e.u.ind.idx);
+            e.k = ek.VRELOCABLE;
+            break;
+          }
+          case ek.VVARARG:
+          case ek.VCALL: {
+            luaK_setoneret(fs, e);
+            break;
+          }
+          default:
+            break;
+        }
+      };
+      var code_loadbool = function(fs, A, b, jump) {
+        luaK_getlabel(fs);
+        return luaK_codeABC(fs, OpCodesI.OP_LOADBOOL, A, b, jump);
+      };
+      var discharge2reg = function(fs, e, reg) {
+        let ek = lparser.expkind;
+        luaK_dischargevars(fs, e);
+        switch (e.k) {
+          case ek.VNIL: {
+            luaK_nil(fs, reg, 1);
+            break;
+          }
+          case ek.VFALSE:
+          case ek.VTRUE: {
+            luaK_codeABC(fs, OpCodesI.OP_LOADBOOL, reg, e.k === ek.VTRUE, 0);
+            break;
+          }
+          case ek.VK: {
+            luaK_codek(fs, reg, e.u.info);
+            break;
+          }
+          case ek.VKFLT: {
+            luaK_codek(fs, reg, luaK_numberK(fs, e.u.nval));
+            break;
+          }
+          case ek.VKINT: {
+            luaK_codek(fs, reg, luaK_intK(fs, e.u.ival));
+            break;
+          }
+          case ek.VRELOCABLE: {
+            let pc = getinstruction(fs, e);
+            lopcodes.SETARG_A(pc, reg);
+            break;
+          }
+          case ek.VNONRELOC: {
+            if (reg !== e.u.info)
+              luaK_codeABC(fs, OpCodesI.OP_MOVE, reg, e.u.info, 0);
+            break;
+          }
+          default: {
+            lua_assert(e.k === ek.VJMP);
+            return;
+          }
+        }
+        e.u.info = reg;
+        e.k = ek.VNONRELOC;
+      };
+      var discharge2anyreg = function(fs, e) {
+        if (e.k !== lparser.expkind.VNONRELOC) {
+          luaK_reserveregs(fs, 1);
+          discharge2reg(fs, e, fs.freereg - 1);
+        }
+      };
+      var need_value = function(fs, list) {
+        for (; list !== NO_JUMP; list = getjump(fs, list)) {
+          let i = getjumpcontrol(fs, list);
+          if (i.opcode !== OpCodesI.OP_TESTSET) return true;
+        }
+        return false;
+      };
+      var exp2reg = function(fs, e, reg) {
+        let ek = lparser.expkind;
+        discharge2reg(fs, e, reg);
+        if (e.k === ek.VJMP)
+          e.t = luaK_concat(fs, e.t, e.u.info);
+        if (hasjumps(e)) {
+          let final;
+          let p_f = NO_JUMP;
+          let p_t = NO_JUMP;
+          if (need_value(fs, e.t) || need_value(fs, e.f)) {
+            let fj = e.k === ek.VJMP ? NO_JUMP : luaK_jump(fs);
+            p_f = code_loadbool(fs, reg, 0, 1);
+            p_t = code_loadbool(fs, reg, 1, 0);
+            luaK_patchtohere(fs, fj);
+          }
+          final = luaK_getlabel(fs);
+          patchlistaux(fs, e.f, final, reg, p_f);
+          patchlistaux(fs, e.t, final, reg, p_t);
+        }
+        e.f = e.t = NO_JUMP;
+        e.u.info = reg;
+        e.k = ek.VNONRELOC;
+      };
+      var luaK_exp2nextreg = function(fs, e) {
+        luaK_dischargevars(fs, e);
+        freeexp(fs, e);
+        luaK_reserveregs(fs, 1);
+        exp2reg(fs, e, fs.freereg - 1);
+      };
+      var luaK_exp2anyreg = function(fs, e) {
+        luaK_dischargevars(fs, e);
+        if (e.k === lparser.expkind.VNONRELOC) {
+          if (!hasjumps(e))
+            return e.u.info;
+          if (e.u.info >= fs.nactvar) {
+            exp2reg(fs, e, e.u.info);
+            return e.u.info;
+          }
+        }
+        luaK_exp2nextreg(fs, e);
+        return e.u.info;
+      };
+      var luaK_exp2anyregup = function(fs, e) {
+        if (e.k !== lparser.expkind.VUPVAL || hasjumps(e))
+          luaK_exp2anyreg(fs, e);
+      };
+      var luaK_exp2val = function(fs, e) {
+        if (hasjumps(e))
+          luaK_exp2anyreg(fs, e);
+        else
+          luaK_dischargevars(fs, e);
+      };
+      var luaK_exp2RK = function(fs, e) {
+        let ek = lparser.expkind;
+        let vk = false;
+        luaK_exp2val(fs, e);
+        switch (e.k) {
+          /* move constants to 'k' */
+          case ek.VTRUE:
+            e.u.info = boolK(fs, true);
+            vk = true;
+            break;
+          case ek.VFALSE:
+            e.u.info = boolK(fs, false);
+            vk = true;
+            break;
+          case ek.VNIL:
+            e.u.info = nilK(fs);
+            vk = true;
+            break;
+          case ek.VKINT:
+            e.u.info = luaK_intK(fs, e.u.ival);
+            vk = true;
+            break;
+          case ek.VKFLT:
+            e.u.info = luaK_numberK(fs, e.u.nval);
+            vk = true;
+            break;
+          case ek.VK:
+            vk = true;
+            break;
+          default:
+            break;
+        }
+        if (vk) {
+          e.k = ek.VK;
+          if (e.u.info <= lopcodes.MAXINDEXRK)
+            return lopcodes.RKASK(e.u.info);
+        }
+        return luaK_exp2anyreg(fs, e);
+      };
+      var luaK_storevar = function(fs, vr, ex) {
+        let ek = lparser.expkind;
+        switch (vr.k) {
+          case ek.VLOCAL: {
+            freeexp(fs, ex);
+            exp2reg(fs, ex, vr.u.info);
+            return;
+          }
+          case ek.VUPVAL: {
+            let e = luaK_exp2anyreg(fs, ex);
+            luaK_codeABC(fs, OpCodesI.OP_SETUPVAL, e, vr.u.info, 0);
+            break;
+          }
+          case ek.VINDEXED: {
+            let op = vr.u.ind.vt === ek.VLOCAL ? OpCodesI.OP_SETTABLE : OpCodesI.OP_SETTABUP;
+            let e = luaK_exp2RK(fs, ex);
+            luaK_codeABC(fs, op, vr.u.ind.t, vr.u.ind.idx, e);
+            break;
+          }
+        }
+        freeexp(fs, ex);
+      };
+      var luaK_self = function(fs, e, key) {
+        luaK_exp2anyreg(fs, e);
+        let ereg = e.u.info;
+        freeexp(fs, e);
+        e.u.info = fs.freereg;
+        e.k = lparser.expkind.VNONRELOC;
+        luaK_reserveregs(fs, 2);
+        luaK_codeABC(fs, OpCodesI.OP_SELF, e.u.info, ereg, luaK_exp2RK(fs, key));
+        freeexp(fs, key);
+      };
+      var negatecondition = function(fs, e) {
+        let pc = getjumpcontrol(fs, e.u.info);
+        lua_assert(lopcodes.testTMode(pc.opcode) && pc.opcode !== OpCodesI.OP_TESTSET && pc.opcode !== OpCodesI.OP_TEST);
+        lopcodes.SETARG_A(pc, !pc.A);
+      };
+      var jumponcond = function(fs, e, cond) {
+        if (e.k === lparser.expkind.VRELOCABLE) {
+          let ie = getinstruction(fs, e);
+          if (ie.opcode === OpCodesI.OP_NOT) {
+            fs.pc--;
+            return condjump(fs, OpCodesI.OP_TEST, ie.B, 0, !cond);
+          }
+        }
+        discharge2anyreg(fs, e);
+        freeexp(fs, e);
+        return condjump(fs, OpCodesI.OP_TESTSET, lopcodes.NO_REG, e.u.info, cond);
+      };
+      var luaK_goiftrue = function(fs, e) {
+        let ek = lparser.expkind;
+        let pc;
+        luaK_dischargevars(fs, e);
+        switch (e.k) {
+          case ek.VJMP: {
+            negatecondition(fs, e);
+            pc = e.u.info;
+            break;
+          }
+          case ek.VK:
+          case ek.VKFLT:
+          case ek.VKINT:
+          case ek.VTRUE: {
+            pc = NO_JUMP;
+            break;
+          }
+          default: {
+            pc = jumponcond(fs, e, 0);
+            break;
+          }
+        }
+        e.f = luaK_concat(fs, e.f, pc);
+        luaK_patchtohere(fs, e.t);
+        e.t = NO_JUMP;
+      };
+      var luaK_goiffalse = function(fs, e) {
+        let ek = lparser.expkind;
+        let pc;
+        luaK_dischargevars(fs, e);
+        switch (e.k) {
+          case ek.VJMP: {
+            pc = e.u.info;
+            break;
+          }
+          case ek.VNIL:
+          case ek.VFALSE: {
+            pc = NO_JUMP;
+            break;
+          }
+          default: {
+            pc = jumponcond(fs, e, 1);
+            break;
+          }
+        }
+        e.t = luaK_concat(fs, e.t, pc);
+        luaK_patchtohere(fs, e.f);
+        e.f = NO_JUMP;
+      };
+      var codenot = function(fs, e) {
+        let ek = lparser.expkind;
+        luaK_dischargevars(fs, e);
+        switch (e.k) {
+          case ek.VNIL:
+          case ek.VFALSE: {
+            e.k = ek.VTRUE;
+            break;
+          }
+          case ek.VK:
+          case ek.VKFLT:
+          case ek.VKINT:
+          case ek.VTRUE: {
+            e.k = ek.VFALSE;
+            break;
+          }
+          case ek.VJMP: {
+            negatecondition(fs, e);
+            break;
+          }
+          case ek.VRELOCABLE:
+          case ek.VNONRELOC: {
+            discharge2anyreg(fs, e);
+            freeexp(fs, e);
+            e.u.info = luaK_codeABC(fs, OpCodesI.OP_NOT, 0, e.u.info, 0);
+            e.k = ek.VRELOCABLE;
+            break;
+          }
+        }
+        {
+          let temp = e.f;
+          e.f = e.t;
+          e.t = temp;
+        }
+        removevalues(fs, e.f);
+        removevalues(fs, e.t);
+      };
+      var luaK_indexed = function(fs, t, k) {
+        let ek = lparser.expkind;
+        lua_assert(!hasjumps(t) && (lparser.vkisinreg(t.k) || t.k === ek.VUPVAL));
+        t.u.ind.t = t.u.info;
+        t.u.ind.idx = luaK_exp2RK(fs, k);
+        t.u.ind.vt = t.k === ek.VUPVAL ? ek.VUPVAL : ek.VLOCAL;
+        t.k = ek.VINDEXED;
+      };
+      var validop = function(op, v1, v2) {
+        switch (op) {
+          case LUA_OPBAND:
+          case LUA_OPBOR:
+          case LUA_OPBXOR:
+          case LUA_OPSHL:
+          case LUA_OPSHR:
+          case LUA_OPBNOT: {
+            return lvm.tointeger(v1) !== false && lvm.tointeger(v2) !== false;
+          }
+          case LUA_OPDIV:
+          case LUA_OPIDIV:
+          case LUA_OPMOD:
+            return v2.value !== 0;
+          default:
+            return 1;
+        }
+      };
+      var constfolding = function(op, e1, e2) {
+        let ek = lparser.expkind;
+        let v1, v2;
+        if (!(v1 = tonumeral(e1, true)) || !(v2 = tonumeral(e2, true)) || !validop(op, v1, v2))
+          return 0;
+        let res = new TValue();
+        lobject.luaO_arith(null, op, v1, v2, res);
+        if (res.ttisinteger()) {
+          e1.k = ek.VKINT;
+          e1.u.ival = res.value;
+        } else {
+          let n = res.value;
+          if (isNaN(n) || n === 0)
+            return false;
+          e1.k = ek.VKFLT;
+          e1.u.nval = n;
+        }
+        return true;
+      };
+      var codeunexpval = function(fs, op, e, line) {
+        let r = luaK_exp2anyreg(fs, e);
+        freeexp(fs, e);
+        e.u.info = luaK_codeABC(fs, op, 0, r, 0);
+        e.k = lparser.expkind.VRELOCABLE;
+        luaK_fixline(fs, line);
+      };
+      var codebinexpval = function(fs, op, e1, e2, line) {
+        let rk2 = luaK_exp2RK(fs, e2);
+        let rk1 = luaK_exp2RK(fs, e1);
+        freeexps(fs, e1, e2);
+        e1.u.info = luaK_codeABC(fs, op, 0, rk1, rk2);
+        e1.k = lparser.expkind.VRELOCABLE;
+        luaK_fixline(fs, line);
+      };
+      var codecomp = function(fs, opr, e1, e2) {
+        let ek = lparser.expkind;
+        let rk1;
+        if (e1.k === ek.VK)
+          rk1 = lopcodes.RKASK(e1.u.info);
+        else {
+          lua_assert(e1.k === ek.VNONRELOC);
+          rk1 = e1.u.info;
+        }
+        let rk2 = luaK_exp2RK(fs, e2);
+        freeexps(fs, e1, e2);
+        switch (opr) {
+          case BinOpr.OPR_NE: {
+            e1.u.info = condjump(fs, OpCodesI.OP_EQ, 0, rk1, rk2);
+            break;
+          }
+          case BinOpr.OPR_GT:
+          case BinOpr.OPR_GE: {
+            let op = opr - BinOpr.OPR_NE + OpCodesI.OP_EQ;
+            e1.u.info = condjump(fs, op, 1, rk2, rk1);
+            break;
+          }
+          default: {
+            let op = opr - BinOpr.OPR_EQ + OpCodesI.OP_EQ;
+            e1.u.info = condjump(fs, op, 1, rk1, rk2);
+            break;
+          }
+        }
+        e1.k = ek.VJMP;
+      };
+      var luaK_prefix = function(fs, op, e, line) {
+        let ef = new lparser.expdesc();
+        ef.k = lparser.expkind.VKINT;
+        ef.u.ival = ef.u.nval = ef.u.info = 0;
+        ef.t = NO_JUMP;
+        ef.f = NO_JUMP;
+        switch (op) {
+          case UnOpr.OPR_MINUS:
+          case UnOpr.OPR_BNOT:
+            if (constfolding(op + LUA_OPUNM, e, ef))
+              break;
+          /* FALLTHROUGH */
+          case UnOpr.OPR_LEN:
+            codeunexpval(fs, op + OpCodesI.OP_UNM, e, line);
+            break;
+          case UnOpr.OPR_NOT:
+            codenot(fs, e);
+            break;
+        }
+      };
+      var luaK_infix = function(fs, op, v) {
+        switch (op) {
+          case BinOpr.OPR_AND: {
+            luaK_goiftrue(fs, v);
+            break;
+          }
+          case BinOpr.OPR_OR: {
+            luaK_goiffalse(fs, v);
+            break;
+          }
+          case BinOpr.OPR_CONCAT: {
+            luaK_exp2nextreg(fs, v);
+            break;
+          }
+          case BinOpr.OPR_ADD:
+          case BinOpr.OPR_SUB:
+          case BinOpr.OPR_MUL:
+          case BinOpr.OPR_DIV:
+          case BinOpr.OPR_IDIV:
+          case BinOpr.OPR_MOD:
+          case BinOpr.OPR_POW:
+          case BinOpr.OPR_BAND:
+          case BinOpr.OPR_BOR:
+          case BinOpr.OPR_BXOR:
+          case BinOpr.OPR_SHL:
+          case BinOpr.OPR_SHR: {
+            if (!tonumeral(v, false))
+              luaK_exp2RK(fs, v);
+            break;
+          }
+          default: {
+            luaK_exp2RK(fs, v);
+            break;
+          }
+        }
+      };
+      var luaK_posfix = function(fs, op, e1, e2, line) {
+        let ek = lparser.expkind;
+        switch (op) {
+          case BinOpr.OPR_AND: {
+            lua_assert(e1.t === NO_JUMP);
+            luaK_dischargevars(fs, e2);
+            e2.f = luaK_concat(fs, e2.f, e1.f);
+            e1.to(e2);
+            break;
+          }
+          case BinOpr.OPR_OR: {
+            lua_assert(e1.f === NO_JUMP);
+            luaK_dischargevars(fs, e2);
+            e2.t = luaK_concat(fs, e2.t, e1.t);
+            e1.to(e2);
+            break;
+          }
+          case BinOpr.OPR_CONCAT: {
+            luaK_exp2val(fs, e2);
+            let ins = getinstruction(fs, e2);
+            if (e2.k === ek.VRELOCABLE && ins.opcode === OpCodesI.OP_CONCAT) {
+              lua_assert(e1.u.info === ins.B - 1);
+              freeexp(fs, e1);
+              lopcodes.SETARG_B(ins, e1.u.info);
+              e1.k = ek.VRELOCABLE;
+              e1.u.info = e2.u.info;
+            } else {
+              luaK_exp2nextreg(fs, e2);
+              codebinexpval(fs, OpCodesI.OP_CONCAT, e1, e2, line);
+            }
+            break;
+          }
+          case BinOpr.OPR_ADD:
+          case BinOpr.OPR_SUB:
+          case BinOpr.OPR_MUL:
+          case BinOpr.OPR_DIV:
+          case BinOpr.OPR_IDIV:
+          case BinOpr.OPR_MOD:
+          case BinOpr.OPR_POW:
+          case BinOpr.OPR_BAND:
+          case BinOpr.OPR_BOR:
+          case BinOpr.OPR_BXOR:
+          case BinOpr.OPR_SHL:
+          case BinOpr.OPR_SHR: {
+            if (!constfolding(op + LUA_OPADD, e1, e2))
+              codebinexpval(fs, op + OpCodesI.OP_ADD, e1, e2, line);
+            break;
+          }
+          case BinOpr.OPR_EQ:
+          case BinOpr.OPR_LT:
+          case BinOpr.OPR_LE:
+          case BinOpr.OPR_NE:
+          case BinOpr.OPR_GT:
+          case BinOpr.OPR_GE: {
+            codecomp(fs, op, e1, e2);
+            break;
+          }
+        }
+        return e1;
+      };
+      var luaK_fixline = function(fs, line) {
+        fs.f.lineinfo[fs.pc - 1] = line;
+      };
+      var luaK_setlist = function(fs, base, nelems, tostore) {
+        let c = (nelems - 1) / lopcodes.LFIELDS_PER_FLUSH + 1;
+        let b = tostore === LUA_MULTRET ? 0 : tostore;
+        lua_assert(tostore !== 0 && tostore <= lopcodes.LFIELDS_PER_FLUSH);
+        if (c <= lopcodes.MAXARG_C)
+          luaK_codeABC(fs, OpCodesI.OP_SETLIST, base, b, c);
+        else if (c <= lopcodes.MAXARG_Ax) {
+          luaK_codeABC(fs, OpCodesI.OP_SETLIST, base, b, 0);
+          codeextraarg(fs, c);
+        } else
+          llex.luaX_syntaxerror(fs.ls, to_luastring("constructor too long", true));
+        fs.freereg = base + 1;
+      };
+      module.exports.BinOpr = BinOpr;
+      module.exports.NO_JUMP = NO_JUMP;
+      module.exports.UnOpr = UnOpr;
+      module.exports.getinstruction = getinstruction;
+      module.exports.luaK_checkstack = luaK_checkstack;
+      module.exports.luaK_code = luaK_code;
+      module.exports.luaK_codeABC = luaK_codeABC;
+      module.exports.luaK_codeABx = luaK_codeABx;
+      module.exports.luaK_codeAsBx = luaK_codeAsBx;
+      module.exports.luaK_codek = luaK_codek;
+      module.exports.luaK_concat = luaK_concat;
+      module.exports.luaK_dischargevars = luaK_dischargevars;
+      module.exports.luaK_exp2RK = luaK_exp2RK;
+      module.exports.luaK_exp2anyreg = luaK_exp2anyreg;
+      module.exports.luaK_exp2anyregup = luaK_exp2anyregup;
+      module.exports.luaK_exp2nextreg = luaK_exp2nextreg;
+      module.exports.luaK_exp2val = luaK_exp2val;
+      module.exports.luaK_fixline = luaK_fixline;
+      module.exports.luaK_getlabel = luaK_getlabel;
+      module.exports.luaK_goiffalse = luaK_goiffalse;
+      module.exports.luaK_goiftrue = luaK_goiftrue;
+      module.exports.luaK_indexed = luaK_indexed;
+      module.exports.luaK_infix = luaK_infix;
+      module.exports.luaK_intK = luaK_intK;
+      module.exports.luaK_jump = luaK_jump;
+      module.exports.luaK_jumpto = luaK_jumpto;
+      module.exports.luaK_nil = luaK_nil;
+      module.exports.luaK_numberK = luaK_numberK;
+      module.exports.luaK_patchclose = luaK_patchclose;
+      module.exports.luaK_patchlist = luaK_patchlist;
+      module.exports.luaK_patchtohere = luaK_patchtohere;
+      module.exports.luaK_posfix = luaK_posfix;
+      module.exports.luaK_prefix = luaK_prefix;
+      module.exports.luaK_reserveregs = luaK_reserveregs;
+      module.exports.luaK_ret = luaK_ret;
+      module.exports.luaK_self = luaK_self;
+      module.exports.luaK_setlist = luaK_setlist;
+      module.exports.luaK_setmultret = luaK_setmultret;
+      module.exports.luaK_setoneret = luaK_setoneret;
+      module.exports.luaK_setreturns = luaK_setreturns;
+      module.exports.luaK_storevar = luaK_storevar;
+      module.exports.luaK_stringK = luaK_stringK;
+    }
+  });
+
+  // node_modules/fengari/src/lparser.js
+  var require_lparser = __commonJS({
+    "node_modules/fengari/src/lparser.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_MULTRET,
+        to_luastring
+      } = require_defs();
+      var {
+        BinOpr: {
+          OPR_ADD,
+          OPR_AND,
+          OPR_BAND,
+          OPR_BOR,
+          OPR_BXOR,
+          OPR_CONCAT,
+          OPR_DIV,
+          OPR_EQ,
+          OPR_GE,
+          OPR_GT,
+          OPR_IDIV,
+          OPR_LE,
+          OPR_LT,
+          OPR_MOD,
+          OPR_MUL,
+          OPR_NE,
+          OPR_NOBINOPR,
+          OPR_OR,
+          OPR_POW,
+          OPR_SHL,
+          OPR_SHR,
+          OPR_SUB
+        },
+        UnOpr: {
+          OPR_BNOT,
+          OPR_LEN,
+          OPR_MINUS,
+          OPR_NOT,
+          OPR_NOUNOPR
+        },
+        NO_JUMP,
+        getinstruction,
+        luaK_checkstack,
+        luaK_codeABC,
+        luaK_codeABx,
+        luaK_codeAsBx,
+        luaK_codek,
+        luaK_concat,
+        luaK_dischargevars,
+        luaK_exp2RK,
+        luaK_exp2anyreg,
+        luaK_exp2anyregup,
+        luaK_exp2nextreg,
+        luaK_exp2val,
+        luaK_fixline,
+        luaK_getlabel,
+        luaK_goiffalse,
+        luaK_goiftrue,
+        luaK_indexed,
+        luaK_infix,
+        luaK_intK,
+        luaK_jump,
+        luaK_jumpto,
+        luaK_nil,
+        luaK_patchclose,
+        luaK_patchlist,
+        luaK_patchtohere,
+        luaK_posfix,
+        luaK_prefix,
+        luaK_reserveregs,
+        luaK_ret,
+        luaK_self,
+        luaK_setlist,
+        luaK_setmultret,
+        luaK_setoneret,
+        luaK_setreturns,
+        luaK_storevar,
+        luaK_stringK
+      } = require_lcode();
+      var ldo = require_ldo();
+      var lfunc = require_lfunc();
+      var llex = require_llex();
+      var {
+        LUAI_MAXCCALLS,
+        MAX_INT,
+        lua_assert
+      } = require_llimits();
+      var lobject = require_lobject();
+      var {
+        OpCodesI: {
+          OP_CALL,
+          OP_CLOSURE,
+          OP_FORLOOP,
+          OP_FORPREP,
+          OP_GETUPVAL,
+          OP_MOVE,
+          OP_NEWTABLE,
+          OP_SETTABLE,
+          OP_TAILCALL,
+          OP_TFORCALL,
+          OP_TFORLOOP,
+          OP_VARARG
+        },
+        LFIELDS_PER_FLUSH,
+        SETARG_B,
+        SETARG_C,
+        SET_OPCODE
+      } = require_lopcodes();
+      var {
+        luaS_eqlngstr,
+        luaS_new,
+        luaS_newliteral
+      } = require_lstring();
+      var ltable = require_ltable();
+      var Proto = lfunc.Proto;
+      var R = llex.RESERVED;
+      var MAXVARS = 200;
+      var hasmultret = function(k) {
+        return k === expkind.VCALL || k === expkind.VVARARG;
+      };
+      var eqstr = function(a, b) {
+        return luaS_eqlngstr(a, b);
+      };
+      var BlockCnt = class {
+        constructor() {
+          this.previous = null;
+          this.firstlabel = NaN;
+          this.firstgoto = NaN;
+          this.nactvar = NaN;
+          this.upval = NaN;
+          this.isloop = NaN;
+        }
+      };
+      var expkind = {
+        VVOID: 0,
+        /* when 'expdesc' describes the last expression a list,
+           this kind means an empty list (so, no expression) */
+        VNIL: 1,
+        /* constant nil */
+        VTRUE: 2,
+        /* constant true */
+        VFALSE: 3,
+        /* constant false */
+        VK: 4,
+        /* constant in 'k'; info = index of constant in 'k' */
+        VKFLT: 5,
+        /* floating constant; nval = numerical float value */
+        VKINT: 6,
+        /* integer constant; nval = numerical integer value */
+        VNONRELOC: 7,
+        /* expression has its value in a fixed register;
+           info = result register */
+        VLOCAL: 8,
+        /* local variable; info = local register */
+        VUPVAL: 9,
+        /* upvalue variable; info = index of upvalue in 'upvalues' */
+        VINDEXED: 10,
+        /* indexed variable;
+           ind.vt = whether 't' is register or upvalue;
+           ind.t = table register or upvalue;
+           ind.idx = key's R/K index */
+        VJMP: 11,
+        /* expression is a test/comparison;
+           info = pc of corresponding jump instruction */
+        VRELOCABLE: 12,
+        /* expression can put result in any register;
+           info = instruction pc */
+        VCALL: 13,
+        /* expression is a function call; info = instruction pc */
+        VVARARG: 14
+        /* vararg expression; info = instruction pc */
+      };
+      var vkisvar = function(k) {
+        return expkind.VLOCAL <= k && k <= expkind.VINDEXED;
+      };
+      var vkisinreg = function(k) {
+        return k === expkind.VNONRELOC || k === expkind.VLOCAL;
+      };
+      var expdesc = class {
+        constructor() {
+          this.k = NaN;
+          this.u = {
+            ival: NaN,
+            /* for VKINT */
+            nval: NaN,
+            /* for VKFLT */
+            info: NaN,
+            /* for generic use */
+            ind: {
+              /* for indexed variables (VINDEXED) */
+              idx: NaN,
+              /* index (R/K) */
+              t: NaN,
+              /* table (register or upvalue) */
+              vt: NaN
+              /* whether 't' is register (VLOCAL) or upvalue (VUPVAL) */
+            }
+          };
+          this.t = NaN;
+          this.f = NaN;
+        }
+        to(e) {
+          this.k = e.k;
+          this.u = e.u;
+          this.t = e.t;
+          this.f = e.f;
+        }
+      };
+      var FuncState = class {
+        constructor() {
+          this.f = null;
+          this.prev = null;
+          this.ls = null;
+          this.bl = null;
+          this.pc = NaN;
+          this.lasttarget = NaN;
+          this.jpc = NaN;
+          this.nk = NaN;
+          this.np = NaN;
+          this.firstlocal = NaN;
+          this.nlocvars = NaN;
+          this.nactvar = NaN;
+          this.nups = NaN;
+          this.freereg = NaN;
+        }
+      };
+      var Vardesc = class {
+        constructor() {
+          this.idx = NaN;
+        }
+      };
+      var Labeldesc = class {
+        constructor() {
+          this.name = null;
+          this.pc = NaN;
+          this.line = NaN;
+          this.nactvar = NaN;
+        }
+      };
+      var Labellist = class {
+        constructor() {
+          this.arr = [];
+          this.n = NaN;
+          this.size = NaN;
+        }
+      };
+      var Dyndata = class {
+        constructor() {
+          this.actvar = {
+            /* list of active local variables */
+            arr: [],
+            n: NaN,
+            size: NaN
+          };
+          this.gt = new Labellist();
+          this.label = new Labellist();
+        }
+      };
+      var semerror = function(ls, msg) {
+        ls.t.token = 0;
+        llex.luaX_syntaxerror(ls, msg);
+      };
+      var error_expected = function(ls, token) {
+        llex.luaX_syntaxerror(ls, lobject.luaO_pushfstring(ls.L, to_luastring("%s expected", true), llex.luaX_token2str(ls, token)));
+      };
+      var errorlimit = function(fs, limit, what) {
+        let L = fs.ls.L;
+        let line = fs.f.linedefined;
+        let where = line === 0 ? to_luastring("main function", true) : lobject.luaO_pushfstring(L, to_luastring("function at line %d", true), line);
+        let msg = lobject.luaO_pushfstring(
+          L,
+          to_luastring("too many %s (limit is %d) in %s", true),
+          what,
+          limit,
+          where
+        );
+        llex.luaX_syntaxerror(fs.ls, msg);
+      };
+      var checklimit = function(fs, v, l, what) {
+        if (v > l) errorlimit(fs, l, what);
+      };
+      var testnext = function(ls, c) {
+        if (ls.t.token === c) {
+          llex.luaX_next(ls);
+          return true;
+        }
+        return false;
+      };
+      var check = function(ls, c) {
+        if (ls.t.token !== c)
+          error_expected(ls, c);
+      };
+      var checknext = function(ls, c) {
+        check(ls, c);
+        llex.luaX_next(ls);
+      };
+      var check_condition = function(ls, c, msg) {
+        if (!c)
+          llex.luaX_syntaxerror(ls, msg);
+      };
+      var check_match = function(ls, what, who, where) {
+        if (!testnext(ls, what)) {
+          if (where === ls.linenumber)
+            error_expected(ls, what);
+          else
+            llex.luaX_syntaxerror(ls, lobject.luaO_pushfstring(
+              ls.L,
+              to_luastring("%s expected (to close %s at line %d)"),
+              llex.luaX_token2str(ls, what),
+              llex.luaX_token2str(ls, who),
+              where
+            ));
+        }
+      };
+      var str_checkname = function(ls) {
+        check(ls, R.TK_NAME);
+        let ts = ls.t.seminfo.ts;
+        llex.luaX_next(ls);
+        return ts;
+      };
+      var init_exp = function(e, k, i) {
+        e.f = e.t = NO_JUMP;
+        e.k = k;
+        e.u.info = i;
+      };
+      var codestring = function(ls, e, s) {
+        init_exp(e, expkind.VK, luaK_stringK(ls.fs, s));
+      };
+      var checkname = function(ls, e) {
+        codestring(ls, e, str_checkname(ls));
+      };
+      var registerlocalvar = function(ls, varname) {
+        let fs = ls.fs;
+        let f = fs.f;
+        f.locvars[fs.nlocvars] = new lobject.LocVar();
+        f.locvars[fs.nlocvars].varname = varname;
+        return fs.nlocvars++;
+      };
+      var new_localvar = function(ls, name) {
+        let fs = ls.fs;
+        let dyd = ls.dyd;
+        let reg = registerlocalvar(ls, name);
+        checklimit(fs, dyd.actvar.n + 1 - fs.firstlocal, MAXVARS, to_luastring("local variables", true));
+        dyd.actvar.arr[dyd.actvar.n] = new Vardesc();
+        dyd.actvar.arr[dyd.actvar.n].idx = reg;
+        dyd.actvar.n++;
+      };
+      var new_localvarliteral = function(ls, name) {
+        new_localvar(ls, llex.luaX_newstring(ls, to_luastring(name, true)));
+      };
+      var getlocvar = function(fs, i) {
+        let idx = fs.ls.dyd.actvar.arr[fs.firstlocal + i].idx;
+        lua_assert(idx < fs.nlocvars);
+        return fs.f.locvars[idx];
+      };
+      var adjustlocalvars = function(ls, nvars) {
+        let fs = ls.fs;
+        fs.nactvar = fs.nactvar + nvars;
+        for (; nvars; nvars--)
+          getlocvar(fs, fs.nactvar - nvars).startpc = fs.pc;
+      };
+      var removevars = function(fs, tolevel) {
+        fs.ls.dyd.actvar.n -= fs.nactvar - tolevel;
+        while (fs.nactvar > tolevel)
+          getlocvar(fs, --fs.nactvar).endpc = fs.pc;
+      };
+      var searchupvalue = function(fs, name) {
+        let up = fs.f.upvalues;
+        for (let i = 0; i < fs.nups; i++) {
+          if (eqstr(up[i].name, name))
+            return i;
+        }
+        return -1;
+      };
+      var newupvalue = function(fs, name, v) {
+        let f = fs.f;
+        checklimit(fs, fs.nups + 1, lfunc.MAXUPVAL, to_luastring("upvalues", true));
+        f.upvalues[fs.nups] = {
+          instack: v.k === expkind.VLOCAL,
+          idx: v.u.info,
+          name
+        };
+        return fs.nups++;
+      };
+      var searchvar = function(fs, n) {
+        for (let i = fs.nactvar - 1; i >= 0; i--) {
+          if (eqstr(n, getlocvar(fs, i).varname))
+            return i;
+        }
+        return -1;
+      };
+      var markupval = function(fs, level) {
+        let bl = fs.bl;
+        while (bl.nactvar > level)
+          bl = bl.previous;
+        bl.upval = 1;
+      };
+      var singlevaraux = function(fs, n, vr, base) {
+        if (fs === null)
+          init_exp(vr, expkind.VVOID, 0);
+        else {
+          let v = searchvar(fs, n);
+          if (v >= 0) {
+            init_exp(vr, expkind.VLOCAL, v);
+            if (!base)
+              markupval(fs, v);
+          } else {
+            let idx = searchupvalue(fs, n);
+            if (idx < 0) {
+              singlevaraux(fs.prev, n, vr, 0);
+              if (vr.k === expkind.VVOID)
+                return;
+              idx = newupvalue(fs, n, vr);
+            }
+            init_exp(vr, expkind.VUPVAL, idx);
+          }
+        }
+      };
+      var singlevar = function(ls, vr) {
+        let varname = str_checkname(ls);
+        let fs = ls.fs;
+        singlevaraux(fs, varname, vr, 1);
+        if (vr.k === expkind.VVOID) {
+          let key = new expdesc();
+          singlevaraux(fs, ls.envn, vr, 1);
+          lua_assert(vr.k !== expkind.VVOID);
+          codestring(ls, key, varname);
+          luaK_indexed(fs, vr, key);
+        }
+      };
+      var adjust_assign = function(ls, nvars, nexps, e) {
+        let fs = ls.fs;
+        let extra = nvars - nexps;
+        if (hasmultret(e.k)) {
+          extra++;
+          if (extra < 0) extra = 0;
+          luaK_setreturns(fs, e, extra);
+          if (extra > 1) luaK_reserveregs(fs, extra - 1);
+        } else {
+          if (e.k !== expkind.VVOID) luaK_exp2nextreg(fs, e);
+          if (extra > 0) {
+            let reg = fs.freereg;
+            luaK_reserveregs(fs, extra);
+            luaK_nil(fs, reg, extra);
+          }
+        }
+        if (nexps > nvars)
+          ls.fs.freereg -= nexps - nvars;
+      };
+      var enterlevel = function(ls) {
+        let L = ls.L;
+        ++L.nCcalls;
+        checklimit(ls.fs, L.nCcalls, LUAI_MAXCCALLS, to_luastring("JS levels", true));
+      };
+      var leavelevel = function(ls) {
+        return ls.L.nCcalls--;
+      };
+      var closegoto = function(ls, g, label) {
+        let fs = ls.fs;
+        let gl = ls.dyd.gt;
+        let gt = gl.arr[g];
+        lua_assert(eqstr(gt.name, label.name));
+        if (gt.nactvar < label.nactvar) {
+          let vname = getlocvar(fs, gt.nactvar).varname;
+          let msg = lobject.luaO_pushfstring(
+            ls.L,
+            to_luastring("<goto %s> at line %d jumps into the scope of local '%s'"),
+            gt.name.getstr(),
+            gt.line,
+            vname.getstr()
+          );
+          semerror(ls, msg);
+        }
+        luaK_patchlist(fs, gt.pc, label.pc);
+        for (let i = g; i < gl.n - 1; i++)
+          gl.arr[i] = gl.arr[i + 1];
+        gl.n--;
+      };
+      var findlabel = function(ls, g) {
+        let bl = ls.fs.bl;
+        let dyd = ls.dyd;
+        let gt = dyd.gt.arr[g];
+        for (let i = bl.firstlabel; i < dyd.label.n; i++) {
+          let lb = dyd.label.arr[i];
+          if (eqstr(lb.name, gt.name)) {
+            if (gt.nactvar > lb.nactvar && (bl.upval || dyd.label.n > bl.firstlabel))
+              luaK_patchclose(ls.fs, gt.pc, lb.nactvar);
+            closegoto(ls, g, lb);
+            return true;
+          }
+        }
+        return false;
+      };
+      var newlabelentry = function(ls, l, name, line, pc) {
+        let n = l.n;
+        l.arr[n] = new Labeldesc();
+        l.arr[n].name = name;
+        l.arr[n].line = line;
+        l.arr[n].nactvar = ls.fs.nactvar;
+        l.arr[n].pc = pc;
+        l.n = n + 1;
+        return n;
+      };
+      var findgotos = function(ls, lb) {
+        let gl = ls.dyd.gt;
+        let i = ls.fs.bl.firstgoto;
+        while (i < gl.n) {
+          if (eqstr(gl.arr[i].name, lb.name))
+            closegoto(ls, i, lb);
+          else
+            i++;
+        }
+      };
+      var movegotosout = function(fs, bl) {
+        let i = bl.firstgoto;
+        let gl = fs.ls.dyd.gt;
+        while (i < gl.n) {
+          let gt = gl.arr[i];
+          if (gt.nactvar > bl.nactvar) {
+            if (bl.upval)
+              luaK_patchclose(fs, gt.pc, bl.nactvar);
+            gt.nactvar = bl.nactvar;
+          }
+          if (!findlabel(fs.ls, i))
+            i++;
+        }
+      };
+      var enterblock = function(fs, bl, isloop) {
+        bl.isloop = isloop;
+        bl.nactvar = fs.nactvar;
+        bl.firstlabel = fs.ls.dyd.label.n;
+        bl.firstgoto = fs.ls.dyd.gt.n;
+        bl.upval = 0;
+        bl.previous = fs.bl;
+        fs.bl = bl;
+        lua_assert(fs.freereg === fs.nactvar);
+      };
+      var breaklabel = function(ls) {
+        let n = luaS_newliteral(ls.L, "break");
+        let l = newlabelentry(ls, ls.dyd.label, n, 0, ls.fs.pc);
+        findgotos(ls, ls.dyd.label.arr[l]);
+      };
+      var undefgoto = function(ls, gt) {
+        let msg = llex.isreserved(gt.name) ? "<%s> at line %d not inside a loop" : "no visible label '%s' for <goto> at line %d";
+        msg = lobject.luaO_pushfstring(ls.L, to_luastring(msg), gt.name.getstr(), gt.line);
+        semerror(ls, msg);
+      };
+      var addprototype = function(ls) {
+        let L = ls.L;
+        let clp = new Proto(L);
+        let fs = ls.fs;
+        let f = fs.f;
+        f.p[fs.np++] = clp;
+        return clp;
+      };
+      var codeclosure = function(ls, v) {
+        let fs = ls.fs.prev;
+        init_exp(v, expkind.VRELOCABLE, luaK_codeABx(fs, OP_CLOSURE, 0, fs.np - 1));
+        luaK_exp2nextreg(fs, v);
+      };
+      var open_func = function(ls, fs, bl) {
+        fs.prev = ls.fs;
+        fs.ls = ls;
+        ls.fs = fs;
+        fs.pc = 0;
+        fs.lasttarget = 0;
+        fs.jpc = NO_JUMP;
+        fs.freereg = 0;
+        fs.nk = 0;
+        fs.np = 0;
+        fs.nups = 0;
+        fs.nlocvars = 0;
+        fs.nactvar = 0;
+        fs.firstlocal = ls.dyd.actvar.n;
+        fs.bl = null;
+        let f = fs.f;
+        f.source = ls.source;
+        f.maxstacksize = 2;
+        enterblock(fs, bl, false);
+      };
+      var leaveblock = function(fs) {
+        let bl = fs.bl;
+        let ls = fs.ls;
+        if (bl.previous && bl.upval) {
+          let j = luaK_jump(fs);
+          luaK_patchclose(fs, j, bl.nactvar);
+          luaK_patchtohere(fs, j);
+        }
+        if (bl.isloop)
+          breaklabel(ls);
+        fs.bl = bl.previous;
+        removevars(fs, bl.nactvar);
+        lua_assert(bl.nactvar === fs.nactvar);
+        fs.freereg = fs.nactvar;
+        ls.dyd.label.n = bl.firstlabel;
+        if (bl.previous)
+          movegotosout(fs, bl);
+        else if (bl.firstgoto < ls.dyd.gt.n)
+          undefgoto(ls, ls.dyd.gt.arr[bl.firstgoto]);
+      };
+      var close_func = function(ls) {
+        let fs = ls.fs;
+        luaK_ret(fs, 0, 0);
+        leaveblock(fs);
+        lua_assert(fs.bl === null);
+        ls.fs = fs.prev;
+      };
+      var block_follow = function(ls, withuntil) {
+        switch (ls.t.token) {
+          case R.TK_ELSE:
+          case R.TK_ELSEIF:
+          case R.TK_END:
+          case R.TK_EOS:
+            return true;
+          case R.TK_UNTIL:
+            return withuntil;
+          default:
+            return false;
+        }
+      };
+      var statlist = function(ls) {
+        while (!block_follow(ls, 1)) {
+          if (ls.t.token === R.TK_RETURN) {
+            statement(ls);
+            return;
+          }
+          statement(ls);
+        }
+      };
+      var fieldsel = function(ls, v) {
+        let fs = ls.fs;
+        let key = new expdesc();
+        luaK_exp2anyregup(fs, v);
+        llex.luaX_next(ls);
+        checkname(ls, key);
+        luaK_indexed(fs, v, key);
+      };
+      var yindex = function(ls, v) {
+        llex.luaX_next(ls);
+        expr(ls, v);
+        luaK_exp2val(ls.fs, v);
+        checknext(
+          ls,
+          93
+          /* (']').charCodeAt(0) */
+        );
+      };
+      var ConsControl = class {
+        constructor() {
+          this.v = new expdesc();
+          this.t = new expdesc();
+          this.nh = NaN;
+          this.na = NaN;
+          this.tostore = NaN;
+        }
+      };
+      var recfield = function(ls, cc) {
+        let fs = ls.fs;
+        let reg = ls.fs.freereg;
+        let key = new expdesc();
+        let val = new expdesc();
+        if (ls.t.token === R.TK_NAME) {
+          checklimit(fs, cc.nh, MAX_INT, to_luastring("items in a constructor", true));
+          checkname(ls, key);
+        } else
+          yindex(ls, key);
+        cc.nh++;
+        checknext(
+          ls,
+          61
+          /* ('=').charCodeAt(0) */
+        );
+        let rkkey = luaK_exp2RK(fs, key);
+        expr(ls, val);
+        luaK_codeABC(fs, OP_SETTABLE, cc.t.u.info, rkkey, luaK_exp2RK(fs, val));
+        fs.freereg = reg;
+      };
+      var closelistfield = function(fs, cc) {
+        if (cc.v.k === expkind.VVOID) return;
+        luaK_exp2nextreg(fs, cc.v);
+        cc.v.k = expkind.VVOID;
+        if (cc.tostore === LFIELDS_PER_FLUSH) {
+          luaK_setlist(fs, cc.t.u.info, cc.na, cc.tostore);
+          cc.tostore = 0;
+        }
+      };
+      var lastlistfield = function(fs, cc) {
+        if (cc.tostore === 0) return;
+        if (hasmultret(cc.v.k)) {
+          luaK_setmultret(fs, cc.v);
+          luaK_setlist(fs, cc.t.u.info, cc.na, LUA_MULTRET);
+          cc.na--;
+        } else {
+          if (cc.v.k !== expkind.VVOID)
+            luaK_exp2nextreg(fs, cc.v);
+          luaK_setlist(fs, cc.t.u.info, cc.na, cc.tostore);
+        }
+      };
+      var listfield = function(ls, cc) {
+        expr(ls, cc.v);
+        checklimit(ls.fs, cc.na, MAX_INT, to_luastring("items in a constructor", true));
+        cc.na++;
+        cc.tostore++;
+      };
+      var field = function(ls, cc) {
+        switch (ls.t.token) {
+          case R.TK_NAME: {
+            if (llex.luaX_lookahead(ls) !== 61)
+              listfield(ls, cc);
+            else
+              recfield(ls, cc);
+            break;
+          }
+          case 91: {
+            recfield(ls, cc);
+            break;
+          }
+          default: {
+            listfield(ls, cc);
+            break;
+          }
+        }
+      };
+      var constructor = function(ls, t) {
+        let fs = ls.fs;
+        let line = ls.linenumber;
+        let pc = luaK_codeABC(fs, OP_NEWTABLE, 0, 0, 0);
+        let cc = new ConsControl();
+        cc.na = cc.nh = cc.tostore = 0;
+        cc.t = t;
+        init_exp(t, expkind.VRELOCABLE, pc);
+        init_exp(cc.v, expkind.VVOID, 0);
+        luaK_exp2nextreg(ls.fs, t);
+        checknext(
+          ls,
+          123
+          /* ('{').charCodeAt(0) */
+        );
+        do {
+          lua_assert(cc.v.k === expkind.VVOID || cc.tostore > 0);
+          if (ls.t.token === 125) break;
+          closelistfield(fs, cc);
+          field(ls, cc);
+        } while (testnext(
+          ls,
+          44
+          /* (',').charCodeAt(0) */
+        ) || testnext(
+          ls,
+          59
+          /* (';').charCodeAt(0) */
+        ));
+        check_match(ls, 125, 123, line);
+        lastlistfield(fs, cc);
+        SETARG_B(fs.f.code[pc], lobject.luaO_int2fb(cc.na));
+        SETARG_C(fs.f.code[pc], lobject.luaO_int2fb(cc.nh));
+      };
+      var parlist = function(ls) {
+        let fs = ls.fs;
+        let f = fs.f;
+        let nparams = 0;
+        f.is_vararg = false;
+        if (ls.t.token !== 41) {
+          do {
+            switch (ls.t.token) {
+              case R.TK_NAME: {
+                new_localvar(ls, str_checkname(ls));
+                nparams++;
+                break;
+              }
+              case R.TK_DOTS: {
+                llex.luaX_next(ls);
+                f.is_vararg = true;
+                break;
+              }
+              default:
+                llex.luaX_syntaxerror(ls, to_luastring("<name> or '...' expected", true));
+            }
+          } while (!f.is_vararg && testnext(
+            ls,
+            44
+            /* (',').charCodeAt(0) */
+          ));
+        }
+        adjustlocalvars(ls, nparams);
+        f.numparams = fs.nactvar;
+        luaK_reserveregs(fs, fs.nactvar);
+      };
+      var body = function(ls, e, ismethod, line) {
+        let new_fs = new FuncState();
+        let bl = new BlockCnt();
+        new_fs.f = addprototype(ls);
+        new_fs.f.linedefined = line;
+        open_func(ls, new_fs, bl);
+        checknext(
+          ls,
+          40
+          /* ('(').charCodeAt(0) */
+        );
+        if (ismethod) {
+          new_localvarliteral(ls, "self");
+          adjustlocalvars(ls, 1);
+        }
+        parlist(ls);
+        checknext(
+          ls,
+          41
+          /* (')').charCodeAt(0) */
+        );
+        statlist(ls);
+        new_fs.f.lastlinedefined = ls.linenumber;
+        check_match(ls, R.TK_END, R.TK_FUNCTION, line);
+        codeclosure(ls, e);
+        close_func(ls);
+      };
+      var explist = function(ls, v) {
+        let n = 1;
+        expr(ls, v);
+        while (testnext(
+          ls,
+          44
+          /* (',').charCodeAt(0) */
+        )) {
+          luaK_exp2nextreg(ls.fs, v);
+          expr(ls, v);
+          n++;
+        }
+        return n;
+      };
+      var funcargs = function(ls, f, line) {
+        let fs = ls.fs;
+        let args = new expdesc();
+        switch (ls.t.token) {
+          case 40: {
+            llex.luaX_next(ls);
+            if (ls.t.token === 41)
+              args.k = expkind.VVOID;
+            else {
+              explist(ls, args);
+              luaK_setmultret(fs, args);
+            }
+            check_match(ls, 41, 40, line);
+            break;
+          }
+          case 123: {
+            constructor(ls, args);
+            break;
+          }
+          case R.TK_STRING: {
+            codestring(ls, args, ls.t.seminfo.ts);
+            llex.luaX_next(ls);
+            break;
+          }
+          default: {
+            llex.luaX_syntaxerror(ls, to_luastring("function arguments expected", true));
+          }
+        }
+        lua_assert(f.k === expkind.VNONRELOC);
+        let nparams;
+        let base = f.u.info;
+        if (hasmultret(args.k))
+          nparams = LUA_MULTRET;
+        else {
+          if (args.k !== expkind.VVOID)
+            luaK_exp2nextreg(fs, args);
+          nparams = fs.freereg - (base + 1);
+        }
+        init_exp(f, expkind.VCALL, luaK_codeABC(fs, OP_CALL, base, nparams + 1, 2));
+        luaK_fixline(fs, line);
+        fs.freereg = base + 1;
+      };
+      var primaryexp = function(ls, v) {
+        switch (ls.t.token) {
+          case 40: {
+            let line = ls.linenumber;
+            llex.luaX_next(ls);
+            expr(ls, v);
+            check_match(ls, 41, 40, line);
+            luaK_dischargevars(ls.fs, v);
+            return;
+          }
+          case R.TK_NAME: {
+            singlevar(ls, v);
+            return;
+          }
+          default: {
+            llex.luaX_syntaxerror(ls, to_luastring("unexpected symbol", true));
+          }
+        }
+      };
+      var suffixedexp = function(ls, v) {
+        let fs = ls.fs;
+        let line = ls.linenumber;
+        primaryexp(ls, v);
+        for (; ; ) {
+          switch (ls.t.token) {
+            case 46: {
+              fieldsel(ls, v);
+              break;
+            }
+            case 91: {
+              let key = new expdesc();
+              luaK_exp2anyregup(fs, v);
+              yindex(ls, key);
+              luaK_indexed(fs, v, key);
+              break;
+            }
+            case 58: {
+              let key = new expdesc();
+              llex.luaX_next(ls);
+              checkname(ls, key);
+              luaK_self(fs, v, key);
+              funcargs(ls, v, line);
+              break;
+            }
+            case 40:
+            case R.TK_STRING:
+            case 123: {
+              luaK_exp2nextreg(fs, v);
+              funcargs(ls, v, line);
+              break;
+            }
+            default:
+              return;
+          }
+        }
+      };
+      var simpleexp = function(ls, v) {
+        switch (ls.t.token) {
+          case R.TK_FLT: {
+            init_exp(v, expkind.VKFLT, 0);
+            v.u.nval = ls.t.seminfo.r;
+            break;
+          }
+          case R.TK_INT: {
+            init_exp(v, expkind.VKINT, 0);
+            v.u.ival = ls.t.seminfo.i;
+            break;
+          }
+          case R.TK_STRING: {
+            codestring(ls, v, ls.t.seminfo.ts);
+            break;
+          }
+          case R.TK_NIL: {
+            init_exp(v, expkind.VNIL, 0);
+            break;
+          }
+          case R.TK_TRUE: {
+            init_exp(v, expkind.VTRUE, 0);
+            break;
+          }
+          case R.TK_FALSE: {
+            init_exp(v, expkind.VFALSE, 0);
+            break;
+          }
+          case R.TK_DOTS: {
+            let fs = ls.fs;
+            check_condition(ls, fs.f.is_vararg, to_luastring("cannot use '...' outside a vararg function", true));
+            init_exp(v, expkind.VVARARG, luaK_codeABC(fs, OP_VARARG, 0, 1, 0));
+            break;
+          }
+          case 123: {
+            constructor(ls, v);
+            return;
+          }
+          case R.TK_FUNCTION: {
+            llex.luaX_next(ls);
+            body(ls, v, 0, ls.linenumber);
+            return;
+          }
+          default: {
+            suffixedexp(ls, v);
+            return;
+          }
+        }
+        llex.luaX_next(ls);
+      };
+      var getunopr = function(op) {
+        switch (op) {
+          case R.TK_NOT:
+            return OPR_NOT;
+          case 45:
+            return OPR_MINUS;
+          case 126:
+            return OPR_BNOT;
+          case 35:
+            return OPR_LEN;
+          default:
+            return OPR_NOUNOPR;
+        }
+      };
+      var getbinopr = function(op) {
+        switch (op) {
+          case 43:
+            return OPR_ADD;
+          case 45:
+            return OPR_SUB;
+          case 42:
+            return OPR_MUL;
+          case 37:
+            return OPR_MOD;
+          case 94:
+            return OPR_POW;
+          case 47:
+            return OPR_DIV;
+          case R.TK_IDIV:
+            return OPR_IDIV;
+          case 38:
+            return OPR_BAND;
+          case 124:
+            return OPR_BOR;
+          case 126:
+            return OPR_BXOR;
+          case R.TK_SHL:
+            return OPR_SHL;
+          case R.TK_SHR:
+            return OPR_SHR;
+          case R.TK_CONCAT:
+            return OPR_CONCAT;
+          case R.TK_NE:
+            return OPR_NE;
+          case R.TK_EQ:
+            return OPR_EQ;
+          case 60:
+            return OPR_LT;
+          case R.TK_LE:
+            return OPR_LE;
+          case 62:
+            return OPR_GT;
+          case R.TK_GE:
+            return OPR_GE;
+          case R.TK_AND:
+            return OPR_AND;
+          case R.TK_OR:
+            return OPR_OR;
+          default:
+            return OPR_NOBINOPR;
+        }
+      };
+      var priority = [
+        /* ORDER OPR */
+        { left: 10, right: 10 },
+        { left: 10, right: 10 },
+        /* '+' '-' */
+        { left: 11, right: 11 },
+        { left: 11, right: 11 },
+        /* '*' '%' */
+        { left: 14, right: 13 },
+        /* '^' (right associative) */
+        { left: 11, right: 11 },
+        { left: 11, right: 11 },
+        /* '/' '//' */
+        { left: 6, right: 6 },
+        { left: 4, right: 4 },
+        { left: 5, right: 5 },
+        /* '&' '|' '~' */
+        { left: 7, right: 7 },
+        { left: 7, right: 7 },
+        /* '<<' '>>' */
+        { left: 9, right: 8 },
+        /* '..' (right associative) */
+        { left: 3, right: 3 },
+        { left: 3, right: 3 },
+        { left: 3, right: 3 },
+        /* ==, <, <= */
+        { left: 3, right: 3 },
+        { left: 3, right: 3 },
+        { left: 3, right: 3 },
+        /* ~=, >, >= */
+        { left: 2, right: 2 },
+        { left: 1, right: 1 }
+        /* and, or */
+      ];
+      var UNARY_PRIORITY = 12;
+      var subexpr = function(ls, v, limit) {
+        enterlevel(ls);
+        let uop = getunopr(ls.t.token);
+        if (uop !== OPR_NOUNOPR) {
+          let line = ls.linenumber;
+          llex.luaX_next(ls);
+          subexpr(ls, v, UNARY_PRIORITY);
+          luaK_prefix(ls.fs, uop, v, line);
+        } else
+          simpleexp(ls, v);
+        let op = getbinopr(ls.t.token);
+        while (op !== OPR_NOBINOPR && priority[op].left > limit) {
+          let v2 = new expdesc();
+          let line = ls.linenumber;
+          llex.luaX_next(ls);
+          luaK_infix(ls.fs, op, v);
+          let nextop = subexpr(ls, v2, priority[op].right);
+          luaK_posfix(ls.fs, op, v, v2, line);
+          op = nextop;
+        }
+        leavelevel(ls);
+        return op;
+      };
+      var expr = function(ls, v) {
+        subexpr(ls, v, 0);
+      };
+      var block = function(ls) {
+        let fs = ls.fs;
+        let bl = new BlockCnt();
+        enterblock(fs, bl, 0);
+        statlist(ls);
+        leaveblock(fs);
+      };
+      var LHS_assign = class {
+        constructor() {
+          this.prev = null;
+          this.v = new expdesc();
+        }
+      };
+      var check_conflict = function(ls, lh, v) {
+        let fs = ls.fs;
+        let extra = fs.freereg;
+        let conflict = false;
+        for (; lh; lh = lh.prev) {
+          if (lh.v.k === expkind.VINDEXED) {
+            if (lh.v.u.ind.vt === v.k && lh.v.u.ind.t === v.u.info) {
+              conflict = true;
+              lh.v.u.ind.vt = expkind.VLOCAL;
+              lh.v.u.ind.t = extra;
+            }
+            if (v.k === expkind.VLOCAL && lh.v.u.ind.idx === v.u.info) {
+              conflict = true;
+              lh.v.u.ind.idx = extra;
+            }
+          }
+        }
+        if (conflict) {
+          let op = v.k === expkind.VLOCAL ? OP_MOVE : OP_GETUPVAL;
+          luaK_codeABC(fs, op, extra, v.u.info, 0);
+          luaK_reserveregs(fs, 1);
+        }
+      };
+      var assignment = function(ls, lh, nvars) {
+        let e = new expdesc();
+        check_condition(ls, vkisvar(lh.v.k), to_luastring("syntax error", true));
+        if (testnext(
+          ls,
+          44
+          /* (',').charCodeAt(0) */
+        )) {
+          let nv = new LHS_assign();
+          nv.prev = lh;
+          suffixedexp(ls, nv.v);
+          if (nv.v.k !== expkind.VINDEXED)
+            check_conflict(ls, lh, nv.v);
+          checklimit(ls.fs, nvars + ls.L.nCcalls, LUAI_MAXCCALLS, to_luastring("JS levels", true));
+          assignment(ls, nv, nvars + 1);
+        } else {
+          checknext(
+            ls,
+            61
+            /* ('=').charCodeAt(0) */
+          );
+          let nexps = explist(ls, e);
+          if (nexps !== nvars)
+            adjust_assign(ls, nvars, nexps, e);
+          else {
+            luaK_setoneret(ls.fs, e);
+            luaK_storevar(ls.fs, lh.v, e);
+            return;
+          }
+        }
+        init_exp(e, expkind.VNONRELOC, ls.fs.freereg - 1);
+        luaK_storevar(ls.fs, lh.v, e);
+      };
+      var cond = function(ls) {
+        let v = new expdesc();
+        expr(ls, v);
+        if (v.k === expkind.VNIL) v.k = expkind.VFALSE;
+        luaK_goiftrue(ls.fs, v);
+        return v.f;
+      };
+      var gotostat = function(ls, pc) {
+        let line = ls.linenumber;
+        let label;
+        if (testnext(ls, R.TK_GOTO))
+          label = str_checkname(ls);
+        else {
+          llex.luaX_next(ls);
+          label = luaS_newliteral(ls.L, "break");
+        }
+        let g = newlabelentry(ls, ls.dyd.gt, label, line, pc);
+        findlabel(ls, g);
+      };
+      var checkrepeated = function(fs, ll, label) {
+        for (let i = fs.bl.firstlabel; i < ll.n; i++) {
+          if (eqstr(label, ll.arr[i].name)) {
+            let msg = lobject.luaO_pushfstring(
+              fs.ls.L,
+              to_luastring("label '%s' already defined on line %d", true),
+              label.getstr(),
+              ll.arr[i].line
+            );
+            semerror(fs.ls, msg);
+          }
+        }
+      };
+      var skipnoopstat = function(ls) {
+        while (ls.t.token === 59 || ls.t.token === R.TK_DBCOLON)
+          statement(ls);
+      };
+      var labelstat = function(ls, label, line) {
+        let fs = ls.fs;
+        let ll = ls.dyd.label;
+        let l;
+        checkrepeated(fs, ll, label);
+        checknext(ls, R.TK_DBCOLON);
+        l = newlabelentry(ls, ll, label, line, luaK_getlabel(fs));
+        skipnoopstat(ls);
+        if (block_follow(ls, 0)) {
+          ll.arr[l].nactvar = fs.bl.nactvar;
+        }
+        findgotos(ls, ll.arr[l]);
+      };
+      var whilestat = function(ls, line) {
+        let fs = ls.fs;
+        let bl = new BlockCnt();
+        llex.luaX_next(ls);
+        let whileinit = luaK_getlabel(fs);
+        let condexit = cond(ls);
+        enterblock(fs, bl, 1);
+        checknext(ls, R.TK_DO);
+        block(ls);
+        luaK_jumpto(fs, whileinit);
+        check_match(ls, R.TK_END, R.TK_WHILE, line);
+        leaveblock(fs);
+        luaK_patchtohere(fs, condexit);
+      };
+      var repeatstat = function(ls, line) {
+        let fs = ls.fs;
+        let repeat_init = luaK_getlabel(fs);
+        let bl1 = new BlockCnt();
+        let bl2 = new BlockCnt();
+        enterblock(fs, bl1, 1);
+        enterblock(fs, bl2, 0);
+        llex.luaX_next(ls);
+        statlist(ls);
+        check_match(ls, R.TK_UNTIL, R.TK_REPEAT, line);
+        let condexit = cond(ls);
+        if (bl2.upval)
+          luaK_patchclose(fs, condexit, bl2.nactvar);
+        leaveblock(fs);
+        luaK_patchlist(fs, condexit, repeat_init);
+        leaveblock(fs);
+      };
+      var exp1 = function(ls) {
+        let e = new expdesc();
+        expr(ls, e);
+        luaK_exp2nextreg(ls.fs, e);
+        lua_assert(e.k === expkind.VNONRELOC);
+        let reg = e.u.info;
+        return reg;
+      };
+      var forbody = function(ls, base, line, nvars, isnum) {
+        let bl = new BlockCnt();
+        let fs = ls.fs;
+        let endfor;
+        adjustlocalvars(ls, 3);
+        checknext(ls, R.TK_DO);
+        let prep = isnum ? luaK_codeAsBx(fs, OP_FORPREP, base, NO_JUMP) : luaK_jump(fs);
+        enterblock(fs, bl, 0);
+        adjustlocalvars(ls, nvars);
+        luaK_reserveregs(fs, nvars);
+        block(ls);
+        leaveblock(fs);
+        luaK_patchtohere(fs, prep);
+        if (isnum)
+          endfor = luaK_codeAsBx(fs, OP_FORLOOP, base, NO_JUMP);
+        else {
+          luaK_codeABC(fs, OP_TFORCALL, base, 0, nvars);
+          luaK_fixline(fs, line);
+          endfor = luaK_codeAsBx(fs, OP_TFORLOOP, base + 2, NO_JUMP);
+        }
+        luaK_patchlist(fs, endfor, prep + 1);
+        luaK_fixline(fs, line);
+      };
+      var fornum = function(ls, varname, line) {
+        let fs = ls.fs;
+        let base = fs.freereg;
+        new_localvarliteral(ls, "(for index)");
+        new_localvarliteral(ls, "(for limit)");
+        new_localvarliteral(ls, "(for step)");
+        new_localvar(ls, varname);
+        checknext(
+          ls,
+          61
+          /* ('=').charCodeAt(0) */
+        );
+        exp1(ls);
+        checknext(
+          ls,
+          44
+          /* (',').charCodeAt(0) */
+        );
+        exp1(ls);
+        if (testnext(
+          ls,
+          44
+          /* (',').charCodeAt(0) */
+        ))
+          exp1(ls);
+        else {
+          luaK_codek(fs, fs.freereg, luaK_intK(fs, 1));
+          luaK_reserveregs(fs, 1);
+        }
+        forbody(ls, base, line, 1, 1);
+      };
+      var forlist = function(ls, indexname) {
+        let fs = ls.fs;
+        let e = new expdesc();
+        let nvars = 4;
+        let base = fs.freereg;
+        new_localvarliteral(ls, "(for generator)");
+        new_localvarliteral(ls, "(for state)");
+        new_localvarliteral(ls, "(for control)");
+        new_localvar(ls, indexname);
+        while (testnext(
+          ls,
+          44
+          /* (',').charCodeAt(0) */
+        )) {
+          new_localvar(ls, str_checkname(ls));
+          nvars++;
+        }
+        checknext(ls, R.TK_IN);
+        let line = ls.linenumber;
+        adjust_assign(ls, 3, explist(ls, e), e);
+        luaK_checkstack(fs, 3);
+        forbody(ls, base, line, nvars - 3, 0);
+      };
+      var forstat = function(ls, line) {
+        let fs = ls.fs;
+        let bl = new BlockCnt();
+        enterblock(fs, bl, 1);
+        llex.luaX_next(ls);
+        let varname = str_checkname(ls);
+        switch (ls.t.token) {
+          case 61:
+            fornum(ls, varname, line);
+            break;
+          case 44:
+          case R.TK_IN:
+            forlist(ls, varname);
+            break;
+          default:
+            llex.luaX_syntaxerror(ls, to_luastring("'=' or 'in' expected", true));
+        }
+        check_match(ls, R.TK_END, R.TK_FOR, line);
+        leaveblock(fs);
+      };
+      var test_then_block = function(ls, escapelist) {
+        let bl = new BlockCnt();
+        let fs = ls.fs;
+        let v = new expdesc();
+        let jf;
+        llex.luaX_next(ls);
+        expr(ls, v);
+        checknext(ls, R.TK_THEN);
+        if (ls.t.token === R.TK_GOTO || ls.t.token === R.TK_BREAK) {
+          luaK_goiffalse(ls.fs, v);
+          enterblock(fs, bl, false);
+          gotostat(ls, v.t);
+          while (testnext(
+            ls,
+            59
+            /* (';').charCodeAt(0) */
+          )) ;
+          if (block_follow(ls, 0)) {
+            leaveblock(fs);
+            return escapelist;
+          } else
+            jf = luaK_jump(fs);
+        } else {
+          luaK_goiftrue(ls.fs, v);
+          enterblock(fs, bl, false);
+          jf = v.f;
+        }
+        statlist(ls);
+        leaveblock(fs);
+        if (ls.t.token === R.TK_ELSE || ls.t.token === R.TK_ELSEIF)
+          escapelist = luaK_concat(fs, escapelist, luaK_jump(fs));
+        luaK_patchtohere(fs, jf);
+        return escapelist;
+      };
+      var ifstat = function(ls, line) {
+        let fs = ls.fs;
+        let escapelist = NO_JUMP;
+        escapelist = test_then_block(ls, escapelist);
+        while (ls.t.token === R.TK_ELSEIF)
+          escapelist = test_then_block(ls, escapelist);
+        if (testnext(ls, R.TK_ELSE))
+          block(ls);
+        check_match(ls, R.TK_END, R.TK_IF, line);
+        luaK_patchtohere(fs, escapelist);
+      };
+      var localfunc = function(ls) {
+        let b = new expdesc();
+        let fs = ls.fs;
+        new_localvar(ls, str_checkname(ls));
+        adjustlocalvars(ls, 1);
+        body(ls, b, 0, ls.linenumber);
+        getlocvar(fs, b.u.info).startpc = fs.pc;
+      };
+      var localstat = function(ls) {
+        let nvars = 0;
+        let nexps;
+        let e = new expdesc();
+        do {
+          new_localvar(ls, str_checkname(ls));
+          nvars++;
+        } while (testnext(
+          ls,
+          44
+          /* (',').charCodeAt(0) */
+        ));
+        if (testnext(
+          ls,
+          61
+          /* ('=').charCodeAt(0) */
+        ))
+          nexps = explist(ls, e);
+        else {
+          e.k = expkind.VVOID;
+          nexps = 0;
+        }
+        adjust_assign(ls, nvars, nexps, e);
+        adjustlocalvars(ls, nvars);
+      };
+      var funcname = function(ls, v) {
+        let ismethod = 0;
+        singlevar(ls, v);
+        while (ls.t.token === 46)
+          fieldsel(ls, v);
+        if (ls.t.token === 58) {
+          ismethod = 1;
+          fieldsel(ls, v);
+        }
+        return ismethod;
+      };
+      var funcstat = function(ls, line) {
+        let v = new expdesc();
+        let b = new expdesc();
+        llex.luaX_next(ls);
+        let ismethod = funcname(ls, v);
+        body(ls, b, ismethod, line);
+        luaK_storevar(ls.fs, v, b);
+        luaK_fixline(ls.fs, line);
+      };
+      var exprstat = function(ls) {
+        let fs = ls.fs;
+        let v = new LHS_assign();
+        suffixedexp(ls, v.v);
+        if (ls.t.token === 61 || ls.t.token === 44) {
+          v.prev = null;
+          assignment(ls, v, 1);
+        } else {
+          check_condition(ls, v.v.k === expkind.VCALL, to_luastring("syntax error", true));
+          SETARG_C(getinstruction(fs, v.v), 1);
+        }
+      };
+      var retstat = function(ls) {
+        let fs = ls.fs;
+        let e = new expdesc();
+        let first, nret;
+        if (block_follow(ls, 1) || ls.t.token === 59)
+          first = nret = 0;
+        else {
+          nret = explist(ls, e);
+          if (hasmultret(e.k)) {
+            luaK_setmultret(fs, e);
+            if (e.k === expkind.VCALL && nret === 1) {
+              SET_OPCODE(getinstruction(fs, e), OP_TAILCALL);
+              lua_assert(getinstruction(fs, e).A === fs.nactvar);
+            }
+            first = fs.nactvar;
+            nret = LUA_MULTRET;
+          } else {
+            if (nret === 1)
+              first = luaK_exp2anyreg(fs, e);
+            else {
+              luaK_exp2nextreg(fs, e);
+              first = fs.nactvar;
+              lua_assert(nret === fs.freereg - first);
+            }
+          }
+        }
+        luaK_ret(fs, first, nret);
+        testnext(
+          ls,
+          59
+          /* (';').charCodeAt(0) */
+        );
+      };
+      var statement = function(ls) {
+        let line = ls.linenumber;
+        enterlevel(ls);
+        switch (ls.t.token) {
+          case 59: {
+            llex.luaX_next(ls);
+            break;
+          }
+          case R.TK_IF: {
+            ifstat(ls, line);
+            break;
+          }
+          case R.TK_WHILE: {
+            whilestat(ls, line);
+            break;
+          }
+          case R.TK_DO: {
+            llex.luaX_next(ls);
+            block(ls);
+            check_match(ls, R.TK_END, R.TK_DO, line);
+            break;
+          }
+          case R.TK_FOR: {
+            forstat(ls, line);
+            break;
+          }
+          case R.TK_REPEAT: {
+            repeatstat(ls, line);
+            break;
+          }
+          case R.TK_FUNCTION: {
+            funcstat(ls, line);
+            break;
+          }
+          case R.TK_LOCAL: {
+            llex.luaX_next(ls);
+            if (testnext(ls, R.TK_FUNCTION))
+              localfunc(ls);
+            else
+              localstat(ls);
+            break;
+          }
+          case R.TK_DBCOLON: {
+            llex.luaX_next(ls);
+            labelstat(ls, str_checkname(ls), line);
+            break;
+          }
+          case R.TK_RETURN: {
+            llex.luaX_next(ls);
+            retstat(ls);
+            break;
+          }
+          case R.TK_BREAK:
+          /* stat -> breakstat */
+          case R.TK_GOTO: {
+            gotostat(ls, luaK_jump(ls.fs));
+            break;
+          }
+          default: {
+            exprstat(ls);
+            break;
+          }
+        }
+        lua_assert(ls.fs.f.maxstacksize >= ls.fs.freereg && ls.fs.freereg >= ls.fs.nactvar);
+        ls.fs.freereg = ls.fs.nactvar;
+        leavelevel(ls);
+      };
+      var mainfunc = function(ls, fs) {
+        let bl = new BlockCnt();
+        let v = new expdesc();
+        open_func(ls, fs, bl);
+        fs.f.is_vararg = true;
+        init_exp(v, expkind.VLOCAL, 0);
+        newupvalue(fs, ls.envn, v);
+        llex.luaX_next(ls);
+        statlist(ls);
+        check(ls, R.TK_EOS);
+        close_func(ls);
+      };
+      var luaY_parser = function(L, z, buff, dyd, name, firstchar) {
+        let lexstate = new llex.LexState();
+        let funcstate = new FuncState();
+        let cl = lfunc.luaF_newLclosure(L, 1);
+        ldo.luaD_inctop(L);
+        L.stack[L.top - 1].setclLvalue(cl);
+        lexstate.h = ltable.luaH_new(L);
+        ldo.luaD_inctop(L);
+        L.stack[L.top - 1].sethvalue(lexstate.h);
+        funcstate.f = cl.p = new Proto(L);
+        funcstate.f.source = luaS_new(L, name);
+        lexstate.buff = buff;
+        lexstate.dyd = dyd;
+        dyd.actvar.n = dyd.gt.n = dyd.label.n = 0;
+        llex.luaX_setinput(L, lexstate, z, funcstate.f.source, firstchar);
+        mainfunc(lexstate, funcstate);
+        lua_assert(!funcstate.prev && funcstate.nups === 1 && !lexstate.fs);
+        lua_assert(dyd.actvar.n === 0 && dyd.gt.n === 0 && dyd.label.n === 0);
+        delete L.stack[--L.top];
+        return cl;
+      };
+      module.exports.Dyndata = Dyndata;
+      module.exports.expkind = expkind;
+      module.exports.expdesc = expdesc;
+      module.exports.luaY_parser = luaY_parser;
+      module.exports.vkisinreg = vkisinreg;
+    }
+  });
+
+  // node_modules/fengari/src/lundump.js
+  var require_lundump = __commonJS({
+    "node_modules/fengari/src/lundump.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_SIGNATURE,
+        constant_types: {
+          LUA_TBOOLEAN,
+          LUA_TLNGSTR,
+          LUA_TNIL,
+          LUA_TNUMFLT,
+          LUA_TNUMINT,
+          LUA_TSHRSTR
+        },
+        thread_status: { LUA_ERRSYNTAX },
+        is_luastring,
+        luastring_eq,
+        to_luastring
+      } = require_defs();
+      var ldo = require_ldo();
+      var lfunc = require_lfunc();
+      var lobject = require_lobject();
+      var {
+        MAXARG_sBx,
+        POS_A,
+        POS_Ax,
+        POS_B,
+        POS_Bx,
+        POS_C,
+        POS_OP,
+        SIZE_A,
+        SIZE_Ax,
+        SIZE_B,
+        SIZE_Bx,
+        SIZE_C,
+        SIZE_OP
+      } = require_lopcodes();
+      var { lua_assert } = require_llimits();
+      var { luaS_bless } = require_lstring();
+      var {
+        luaZ_read,
+        ZIO
+      } = require_lzio();
+      var LUAC_DATA = [25, 147, 13, 10, 26, 10];
+      var BytecodeParser = class _BytecodeParser {
+        constructor(L, Z, name) {
+          this.intSize = 4;
+          this.size_tSize = 4;
+          this.instructionSize = 4;
+          this.integerSize = 4;
+          this.numberSize = 8;
+          lua_assert(Z instanceof ZIO, "BytecodeParser only operates on a ZIO");
+          lua_assert(is_luastring(name));
+          if (name[0] === 64 || name[0] === 61)
+            this.name = name.subarray(1);
+          else if (name[0] == LUA_SIGNATURE[0])
+            this.name = to_luastring("binary string", true);
+          else
+            this.name = name;
+          this.L = L;
+          this.Z = Z;
+          this.arraybuffer = new ArrayBuffer(
+            Math.max(this.intSize, this.size_tSize, this.instructionSize, this.integerSize, this.numberSize)
+          );
+          this.dv = new DataView(this.arraybuffer);
+          this.u8 = new Uint8Array(this.arraybuffer);
+        }
+        read(size) {
+          let u8 = new Uint8Array(size);
+          if (luaZ_read(this.Z, u8, 0, size) !== 0)
+            this.error("truncated");
+          return u8;
+        }
+        LoadByte() {
+          if (luaZ_read(this.Z, this.u8, 0, 1) !== 0)
+            this.error("truncated");
+          return this.u8[0];
+        }
+        LoadInt() {
+          if (luaZ_read(this.Z, this.u8, 0, this.intSize) !== 0)
+            this.error("truncated");
+          return this.dv.getInt32(0, true);
+        }
+        LoadNumber() {
+          if (luaZ_read(this.Z, this.u8, 0, this.numberSize) !== 0)
+            this.error("truncated");
+          return this.dv.getFloat64(0, true);
+        }
+        LoadInteger() {
+          if (luaZ_read(this.Z, this.u8, 0, this.integerSize) !== 0)
+            this.error("truncated");
+          return this.dv.getInt32(0, true);
+        }
+        LoadSize_t() {
+          return this.LoadInteger();
+        }
+        LoadString() {
+          let size = this.LoadByte();
+          if (size === 255)
+            size = this.LoadSize_t();
+          if (size === 0)
+            return null;
+          return luaS_bless(this.L, this.read(size - 1));
+        }
+        /* creates a mask with 'n' 1 bits at position 'p' */
+        static MASK1(n, p) {
+          return ~(~0 << n) << p;
+        }
+        LoadCode(f) {
+          let n = this.LoadInt();
+          let p = _BytecodeParser;
+          for (let i = 0; i < n; i++) {
+            if (luaZ_read(this.Z, this.u8, 0, this.instructionSize) !== 0)
+              this.error("truncated");
+            let ins = this.dv.getUint32(0, true);
+            f.code[i] = {
+              code: ins,
+              opcode: ins >> POS_OP & p.MASK1(SIZE_OP, 0),
+              A: ins >> POS_A & p.MASK1(SIZE_A, 0),
+              B: ins >> POS_B & p.MASK1(SIZE_B, 0),
+              C: ins >> POS_C & p.MASK1(SIZE_C, 0),
+              Bx: ins >> POS_Bx & p.MASK1(SIZE_Bx, 0),
+              Ax: ins >> POS_Ax & p.MASK1(SIZE_Ax, 0),
+              sBx: (ins >> POS_Bx & p.MASK1(SIZE_Bx, 0)) - MAXARG_sBx
+            };
+          }
+        }
+        LoadConstants(f) {
+          let n = this.LoadInt();
+          for (let i = 0; i < n; i++) {
+            let t = this.LoadByte();
+            switch (t) {
+              case LUA_TNIL:
+                f.k.push(new lobject.TValue(LUA_TNIL, null));
+                break;
+              case LUA_TBOOLEAN:
+                f.k.push(new lobject.TValue(LUA_TBOOLEAN, this.LoadByte() !== 0));
+                break;
+              case LUA_TNUMFLT:
+                f.k.push(new lobject.TValue(LUA_TNUMFLT, this.LoadNumber()));
+                break;
+              case LUA_TNUMINT:
+                f.k.push(new lobject.TValue(LUA_TNUMINT, this.LoadInteger()));
+                break;
+              case LUA_TSHRSTR:
+              case LUA_TLNGSTR:
+                f.k.push(new lobject.TValue(LUA_TLNGSTR, this.LoadString()));
+                break;
+              default:
+                this.error(`unrecognized constant '${t}'`);
+            }
+          }
+        }
+        LoadProtos(f) {
+          let n = this.LoadInt();
+          for (let i = 0; i < n; i++) {
+            f.p[i] = new lfunc.Proto(this.L);
+            this.LoadFunction(f.p[i], f.source);
+          }
+        }
+        LoadUpvalues(f) {
+          let n = this.LoadInt();
+          for (let i = 0; i < n; i++) {
+            f.upvalues[i] = {
+              name: null,
+              instack: this.LoadByte(),
+              idx: this.LoadByte()
+            };
+          }
+        }
+        LoadDebug(f) {
+          let n = this.LoadInt();
+          for (let i = 0; i < n; i++)
+            f.lineinfo[i] = this.LoadInt();
+          n = this.LoadInt();
+          for (let i = 0; i < n; i++) {
+            f.locvars[i] = {
+              varname: this.LoadString(),
+              startpc: this.LoadInt(),
+              endpc: this.LoadInt()
+            };
+          }
+          n = this.LoadInt();
+          for (let i = 0; i < n; i++) {
+            f.upvalues[i].name = this.LoadString();
+          }
+        }
+        LoadFunction(f, psource) {
+          f.source = this.LoadString();
+          if (f.source === null)
+            f.source = psource;
+          f.linedefined = this.LoadInt();
+          f.lastlinedefined = this.LoadInt();
+          f.numparams = this.LoadByte();
+          f.is_vararg = this.LoadByte() !== 0;
+          f.maxstacksize = this.LoadByte();
+          this.LoadCode(f);
+          this.LoadConstants(f);
+          this.LoadUpvalues(f);
+          this.LoadProtos(f);
+          this.LoadDebug(f);
+        }
+        checkliteral(s, msg) {
+          let buff = this.read(s.length);
+          if (!luastring_eq(buff, s))
+            this.error(msg);
+        }
+        checkHeader() {
+          this.checkliteral(LUA_SIGNATURE.subarray(1), "not a");
+          if (this.LoadByte() !== 83)
+            this.error("version mismatch in");
+          if (this.LoadByte() !== 0)
+            this.error("format mismatch in");
+          this.checkliteral(LUAC_DATA, "corrupted");
+          this.intSize = this.LoadByte();
+          this.size_tSize = this.LoadByte();
+          this.instructionSize = this.LoadByte();
+          this.integerSize = this.LoadByte();
+          this.numberSize = this.LoadByte();
+          this.checksize(this.intSize, 4, "int");
+          this.checksize(this.size_tSize, 4, "size_t");
+          this.checksize(this.instructionSize, 4, "instruction");
+          this.checksize(this.integerSize, 4, "integer");
+          this.checksize(this.numberSize, 8, "number");
+          if (this.LoadInteger() !== 22136)
+            this.error("endianness mismatch in");
+          if (this.LoadNumber() !== 370.5)
+            this.error("float format mismatch in");
+        }
+        error(why) {
+          lobject.luaO_pushfstring(this.L, to_luastring("%s: %s precompiled chunk"), this.name, to_luastring(why));
+          ldo.luaD_throw(this.L, LUA_ERRSYNTAX);
+        }
+        checksize(byte, size, tname) {
+          if (byte !== size)
+            this.error(`${tname} size mismatch in`);
+        }
+      };
+      var luaU_undump = function(L, Z, name) {
+        let S = new BytecodeParser(L, Z, name);
+        S.checkHeader();
+        let cl = lfunc.luaF_newLclosure(L, S.LoadByte());
+        ldo.luaD_inctop(L);
+        L.stack[L.top - 1].setclLvalue(cl);
+        cl.p = new lfunc.Proto(L);
+        S.LoadFunction(cl.p, null);
+        lua_assert(cl.nupvalues === cl.p.upvalues.length);
+        return cl;
+      };
+      module.exports.luaU_undump = luaU_undump;
+    }
+  });
+
+  // node_modules/fengari/src/ldo.js
+  var require_ldo = __commonJS({
+    "node_modules/fengari/src/ldo.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_HOOKCALL,
+        LUA_HOOKRET,
+        LUA_HOOKTAILCALL,
+        LUA_MASKCALL,
+        LUA_MASKLINE,
+        LUA_MASKRET,
+        LUA_MINSTACK,
+        LUA_MULTRET,
+        LUA_SIGNATURE,
+        constant_types: {
+          LUA_TCCL,
+          LUA_TLCF,
+          LUA_TLCL,
+          LUA_TNIL
+        },
+        thread_status: {
+          LUA_ERRMEM,
+          LUA_ERRERR,
+          LUA_ERRRUN,
+          LUA_ERRSYNTAX,
+          LUA_OK,
+          LUA_YIELD
+        },
+        lua_Debug,
+        luastring_indexOf,
+        to_luastring
+      } = require_defs();
+      var lapi = require_lapi();
+      var ldebug = require_ldebug();
+      var lfunc = require_lfunc();
+      var {
+        api_check,
+        lua_assert,
+        LUAI_MAXCCALLS
+      } = require_llimits();
+      var lobject = require_lobject();
+      var lopcodes = require_lopcodes();
+      var lparser = require_lparser();
+      var lstate = require_lstate();
+      var { luaS_newliteral } = require_lstring();
+      var ltm = require_ltm();
+      var { LUAI_MAXSTACK } = require_luaconf();
+      var lundump = require_lundump();
+      var lvm = require_lvm();
+      var { MBuffer } = require_lzio();
+      var adjust_top = function(L, newtop) {
+        if (L.top < newtop) {
+          while (L.top < newtop)
+            L.stack[L.top++] = new lobject.TValue(LUA_TNIL, null);
+        } else {
+          while (L.top > newtop)
+            delete L.stack[--L.top];
+        }
+      };
+      var seterrorobj = function(L, errcode, oldtop) {
+        let current_top = L.top;
+        while (L.top < oldtop + 1)
+          L.stack[L.top++] = new lobject.TValue(LUA_TNIL, null);
+        switch (errcode) {
+          case LUA_ERRMEM: {
+            lobject.setsvalue2s(L, oldtop, luaS_newliteral(L, "not enough memory"));
+            break;
+          }
+          case LUA_ERRERR: {
+            lobject.setsvalue2s(L, oldtop, luaS_newliteral(L, "error in error handling"));
+            break;
+          }
+          default: {
+            lobject.setobjs2s(L, oldtop, current_top - 1);
+          }
+        }
+        while (L.top > oldtop + 1)
+          delete L.stack[--L.top];
+      };
+      var ERRORSTACKSIZE = LUAI_MAXSTACK + 200;
+      var luaD_reallocstack = function(L, newsize) {
+        lua_assert(newsize <= LUAI_MAXSTACK || newsize == ERRORSTACKSIZE);
+        lua_assert(L.stack_last == L.stack.length - lstate.EXTRA_STACK);
+        L.stack.length = newsize;
+        L.stack_last = newsize - lstate.EXTRA_STACK;
+      };
+      var luaD_growstack = function(L, n) {
+        let size = L.stack.length;
+        if (size > LUAI_MAXSTACK)
+          luaD_throw(L, LUA_ERRERR);
+        else {
+          let needed = L.top + n + lstate.EXTRA_STACK;
+          let newsize = 2 * size;
+          if (newsize > LUAI_MAXSTACK) newsize = LUAI_MAXSTACK;
+          if (newsize < needed) newsize = needed;
+          if (newsize > LUAI_MAXSTACK) {
+            luaD_reallocstack(L, ERRORSTACKSIZE);
+            ldebug.luaG_runerror(L, to_luastring("stack overflow", true));
+          } else
+            luaD_reallocstack(L, newsize);
+        }
+      };
+      var luaD_checkstack = function(L, n) {
+        if (L.stack_last - L.top <= n)
+          luaD_growstack(L, n);
+      };
+      var stackinuse = function(L) {
+        let lim = L.top;
+        for (let ci = L.ci; ci !== null; ci = ci.previous) {
+          if (lim < ci.top) lim = ci.top;
+        }
+        lua_assert(lim <= L.stack_last);
+        return lim + 1;
+      };
+      var luaD_shrinkstack = function(L) {
+        let inuse = stackinuse(L);
+        let goodsize = inuse + Math.floor(inuse / 8) + 2 * lstate.EXTRA_STACK;
+        if (goodsize > LUAI_MAXSTACK)
+          goodsize = LUAI_MAXSTACK;
+        if (L.stack.length > LUAI_MAXSTACK)
+          lstate.luaE_freeCI(L);
+        if (inuse <= LUAI_MAXSTACK - lstate.EXTRA_STACK && goodsize < L.stack.length)
+          luaD_reallocstack(L, goodsize);
+      };
+      var luaD_inctop = function(L) {
+        luaD_checkstack(L, 1);
+        L.stack[L.top++] = new lobject.TValue(LUA_TNIL, null);
+      };
+      var luaD_precall = function(L, off, nresults) {
+        let func = L.stack[off];
+        switch (func.type) {
+          case LUA_TCCL:
+          case LUA_TLCF: {
+            let f = func.type === LUA_TCCL ? func.value.f : func.value;
+            luaD_checkstack(L, LUA_MINSTACK);
+            let ci = lstate.luaE_extendCI(L);
+            ci.funcOff = off;
+            ci.nresults = nresults;
+            ci.func = func;
+            ci.top = L.top + LUA_MINSTACK;
+            lua_assert(ci.top <= L.stack_last);
+            ci.callstatus = 0;
+            if (L.hookmask & LUA_MASKCALL)
+              luaD_hook(L, LUA_HOOKCALL, -1);
+            let n = f(L);
+            if (typeof n !== "number" || n < 0 || (n | 0) !== n)
+              throw Error("invalid return value from JS function (expected integer)");
+            lapi.api_checknelems(L, n);
+            luaD_poscall(L, ci, L.top - n, n);
+            return true;
+          }
+          case LUA_TLCL: {
+            let base;
+            let p = func.value.p;
+            let n = L.top - off - 1;
+            let fsize = p.maxstacksize;
+            luaD_checkstack(L, fsize);
+            if (p.is_vararg) {
+              base = adjust_varargs(L, p, n);
+            } else {
+              for (; n < p.numparams; n++)
+                L.stack[L.top++] = new lobject.TValue(LUA_TNIL, null);
+              base = off + 1;
+            }
+            let ci = lstate.luaE_extendCI(L);
+            ci.funcOff = off;
+            ci.nresults = nresults;
+            ci.func = func;
+            ci.l_base = base;
+            ci.top = base + fsize;
+            adjust_top(L, ci.top);
+            ci.l_code = p.code;
+            ci.l_savedpc = 0;
+            ci.callstatus = lstate.CIST_LUA;
+            if (L.hookmask & LUA_MASKCALL)
+              callhook(L, ci);
+            return false;
+          }
+          default:
+            luaD_checkstack(L, 1);
+            tryfuncTM(L, off, func);
+            return luaD_precall(L, off, nresults);
+        }
+      };
+      var luaD_poscall = function(L, ci, firstResult, nres) {
+        let wanted = ci.nresults;
+        if (L.hookmask & (LUA_MASKRET | LUA_MASKLINE)) {
+          if (L.hookmask & LUA_MASKRET)
+            luaD_hook(L, LUA_HOOKRET, -1);
+          L.oldpc = ci.previous.l_savedpc;
+        }
+        let res = ci.funcOff;
+        L.ci = ci.previous;
+        L.ci.next = null;
+        return moveresults(L, firstResult, res, nres, wanted);
+      };
+      var moveresults = function(L, firstResult, res, nres, wanted) {
+        switch (wanted) {
+          case 0:
+            break;
+          case 1: {
+            if (nres === 0)
+              L.stack[res].setnilvalue();
+            else {
+              lobject.setobjs2s(L, res, firstResult);
+            }
+            break;
+          }
+          case LUA_MULTRET: {
+            for (let i = 0; i < nres; i++)
+              lobject.setobjs2s(L, res + i, firstResult + i);
+            for (let i = L.top; i >= res + nres; i--)
+              delete L.stack[i];
+            L.top = res + nres;
+            return false;
+          }
+          default: {
+            let i;
+            if (wanted <= nres) {
+              for (i = 0; i < wanted; i++)
+                lobject.setobjs2s(L, res + i, firstResult + i);
+            } else {
+              for (i = 0; i < nres; i++)
+                lobject.setobjs2s(L, res + i, firstResult + i);
+              for (; i < wanted; i++) {
+                if (res + i >= L.top)
+                  L.stack[res + i] = new lobject.TValue(LUA_TNIL, null);
+                else
+                  L.stack[res + i].setnilvalue();
+              }
+            }
+            break;
+          }
+        }
+        let newtop = res + wanted;
+        for (let i = L.top; i >= newtop; i--)
+          delete L.stack[i];
+        L.top = newtop;
+        return true;
+      };
+      var luaD_hook = function(L, event, line) {
+        let hook = L.hook;
+        if (hook && L.allowhook) {
+          let ci = L.ci;
+          let top = L.top;
+          let ci_top = ci.top;
+          let ar = new lua_Debug();
+          ar.event = event;
+          ar.currentline = line;
+          ar.i_ci = ci;
+          luaD_checkstack(L, LUA_MINSTACK);
+          ci.top = L.top + LUA_MINSTACK;
+          lua_assert(ci.top <= L.stack_last);
+          L.allowhook = 0;
+          ci.callstatus |= lstate.CIST_HOOKED;
+          hook(L, ar);
+          lua_assert(!L.allowhook);
+          L.allowhook = 1;
+          ci.top = ci_top;
+          adjust_top(L, top);
+          ci.callstatus &= ~lstate.CIST_HOOKED;
+        }
+      };
+      var callhook = function(L, ci) {
+        let hook = LUA_HOOKCALL;
+        ci.l_savedpc++;
+        if (ci.previous.callstatus & lstate.CIST_LUA && ci.previous.l_code[ci.previous.l_savedpc - 1].opcode == lopcodes.OpCodesI.OP_TAILCALL) {
+          ci.callstatus |= lstate.CIST_TAIL;
+          hook = LUA_HOOKTAILCALL;
+        }
+        luaD_hook(L, hook, -1);
+        ci.l_savedpc--;
+      };
+      var adjust_varargs = function(L, p, actual) {
+        let nfixargs = p.numparams;
+        let fixed = L.top - actual;
+        let base = L.top;
+        let i;
+        for (i = 0; i < nfixargs && i < actual; i++) {
+          lobject.pushobj2s(L, L.stack[fixed + i]);
+          L.stack[fixed + i].setnilvalue();
+        }
+        for (; i < nfixargs; i++)
+          L.stack[L.top++] = new lobject.TValue(LUA_TNIL, null);
+        return base;
+      };
+      var tryfuncTM = function(L, off, func) {
+        let tm = ltm.luaT_gettmbyobj(L, func, ltm.TMS.TM_CALL);
+        if (!tm.ttisfunction(tm))
+          ldebug.luaG_typeerror(L, func, to_luastring("call", true));
+        lobject.pushobj2s(L, L.stack[L.top - 1]);
+        for (let p = L.top - 2; p > off; p--)
+          lobject.setobjs2s(L, p, p - 1);
+        lobject.setobj2s(L, off, tm);
+      };
+      var stackerror = function(L) {
+        if (L.nCcalls === LUAI_MAXCCALLS)
+          ldebug.luaG_runerror(L, to_luastring("JS stack overflow", true));
+        else if (L.nCcalls >= LUAI_MAXCCALLS + (LUAI_MAXCCALLS >> 3))
+          luaD_throw(L, LUA_ERRERR);
+      };
+      var luaD_call = function(L, off, nResults) {
+        if (++L.nCcalls >= LUAI_MAXCCALLS)
+          stackerror(L);
+        if (!luaD_precall(L, off, nResults))
+          lvm.luaV_execute(L);
+        L.nCcalls--;
+      };
+      var luaD_throw = function(L, errcode) {
+        if (L.errorJmp) {
+          L.errorJmp.status = errcode;
+          throw L.errorJmp;
+        } else {
+          let g = L.l_G;
+          L.status = errcode;
+          if (g.mainthread.errorJmp) {
+            g.mainthread.stack[g.mainthread.top++] = L.stack[L.top - 1];
+            luaD_throw(g.mainthread, errcode);
+          } else {
+            let panic = g.panic;
+            if (panic) {
+              seterrorobj(L, errcode, L.top);
+              if (L.ci.top < L.top)
+                L.ci.top = L.top;
+              panic(L);
+            }
+            throw new Error(`Aborted ${errcode}`);
+          }
+        }
+      };
+      var luaD_rawrunprotected = function(L, f, ud) {
+        let oldnCcalls = L.nCcalls;
+        let lj = {
+          status: LUA_OK,
+          previous: L.errorJmp
+          /* chain new error handler */
+        };
+        L.errorJmp = lj;
+        try {
+          f(L, ud);
+        } catch (e) {
+          if (lj.status === LUA_OK) {
+            let atnativeerror = L.l_G.atnativeerror;
+            if (atnativeerror) {
+              try {
+                lj.status = LUA_OK;
+                lapi.lua_pushcfunction(L, atnativeerror);
+                lapi.lua_pushlightuserdata(L, e);
+                luaD_callnoyield(L, L.top - 2, 1);
+                if (L.errfunc !== 0) {
+                  let errfunc = L.errfunc;
+                  lobject.pushobj2s(L, L.stack[L.top - 1]);
+                  lobject.setobjs2s(L, L.top - 2, errfunc);
+                  luaD_callnoyield(L, L.top - 2, 1);
+                }
+                lj.status = LUA_ERRRUN;
+              } catch (e2) {
+                if (lj.status === LUA_OK) {
+                  lj.status = -1;
+                }
+              }
+            } else {
+              lj.status = -1;
+            }
+          }
+        }
+        L.errorJmp = lj.previous;
+        L.nCcalls = oldnCcalls;
+        return lj.status;
+      };
+      var finishCcall = function(L, status) {
+        let ci = L.ci;
+        lua_assert(ci.c_k !== null && L.nny === 0);
+        lua_assert(ci.callstatus & lstate.CIST_YPCALL || status === LUA_YIELD);
+        if (ci.callstatus & lstate.CIST_YPCALL) {
+          ci.callstatus &= ~lstate.CIST_YPCALL;
+          L.errfunc = ci.c_old_errfunc;
+        }
+        if (ci.nresults === LUA_MULTRET && L.ci.top < L.top) L.ci.top = L.top;
+        let c_k = ci.c_k;
+        let n = c_k(L, status, ci.c_ctx);
+        lapi.api_checknelems(L, n);
+        luaD_poscall(L, ci, L.top - n, n);
+      };
+      var unroll = function(L, ud) {
+        if (ud !== null)
+          finishCcall(L, ud);
+        while (L.ci !== L.base_ci) {
+          if (!(L.ci.callstatus & lstate.CIST_LUA))
+            finishCcall(L, LUA_YIELD);
+          else {
+            lvm.luaV_finishOp(L);
+            lvm.luaV_execute(L);
+          }
+        }
+      };
+      var findpcall = function(L) {
+        for (let ci = L.ci; ci !== null; ci = ci.previous) {
+          if (ci.callstatus & lstate.CIST_YPCALL)
+            return ci;
+        }
+        return null;
+      };
+      var recover = function(L, status) {
+        let ci = findpcall(L);
+        if (ci === null) return 0;
+        let oldtop = ci.extra;
+        lfunc.luaF_close(L, oldtop);
+        seterrorobj(L, status, oldtop);
+        L.ci = ci;
+        L.allowhook = ci.callstatus & lstate.CIST_OAH;
+        L.nny = 0;
+        luaD_shrinkstack(L);
+        L.errfunc = ci.c_old_errfunc;
+        return 1;
+      };
+      var resume_error = function(L, msg, narg) {
+        let ts = luaS_newliteral(L, msg);
+        if (narg === 0) {
+          lobject.pushsvalue2s(L, ts);
+          api_check(L, L.top <= L.ci.top, "stack overflow");
+        } else {
+          for (let i = 1; i < narg; i++)
+            delete L.stack[--L.top];
+          lobject.setsvalue2s(L, L.top - 1, ts);
+        }
+        return LUA_ERRRUN;
+      };
+      var resume = function(L, n) {
+        let firstArg = L.top - n;
+        let ci = L.ci;
+        if (L.status === LUA_OK) {
+          if (!luaD_precall(L, firstArg - 1, LUA_MULTRET))
+            lvm.luaV_execute(L);
+        } else {
+          lua_assert(L.status === LUA_YIELD);
+          L.status = LUA_OK;
+          ci.funcOff = ci.extra;
+          ci.func = L.stack[ci.funcOff];
+          if (ci.callstatus & lstate.CIST_LUA)
+            lvm.luaV_execute(L);
+          else {
+            if (ci.c_k !== null) {
+              n = ci.c_k(L, LUA_YIELD, ci.c_ctx);
+              lapi.api_checknelems(L, n);
+              firstArg = L.top - n;
+            }
+            luaD_poscall(L, ci, firstArg, n);
+          }
+          unroll(L, null);
+        }
+      };
+      var lua_resume = function(L, from, nargs) {
+        let oldnny = L.nny;
+        if (L.status === LUA_OK) {
+          if (L.ci !== L.base_ci)
+            return resume_error(L, "cannot resume non-suspended coroutine", nargs);
+        } else if (L.status !== LUA_YIELD)
+          return resume_error(L, "cannot resume dead coroutine", nargs);
+        L.nCcalls = from ? from.nCcalls + 1 : 1;
+        if (L.nCcalls >= LUAI_MAXCCALLS)
+          return resume_error(L, "JS stack overflow", nargs);
+        L.nny = 0;
+        lapi.api_checknelems(L, L.status === LUA_OK ? nargs + 1 : nargs);
+        let status = luaD_rawrunprotected(L, resume, nargs);
+        if (status === -1)
+          status = LUA_ERRRUN;
+        else {
+          while (status > LUA_YIELD && recover(L, status)) {
+            status = luaD_rawrunprotected(L, unroll, status);
+          }
+          if (status > LUA_YIELD) {
+            L.status = status;
+            seterrorobj(L, status, L.top);
+            L.ci.top = L.top;
+          } else
+            lua_assert(status === L.status);
+        }
+        L.nny = oldnny;
+        L.nCcalls--;
+        lua_assert(L.nCcalls === (from ? from.nCcalls : 0));
+        return status;
+      };
+      var lua_isyieldable = function(L) {
+        return L.nny === 0;
+      };
+      var lua_yieldk = function(L, nresults, ctx, k) {
+        let ci = L.ci;
+        lapi.api_checknelems(L, nresults);
+        if (L.nny > 0) {
+          if (L !== L.l_G.mainthread)
+            ldebug.luaG_runerror(L, to_luastring("attempt to yield across a JS-call boundary", true));
+          else
+            ldebug.luaG_runerror(L, to_luastring("attempt to yield from outside a coroutine", true));
+        }
+        L.status = LUA_YIELD;
+        ci.extra = ci.funcOff;
+        if (ci.callstatus & lstate.CIST_LUA)
+          api_check(L, k === null, "hooks cannot continue after yielding");
+        else {
+          ci.c_k = k;
+          if (k !== null)
+            ci.c_ctx = ctx;
+          ci.funcOff = L.top - nresults - 1;
+          ci.func = L.stack[ci.funcOff];
+          luaD_throw(L, LUA_YIELD);
+        }
+        lua_assert(ci.callstatus & lstate.CIST_HOOKED);
+        return 0;
+      };
+      var lua_yield = function(L, n) {
+        lua_yieldk(L, n, 0, null);
+      };
+      var luaD_pcall = function(L, func, u, old_top, ef) {
+        let old_ci = L.ci;
+        let old_allowhooks = L.allowhook;
+        let old_nny = L.nny;
+        let old_errfunc = L.errfunc;
+        L.errfunc = ef;
+        let status = luaD_rawrunprotected(L, func, u);
+        if (status !== LUA_OK) {
+          lfunc.luaF_close(L, old_top);
+          seterrorobj(L, status, old_top);
+          L.ci = old_ci;
+          L.allowhook = old_allowhooks;
+          L.nny = old_nny;
+          luaD_shrinkstack(L);
+        }
+        L.errfunc = old_errfunc;
+        return status;
+      };
+      var luaD_callnoyield = function(L, off, nResults) {
+        L.nny++;
+        luaD_call(L, off, nResults);
+        L.nny--;
+      };
+      var SParser = class {
+        constructor(z, name, mode) {
+          this.z = z;
+          this.buff = new MBuffer();
+          this.dyd = new lparser.Dyndata();
+          this.mode = mode;
+          this.name = name;
+        }
+      };
+      var checkmode = function(L, mode, x) {
+        if (mode && luastring_indexOf(mode, x[0]) === -1) {
+          lobject.luaO_pushfstring(
+            L,
+            to_luastring("attempt to load a %s chunk (mode is '%s')"),
+            x,
+            mode
+          );
+          luaD_throw(L, LUA_ERRSYNTAX);
+        }
+      };
+      var f_parser = function(L, p) {
+        let cl;
+        let c = p.z.zgetc();
+        if (c === LUA_SIGNATURE[0]) {
+          checkmode(L, p.mode, to_luastring("binary", true));
+          cl = lundump.luaU_undump(L, p.z, p.name);
+        } else {
+          checkmode(L, p.mode, to_luastring("text", true));
+          cl = lparser.luaY_parser(L, p.z, p.buff, p.dyd, p.name, c);
+        }
+        lua_assert(cl.nupvalues === cl.p.upvalues.length);
+        lfunc.luaF_initupvals(L, cl);
+      };
+      var luaD_protectedparser = function(L, z, name, mode) {
+        let p = new SParser(z, name, mode);
+        L.nny++;
+        let status = luaD_pcall(L, f_parser, p, L.top, L.errfunc);
+        L.nny--;
+        return status;
+      };
+      module.exports.adjust_top = adjust_top;
+      module.exports.luaD_call = luaD_call;
+      module.exports.luaD_callnoyield = luaD_callnoyield;
+      module.exports.luaD_checkstack = luaD_checkstack;
+      module.exports.luaD_growstack = luaD_growstack;
+      module.exports.luaD_hook = luaD_hook;
+      module.exports.luaD_inctop = luaD_inctop;
+      module.exports.luaD_pcall = luaD_pcall;
+      module.exports.luaD_poscall = luaD_poscall;
+      module.exports.luaD_precall = luaD_precall;
+      module.exports.luaD_protectedparser = luaD_protectedparser;
+      module.exports.luaD_rawrunprotected = luaD_rawrunprotected;
+      module.exports.luaD_reallocstack = luaD_reallocstack;
+      module.exports.luaD_throw = luaD_throw;
+      module.exports.lua_isyieldable = lua_isyieldable;
+      module.exports.lua_resume = lua_resume;
+      module.exports.lua_yield = lua_yield;
+      module.exports.lua_yieldk = lua_yieldk;
+    }
+  });
+
+  // node_modules/fengari/src/ldebug.js
+  var require_ldebug = __commonJS({
+    "node_modules/fengari/src/ldebug.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_HOOKCOUNT,
+        LUA_HOOKLINE,
+        LUA_MASKCOUNT,
+        LUA_MASKLINE,
+        constant_types: {
+          LUA_TBOOLEAN,
+          LUA_TNIL,
+          LUA_TTABLE
+        },
+        thread_status: {
+          LUA_ERRRUN,
+          LUA_YIELD
+        },
+        from_userstring,
+        luastring_eq,
+        luastring_indexOf,
+        to_luastring
+      } = require_defs();
+      var {
+        api_check,
+        lua_assert
+      } = require_llimits();
+      var { LUA_IDSIZE } = require_luaconf();
+      var lapi = require_lapi();
+      var ldo = require_ldo();
+      var lfunc = require_lfunc();
+      var llex = require_llex();
+      var lobject = require_lobject();
+      var lopcodes = require_lopcodes();
+      var lstate = require_lstate();
+      var ltable = require_ltable();
+      var ltm = require_ltm();
+      var lvm = require_lvm();
+      var currentpc = function(ci) {
+        lua_assert(ci.callstatus & lstate.CIST_LUA);
+        return ci.l_savedpc - 1;
+      };
+      var currentline = function(ci) {
+        return ci.func.value.p.lineinfo.length !== 0 ? ci.func.value.p.lineinfo[currentpc(ci)] : -1;
+      };
+      var swapextra = function(L) {
+        if (L.status === LUA_YIELD) {
+          let ci = L.ci;
+          let temp = ci.funcOff;
+          ci.func = L.stack[ci.extra];
+          ci.funcOff = ci.extra;
+          ci.extra = temp;
+        }
+      };
+      var lua_sethook = function(L, func, mask, count) {
+        if (func === null || mask === 0) {
+          mask = 0;
+          func = null;
+        }
+        if (L.ci.callstatus & lstate.CIST_LUA)
+          L.oldpc = L.ci.l_savedpc;
+        L.hook = func;
+        L.basehookcount = count;
+        L.hookcount = L.basehookcount;
+        L.hookmask = mask;
+      };
+      var lua_gethook = function(L) {
+        return L.hook;
+      };
+      var lua_gethookmask = function(L) {
+        return L.hookmask;
+      };
+      var lua_gethookcount = function(L) {
+        return L.basehookcount;
+      };
+      var lua_getstack = function(L, level, ar) {
+        let ci;
+        let status;
+        if (level < 0) return 0;
+        for (ci = L.ci; level > 0 && ci !== L.base_ci; ci = ci.previous)
+          level--;
+        if (level === 0 && ci !== L.base_ci) {
+          status = 1;
+          ar.i_ci = ci;
+        } else
+          status = 0;
+        return status;
+      };
+      var upvalname = function(p, uv) {
+        lua_assert(uv < p.upvalues.length);
+        let s = p.upvalues[uv].name;
+        if (s === null) return to_luastring("?", true);
+        return s.getstr();
+      };
+      var findvararg = function(ci, n) {
+        let nparams = ci.func.value.p.numparams;
+        if (n >= ci.l_base - ci.funcOff - nparams)
+          return null;
+        else {
+          return {
+            pos: ci.funcOff + nparams + n,
+            name: to_luastring("(*vararg)", true)
+            /* generic name for any vararg */
+          };
+        }
+      };
+      var findlocal = function(L, ci, n) {
+        let base, name = null;
+        if (ci.callstatus & lstate.CIST_LUA) {
+          if (n < 0)
+            return findvararg(ci, -n);
+          else {
+            base = ci.l_base;
+            name = lfunc.luaF_getlocalname(ci.func.value.p, n, currentpc(ci));
+          }
+        } else
+          base = ci.funcOff + 1;
+        if (name === null) {
+          let limit = ci === L.ci ? L.top : ci.next.funcOff;
+          if (limit - base >= n && n > 0)
+            name = to_luastring("(*temporary)", true);
+          else
+            return null;
+        }
+        return {
+          pos: base + (n - 1),
+          name
+        };
+      };
+      var lua_getlocal = function(L, ar, n) {
+        let name;
+        swapextra(L);
+        if (ar === null) {
+          if (!L.stack[L.top - 1].ttisLclosure())
+            name = null;
+          else
+            name = lfunc.luaF_getlocalname(L.stack[L.top - 1].value.p, n, 0);
+        } else {
+          let local = findlocal(L, ar.i_ci, n);
+          if (local) {
+            name = local.name;
+            lobject.pushobj2s(L, L.stack[local.pos]);
+            api_check(L, L.top <= L.ci.top, "stack overflow");
+          } else {
+            name = null;
+          }
+        }
+        swapextra(L);
+        return name;
+      };
+      var lua_setlocal = function(L, ar, n) {
+        let name;
+        swapextra(L);
+        let local = findlocal(L, ar.i_ci, n);
+        if (local) {
+          name = local.name;
+          lobject.setobjs2s(L, local.pos, L.top - 1);
+          delete L.stack[--L.top];
+        } else {
+          name = null;
+        }
+        swapextra(L);
+        return name;
+      };
+      var funcinfo = function(ar, cl) {
+        if (cl === null || cl instanceof lobject.CClosure) {
+          ar.source = to_luastring("=[JS]", true);
+          ar.linedefined = -1;
+          ar.lastlinedefined = -1;
+          ar.what = to_luastring("J", true);
+        } else {
+          let p = cl.p;
+          ar.source = p.source ? p.source.getstr() : to_luastring("=?", true);
+          ar.linedefined = p.linedefined;
+          ar.lastlinedefined = p.lastlinedefined;
+          ar.what = ar.linedefined === 0 ? to_luastring("main", true) : to_luastring("Lua", true);
+        }
+        ar.short_src = lobject.luaO_chunkid(ar.source, LUA_IDSIZE);
+      };
+      var collectvalidlines = function(L, f) {
+        if (f === null || f instanceof lobject.CClosure) {
+          L.stack[L.top] = new lobject.TValue(LUA_TNIL, null);
+          lapi.api_incr_top(L);
+        } else {
+          let lineinfo = f.p.lineinfo;
+          let t = ltable.luaH_new(L);
+          L.stack[L.top] = new lobject.TValue(LUA_TTABLE, t);
+          lapi.api_incr_top(L);
+          let v = new lobject.TValue(LUA_TBOOLEAN, true);
+          for (let i = 0; i < lineinfo.length; i++)
+            ltable.luaH_setint(t, lineinfo[i], v);
+        }
+      };
+      var getfuncname = function(L, ci) {
+        let r = {
+          name: null,
+          funcname: null
+        };
+        if (ci === null)
+          return null;
+        else if (ci.callstatus & lstate.CIST_FIN) {
+          r.name = to_luastring("__gc", true);
+          r.funcname = to_luastring("metamethod", true);
+          return r;
+        } else if (!(ci.callstatus & lstate.CIST_TAIL) && ci.previous.callstatus & lstate.CIST_LUA)
+          return funcnamefromcode(L, ci.previous);
+        else return null;
+      };
+      var auxgetinfo = function(L, what, ar, f, ci) {
+        let status = 1;
+        for (; what.length > 0; what = what.subarray(1)) {
+          switch (what[0]) {
+            case 83: {
+              funcinfo(ar, f);
+              break;
+            }
+            case 108: {
+              ar.currentline = ci && ci.callstatus & lstate.CIST_LUA ? currentline(ci) : -1;
+              break;
+            }
+            case 117: {
+              ar.nups = f === null ? 0 : f.nupvalues;
+              if (f === null || f instanceof lobject.CClosure) {
+                ar.isvararg = true;
+                ar.nparams = 0;
+              } else {
+                ar.isvararg = f.p.is_vararg;
+                ar.nparams = f.p.numparams;
+              }
+              break;
+            }
+            case 116: {
+              ar.istailcall = ci ? ci.callstatus & lstate.CIST_TAIL : 0;
+              break;
+            }
+            case 110: {
+              let r = getfuncname(L, ci);
+              if (r === null) {
+                ar.namewhat = to_luastring("", true);
+                ar.name = null;
+              } else {
+                ar.namewhat = r.funcname;
+                ar.name = r.name;
+              }
+              break;
+            }
+            case 76:
+            case 102:
+              break;
+            default:
+              status = 0;
+          }
+        }
+        return status;
+      };
+      var lua_getinfo = function(L, what, ar) {
+        what = from_userstring(what);
+        let status, cl, ci, func;
+        swapextra(L);
+        if (what[0] === 62) {
+          ci = null;
+          func = L.stack[L.top - 1];
+          api_check(L, func.ttisfunction(), "function expected");
+          what = what.subarray(1);
+          L.top--;
+        } else {
+          ci = ar.i_ci;
+          func = ci.func;
+          lua_assert(ci.func.ttisfunction());
+        }
+        cl = func.ttisclosure() ? func.value : null;
+        status = auxgetinfo(L, what, ar, cl, ci);
+        if (luastring_indexOf(
+          what,
+          102
+          /* ('f').charCodeAt(0) */
+        ) >= 0) {
+          lobject.pushobj2s(L, func);
+          api_check(L, L.top <= L.ci.top, "stack overflow");
+        }
+        swapextra(L);
+        if (luastring_indexOf(
+          what,
+          76
+          /* ('L').charCodeAt(0) */
+        ) >= 0)
+          collectvalidlines(L, cl);
+        return status;
+      };
+      var kname = function(p, pc, c) {
+        let r = {
+          name: null,
+          funcname: null
+        };
+        if (lopcodes.ISK(c)) {
+          let kvalue = p.k[lopcodes.INDEXK(c)];
+          if (kvalue.ttisstring()) {
+            r.name = kvalue.svalue();
+            return r;
+          }
+        } else {
+          let what = getobjname(p, pc, c);
+          if (what && what.funcname[0] === 99) {
+            return what;
+          }
+        }
+        r.name = to_luastring("?", true);
+        return r;
+      };
+      var filterpc = function(pc, jmptarget) {
+        if (pc < jmptarget)
+          return -1;
+        else return pc;
+      };
+      var findsetreg = function(p, lastpc, reg) {
+        let setreg = -1;
+        let jmptarget = 0;
+        let OCi = lopcodes.OpCodesI;
+        for (let pc = 0; pc < lastpc; pc++) {
+          let i = p.code[pc];
+          let a = i.A;
+          switch (i.opcode) {
+            case OCi.OP_LOADNIL: {
+              let b = i.B;
+              if (a <= reg && reg <= a + b)
+                setreg = filterpc(pc, jmptarget);
+              break;
+            }
+            case OCi.OP_TFORCALL: {
+              if (reg >= a + 2)
+                setreg = filterpc(pc, jmptarget);
+              break;
+            }
+            case OCi.OP_CALL:
+            case OCi.OP_TAILCALL: {
+              if (reg >= a)
+                setreg = filterpc(pc, jmptarget);
+              break;
+            }
+            case OCi.OP_JMP: {
+              let b = i.sBx;
+              let dest = pc + 1 + b;
+              if (pc < dest && dest <= lastpc) {
+                if (dest > jmptarget)
+                  jmptarget = dest;
+              }
+              break;
+            }
+            default:
+              if (lopcodes.testAMode(i.opcode) && reg === a)
+                setreg = filterpc(pc, jmptarget);
+              break;
+          }
+        }
+        return setreg;
+      };
+      var getobjname = function(p, lastpc, reg) {
+        let r = {
+          name: lfunc.luaF_getlocalname(p, reg + 1, lastpc),
+          funcname: null
+        };
+        if (r.name) {
+          r.funcname = to_luastring("local", true);
+          return r;
+        }
+        let pc = findsetreg(p, lastpc, reg);
+        let OCi = lopcodes.OpCodesI;
+        if (pc !== -1) {
+          let i = p.code[pc];
+          switch (i.opcode) {
+            case OCi.OP_MOVE: {
+              let b = i.B;
+              if (b < i.A)
+                return getobjname(p, pc, b);
+              break;
+            }
+            case OCi.OP_GETTABUP:
+            case OCi.OP_GETTABLE: {
+              let k = i.C;
+              let t = i.B;
+              let vn = i.opcode === OCi.OP_GETTABLE ? lfunc.luaF_getlocalname(p, t + 1, pc) : upvalname(p, t);
+              r.name = kname(p, pc, k).name;
+              r.funcname = vn && luastring_eq(vn, llex.LUA_ENV) ? to_luastring("global", true) : to_luastring("field", true);
+              return r;
+            }
+            case OCi.OP_GETUPVAL: {
+              r.name = upvalname(p, i.B);
+              r.funcname = to_luastring("upvalue", true);
+              return r;
+            }
+            case OCi.OP_LOADK:
+            case OCi.OP_LOADKX: {
+              let b = i.opcode === OCi.OP_LOADK ? i.Bx : p.code[pc + 1].Ax;
+              if (p.k[b].ttisstring()) {
+                r.name = p.k[b].svalue();
+                r.funcname = to_luastring("constant", true);
+                return r;
+              }
+              break;
+            }
+            case OCi.OP_SELF: {
+              let k = i.C;
+              r.name = kname(p, pc, k).name;
+              r.funcname = to_luastring("method", true);
+              return r;
+            }
+            default:
+              break;
+          }
+        }
+        return null;
+      };
+      var funcnamefromcode = function(L, ci) {
+        let r = {
+          name: null,
+          funcname: null
+        };
+        let tm = 0;
+        let p = ci.func.value.p;
+        let pc = currentpc(ci);
+        let i = p.code[pc];
+        let OCi = lopcodes.OpCodesI;
+        if (ci.callstatus & lstate.CIST_HOOKED) {
+          r.name = to_luastring("?", true);
+          r.funcname = to_luastring("hook", true);
+          return r;
+        }
+        switch (i.opcode) {
+          case OCi.OP_CALL:
+          case OCi.OP_TAILCALL:
+            return getobjname(p, pc, i.A);
+          /* get function name */
+          case OCi.OP_TFORCALL:
+            r.name = to_luastring("for iterator", true);
+            r.funcname = to_luastring("for iterator", true);
+            return r;
+          /* other instructions can do calls through metamethods */
+          case OCi.OP_SELF:
+          case OCi.OP_GETTABUP:
+          case OCi.OP_GETTABLE:
+            tm = ltm.TMS.TM_INDEX;
+            break;
+          case OCi.OP_SETTABUP:
+          case OCi.OP_SETTABLE:
+            tm = ltm.TMS.TM_NEWINDEX;
+            break;
+          case OCi.OP_ADD:
+            tm = ltm.TMS.TM_ADD;
+            break;
+          case OCi.OP_SUB:
+            tm = ltm.TMS.TM_SUB;
+            break;
+          case OCi.OP_MUL:
+            tm = ltm.TMS.TM_MUL;
+            break;
+          case OCi.OP_MOD:
+            tm = ltm.TMS.TM_MOD;
+            break;
+          case OCi.OP_POW:
+            tm = ltm.TMS.TM_POW;
+            break;
+          case OCi.OP_DIV:
+            tm = ltm.TMS.TM_DIV;
+            break;
+          case OCi.OP_IDIV:
+            tm = ltm.TMS.TM_IDIV;
+            break;
+          case OCi.OP_BAND:
+            tm = ltm.TMS.TM_BAND;
+            break;
+          case OCi.OP_BOR:
+            tm = ltm.TMS.TM_BOR;
+            break;
+          case OCi.OP_BXOR:
+            tm = ltm.TMS.TM_BXOR;
+            break;
+          case OCi.OP_SHL:
+            tm = ltm.TMS.TM_SHL;
+            break;
+          case OCi.OP_SHR:
+            tm = ltm.TMS.TM_SHR;
+            break;
+          case OCi.OP_UNM:
+            tm = ltm.TMS.TM_UNM;
+            break;
+          case OCi.OP_BNOT:
+            tm = ltm.TMS.TM_BNOT;
+            break;
+          case OCi.OP_LEN:
+            tm = ltm.TMS.TM_LEN;
+            break;
+          case OCi.OP_CONCAT:
+            tm = ltm.TMS.TM_CONCAT;
+            break;
+          case OCi.OP_EQ:
+            tm = ltm.TMS.TM_EQ;
+            break;
+          case OCi.OP_LT:
+            tm = ltm.TMS.TM_LT;
+            break;
+          case OCi.OP_LE:
+            tm = ltm.TMS.TM_LE;
+            break;
+          default:
+            return null;
+        }
+        r.name = L.l_G.tmname[tm].getstr();
+        r.funcname = to_luastring("metamethod", true);
+        return r;
+      };
+      var isinstack = function(L, ci, o) {
+        for (let i = ci.l_base; i < ci.top; i++) {
+          if (L.stack[i] === o)
+            return i;
+        }
+        return false;
+      };
+      var getupvalname = function(L, ci, o) {
+        let c = ci.func.value;
+        for (let i = 0; i < c.nupvalues; i++) {
+          if (c.upvals[i] === o) {
+            return {
+              name: upvalname(c.p, i),
+              funcname: to_luastring("upvalue", true)
+            };
+          }
+        }
+        return null;
+      };
+      var varinfo = function(L, o) {
+        let ci = L.ci;
+        let kind = null;
+        if (ci.callstatus & lstate.CIST_LUA) {
+          kind = getupvalname(L, ci, o);
+          let stkid = isinstack(L, ci, o);
+          if (!kind && stkid)
+            kind = getobjname(ci.func.value.p, currentpc(ci), stkid - ci.l_base);
+        }
+        return kind ? lobject.luaO_pushfstring(L, to_luastring(" (%s '%s')", true), kind.funcname, kind.name) : to_luastring("", true);
+      };
+      var luaG_typeerror = function(L, o, op) {
+        let t = ltm.luaT_objtypename(L, o);
+        luaG_runerror(L, to_luastring("attempt to %s a %s value%s", true), op, t, varinfo(L, o));
+      };
+      var luaG_concaterror = function(L, p1, p2) {
+        if (p1.ttisstring() || lvm.cvt2str(p1)) p1 = p2;
+        luaG_typeerror(L, p1, to_luastring("concatenate", true));
+      };
+      var luaG_opinterror = function(L, p1, p2, msg) {
+        if (lvm.tonumber(p1) === false)
+          p2 = p1;
+        luaG_typeerror(L, p2, msg);
+      };
+      var luaG_ordererror = function(L, p1, p2) {
+        let t1 = ltm.luaT_objtypename(L, p1);
+        let t2 = ltm.luaT_objtypename(L, p2);
+        if (luastring_eq(t1, t2))
+          luaG_runerror(L, to_luastring("attempt to compare two %s values", true), t1);
+        else
+          luaG_runerror(L, to_luastring("attempt to compare %s with %s", true), t1, t2);
+      };
+      var luaG_addinfo = function(L, msg, src, line) {
+        let buff;
+        if (src)
+          buff = lobject.luaO_chunkid(src.getstr(), LUA_IDSIZE);
+        else
+          buff = to_luastring("?", true);
+        return lobject.luaO_pushfstring(L, to_luastring("%s:%d: %s", true), buff, line, msg);
+      };
+      var luaG_runerror = function(L, fmt, ...argp) {
+        let ci = L.ci;
+        let msg = lobject.luaO_pushvfstring(L, fmt, argp);
+        if (ci.callstatus & lstate.CIST_LUA)
+          luaG_addinfo(L, msg, ci.func.value.p.source, currentline(ci));
+        luaG_errormsg(L);
+      };
+      var luaG_errormsg = function(L) {
+        if (L.errfunc !== 0) {
+          let errfunc = L.errfunc;
+          lobject.pushobj2s(L, L.stack[L.top - 1]);
+          lobject.setobjs2s(L, L.top - 2, errfunc);
+          ldo.luaD_callnoyield(L, L.top - 2, 1);
+        }
+        ldo.luaD_throw(L, LUA_ERRRUN);
+      };
+      var luaG_tointerror = function(L, p1, p2) {
+        let temp = lvm.tointeger(p1);
+        if (temp === false)
+          p2 = p1;
+        luaG_runerror(L, to_luastring("number%s has no integer representation", true), varinfo(L, p2));
+      };
+      var luaG_traceexec = function(L) {
+        let ci = L.ci;
+        let mask = L.hookmask;
+        let counthook = --L.hookcount === 0 && mask & LUA_MASKCOUNT;
+        if (counthook)
+          L.hookcount = L.basehookcount;
+        else if (!(mask & LUA_MASKLINE))
+          return;
+        if (ci.callstatus & lstate.CIST_HOOKYIELD) {
+          ci.callstatus &= ~lstate.CIST_HOOKYIELD;
+          return;
+        }
+        if (counthook)
+          ldo.luaD_hook(L, LUA_HOOKCOUNT, -1);
+        if (mask & LUA_MASKLINE) {
+          let p = ci.func.value.p;
+          let npc = ci.l_savedpc - 1;
+          let newline = p.lineinfo.length !== 0 ? p.lineinfo[npc] : -1;
+          if (npc === 0 || /* call linehook when enter a new function, */
+          ci.l_savedpc <= L.oldpc || /* when jump back (loop), or when */
+          newline !== (p.lineinfo.length !== 0 ? p.lineinfo[L.oldpc - 1] : -1))
+            ldo.luaD_hook(L, LUA_HOOKLINE, newline);
+        }
+        L.oldpc = ci.l_savedpc;
+        if (L.status === LUA_YIELD) {
+          if (counthook)
+            L.hookcount = 1;
+          ci.l_savedpc--;
+          ci.callstatus |= lstate.CIST_HOOKYIELD;
+          ci.funcOff = L.top - 1;
+          ci.func = L.stack[ci.funcOff];
+          ldo.luaD_throw(L, LUA_YIELD);
+        }
+      };
+      module.exports.luaG_addinfo = luaG_addinfo;
+      module.exports.luaG_concaterror = luaG_concaterror;
+      module.exports.luaG_errormsg = luaG_errormsg;
+      module.exports.luaG_opinterror = luaG_opinterror;
+      module.exports.luaG_ordererror = luaG_ordererror;
+      module.exports.luaG_runerror = luaG_runerror;
+      module.exports.luaG_tointerror = luaG_tointerror;
+      module.exports.luaG_traceexec = luaG_traceexec;
+      module.exports.luaG_typeerror = luaG_typeerror;
+      module.exports.lua_gethook = lua_gethook;
+      module.exports.lua_gethookcount = lua_gethookcount;
+      module.exports.lua_gethookmask = lua_gethookmask;
+      module.exports.lua_getinfo = lua_getinfo;
+      module.exports.lua_getlocal = lua_getlocal;
+      module.exports.lua_getstack = lua_getstack;
+      module.exports.lua_sethook = lua_sethook;
+      module.exports.lua_setlocal = lua_setlocal;
+    }
+  });
+
+  // node_modules/fengari/src/ldump.js
+  var require_ldump = __commonJS({
+    "node_modules/fengari/src/ldump.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_SIGNATURE,
+        LUA_VERSION_MAJOR,
+        LUA_VERSION_MINOR,
+        constant_types: {
+          LUA_TBOOLEAN,
+          LUA_TLNGSTR,
+          LUA_TNIL,
+          LUA_TNUMFLT,
+          LUA_TNUMINT,
+          LUA_TSHRSTR
+        },
+        luastring_of
+      } = require_defs();
+      var LUAC_DATA = luastring_of(25, 147, 13, 10, 26, 10);
+      var LUAC_INT = 22136;
+      var LUAC_NUM = 370.5;
+      var LUAC_VERSION = Number(LUA_VERSION_MAJOR) * 16 + Number(LUA_VERSION_MINOR);
+      var LUAC_FORMAT = 0;
+      var DumpState = class {
+        constructor() {
+          this.L = null;
+          this.write = null;
+          this.data = null;
+          this.strip = NaN;
+          this.status = NaN;
+        }
+      };
+      var DumpBlock = function(b, size, D) {
+        if (D.status === 0 && size > 0)
+          D.status = D.writer(D.L, b, size, D.data);
+      };
+      var DumpByte = function(y, D) {
+        DumpBlock(luastring_of(y), 1, D);
+      };
+      var DumpInt = function(x, D) {
+        let ab = new ArrayBuffer(4);
+        let dv = new DataView(ab);
+        dv.setInt32(0, x, true);
+        let t = new Uint8Array(ab);
+        DumpBlock(t, 4, D);
+      };
+      var DumpInteger = function(x, D) {
+        let ab = new ArrayBuffer(4);
+        let dv = new DataView(ab);
+        dv.setInt32(0, x, true);
+        let t = new Uint8Array(ab);
+        DumpBlock(t, 4, D);
+      };
+      var DumpNumber = function(x, D) {
+        let ab = new ArrayBuffer(8);
+        let dv = new DataView(ab);
+        dv.setFloat64(0, x, true);
+        let t = new Uint8Array(ab);
+        DumpBlock(t, 8, D);
+      };
+      var DumpString = function(s, D) {
+        if (s === null)
+          DumpByte(0, D);
+        else {
+          let size = s.tsslen() + 1;
+          let str = s.getstr();
+          if (size < 255)
+            DumpByte(size, D);
+          else {
+            DumpByte(255, D);
+            DumpInteger(size, D);
+          }
+          DumpBlock(str, size - 1, D);
+        }
+      };
+      var DumpCode = function(f, D) {
+        let s = f.code.map((e) => e.code);
+        DumpInt(s.length, D);
+        for (let i = 0; i < s.length; i++)
+          DumpInt(s[i], D);
+      };
+      var DumpConstants = function(f, D) {
+        let n = f.k.length;
+        DumpInt(n, D);
+        for (let i = 0; i < n; i++) {
+          let o = f.k[i];
+          DumpByte(o.ttype(), D);
+          switch (o.ttype()) {
+            case LUA_TNIL:
+              break;
+            case LUA_TBOOLEAN:
+              DumpByte(o.value ? 1 : 0, D);
+              break;
+            case LUA_TNUMFLT:
+              DumpNumber(o.value, D);
+              break;
+            case LUA_TNUMINT:
+              DumpInteger(o.value, D);
+              break;
+            case LUA_TSHRSTR:
+            case LUA_TLNGSTR:
+              DumpString(o.tsvalue(), D);
+              break;
+          }
+        }
+      };
+      var DumpProtos = function(f, D) {
+        let n = f.p.length;
+        DumpInt(n, D);
+        for (let i = 0; i < n; i++)
+          DumpFunction(f.p[i], f.source, D);
+      };
+      var DumpUpvalues = function(f, D) {
+        let n = f.upvalues.length;
+        DumpInt(n, D);
+        for (let i = 0; i < n; i++) {
+          DumpByte(f.upvalues[i].instack ? 1 : 0, D);
+          DumpByte(f.upvalues[i].idx, D);
+        }
+      };
+      var DumpDebug = function(f, D) {
+        let n = D.strip ? 0 : f.lineinfo.length;
+        DumpInt(n, D);
+        for (let i = 0; i < n; i++)
+          DumpInt(f.lineinfo[i], D);
+        n = D.strip ? 0 : f.locvars.length;
+        DumpInt(n, D);
+        for (let i = 0; i < n; i++) {
+          DumpString(f.locvars[i].varname, D);
+          DumpInt(f.locvars[i].startpc, D);
+          DumpInt(f.locvars[i].endpc, D);
+        }
+        n = D.strip ? 0 : f.upvalues.length;
+        DumpInt(n, D);
+        for (let i = 0; i < n; i++)
+          DumpString(f.upvalues[i].name, D);
+      };
+      var DumpFunction = function(f, psource, D) {
+        if (D.strip || f.source === psource)
+          DumpString(null, D);
+        else
+          DumpString(f.source, D);
+        DumpInt(f.linedefined, D);
+        DumpInt(f.lastlinedefined, D);
+        DumpByte(f.numparams, D);
+        DumpByte(f.is_vararg ? 1 : 0, D);
+        DumpByte(f.maxstacksize, D);
+        DumpCode(f, D);
+        DumpConstants(f, D);
+        DumpUpvalues(f, D);
+        DumpProtos(f, D);
+        DumpDebug(f, D);
+      };
+      var DumpHeader = function(D) {
+        DumpBlock(LUA_SIGNATURE, LUA_SIGNATURE.length, D);
+        DumpByte(LUAC_VERSION, D);
+        DumpByte(LUAC_FORMAT, D);
+        DumpBlock(LUAC_DATA, LUAC_DATA.length, D);
+        DumpByte(4, D);
+        DumpByte(4, D);
+        DumpByte(4, D);
+        DumpByte(4, D);
+        DumpByte(8, D);
+        DumpInteger(LUAC_INT, D);
+        DumpNumber(LUAC_NUM, D);
+      };
+      var luaU_dump = function(L, f, w, data, strip) {
+        let D = new DumpState();
+        D.L = L;
+        D.writer = w;
+        D.data = data;
+        D.strip = strip;
+        D.status = 0;
+        DumpHeader(D);
+        DumpByte(f.upvalues.length, D);
+        DumpFunction(f, null, D);
+        return D.status;
+      };
+      module.exports.luaU_dump = luaU_dump;
+    }
+  });
+
+  // node_modules/fengari/src/lapi.js
+  var require_lapi = __commonJS({
+    "node_modules/fengari/src/lapi.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_MULTRET,
+        LUA_OPBNOT,
+        LUA_OPEQ,
+        LUA_OPLE,
+        LUA_OPLT,
+        LUA_OPUNM,
+        LUA_REGISTRYINDEX,
+        LUA_RIDX_GLOBALS,
+        LUA_VERSION_NUM,
+        constant_types: {
+          LUA_NUMTAGS,
+          LUA_TBOOLEAN,
+          LUA_TCCL,
+          LUA_TFUNCTION,
+          LUA_TLCF,
+          LUA_TLCL,
+          LUA_TLIGHTUSERDATA,
+          LUA_TLNGSTR,
+          LUA_TNIL,
+          LUA_TNONE,
+          LUA_TNUMFLT,
+          LUA_TNUMINT,
+          LUA_TSHRSTR,
+          LUA_TTABLE,
+          LUA_TTHREAD,
+          LUA_TUSERDATA
+        },
+        thread_status: { LUA_OK },
+        from_userstring,
+        to_luastring
+      } = require_defs();
+      var { api_check } = require_llimits();
+      var ldebug = require_ldebug();
+      var ldo = require_ldo();
+      var { luaU_dump } = require_ldump();
+      var lfunc = require_lfunc();
+      var lobject = require_lobject();
+      var lstate = require_lstate();
+      var {
+        luaS_bless,
+        luaS_new,
+        luaS_newliteral
+      } = require_lstring();
+      var ltm = require_ltm();
+      var { LUAI_MAXSTACK } = require_luaconf();
+      var lvm = require_lvm();
+      var ltable = require_ltable();
+      var { ZIO } = require_lzio();
+      var TValue = lobject.TValue;
+      var CClosure = lobject.CClosure;
+      var api_incr_top = function(L) {
+        L.top++;
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+      };
+      var api_checknelems = function(L, n) {
+        api_check(L, n < L.top - L.ci.funcOff, "not enough elements in the stack");
+      };
+      var fengari_argcheck = function(c) {
+        if (!c) throw TypeError("invalid argument");
+      };
+      var fengari_argcheckinteger = function(n) {
+        fengari_argcheck(typeof n === "number" && (n | 0) === n);
+      };
+      var isvalid = function(o) {
+        return o !== lobject.luaO_nilobject;
+      };
+      var lua_version = function(L) {
+        if (L === null) return LUA_VERSION_NUM;
+        else return L.l_G.version;
+      };
+      var lua_atpanic = function(L, panicf) {
+        let old = L.l_G.panic;
+        L.l_G.panic = panicf;
+        return old;
+      };
+      var lua_atnativeerror = function(L, errorf) {
+        let old = L.l_G.atnativeerror;
+        L.l_G.atnativeerror = errorf;
+        return old;
+      };
+      var index2addr = function(L, idx) {
+        let ci = L.ci;
+        if (idx > 0) {
+          let o = ci.funcOff + idx;
+          api_check(L, idx <= ci.top - (ci.funcOff + 1), "unacceptable index");
+          if (o >= L.top) return lobject.luaO_nilobject;
+          else return L.stack[o];
+        } else if (idx > LUA_REGISTRYINDEX) {
+          api_check(L, idx !== 0 && -idx <= L.top, "invalid index");
+          return L.stack[L.top + idx];
+        } else if (idx === LUA_REGISTRYINDEX) {
+          return L.l_G.l_registry;
+        } else {
+          idx = LUA_REGISTRYINDEX - idx;
+          api_check(L, idx <= lfunc.MAXUPVAL + 1, "upvalue index too large");
+          if (ci.func.ttislcf())
+            return lobject.luaO_nilobject;
+          else {
+            return idx <= ci.func.value.nupvalues ? ci.func.value.upvalue[idx - 1] : lobject.luaO_nilobject;
+          }
+        }
+      };
+      var index2addr_ = function(L, idx) {
+        let ci = L.ci;
+        if (idx > 0) {
+          let o = ci.funcOff + idx;
+          api_check(L, idx <= ci.top - (ci.funcOff + 1), "unacceptable index");
+          if (o >= L.top) return null;
+          else return o;
+        } else if (idx > LUA_REGISTRYINDEX) {
+          api_check(L, idx !== 0 && -idx <= L.top, "invalid index");
+          return L.top + idx;
+        } else {
+          throw Error("attempt to use pseudo-index");
+        }
+      };
+      var lua_checkstack = function(L, n) {
+        let res;
+        let ci = L.ci;
+        api_check(L, n >= 0, "negative 'n'");
+        if (L.stack_last - L.top > n)
+          res = true;
+        else {
+          let inuse = L.top + lstate.EXTRA_STACK;
+          if (inuse > LUAI_MAXSTACK - n)
+            res = false;
+          else {
+            ldo.luaD_growstack(L, n);
+            res = true;
+          }
+        }
+        if (res && ci.top < L.top + n)
+          ci.top = L.top + n;
+        return res;
+      };
+      var lua_xmove = function(from, to, n) {
+        if (from === to) return;
+        api_checknelems(from, n);
+        api_check(from, from.l_G === to.l_G, "moving among independent states");
+        api_check(from, to.ci.top - to.top >= n, "stack overflow");
+        from.top -= n;
+        for (let i = 0; i < n; i++) {
+          to.stack[to.top] = new lobject.TValue();
+          lobject.setobj2s(to, to.top, from.stack[from.top + i]);
+          delete from.stack[from.top + i];
+          to.top++;
+        }
+      };
+      var lua_absindex = function(L, idx) {
+        return idx > 0 || idx <= LUA_REGISTRYINDEX ? idx : L.top - L.ci.funcOff + idx;
+      };
+      var lua_gettop = function(L) {
+        return L.top - (L.ci.funcOff + 1);
+      };
+      var lua_pushvalue = function(L, idx) {
+        lobject.pushobj2s(L, index2addr(L, idx));
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+      };
+      var lua_settop = function(L, idx) {
+        let func = L.ci.funcOff;
+        let newtop;
+        if (idx >= 0) {
+          api_check(L, idx <= L.stack_last - (func + 1), "new top too large");
+          newtop = func + 1 + idx;
+        } else {
+          api_check(L, -(idx + 1) <= L.top - (func + 1), "invalid new top");
+          newtop = L.top + idx + 1;
+        }
+        ldo.adjust_top(L, newtop);
+      };
+      var lua_pop = function(L, n) {
+        lua_settop(L, -n - 1);
+      };
+      var reverse = function(L, from, to) {
+        for (; from < to; from++, to--) {
+          let fromtv = L.stack[from];
+          let temp = new TValue(fromtv.type, fromtv.value);
+          lobject.setobjs2s(L, from, to);
+          lobject.setobj2s(L, to, temp);
+        }
+      };
+      var lua_rotate = function(L, idx, n) {
+        let t = L.top - 1;
+        let pIdx = index2addr_(L, idx);
+        let p = L.stack[pIdx];
+        api_check(L, isvalid(p) && idx > LUA_REGISTRYINDEX, "index not in the stack");
+        api_check(L, (n >= 0 ? n : -n) <= t - pIdx + 1, "invalid 'n'");
+        let m = n >= 0 ? t - n : pIdx - n - 1;
+        reverse(L, pIdx, m);
+        reverse(L, m + 1, L.top - 1);
+        reverse(L, pIdx, L.top - 1);
+      };
+      var lua_copy = function(L, fromidx, toidx) {
+        let from = index2addr(L, fromidx);
+        index2addr(L, toidx).setfrom(from);
+      };
+      var lua_remove = function(L, idx) {
+        lua_rotate(L, idx, -1);
+        lua_pop(L, 1);
+      };
+      var lua_insert = function(L, idx) {
+        lua_rotate(L, idx, 1);
+      };
+      var lua_replace = function(L, idx) {
+        lua_copy(L, -1, idx);
+        lua_pop(L, 1);
+      };
+      var lua_pushnil = function(L) {
+        L.stack[L.top] = new TValue(LUA_TNIL, null);
+        api_incr_top(L);
+      };
+      var lua_pushnumber = function(L, n) {
+        fengari_argcheck(typeof n === "number");
+        L.stack[L.top] = new TValue(LUA_TNUMFLT, n);
+        api_incr_top(L);
+      };
+      var lua_pushinteger = function(L, n) {
+        fengari_argcheckinteger(n);
+        L.stack[L.top] = new TValue(LUA_TNUMINT, n);
+        api_incr_top(L);
+      };
+      var lua_pushlstring = function(L, s, len) {
+        fengari_argcheckinteger(len);
+        let ts;
+        if (len === 0) {
+          s = to_luastring("", true);
+          ts = luaS_bless(L, s);
+        } else {
+          s = from_userstring(s);
+          api_check(L, s.length >= len, "invalid length to lua_pushlstring");
+          ts = luaS_new(L, s.subarray(0, len));
+        }
+        lobject.pushsvalue2s(L, ts);
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+        return ts.value;
+      };
+      var lua_pushstring = function(L, s) {
+        if (s === void 0 || s === null) {
+          L.stack[L.top] = new TValue(LUA_TNIL, null);
+          L.top++;
+        } else {
+          let ts = luaS_new(L, from_userstring(s));
+          lobject.pushsvalue2s(L, ts);
+          s = ts.getstr();
+        }
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+        return s;
+      };
+      var lua_pushvfstring = function(L, fmt, argp) {
+        fmt = from_userstring(fmt);
+        return lobject.luaO_pushvfstring(L, fmt, argp);
+      };
+      var lua_pushfstring = function(L, fmt, ...argp) {
+        fmt = from_userstring(fmt);
+        return lobject.luaO_pushvfstring(L, fmt, argp);
+      };
+      var lua_pushliteral = function(L, s) {
+        if (s === void 0 || s === null) {
+          L.stack[L.top] = new TValue(LUA_TNIL, null);
+          L.top++;
+        } else {
+          fengari_argcheck(typeof s === "string");
+          let ts = luaS_newliteral(L, s);
+          lobject.pushsvalue2s(L, ts);
+          s = ts.getstr();
+        }
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+        return s;
+      };
+      var lua_pushcclosure = function(L, fn, n) {
+        fengari_argcheck(typeof fn === "function");
+        fengari_argcheckinteger(n);
+        if (n === 0)
+          L.stack[L.top] = new TValue(LUA_TLCF, fn);
+        else {
+          api_checknelems(L, n);
+          api_check(L, n <= lfunc.MAXUPVAL, "upvalue index too large");
+          let cl = new CClosure(L, fn, n);
+          for (let i = 0; i < n; i++)
+            cl.upvalue[i].setfrom(L.stack[L.top - n + i]);
+          for (let i = 1; i < n; i++)
+            delete L.stack[--L.top];
+          if (n > 0)
+            --L.top;
+          L.stack[L.top].setclCvalue(cl);
+        }
+        api_incr_top(L);
+      };
+      var lua_pushjsclosure = lua_pushcclosure;
+      var lua_pushcfunction = function(L, fn) {
+        lua_pushcclosure(L, fn, 0);
+      };
+      var lua_pushjsfunction = lua_pushcfunction;
+      var lua_pushboolean = function(L, b) {
+        L.stack[L.top] = new TValue(LUA_TBOOLEAN, !!b);
+        api_incr_top(L);
+      };
+      var lua_pushlightuserdata = function(L, p) {
+        L.stack[L.top] = new TValue(LUA_TLIGHTUSERDATA, p);
+        api_incr_top(L);
+      };
+      var lua_pushthread = function(L) {
+        L.stack[L.top] = new TValue(LUA_TTHREAD, L);
+        api_incr_top(L);
+        return L.l_G.mainthread === L;
+      };
+      var lua_pushglobaltable = function(L) {
+        lua_rawgeti(L, LUA_REGISTRYINDEX, LUA_RIDX_GLOBALS);
+      };
+      var auxsetstr = function(L, t, k) {
+        let str = luaS_new(L, from_userstring(k));
+        api_checknelems(L, 1);
+        lobject.pushsvalue2s(L, str);
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+        lvm.settable(L, t, L.stack[L.top - 1], L.stack[L.top - 2]);
+        delete L.stack[--L.top];
+        delete L.stack[--L.top];
+      };
+      var lua_setglobal = function(L, name) {
+        auxsetstr(L, ltable.luaH_getint(L.l_G.l_registry.value, LUA_RIDX_GLOBALS), name);
+      };
+      var lua_setmetatable = function(L, objindex) {
+        api_checknelems(L, 1);
+        let mt;
+        let obj = index2addr(L, objindex);
+        if (L.stack[L.top - 1].ttisnil())
+          mt = null;
+        else {
+          api_check(L, L.stack[L.top - 1].ttistable(), "table expected");
+          mt = L.stack[L.top - 1].value;
+        }
+        switch (obj.ttnov()) {
+          case LUA_TUSERDATA:
+          case LUA_TTABLE: {
+            obj.value.metatable = mt;
+            break;
+          }
+          default: {
+            L.l_G.mt[obj.ttnov()] = mt;
+            break;
+          }
+        }
+        delete L.stack[--L.top];
+        return true;
+      };
+      var lua_settable = function(L, idx) {
+        api_checknelems(L, 2);
+        let t = index2addr(L, idx);
+        lvm.settable(L, t, L.stack[L.top - 2], L.stack[L.top - 1]);
+        delete L.stack[--L.top];
+        delete L.stack[--L.top];
+      };
+      var lua_setfield = function(L, idx, k) {
+        auxsetstr(L, index2addr(L, idx), k);
+      };
+      var lua_seti = function(L, idx, n) {
+        fengari_argcheckinteger(n);
+        api_checknelems(L, 1);
+        let t = index2addr(L, idx);
+        L.stack[L.top] = new TValue(LUA_TNUMINT, n);
+        api_incr_top(L);
+        lvm.settable(L, t, L.stack[L.top - 1], L.stack[L.top - 2]);
+        delete L.stack[--L.top];
+        delete L.stack[--L.top];
+      };
+      var lua_rawset = function(L, idx) {
+        api_checknelems(L, 2);
+        let o = index2addr(L, idx);
+        api_check(L, o.ttistable(), "table expected");
+        let k = L.stack[L.top - 2];
+        let v = L.stack[L.top - 1];
+        ltable.luaH_setfrom(L, o.value, k, v);
+        ltable.invalidateTMcache(o.value);
+        delete L.stack[--L.top];
+        delete L.stack[--L.top];
+      };
+      var lua_rawseti = function(L, idx, n) {
+        fengari_argcheckinteger(n);
+        api_checknelems(L, 1);
+        let o = index2addr(L, idx);
+        api_check(L, o.ttistable(), "table expected");
+        ltable.luaH_setint(o.value, n, L.stack[L.top - 1]);
+        delete L.stack[--L.top];
+      };
+      var lua_rawsetp = function(L, idx, p) {
+        api_checknelems(L, 1);
+        let o = index2addr(L, idx);
+        api_check(L, o.ttistable(), "table expected");
+        let k = new TValue(LUA_TLIGHTUSERDATA, p);
+        let v = L.stack[L.top - 1];
+        ltable.luaH_setfrom(L, o.value, k, v);
+        delete L.stack[--L.top];
+      };
+      var auxgetstr = function(L, t, k) {
+        let str = luaS_new(L, from_userstring(k));
+        lobject.pushsvalue2s(L, str);
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+        lvm.luaV_gettable(L, t, L.stack[L.top - 1], L.top - 1);
+        return L.stack[L.top - 1].ttnov();
+      };
+      var lua_rawgeti = function(L, idx, n) {
+        let t = index2addr(L, idx);
+        fengari_argcheckinteger(n);
+        api_check(L, t.ttistable(), "table expected");
+        lobject.pushobj2s(L, ltable.luaH_getint(t.value, n));
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+        return L.stack[L.top - 1].ttnov();
+      };
+      var lua_rawgetp = function(L, idx, p) {
+        let t = index2addr(L, idx);
+        api_check(L, t.ttistable(), "table expected");
+        let k = new TValue(LUA_TLIGHTUSERDATA, p);
+        lobject.pushobj2s(L, ltable.luaH_get(L, t.value, k));
+        api_check(L, L.top <= L.ci.top, "stack overflow");
+        return L.stack[L.top - 1].ttnov();
+      };
+      var lua_rawget = function(L, idx) {
+        let t = index2addr(L, idx);
+        api_check(L, t.ttistable(t), "table expected");
+        lobject.setobj2s(L, L.top - 1, ltable.luaH_get(L, t.value, L.stack[L.top - 1]));
+        return L.stack[L.top - 1].ttnov();
+      };
+      var lua_createtable = function(L, narray, nrec) {
+        let t = new lobject.TValue(LUA_TTABLE, ltable.luaH_new(L));
+        L.stack[L.top] = t;
+        api_incr_top(L);
+      };
+      var luaS_newudata = function(L, size) {
+        return new lobject.Udata(L, size);
+      };
+      var lua_newuserdata = function(L, size) {
+        let u = luaS_newudata(L, size);
+        L.stack[L.top] = new lobject.TValue(LUA_TUSERDATA, u);
+        api_incr_top(L);
+        return u.data;
+      };
+      var aux_upvalue = function(L, fi, n) {
+        fengari_argcheckinteger(n);
+        switch (fi.ttype()) {
+          case LUA_TCCL: {
+            let f = fi.value;
+            if (!(1 <= n && n <= f.nupvalues)) return null;
+            return {
+              name: to_luastring("", true),
+              val: f.upvalue[n - 1]
+            };
+          }
+          case LUA_TLCL: {
+            let f = fi.value;
+            let p = f.p;
+            if (!(1 <= n && n <= p.upvalues.length)) return null;
+            let name = p.upvalues[n - 1].name;
+            return {
+              name: name ? name.getstr() : to_luastring("(*no name)", true),
+              val: f.upvals[n - 1]
+            };
+          }
+          default:
+            return null;
+        }
+      };
+      var lua_getupvalue = function(L, funcindex, n) {
+        let up = aux_upvalue(L, index2addr(L, funcindex), n);
+        if (up) {
+          let name = up.name;
+          let val = up.val;
+          lobject.pushobj2s(L, val);
+          api_check(L, L.top <= L.ci.top, "stack overflow");
+          return name;
+        }
+        return null;
+      };
+      var lua_setupvalue = function(L, funcindex, n) {
+        let fi = index2addr(L, funcindex);
+        api_checknelems(L, 1);
+        let aux = aux_upvalue(L, fi, n);
+        if (aux) {
+          let name = aux.name;
+          let val = aux.val;
+          val.setfrom(L.stack[L.top - 1]);
+          delete L.stack[--L.top];
+          return name;
+        }
+        return null;
+      };
+      var lua_newtable = function(L) {
+        lua_createtable(L, 0, 0);
+      };
+      var lua_register = function(L, n, f) {
+        lua_pushcfunction(L, f);
+        lua_setglobal(L, n);
+      };
+      var lua_getmetatable = function(L, objindex) {
+        let obj = index2addr(L, objindex);
+        let mt;
+        let res = false;
+        switch (obj.ttnov()) {
+          case LUA_TTABLE:
+          case LUA_TUSERDATA:
+            mt = obj.value.metatable;
+            break;
+          default:
+            mt = L.l_G.mt[obj.ttnov()];
+            break;
+        }
+        if (mt !== null && mt !== void 0) {
+          L.stack[L.top] = new TValue(LUA_TTABLE, mt);
+          api_incr_top(L);
+          res = true;
+        }
+        return res;
+      };
+      var lua_getuservalue = function(L, idx) {
+        let o = index2addr(L, idx);
+        api_check(L, o.ttisfulluserdata(), "full userdata expected");
+        let uv = o.value.uservalue;
+        L.stack[L.top] = new TValue(uv.type, uv.value);
+        api_incr_top(L);
+        return L.stack[L.top - 1].ttnov();
+      };
+      var lua_gettable = function(L, idx) {
+        let t = index2addr(L, idx);
+        lvm.luaV_gettable(L, t, L.stack[L.top - 1], L.top - 1);
+        return L.stack[L.top - 1].ttnov();
+      };
+      var lua_getfield = function(L, idx, k) {
+        return auxgetstr(L, index2addr(L, idx), k);
+      };
+      var lua_geti = function(L, idx, n) {
+        let t = index2addr(L, idx);
+        fengari_argcheckinteger(n);
+        L.stack[L.top] = new TValue(LUA_TNUMINT, n);
+        api_incr_top(L);
+        lvm.luaV_gettable(L, t, L.stack[L.top - 1], L.top - 1);
+        return L.stack[L.top - 1].ttnov();
+      };
+      var lua_getglobal = function(L, name) {
+        return auxgetstr(L, ltable.luaH_getint(L.l_G.l_registry.value, LUA_RIDX_GLOBALS), name);
+      };
+      var lua_toboolean = function(L, idx) {
+        let o = index2addr(L, idx);
+        return !o.l_isfalse();
+      };
+      var lua_tolstring = function(L, idx) {
+        let o = index2addr(L, idx);
+        if (!o.ttisstring()) {
+          if (!lvm.cvt2str(o)) {
+            return null;
+          }
+          lobject.luaO_tostring(L, o);
+        }
+        return o.svalue();
+      };
+      var lua_tostring = lua_tolstring;
+      var lua_tojsstring = function(L, idx) {
+        let o = index2addr(L, idx);
+        if (!o.ttisstring()) {
+          if (!lvm.cvt2str(o)) {
+            return null;
+          }
+          lobject.luaO_tostring(L, o);
+        }
+        return o.jsstring();
+      };
+      var lua_todataview = function(L, idx) {
+        let u8 = lua_tolstring(L, idx);
+        return new DataView(u8.buffer, u8.byteOffset, u8.byteLength);
+      };
+      var lua_rawlen = function(L, idx) {
+        let o = index2addr(L, idx);
+        switch (o.ttype()) {
+          case LUA_TSHRSTR:
+          case LUA_TLNGSTR:
+            return o.vslen();
+          case LUA_TUSERDATA:
+            return o.value.len;
+          case LUA_TTABLE:
+            return ltable.luaH_getn(o.value);
+          default:
+            return 0;
+        }
+      };
+      var lua_tocfunction = function(L, idx) {
+        let o = index2addr(L, idx);
+        if (o.ttislcf() || o.ttisCclosure()) return o.value;
+        else return null;
+      };
+      var lua_tointeger = function(L, idx) {
+        let n = lua_tointegerx(L, idx);
+        return n === false ? 0 : n;
+      };
+      var lua_tointegerx = function(L, idx) {
+        return lvm.tointeger(index2addr(L, idx));
+      };
+      var lua_tonumber = function(L, idx) {
+        let n = lua_tonumberx(L, idx);
+        return n === false ? 0 : n;
+      };
+      var lua_tonumberx = function(L, idx) {
+        return lvm.tonumber(index2addr(L, idx));
+      };
+      var lua_touserdata = function(L, idx) {
+        let o = index2addr(L, idx);
+        switch (o.ttnov()) {
+          case LUA_TUSERDATA:
+            return o.value.data;
+          case LUA_TLIGHTUSERDATA:
+            return o.value;
+          default:
+            return null;
+        }
+      };
+      var lua_tothread = function(L, idx) {
+        let o = index2addr(L, idx);
+        return o.ttisthread() ? o.value : null;
+      };
+      var lua_topointer = function(L, idx) {
+        let o = index2addr(L, idx);
+        switch (o.ttype()) {
+          case LUA_TTABLE:
+          case LUA_TLCL:
+          case LUA_TCCL:
+          case LUA_TLCF:
+          case LUA_TTHREAD:
+          case LUA_TUSERDATA:
+          /* note: this differs in behaviour to reference lua implementation */
+          case LUA_TLIGHTUSERDATA:
+            return o.value;
+          default:
+            return null;
+        }
+      };
+      var seen = /* @__PURE__ */ new WeakMap();
+      var lua_isproxy = function(p, L) {
+        let G = seen.get(p);
+        if (!G)
+          return false;
+        return L === null || L.l_G === G;
+      };
+      var create_proxy = function(G, type, value) {
+        let proxy = function(L) {
+          api_check(L, L instanceof lstate.lua_State && G === L.l_G, "must be from same global state");
+          L.stack[L.top] = new TValue(type, value);
+          api_incr_top(L);
+        };
+        seen.set(proxy, G);
+        return proxy;
+      };
+      var lua_toproxy = function(L, idx) {
+        let tv = index2addr(L, idx);
+        return create_proxy(L.l_G, tv.type, tv.value);
+      };
+      var lua_compare = function(L, index1, index2, op) {
+        let o1 = index2addr(L, index1);
+        let o2 = index2addr(L, index2);
+        let i = 0;
+        if (isvalid(o1) && isvalid(o2)) {
+          switch (op) {
+            case LUA_OPEQ:
+              i = lvm.luaV_equalobj(L, o1, o2);
+              break;
+            case LUA_OPLT:
+              i = lvm.luaV_lessthan(L, o1, o2);
+              break;
+            case LUA_OPLE:
+              i = lvm.luaV_lessequal(L, o1, o2);
+              break;
+            default:
+              api_check(L, false, "invalid option");
+          }
+        }
+        return i;
+      };
+      var lua_stringtonumber = function(L, s) {
+        let tv = new TValue();
+        let sz = lobject.luaO_str2num(s, tv);
+        if (sz !== 0) {
+          L.stack[L.top] = tv;
+          api_incr_top(L);
+        }
+        return sz;
+      };
+      var f_call = function(L, ud) {
+        ldo.luaD_callnoyield(L, ud.funcOff, ud.nresults);
+      };
+      var lua_type = function(L, idx) {
+        let o = index2addr(L, idx);
+        return isvalid(o) ? o.ttnov() : LUA_TNONE;
+      };
+      var lua_typename = function(L, t) {
+        api_check(L, LUA_TNONE <= t && t < LUA_NUMTAGS, "invalid tag");
+        return ltm.ttypename(t);
+      };
+      var lua_iscfunction = function(L, idx) {
+        let o = index2addr(L, idx);
+        return o.ttislcf(o) || o.ttisCclosure();
+      };
+      var lua_isnil = function(L, n) {
+        return lua_type(L, n) === LUA_TNIL;
+      };
+      var lua_isboolean = function(L, n) {
+        return lua_type(L, n) === LUA_TBOOLEAN;
+      };
+      var lua_isnone = function(L, n) {
+        return lua_type(L, n) === LUA_TNONE;
+      };
+      var lua_isnoneornil = function(L, n) {
+        return lua_type(L, n) <= 0;
+      };
+      var lua_istable = function(L, idx) {
+        return index2addr(L, idx).ttistable();
+      };
+      var lua_isinteger = function(L, idx) {
+        return index2addr(L, idx).ttisinteger();
+      };
+      var lua_isnumber = function(L, idx) {
+        return lvm.tonumber(index2addr(L, idx)) !== false;
+      };
+      var lua_isstring = function(L, idx) {
+        let o = index2addr(L, idx);
+        return o.ttisstring() || lvm.cvt2str(o);
+      };
+      var lua_isuserdata = function(L, idx) {
+        let o = index2addr(L, idx);
+        return o.ttisfulluserdata(o) || o.ttislightuserdata();
+      };
+      var lua_isthread = function(L, idx) {
+        return lua_type(L, idx) === LUA_TTHREAD;
+      };
+      var lua_isfunction = function(L, idx) {
+        return lua_type(L, idx) === LUA_TFUNCTION;
+      };
+      var lua_islightuserdata = function(L, idx) {
+        return lua_type(L, idx) === LUA_TLIGHTUSERDATA;
+      };
+      var lua_rawequal = function(L, index1, index2) {
+        let o1 = index2addr(L, index1);
+        let o2 = index2addr(L, index2);
+        return isvalid(o1) && isvalid(o2) ? lvm.luaV_equalobj(null, o1, o2) : 0;
+      };
+      var lua_arith = function(L, op) {
+        if (op !== LUA_OPUNM && op !== LUA_OPBNOT)
+          api_checknelems(L, 2);
+        else {
+          api_checknelems(L, 1);
+          lobject.pushobj2s(L, L.stack[L.top - 1]);
+          api_check(L, L.top <= L.ci.top, "stack overflow");
+        }
+        lobject.luaO_arith(L, op, L.stack[L.top - 2], L.stack[L.top - 1], L.stack[L.top - 2]);
+        delete L.stack[--L.top];
+      };
+      var default_chunkname = to_luastring("?");
+      var lua_load = function(L, reader, data, chunkname, mode) {
+        if (!chunkname) chunkname = default_chunkname;
+        else chunkname = from_userstring(chunkname);
+        if (mode !== null) mode = from_userstring(mode);
+        let z = new ZIO(L, reader, data);
+        let status = ldo.luaD_protectedparser(L, z, chunkname, mode);
+        if (status === LUA_OK) {
+          let f = L.stack[L.top - 1].value;
+          if (f.nupvalues >= 1) {
+            let gt = ltable.luaH_getint(L.l_G.l_registry.value, LUA_RIDX_GLOBALS);
+            f.upvals[0].setfrom(gt);
+          }
+        }
+        return status;
+      };
+      var lua_dump = function(L, writer, data, strip) {
+        api_checknelems(L, 1);
+        let o = L.stack[L.top - 1];
+        if (o.ttisLclosure())
+          return luaU_dump(L, o.value.p, writer, data, strip);
+        return 1;
+      };
+      var lua_status = function(L) {
+        return L.status;
+      };
+      var lua_setuservalue = function(L, idx) {
+        api_checknelems(L, 1);
+        let o = index2addr(L, idx);
+        api_check(L, o.ttisfulluserdata(), "full userdata expected");
+        o.value.uservalue.setfrom(L.stack[L.top - 1]);
+        delete L.stack[--L.top];
+      };
+      var checkresults = function(L, na, nr) {
+        api_check(
+          L,
+          nr === LUA_MULTRET || L.ci.top - L.top >= nr - na,
+          "results from function overflow current stack size"
+        );
+      };
+      var lua_callk = function(L, nargs, nresults, ctx, k) {
+        api_check(L, k === null || !(L.ci.callstatus & lstate.CIST_LUA), "cannot use continuations inside hooks");
+        api_checknelems(L, nargs + 1);
+        api_check(L, L.status === LUA_OK, "cannot do calls on non-normal thread");
+        checkresults(L, nargs, nresults);
+        let func = L.top - (nargs + 1);
+        if (k !== null && L.nny === 0) {
+          L.ci.c_k = k;
+          L.ci.c_ctx = ctx;
+          ldo.luaD_call(L, func, nresults);
+        } else {
+          ldo.luaD_callnoyield(L, func, nresults);
+        }
+        if (nresults === LUA_MULTRET && L.ci.top < L.top)
+          L.ci.top = L.top;
+      };
+      var lua_call = function(L, n, r) {
+        lua_callk(L, n, r, 0, null);
+      };
+      var lua_pcallk = function(L, nargs, nresults, errfunc, ctx, k) {
+        api_check(L, k === null || !(L.ci.callstatus & lstate.CIST_LUA), "cannot use continuations inside hooks");
+        api_checknelems(L, nargs + 1);
+        api_check(L, L.status === LUA_OK, "cannot do calls on non-normal thread");
+        checkresults(L, nargs, nresults);
+        let status;
+        let func;
+        if (errfunc === 0)
+          func = 0;
+        else {
+          func = index2addr_(L, errfunc);
+        }
+        let funcOff = L.top - (nargs + 1);
+        if (k === null || L.nny > 0) {
+          let c = {
+            funcOff,
+            nresults
+            /* do a 'conventional' protected call */
+          };
+          status = ldo.luaD_pcall(L, f_call, c, funcOff, func);
+        } else {
+          let ci = L.ci;
+          ci.c_k = k;
+          ci.c_ctx = ctx;
+          ci.extra = funcOff;
+          ci.c_old_errfunc = L.errfunc;
+          L.errfunc = func;
+          ci.callstatus &= ~lstate.CIST_OAH | L.allowhook;
+          ci.callstatus |= lstate.CIST_YPCALL;
+          ldo.luaD_call(L, funcOff, nresults);
+          ci.callstatus &= ~lstate.CIST_YPCALL;
+          L.errfunc = ci.c_old_errfunc;
+          status = LUA_OK;
+        }
+        if (nresults === LUA_MULTRET && L.ci.top < L.top)
+          L.ci.top = L.top;
+        return status;
+      };
+      var lua_pcall = function(L, n, r, f) {
+        return lua_pcallk(L, n, r, f, 0, null);
+      };
+      var lua_error = function(L) {
+        api_checknelems(L, 1);
+        ldebug.luaG_errormsg(L);
+      };
+      var lua_next = function(L, idx) {
+        let t = index2addr(L, idx);
+        api_check(L, t.ttistable(), "table expected");
+        L.stack[L.top] = new TValue();
+        let more = ltable.luaH_next(L, t.value, L.top - 1);
+        if (more) {
+          api_incr_top(L);
+          return 1;
+        } else {
+          delete L.stack[L.top];
+          delete L.stack[--L.top];
+          return 0;
+        }
+      };
+      var lua_concat = function(L, n) {
+        api_checknelems(L, n);
+        if (n >= 2)
+          lvm.luaV_concat(L, n);
+        else if (n === 0) {
+          lobject.pushsvalue2s(L, luaS_bless(L, to_luastring("", true)));
+          api_check(L, L.top <= L.ci.top, "stack overflow");
+        }
+      };
+      var lua_len = function(L, idx) {
+        let t = index2addr(L, idx);
+        let tv = new TValue();
+        lvm.luaV_objlen(L, tv, t);
+        L.stack[L.top] = tv;
+        api_incr_top(L);
+      };
+      var getupvalref = function(L, fidx, n) {
+        let fi = index2addr(L, fidx);
+        api_check(L, fi.ttisLclosure(), "Lua function expected");
+        let f = fi.value;
+        fengari_argcheckinteger(n);
+        api_check(L, 1 <= n && n <= f.p.upvalues.length, "invalid upvalue index");
+        return {
+          f,
+          i: n - 1
+        };
+      };
+      var lua_upvalueid = function(L, fidx, n) {
+        let fi = index2addr(L, fidx);
+        switch (fi.ttype()) {
+          case LUA_TLCL: {
+            let ref = getupvalref(L, fidx, n);
+            return ref.f.upvals[ref.i];
+          }
+          case LUA_TCCL: {
+            let f = fi.value;
+            api_check(L, (n | 0) === n && n > 0 && n <= f.nupvalues, "invalid upvalue index");
+            return f.upvalue[n - 1];
+          }
+          default: {
+            api_check(L, false, "closure expected");
+            return null;
+          }
+        }
+      };
+      var lua_upvaluejoin = function(L, fidx1, n1, fidx2, n2) {
+        let ref1 = getupvalref(L, fidx1, n1);
+        let ref2 = getupvalref(L, fidx2, n2);
+        let up2 = ref2.f.upvals[ref2.i];
+        ref1.f.upvals[ref1.i] = up2;
+      };
+      var lua_gc = function() {
+      };
+      var lua_getallocf = function() {
+        console.warn("lua_getallocf is not available");
+        return 0;
+      };
+      var lua_setallocf = function() {
+        console.warn("lua_setallocf is not available");
+        return 0;
+      };
+      var lua_getextraspace = function() {
+        console.warn("lua_getextraspace is not available");
+        return 0;
+      };
+      module.exports.api_incr_top = api_incr_top;
+      module.exports.api_checknelems = api_checknelems;
+      module.exports.lua_absindex = lua_absindex;
+      module.exports.lua_arith = lua_arith;
+      module.exports.lua_atpanic = lua_atpanic;
+      module.exports.lua_atnativeerror = lua_atnativeerror;
+      module.exports.lua_call = lua_call;
+      module.exports.lua_callk = lua_callk;
+      module.exports.lua_checkstack = lua_checkstack;
+      module.exports.lua_compare = lua_compare;
+      module.exports.lua_concat = lua_concat;
+      module.exports.lua_copy = lua_copy;
+      module.exports.lua_createtable = lua_createtable;
+      module.exports.lua_dump = lua_dump;
+      module.exports.lua_error = lua_error;
+      module.exports.lua_gc = lua_gc;
+      module.exports.lua_getallocf = lua_getallocf;
+      module.exports.lua_getextraspace = lua_getextraspace;
+      module.exports.lua_getfield = lua_getfield;
+      module.exports.lua_getglobal = lua_getglobal;
+      module.exports.lua_geti = lua_geti;
+      module.exports.lua_getmetatable = lua_getmetatable;
+      module.exports.lua_gettable = lua_gettable;
+      module.exports.lua_gettop = lua_gettop;
+      module.exports.lua_getupvalue = lua_getupvalue;
+      module.exports.lua_getuservalue = lua_getuservalue;
+      module.exports.lua_insert = lua_insert;
+      module.exports.lua_isboolean = lua_isboolean;
+      module.exports.lua_iscfunction = lua_iscfunction;
+      module.exports.lua_isfunction = lua_isfunction;
+      module.exports.lua_isinteger = lua_isinteger;
+      module.exports.lua_islightuserdata = lua_islightuserdata;
+      module.exports.lua_isnil = lua_isnil;
+      module.exports.lua_isnone = lua_isnone;
+      module.exports.lua_isnoneornil = lua_isnoneornil;
+      module.exports.lua_isnumber = lua_isnumber;
+      module.exports.lua_isproxy = lua_isproxy;
+      module.exports.lua_isstring = lua_isstring;
+      module.exports.lua_istable = lua_istable;
+      module.exports.lua_isthread = lua_isthread;
+      module.exports.lua_isuserdata = lua_isuserdata;
+      module.exports.lua_len = lua_len;
+      module.exports.lua_load = lua_load;
+      module.exports.lua_newtable = lua_newtable;
+      module.exports.lua_newuserdata = lua_newuserdata;
+      module.exports.lua_next = lua_next;
+      module.exports.lua_pcall = lua_pcall;
+      module.exports.lua_pcallk = lua_pcallk;
+      module.exports.lua_pop = lua_pop;
+      module.exports.lua_pushboolean = lua_pushboolean;
+      module.exports.lua_pushcclosure = lua_pushcclosure;
+      module.exports.lua_pushcfunction = lua_pushcfunction;
+      module.exports.lua_pushfstring = lua_pushfstring;
+      module.exports.lua_pushglobaltable = lua_pushglobaltable;
+      module.exports.lua_pushinteger = lua_pushinteger;
+      module.exports.lua_pushjsclosure = lua_pushjsclosure;
+      module.exports.lua_pushjsfunction = lua_pushjsfunction;
+      module.exports.lua_pushlightuserdata = lua_pushlightuserdata;
+      module.exports.lua_pushliteral = lua_pushliteral;
+      module.exports.lua_pushlstring = lua_pushlstring;
+      module.exports.lua_pushnil = lua_pushnil;
+      module.exports.lua_pushnumber = lua_pushnumber;
+      module.exports.lua_pushstring = lua_pushstring;
+      module.exports.lua_pushthread = lua_pushthread;
+      module.exports.lua_pushvalue = lua_pushvalue;
+      module.exports.lua_pushvfstring = lua_pushvfstring;
+      module.exports.lua_rawequal = lua_rawequal;
+      module.exports.lua_rawget = lua_rawget;
+      module.exports.lua_rawgeti = lua_rawgeti;
+      module.exports.lua_rawgetp = lua_rawgetp;
+      module.exports.lua_rawlen = lua_rawlen;
+      module.exports.lua_rawset = lua_rawset;
+      module.exports.lua_rawseti = lua_rawseti;
+      module.exports.lua_rawsetp = lua_rawsetp;
+      module.exports.lua_register = lua_register;
+      module.exports.lua_remove = lua_remove;
+      module.exports.lua_replace = lua_replace;
+      module.exports.lua_rotate = lua_rotate;
+      module.exports.lua_setallocf = lua_setallocf;
+      module.exports.lua_setfield = lua_setfield;
+      module.exports.lua_setglobal = lua_setglobal;
+      module.exports.lua_seti = lua_seti;
+      module.exports.lua_setmetatable = lua_setmetatable;
+      module.exports.lua_settable = lua_settable;
+      module.exports.lua_settop = lua_settop;
+      module.exports.lua_setupvalue = lua_setupvalue;
+      module.exports.lua_setuservalue = lua_setuservalue;
+      module.exports.lua_status = lua_status;
+      module.exports.lua_stringtonumber = lua_stringtonumber;
+      module.exports.lua_toboolean = lua_toboolean;
+      module.exports.lua_tocfunction = lua_tocfunction;
+      module.exports.lua_todataview = lua_todataview;
+      module.exports.lua_tointeger = lua_tointeger;
+      module.exports.lua_tointegerx = lua_tointegerx;
+      module.exports.lua_tojsstring = lua_tojsstring;
+      module.exports.lua_tolstring = lua_tolstring;
+      module.exports.lua_tonumber = lua_tonumber;
+      module.exports.lua_tonumberx = lua_tonumberx;
+      module.exports.lua_topointer = lua_topointer;
+      module.exports.lua_toproxy = lua_toproxy;
+      module.exports.lua_tostring = lua_tostring;
+      module.exports.lua_tothread = lua_tothread;
+      module.exports.lua_touserdata = lua_touserdata;
+      module.exports.lua_type = lua_type;
+      module.exports.lua_typename = lua_typename;
+      module.exports.lua_upvalueid = lua_upvalueid;
+      module.exports.lua_upvaluejoin = lua_upvaluejoin;
+      module.exports.lua_version = lua_version;
+      module.exports.lua_xmove = lua_xmove;
+    }
+  });
+
+  // node_modules/fengari/src/lua.js
+  var require_lua = __commonJS({
+    "node_modules/fengari/src/lua.js"(exports, module) {
+      "use strict";
+      var defs = require_defs();
+      var lapi = require_lapi();
+      var ldebug = require_ldebug();
+      var ldo = require_ldo();
+      var lstate = require_lstate();
+      module.exports.LUA_AUTHORS = defs.LUA_AUTHORS;
+      module.exports.LUA_COPYRIGHT = defs.LUA_COPYRIGHT;
+      module.exports.LUA_ERRERR = defs.thread_status.LUA_ERRERR;
+      module.exports.LUA_ERRGCMM = defs.thread_status.LUA_ERRGCMM;
+      module.exports.LUA_ERRMEM = defs.thread_status.LUA_ERRMEM;
+      module.exports.LUA_ERRRUN = defs.thread_status.LUA_ERRRUN;
+      module.exports.LUA_ERRSYNTAX = defs.thread_status.LUA_ERRSYNTAX;
+      module.exports.LUA_HOOKCALL = defs.LUA_HOOKCALL;
+      module.exports.LUA_HOOKCOUNT = defs.LUA_HOOKCOUNT;
+      module.exports.LUA_HOOKLINE = defs.LUA_HOOKLINE;
+      module.exports.LUA_HOOKRET = defs.LUA_HOOKRET;
+      module.exports.LUA_HOOKTAILCALL = defs.LUA_HOOKTAILCALL;
+      module.exports.LUA_MASKCALL = defs.LUA_MASKCALL;
+      module.exports.LUA_MASKCOUNT = defs.LUA_MASKCOUNT;
+      module.exports.LUA_MASKLINE = defs.LUA_MASKLINE;
+      module.exports.LUA_MASKRET = defs.LUA_MASKRET;
+      module.exports.LUA_MINSTACK = defs.LUA_MINSTACK;
+      module.exports.LUA_MULTRET = defs.LUA_MULTRET;
+      module.exports.LUA_NUMTAGS = defs.constant_types.LUA_NUMTAGS;
+      module.exports.LUA_OK = defs.thread_status.LUA_OK;
+      module.exports.LUA_OPADD = defs.LUA_OPADD;
+      module.exports.LUA_OPBAND = defs.LUA_OPBAND;
+      module.exports.LUA_OPBNOT = defs.LUA_OPBNOT;
+      module.exports.LUA_OPBOR = defs.LUA_OPBOR;
+      module.exports.LUA_OPBXOR = defs.LUA_OPBXOR;
+      module.exports.LUA_OPDIV = defs.LUA_OPDIV;
+      module.exports.LUA_OPEQ = defs.LUA_OPEQ;
+      module.exports.LUA_OPIDIV = defs.LUA_OPIDIV;
+      module.exports.LUA_OPLE = defs.LUA_OPLE;
+      module.exports.LUA_OPLT = defs.LUA_OPLT;
+      module.exports.LUA_OPMOD = defs.LUA_OPMOD;
+      module.exports.LUA_OPMUL = defs.LUA_OPMUL;
+      module.exports.LUA_OPPOW = defs.LUA_OPPOW;
+      module.exports.LUA_OPSHL = defs.LUA_OPSHL;
+      module.exports.LUA_OPSHR = defs.LUA_OPSHR;
+      module.exports.LUA_OPSUB = defs.LUA_OPSUB;
+      module.exports.LUA_OPUNM = defs.LUA_OPUNM;
+      module.exports.LUA_REGISTRYINDEX = defs.LUA_REGISTRYINDEX;
+      module.exports.LUA_RELEASE = defs.LUA_RELEASE;
+      module.exports.LUA_RIDX_GLOBALS = defs.LUA_RIDX_GLOBALS;
+      module.exports.LUA_RIDX_LAST = defs.LUA_RIDX_LAST;
+      module.exports.LUA_RIDX_MAINTHREAD = defs.LUA_RIDX_MAINTHREAD;
+      module.exports.LUA_SIGNATURE = defs.LUA_SIGNATURE;
+      module.exports.LUA_TNONE = defs.constant_types.LUA_TNONE;
+      module.exports.LUA_TNIL = defs.constant_types.LUA_TNIL;
+      module.exports.LUA_TBOOLEAN = defs.constant_types.LUA_TBOOLEAN;
+      module.exports.LUA_TLIGHTUSERDATA = defs.constant_types.LUA_TLIGHTUSERDATA;
+      module.exports.LUA_TNUMBER = defs.constant_types.LUA_TNUMBER;
+      module.exports.LUA_TSTRING = defs.constant_types.LUA_TSTRING;
+      module.exports.LUA_TTABLE = defs.constant_types.LUA_TTABLE;
+      module.exports.LUA_TFUNCTION = defs.constant_types.LUA_TFUNCTION;
+      module.exports.LUA_TUSERDATA = defs.constant_types.LUA_TUSERDATA;
+      module.exports.LUA_TTHREAD = defs.constant_types.LUA_TTHREAD;
+      module.exports.LUA_VERSION = defs.LUA_VERSION;
+      module.exports.LUA_VERSION_MAJOR = defs.LUA_VERSION_MAJOR;
+      module.exports.LUA_VERSION_MINOR = defs.LUA_VERSION_MINOR;
+      module.exports.LUA_VERSION_NUM = defs.LUA_VERSION_NUM;
+      module.exports.LUA_VERSION_RELEASE = defs.LUA_VERSION_RELEASE;
+      module.exports.LUA_YIELD = defs.thread_status.LUA_YIELD;
+      module.exports.lua_Debug = defs.lua_Debug;
+      module.exports.lua_upvalueindex = defs.lua_upvalueindex;
+      module.exports.lua_absindex = lapi.lua_absindex;
+      module.exports.lua_arith = lapi.lua_arith;
+      module.exports.lua_atpanic = lapi.lua_atpanic;
+      module.exports.lua_atnativeerror = lapi.lua_atnativeerror;
+      module.exports.lua_call = lapi.lua_call;
+      module.exports.lua_callk = lapi.lua_callk;
+      module.exports.lua_checkstack = lapi.lua_checkstack;
+      module.exports.lua_close = lstate.lua_close;
+      module.exports.lua_compare = lapi.lua_compare;
+      module.exports.lua_concat = lapi.lua_concat;
+      module.exports.lua_copy = lapi.lua_copy;
+      module.exports.lua_createtable = lapi.lua_createtable;
+      module.exports.lua_dump = lapi.lua_dump;
+      module.exports.lua_error = lapi.lua_error;
+      module.exports.lua_gc = lapi.lua_gc;
+      module.exports.lua_getallocf = lapi.lua_getallocf;
+      module.exports.lua_getextraspace = lapi.lua_getextraspace;
+      module.exports.lua_getfield = lapi.lua_getfield;
+      module.exports.lua_getglobal = lapi.lua_getglobal;
+      module.exports.lua_gethook = ldebug.lua_gethook;
+      module.exports.lua_gethookcount = ldebug.lua_gethookcount;
+      module.exports.lua_gethookmask = ldebug.lua_gethookmask;
+      module.exports.lua_geti = lapi.lua_geti;
+      module.exports.lua_getinfo = ldebug.lua_getinfo;
+      module.exports.lua_getlocal = ldebug.lua_getlocal;
+      module.exports.lua_getmetatable = lapi.lua_getmetatable;
+      module.exports.lua_getstack = ldebug.lua_getstack;
+      module.exports.lua_gettable = lapi.lua_gettable;
+      module.exports.lua_gettop = lapi.lua_gettop;
+      module.exports.lua_getupvalue = lapi.lua_getupvalue;
+      module.exports.lua_getuservalue = lapi.lua_getuservalue;
+      module.exports.lua_insert = lapi.lua_insert;
+      module.exports.lua_isboolean = lapi.lua_isboolean;
+      module.exports.lua_iscfunction = lapi.lua_iscfunction;
+      module.exports.lua_isfunction = lapi.lua_isfunction;
+      module.exports.lua_isinteger = lapi.lua_isinteger;
+      module.exports.lua_islightuserdata = lapi.lua_islightuserdata;
+      module.exports.lua_isnil = lapi.lua_isnil;
+      module.exports.lua_isnone = lapi.lua_isnone;
+      module.exports.lua_isnoneornil = lapi.lua_isnoneornil;
+      module.exports.lua_isnumber = lapi.lua_isnumber;
+      module.exports.lua_isproxy = lapi.lua_isproxy;
+      module.exports.lua_isstring = lapi.lua_isstring;
+      module.exports.lua_istable = lapi.lua_istable;
+      module.exports.lua_isthread = lapi.lua_isthread;
+      module.exports.lua_isuserdata = lapi.lua_isuserdata;
+      module.exports.lua_isyieldable = ldo.lua_isyieldable;
+      module.exports.lua_len = lapi.lua_len;
+      module.exports.lua_load = lapi.lua_load;
+      module.exports.lua_newstate = lstate.lua_newstate;
+      module.exports.lua_newtable = lapi.lua_newtable;
+      module.exports.lua_newthread = lstate.lua_newthread;
+      module.exports.lua_newuserdata = lapi.lua_newuserdata;
+      module.exports.lua_next = lapi.lua_next;
+      module.exports.lua_pcall = lapi.lua_pcall;
+      module.exports.lua_pcallk = lapi.lua_pcallk;
+      module.exports.lua_pop = lapi.lua_pop;
+      module.exports.lua_pushboolean = lapi.lua_pushboolean;
+      module.exports.lua_pushcclosure = lapi.lua_pushcclosure;
+      module.exports.lua_pushcfunction = lapi.lua_pushcfunction;
+      module.exports.lua_pushfstring = lapi.lua_pushfstring;
+      module.exports.lua_pushglobaltable = lapi.lua_pushglobaltable;
+      module.exports.lua_pushinteger = lapi.lua_pushinteger;
+      module.exports.lua_pushjsclosure = lapi.lua_pushjsclosure;
+      module.exports.lua_pushjsfunction = lapi.lua_pushjsfunction;
+      module.exports.lua_pushlightuserdata = lapi.lua_pushlightuserdata;
+      module.exports.lua_pushliteral = lapi.lua_pushliteral;
+      module.exports.lua_pushlstring = lapi.lua_pushlstring;
+      module.exports.lua_pushnil = lapi.lua_pushnil;
+      module.exports.lua_pushnumber = lapi.lua_pushnumber;
+      module.exports.lua_pushstring = lapi.lua_pushstring;
+      module.exports.lua_pushthread = lapi.lua_pushthread;
+      module.exports.lua_pushvalue = lapi.lua_pushvalue;
+      module.exports.lua_pushvfstring = lapi.lua_pushvfstring;
+      module.exports.lua_rawequal = lapi.lua_rawequal;
+      module.exports.lua_rawget = lapi.lua_rawget;
+      module.exports.lua_rawgeti = lapi.lua_rawgeti;
+      module.exports.lua_rawgetp = lapi.lua_rawgetp;
+      module.exports.lua_rawlen = lapi.lua_rawlen;
+      module.exports.lua_rawset = lapi.lua_rawset;
+      module.exports.lua_rawseti = lapi.lua_rawseti;
+      module.exports.lua_rawsetp = lapi.lua_rawsetp;
+      module.exports.lua_register = lapi.lua_register;
+      module.exports.lua_remove = lapi.lua_remove;
+      module.exports.lua_replace = lapi.lua_replace;
+      module.exports.lua_resume = ldo.lua_resume;
+      module.exports.lua_rotate = lapi.lua_rotate;
+      module.exports.lua_setallof = ldo.lua_setallof;
+      module.exports.lua_setfield = lapi.lua_setfield;
+      module.exports.lua_setglobal = lapi.lua_setglobal;
+      module.exports.lua_sethook = ldebug.lua_sethook;
+      module.exports.lua_seti = lapi.lua_seti;
+      module.exports.lua_setlocal = ldebug.lua_setlocal;
+      module.exports.lua_setmetatable = lapi.lua_setmetatable;
+      module.exports.lua_settable = lapi.lua_settable;
+      module.exports.lua_settop = lapi.lua_settop;
+      module.exports.lua_setupvalue = lapi.lua_setupvalue;
+      module.exports.lua_setuservalue = lapi.lua_setuservalue;
+      module.exports.lua_status = lapi.lua_status;
+      module.exports.lua_stringtonumber = lapi.lua_stringtonumber;
+      module.exports.lua_toboolean = lapi.lua_toboolean;
+      module.exports.lua_todataview = lapi.lua_todataview;
+      module.exports.lua_tointeger = lapi.lua_tointeger;
+      module.exports.lua_tointegerx = lapi.lua_tointegerx;
+      module.exports.lua_tojsstring = lapi.lua_tojsstring;
+      module.exports.lua_tolstring = lapi.lua_tolstring;
+      module.exports.lua_tonumber = lapi.lua_tonumber;
+      module.exports.lua_tonumberx = lapi.lua_tonumberx;
+      module.exports.lua_topointer = lapi.lua_topointer;
+      module.exports.lua_toproxy = lapi.lua_toproxy;
+      module.exports.lua_tostring = lapi.lua_tostring;
+      module.exports.lua_tothread = lapi.lua_tothread;
+      module.exports.lua_touserdata = lapi.lua_touserdata;
+      module.exports.lua_type = lapi.lua_type;
+      module.exports.lua_typename = lapi.lua_typename;
+      module.exports.lua_upvalueid = lapi.lua_upvalueid;
+      module.exports.lua_upvaluejoin = lapi.lua_upvaluejoin;
+      module.exports.lua_version = lapi.lua_version;
+      module.exports.lua_xmove = lapi.lua_xmove;
+      module.exports.lua_yield = ldo.lua_yield;
+      module.exports.lua_yieldk = ldo.lua_yieldk;
+      module.exports.lua_tocfunction = lapi.lua_tocfunction;
+    }
+  });
+
+  // stubs/node-fs.js
+  var require_node_fs = __commonJS({
+    "stubs/node-fs.js"(exports, module) {
+      var fail = () => {
+        throw new Error("fs unavailable in the single-file shell");
+      };
+      module.exports = {
+        readFileSync: fail,
+        writeFileSync: fail,
+        existsSync: () => false,
+        createReadStream: fail,
+        createWriteStream: fail,
+        constants: {}
+      };
+    }
+  });
+
+  // node_modules/fengari/src/lauxlib.js
+  var require_lauxlib = __commonJS({
+    "node_modules/fengari/src/lauxlib.js"(exports, module) {
+      "use strict";
+      var {
+        LUAL_BUFFERSIZE
+      } = require_luaconf();
+      var {
+        LUA_ERRERR,
+        LUA_MULTRET,
+        LUA_REGISTRYINDEX,
+        LUA_SIGNATURE,
+        LUA_TBOOLEAN,
+        LUA_TLIGHTUSERDATA,
+        LUA_TNIL,
+        LUA_TNONE,
+        LUA_TNUMBER,
+        LUA_TSTRING,
+        LUA_TTABLE,
+        LUA_VERSION_NUM,
+        lua_Debug,
+        lua_absindex,
+        lua_atpanic,
+        lua_call,
+        lua_checkstack,
+        lua_concat,
+        lua_copy,
+        lua_createtable,
+        lua_error,
+        lua_getfield,
+        lua_getinfo,
+        lua_getmetatable,
+        lua_getstack,
+        lua_gettop,
+        lua_insert,
+        lua_isinteger,
+        lua_isnil,
+        lua_isnumber,
+        lua_isstring,
+        lua_istable,
+        lua_len,
+        lua_load,
+        lua_newstate,
+        lua_newtable,
+        lua_next,
+        lua_pcall,
+        lua_pop,
+        lua_pushboolean,
+        lua_pushcclosure,
+        lua_pushcfunction,
+        lua_pushfstring,
+        lua_pushinteger,
+        lua_pushliteral,
+        lua_pushlstring,
+        lua_pushnil,
+        lua_pushstring,
+        lua_pushvalue,
+        lua_pushvfstring,
+        lua_rawequal,
+        lua_rawget,
+        lua_rawgeti,
+        lua_rawlen,
+        lua_rawseti,
+        lua_remove,
+        lua_setfield,
+        lua_setglobal,
+        lua_setmetatable,
+        lua_settop,
+        lua_toboolean,
+        lua_tointeger,
+        lua_tointegerx,
+        lua_tojsstring,
+        lua_tolstring,
+        lua_tonumber,
+        lua_tonumberx,
+        lua_topointer,
+        lua_tostring,
+        lua_touserdata,
+        lua_type,
+        lua_typename,
+        lua_version
+      } = require_lua();
+      var {
+        from_userstring,
+        luastring_eq,
+        to_luastring,
+        to_uristring
+      } = require_fengaricore();
+      var LUA_ERRFILE = LUA_ERRERR + 1;
+      var LUA_LOADED_TABLE = to_luastring("_LOADED");
+      var LUA_PRELOAD_TABLE = to_luastring("_PRELOAD");
+      var LUA_FILEHANDLE = to_luastring("FILE*");
+      var LUAL_NUMSIZES = 4 * 16 + 8;
+      var __name = to_luastring("__name");
+      var __tostring = to_luastring("__tostring");
+      var empty = new Uint8Array(0);
+      var luaL_Buffer = class {
+        constructor() {
+          this.L = null;
+          this.b = empty;
+          this.n = 0;
+        }
+      };
+      var LEVELS1 = 10;
+      var LEVELS2 = 11;
+      var findfield = function(L, objidx, level) {
+        if (level === 0 || !lua_istable(L, -1))
+          return 0;
+        lua_pushnil(L);
+        while (lua_next(L, -2)) {
+          if (lua_type(L, -2) === LUA_TSTRING) {
+            if (lua_rawequal(L, objidx, -1)) {
+              lua_pop(L, 1);
+              return 1;
+            } else if (findfield(L, objidx, level - 1)) {
+              lua_remove(L, -2);
+              lua_pushliteral(L, ".");
+              lua_insert(L, -2);
+              lua_concat(L, 3);
+              return 1;
+            }
+          }
+          lua_pop(L, 1);
+        }
+        return 0;
+      };
+      var pushglobalfuncname = function(L, ar) {
+        let top = lua_gettop(L);
+        lua_getinfo(L, to_luastring("f"), ar);
+        lua_getfield(L, LUA_REGISTRYINDEX, LUA_LOADED_TABLE);
+        if (findfield(L, top + 1, 2)) {
+          let name = lua_tostring(L, -1);
+          if (name[0] === 95 && name[1] === 71 && name[2] === 46) {
+            lua_pushstring(L, name.subarray(3));
+            lua_remove(L, -2);
+          }
+          lua_copy(L, -1, top + 1);
+          lua_pop(L, 2);
+          return 1;
+        } else {
+          lua_settop(L, top);
+          return 0;
+        }
+      };
+      var pushfuncname = function(L, ar) {
+        if (pushglobalfuncname(L, ar)) {
+          lua_pushfstring(L, to_luastring("function '%s'"), lua_tostring(L, -1));
+          lua_remove(L, -2);
+        } else if (ar.namewhat.length !== 0)
+          lua_pushfstring(L, to_luastring("%s '%s'"), ar.namewhat, ar.name);
+        else if (ar.what && ar.what[0] === 109)
+          lua_pushliteral(L, "main chunk");
+        else if (ar.what && ar.what[0] === 76)
+          lua_pushfstring(L, to_luastring("function <%s:%d>"), ar.short_src, ar.linedefined);
+        else
+          lua_pushliteral(L, "?");
+      };
+      var lastlevel = function(L) {
+        let ar = new lua_Debug();
+        let li = 1;
+        let le = 1;
+        while (lua_getstack(L, le, ar)) {
+          li = le;
+          le *= 2;
+        }
+        while (li < le) {
+          let m = Math.floor((li + le) / 2);
+          if (lua_getstack(L, m, ar)) li = m + 1;
+          else le = m;
+        }
+        return le - 1;
+      };
+      var luaL_traceback = function(L, L1, msg, level) {
+        let ar = new lua_Debug();
+        let top = lua_gettop(L);
+        let last = lastlevel(L1);
+        let n1 = last - level > LEVELS1 + LEVELS2 ? LEVELS1 : -1;
+        if (msg)
+          lua_pushfstring(L, to_luastring("%s\n"), msg);
+        luaL_checkstack(L, 10, null);
+        lua_pushliteral(L, "stack traceback:");
+        while (lua_getstack(L1, level++, ar)) {
+          if (n1-- === 0) {
+            lua_pushliteral(L, "\n	...");
+            level = last - LEVELS2 + 1;
+          } else {
+            lua_getinfo(L1, to_luastring("Slnt", true), ar);
+            lua_pushfstring(L, to_luastring("\n	%s:"), ar.short_src);
+            if (ar.currentline > 0)
+              lua_pushliteral(L, `${ar.currentline}:`);
+            lua_pushliteral(L, " in ");
+            pushfuncname(L, ar);
+            if (ar.istailcall)
+              lua_pushliteral(L, "\n	(...tail calls..)");
+            lua_concat(L, lua_gettop(L) - top);
+          }
+        }
+        lua_concat(L, lua_gettop(L) - top);
+      };
+      var panic = function(L) {
+        let msg = "PANIC: unprotected error in call to Lua API (" + lua_tojsstring(L, -1) + ")";
+        throw new Error(msg);
+      };
+      var luaL_argerror = function(L, arg, extramsg) {
+        let ar = new lua_Debug();
+        if (!lua_getstack(L, 0, ar))
+          return luaL_error(L, to_luastring("bad argument #%d (%s)"), arg, extramsg);
+        lua_getinfo(L, to_luastring("n"), ar);
+        if (luastring_eq(ar.namewhat, to_luastring("method"))) {
+          arg--;
+          if (arg === 0)
+            return luaL_error(L, to_luastring("calling '%s' on bad self (%s)"), ar.name, extramsg);
+        }
+        if (ar.name === null)
+          ar.name = pushglobalfuncname(L, ar) ? lua_tostring(L, -1) : to_luastring("?");
+        return luaL_error(L, to_luastring("bad argument #%d to '%s' (%s)"), arg, ar.name, extramsg);
+      };
+      var typeerror = function(L, arg, tname) {
+        let typearg;
+        if (luaL_getmetafield(L, arg, __name) === LUA_TSTRING)
+          typearg = lua_tostring(L, -1);
+        else if (lua_type(L, arg) === LUA_TLIGHTUSERDATA)
+          typearg = to_luastring("light userdata", true);
+        else
+          typearg = luaL_typename(L, arg);
+        let msg = lua_pushfstring(L, to_luastring("%s expected, got %s"), tname, typearg);
+        return luaL_argerror(L, arg, msg);
+      };
+      var luaL_where = function(L, level) {
+        let ar = new lua_Debug();
+        if (lua_getstack(L, level, ar)) {
+          lua_getinfo(L, to_luastring("Sl", true), ar);
+          if (ar.currentline > 0) {
+            lua_pushfstring(L, to_luastring("%s:%d: "), ar.short_src, ar.currentline);
+            return;
+          }
+        }
+        lua_pushstring(L, to_luastring(""));
+      };
+      var luaL_error = function(L, fmt, ...argp) {
+        luaL_where(L, 1);
+        lua_pushvfstring(L, fmt, argp);
+        lua_concat(L, 2);
+        return lua_error(L);
+      };
+      var luaL_fileresult = function(L, stat, fname, e) {
+        if (stat) {
+          lua_pushboolean(L, 1);
+          return 1;
+        } else {
+          lua_pushnil(L);
+          let message, errno;
+          if (e) {
+            message = e.message;
+            errno = -e.errno;
+          } else {
+            message = "Success";
+            errno = 0;
+          }
+          if (fname)
+            lua_pushfstring(L, to_luastring("%s: %s"), fname, to_luastring(message));
+          else
+            lua_pushstring(L, to_luastring(message));
+          lua_pushinteger(L, errno);
+          return 3;
+        }
+      };
+      var luaL_execresult = function(L, e) {
+        let what, stat;
+        if (e === null) {
+          lua_pushboolean(L, 1);
+          lua_pushliteral(L, "exit");
+          lua_pushinteger(L, 0);
+          return 3;
+        } else if (e.status) {
+          what = "exit";
+          stat = e.status;
+        } else if (e.signal) {
+          what = "signal";
+          stat = e.signal;
+        } else {
+          return luaL_fileresult(L, 0, null, e);
+        }
+        lua_pushnil(L);
+        lua_pushliteral(L, what);
+        lua_pushinteger(L, stat);
+        return 3;
+      };
+      var luaL_getmetatable = function(L, n) {
+        return lua_getfield(L, LUA_REGISTRYINDEX, n);
+      };
+      var luaL_newmetatable = function(L, tname) {
+        if (luaL_getmetatable(L, tname) !== LUA_TNIL)
+          return 0;
+        lua_pop(L, 1);
+        lua_createtable(L, 0, 2);
+        lua_pushstring(L, tname);
+        lua_setfield(L, -2, __name);
+        lua_pushvalue(L, -1);
+        lua_setfield(L, LUA_REGISTRYINDEX, tname);
+        return 1;
+      };
+      var luaL_setmetatable = function(L, tname) {
+        luaL_getmetatable(L, tname);
+        lua_setmetatable(L, -2);
+      };
+      var luaL_testudata = function(L, ud, tname) {
+        let p = lua_touserdata(L, ud);
+        if (p !== null) {
+          if (lua_getmetatable(L, ud)) {
+            luaL_getmetatable(L, tname);
+            if (!lua_rawequal(L, -1, -2))
+              p = null;
+            lua_pop(L, 2);
+            return p;
+          }
+        }
+        return null;
+      };
+      var luaL_checkudata = function(L, ud, tname) {
+        let p = luaL_testudata(L, ud, tname);
+        if (p === null) typeerror(L, ud, tname);
+        return p;
+      };
+      var luaL_checkoption = function(L, arg, def, lst) {
+        let name = def !== null ? luaL_optstring(L, arg, def) : luaL_checkstring(L, arg);
+        for (let i = 0; lst[i]; i++)
+          if (luastring_eq(lst[i], name))
+            return i;
+        return luaL_argerror(L, arg, lua_pushfstring(L, to_luastring("invalid option '%s'"), name));
+      };
+      var tag_error = function(L, arg, tag) {
+        typeerror(L, arg, lua_typename(L, tag));
+      };
+      var luaL_newstate = function() {
+        let L = lua_newstate();
+        if (L) lua_atpanic(L, panic);
+        return L;
+      };
+      var luaL_typename = function(L, i) {
+        return lua_typename(L, lua_type(L, i));
+      };
+      var luaL_argcheck = function(L, cond, arg, extramsg) {
+        if (!cond) luaL_argerror(L, arg, extramsg);
+      };
+      var luaL_checkany = function(L, arg) {
+        if (lua_type(L, arg) === LUA_TNONE)
+          luaL_argerror(L, arg, to_luastring("value expected", true));
+      };
+      var luaL_checktype = function(L, arg, t) {
+        if (lua_type(L, arg) !== t)
+          tag_error(L, arg, t);
+      };
+      var luaL_checklstring = function(L, arg) {
+        let s = lua_tolstring(L, arg);
+        if (s === null || s === void 0) tag_error(L, arg, LUA_TSTRING);
+        return s;
+      };
+      var luaL_checkstring = luaL_checklstring;
+      var luaL_optlstring = function(L, arg, def) {
+        if (lua_type(L, arg) <= 0) {
+          return def === null ? null : from_userstring(def);
+        } else return luaL_checklstring(L, arg);
+      };
+      var luaL_optstring = luaL_optlstring;
+      var interror = function(L, arg) {
+        if (lua_isnumber(L, arg))
+          luaL_argerror(L, arg, to_luastring("number has no integer representation", true));
+        else
+          tag_error(L, arg, LUA_TNUMBER);
+      };
+      var luaL_checknumber = function(L, arg) {
+        let d = lua_tonumberx(L, arg);
+        if (d === false)
+          tag_error(L, arg, LUA_TNUMBER);
+        return d;
+      };
+      var luaL_optnumber = function(L, arg, def) {
+        return luaL_opt(L, luaL_checknumber, arg, def);
+      };
+      var luaL_checkinteger = function(L, arg) {
+        let d = lua_tointegerx(L, arg);
+        if (d === false)
+          interror(L, arg);
+        return d;
+      };
+      var luaL_optinteger = function(L, arg, def) {
+        return luaL_opt(L, luaL_checkinteger, arg, def);
+      };
+      var luaL_prepbuffsize = function(B, sz) {
+        let newend = B.n + sz;
+        if (B.b.length < newend) {
+          let newsize = Math.max(B.b.length * 2, newend);
+          let newbuff = new Uint8Array(newsize);
+          newbuff.set(B.b);
+          B.b = newbuff;
+        }
+        return B.b.subarray(B.n, newend);
+      };
+      var luaL_buffinit = function(L, B) {
+        B.L = L;
+        B.b = empty;
+      };
+      var luaL_buffinitsize = function(L, B, sz) {
+        luaL_buffinit(L, B);
+        return luaL_prepbuffsize(B, sz);
+      };
+      var luaL_prepbuffer = function(B) {
+        return luaL_prepbuffsize(B, LUAL_BUFFERSIZE);
+      };
+      var luaL_addlstring = function(B, s, l) {
+        if (l > 0) {
+          s = from_userstring(s);
+          let b = luaL_prepbuffsize(B, l);
+          b.set(s.subarray(0, l));
+          luaL_addsize(B, l);
+        }
+      };
+      var luaL_addstring = function(B, s) {
+        s = from_userstring(s);
+        luaL_addlstring(B, s, s.length);
+      };
+      var luaL_pushresult = function(B) {
+        lua_pushlstring(B.L, B.b, B.n);
+        B.n = 0;
+        B.b = empty;
+      };
+      var luaL_addchar = function(B, c) {
+        luaL_prepbuffsize(B, 1);
+        B.b[B.n++] = c;
+      };
+      var luaL_addsize = function(B, s) {
+        B.n += s;
+      };
+      var luaL_pushresultsize = function(B, sz) {
+        luaL_addsize(B, sz);
+        luaL_pushresult(B);
+      };
+      var luaL_addvalue = function(B) {
+        let L = B.L;
+        let s = lua_tostring(L, -1);
+        luaL_addlstring(B, s, s.length);
+        lua_pop(L, 1);
+      };
+      var luaL_opt = function(L, f, n, d) {
+        return lua_type(L, n) <= 0 ? d : f(L, n);
+      };
+      var getS = function(L, ud) {
+        let s = ud.string;
+        ud.string = null;
+        return s;
+      };
+      var luaL_loadbufferx = function(L, buff, size, name, mode) {
+        return lua_load(L, getS, { string: buff }, name, mode);
+      };
+      var luaL_loadbuffer = function(L, s, sz, n) {
+        return luaL_loadbufferx(L, s, sz, n, null);
+      };
+      var luaL_loadstring = function(L, s) {
+        return luaL_loadbuffer(L, s, s.length, s);
+      };
+      var luaL_dostring = function(L, s) {
+        return luaL_loadstring(L, s) || lua_pcall(L, 0, LUA_MULTRET, 0);
+      };
+      var luaL_getmetafield = function(L, obj, event) {
+        if (!lua_getmetatable(L, obj))
+          return LUA_TNIL;
+        else {
+          lua_pushstring(L, event);
+          let tt = lua_rawget(L, -2);
+          if (tt === LUA_TNIL)
+            lua_pop(L, 2);
+          else
+            lua_remove(L, -2);
+          return tt;
+        }
+      };
+      var luaL_callmeta = function(L, obj, event) {
+        obj = lua_absindex(L, obj);
+        if (luaL_getmetafield(L, obj, event) === LUA_TNIL)
+          return false;
+        lua_pushvalue(L, obj);
+        lua_call(L, 1, 1);
+        return true;
+      };
+      var luaL_len = function(L, idx) {
+        lua_len(L, idx);
+        let l = lua_tointegerx(L, -1);
+        if (l === false)
+          luaL_error(L, to_luastring("object length is not an integer", true));
+        lua_pop(L, 1);
+        return l;
+      };
+      var p_I = to_luastring("%I");
+      var p_f = to_luastring("%f");
+      var luaL_tolstring = function(L, idx) {
+        if (luaL_callmeta(L, idx, __tostring)) {
+          if (!lua_isstring(L, -1))
+            luaL_error(L, to_luastring("'__tostring' must return a string"));
+        } else {
+          let t = lua_type(L, idx);
+          switch (t) {
+            case LUA_TNUMBER: {
+              if (lua_isinteger(L, idx))
+                lua_pushfstring(L, p_I, lua_tointeger(L, idx));
+              else
+                lua_pushfstring(L, p_f, lua_tonumber(L, idx));
+              break;
+            }
+            case LUA_TSTRING:
+              lua_pushvalue(L, idx);
+              break;
+            case LUA_TBOOLEAN:
+              lua_pushliteral(L, lua_toboolean(L, idx) ? "true" : "false");
+              break;
+            case LUA_TNIL:
+              lua_pushliteral(L, "nil");
+              break;
+            default: {
+              let tt = luaL_getmetafield(L, idx, __name);
+              let kind = tt === LUA_TSTRING ? lua_tostring(L, -1) : luaL_typename(L, idx);
+              lua_pushfstring(L, to_luastring("%s: %p"), kind, lua_topointer(L, idx));
+              if (tt !== LUA_TNIL)
+                lua_remove(L, -2);
+              break;
+            }
+          }
+        }
+        return lua_tolstring(L, -1);
+      };
+      var luaL_requiref = function(L, modname, openf, glb) {
+        luaL_getsubtable(L, LUA_REGISTRYINDEX, LUA_LOADED_TABLE);
+        lua_getfield(L, -1, modname);
+        if (!lua_toboolean(L, -1)) {
+          lua_pop(L, 1);
+          lua_pushcfunction(L, openf);
+          lua_pushstring(L, modname);
+          lua_call(L, 1, 1);
+          lua_pushvalue(L, -1);
+          lua_setfield(L, -3, modname);
+        }
+        lua_remove(L, -2);
+        if (glb) {
+          lua_pushvalue(L, -1);
+          lua_setglobal(L, modname);
+        }
+      };
+      var find_subarray = function(arr, subarr, from_index) {
+        var i = from_index >>> 0, sl = subarr.length, l = arr.length + 1 - sl;
+        loop: for (; i < l; i++) {
+          for (let j = 0; j < sl; j++)
+            if (arr[i + j] !== subarr[j])
+              continue loop;
+          return i;
+        }
+        return -1;
+      };
+      var luaL_gsub = function(L, s, p, r) {
+        let wild;
+        let b = new luaL_Buffer();
+        luaL_buffinit(L, b);
+        while ((wild = find_subarray(s, p)) >= 0) {
+          luaL_addlstring(b, s, wild);
+          luaL_addstring(b, r);
+          s = s.subarray(wild + p.length);
+        }
+        luaL_addstring(b, s);
+        luaL_pushresult(b);
+        return lua_tostring(L, -1);
+      };
+      var luaL_getsubtable = function(L, idx, fname) {
+        if (lua_getfield(L, idx, fname) === LUA_TTABLE)
+          return true;
+        else {
+          lua_pop(L, 1);
+          idx = lua_absindex(L, idx);
+          lua_newtable(L);
+          lua_pushvalue(L, -1);
+          lua_setfield(L, idx, fname);
+          return false;
+        }
+      };
+      var luaL_setfuncs = function(L, l, nup) {
+        luaL_checkstack(L, nup, to_luastring("too many upvalues", true));
+        for (let lib in l) {
+          for (let i = 0; i < nup; i++)
+            lua_pushvalue(L, -nup);
+          lua_pushcclosure(L, l[lib], nup);
+          lua_setfield(L, -(nup + 2), to_luastring(lib));
+        }
+        lua_pop(L, nup);
+      };
+      var luaL_checkstack = function(L, space, msg) {
+        if (!lua_checkstack(L, space)) {
+          if (msg)
+            luaL_error(L, to_luastring("stack overflow (%s)"), msg);
+          else
+            luaL_error(L, to_luastring("stack overflow", true));
+        }
+      };
+      var luaL_newlibtable = function(L) {
+        lua_createtable(L);
+      };
+      var luaL_newlib = function(L, l) {
+        lua_createtable(L);
+        luaL_setfuncs(L, l, 0);
+      };
+      var LUA_NOREF = -2;
+      var LUA_REFNIL = -1;
+      var luaL_ref = function(L, t) {
+        let ref;
+        if (lua_isnil(L, -1)) {
+          lua_pop(L, 1);
+          return LUA_REFNIL;
+        }
+        t = lua_absindex(L, t);
+        lua_rawgeti(L, t, 0);
+        ref = lua_tointeger(L, -1);
+        lua_pop(L, 1);
+        if (ref !== 0) {
+          lua_rawgeti(L, t, ref);
+          lua_rawseti(L, t, 0);
+        } else
+          ref = lua_rawlen(L, t) + 1;
+        lua_rawseti(L, t, ref);
+        return ref;
+      };
+      var luaL_unref = function(L, t, ref) {
+        if (ref >= 0) {
+          t = lua_absindex(L, t);
+          lua_rawgeti(L, t, 0);
+          lua_rawseti(L, t, ref);
+          lua_pushinteger(L, ref);
+          lua_rawseti(L, t, 0);
+        }
+      };
+      var errfile = function(L, what, fnameindex, error) {
+        let serr = error.message;
+        let filename = lua_tostring(L, fnameindex).subarray(1);
+        lua_pushfstring(L, to_luastring("cannot %s %s: %s"), to_luastring(what), filename, to_luastring(serr));
+        lua_remove(L, fnameindex);
+        return LUA_ERRFILE;
+      };
+      var getc;
+      var utf8_bom = [239, 187, 191];
+      var skipBOM = function(lf) {
+        lf.n = 0;
+        let c;
+        let p = 0;
+        do {
+          c = getc(lf);
+          if (c === null || c !== utf8_bom[p]) return c;
+          p++;
+          lf.buff[lf.n++] = c;
+        } while (p < utf8_bom.length);
+        lf.n = 0;
+        return getc(lf);
+      };
+      var skipcomment = function(lf) {
+        let c = skipBOM(lf);
+        if (c === 35) {
+          do {
+            c = getc(lf);
+          } while (c && c !== 10);
+          return {
+            skipped: true,
+            c: getc(lf)
+            /* skip end-of-line, if present */
+          };
+        } else {
+          return {
+            skipped: false,
+            c
+          };
+        }
+      };
+      var luaL_loadfilex;
+      if (typeof process === "undefined") {
+        class LoadF {
+          constructor() {
+            this.n = NaN;
+            this.f = null;
+            this.buff = new Uint8Array(1024);
+            this.pos = 0;
+            this.err = void 0;
+          }
+        }
+        const getF = function(L, ud) {
+          let lf = ud;
+          if (lf.f !== null && lf.n > 0) {
+            let bytes = lf.n;
+            lf.n = 0;
+            lf.f = lf.f.subarray(lf.pos);
+            return lf.buff.subarray(0, bytes);
+          }
+          let f = lf.f;
+          lf.f = null;
+          return f;
+        };
+        getc = function(lf) {
+          return lf.pos < lf.f.length ? lf.f[lf.pos++] : null;
+        };
+        luaL_loadfilex = function(L, filename, mode) {
+          let lf = new LoadF();
+          let fnameindex = lua_gettop(L) + 1;
+          if (filename === null) {
+            throw new Error("Can't read stdin in the browser");
+          } else {
+            lua_pushfstring(L, to_luastring("@%s"), filename);
+            let path = to_uristring(filename);
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", path, false);
+            if (typeof window === "undefined") {
+              xhr.responseType = "arraybuffer";
+            }
+            xhr.send();
+            if (xhr.status >= 200 && xhr.status <= 299) {
+              if (typeof xhr.response === "string") {
+                lf.f = to_luastring(xhr.response);
+              } else {
+                lf.f = new Uint8Array(xhr.response);
+              }
+            } else {
+              lf.err = xhr.status;
+              return errfile(L, "open", fnameindex, { message: `${xhr.status}: ${xhr.statusText}` });
+            }
+          }
+          let com = skipcomment(lf);
+          if (com.c === LUA_SIGNATURE[0] && filename) {
+          } else if (com.skipped) {
+            lf.buff[lf.n++] = 10;
+          }
+          if (com.c !== null)
+            lf.buff[lf.n++] = com.c;
+          let status = lua_load(L, getF, lf, lua_tostring(L, -1), mode);
+          let readstatus = lf.err;
+          if (readstatus) {
+            lua_settop(L, fnameindex);
+            return errfile(L, "read", fnameindex, readstatus);
+          }
+          lua_remove(L, fnameindex);
+          return status;
+        };
+      } else {
+        const fs = require_node_fs();
+        class LoadF {
+          constructor() {
+            this.n = NaN;
+            this.f = null;
+            this.buff = Buffer.alloc(1024);
+            this.pos = 0;
+            this.err = void 0;
+          }
+        }
+        const getF = function(L, ud) {
+          let lf = ud;
+          let bytes = 0;
+          if (lf.n > 0) {
+            bytes = lf.n;
+            lf.n = 0;
+          } else {
+            try {
+              bytes = fs.readSync(lf.f, lf.buff, 0, lf.buff.length, lf.pos);
+            } catch (e) {
+              lf.err = e;
+              bytes = 0;
+            }
+            lf.pos += bytes;
+          }
+          if (bytes > 0)
+            return lf.buff.subarray(0, bytes);
+          else return null;
+        };
+        getc = function(lf) {
+          let b = Buffer.alloc(1);
+          let bytes;
+          try {
+            bytes = fs.readSync(lf.f, b, 0, 1, lf.pos);
+          } catch (e) {
+            lf.err = e;
+            return null;
+          }
+          lf.pos += bytes;
+          return bytes > 0 ? b.readUInt8() : null;
+        };
+        luaL_loadfilex = function(L, filename, mode) {
+          let lf = new LoadF();
+          let fnameindex = lua_gettop(L) + 1;
+          if (filename === null) {
+            lua_pushliteral(L, "=stdin");
+            lf.f = process.stdin.fd;
+          } else {
+            lua_pushfstring(L, to_luastring("@%s"), filename);
+            try {
+              lf.f = fs.openSync(filename, "r");
+            } catch (e) {
+              return errfile(L, "open", fnameindex, e);
+            }
+          }
+          let com = skipcomment(lf);
+          if (com.c === LUA_SIGNATURE[0] && filename) {
+          } else if (com.skipped) {
+            lf.buff[lf.n++] = 10;
+          }
+          if (com.c !== null)
+            lf.buff[lf.n++] = com.c;
+          let status = lua_load(L, getF, lf, lua_tostring(L, -1), mode);
+          let readstatus = lf.err;
+          if (filename) try {
+            fs.closeSync(lf.f);
+          } catch (e) {
+          }
+          if (readstatus) {
+            lua_settop(L, fnameindex);
+            return errfile(L, "read", fnameindex, readstatus);
+          }
+          lua_remove(L, fnameindex);
+          return status;
+        };
+      }
+      var luaL_loadfile = function(L, filename) {
+        return luaL_loadfilex(L, filename, null);
+      };
+      var luaL_dofile = function(L, filename) {
+        return luaL_loadfile(L, filename) || lua_pcall(L, 0, LUA_MULTRET, 0);
+      };
+      var lua_writestringerror = function() {
+        for (let i = 0; i < arguments.length; i++) {
+          let a = arguments[i];
+          if (typeof process === "undefined") {
+            do {
+              let r = /([^\n]*)\n?([\d\D]*)/.exec(a);
+              console.error(r[1]);
+              a = r[2];
+            } while (a !== "");
+          } else {
+            process.stderr.write(a);
+          }
+        }
+      };
+      var luaL_checkversion_ = function(L, ver, sz) {
+        let v = lua_version(L);
+        if (sz != LUAL_NUMSIZES)
+          luaL_error(L, to_luastring("core and library have incompatible numeric types"));
+        if (v != lua_version(null))
+          luaL_error(L, to_luastring("multiple Lua VMs detected"));
+        else if (v !== ver)
+          luaL_error(L, to_luastring("version mismatch: app. needs %f, Lua core provides %f"), ver, v);
+      };
+      var luaL_checkversion = function(L) {
+        luaL_checkversion_(L, LUA_VERSION_NUM, LUAL_NUMSIZES);
+      };
+      module.exports.LUA_ERRFILE = LUA_ERRFILE;
+      module.exports.LUA_FILEHANDLE = LUA_FILEHANDLE;
+      module.exports.LUA_LOADED_TABLE = LUA_LOADED_TABLE;
+      module.exports.LUA_NOREF = LUA_NOREF;
+      module.exports.LUA_PRELOAD_TABLE = LUA_PRELOAD_TABLE;
+      module.exports.LUA_REFNIL = LUA_REFNIL;
+      module.exports.luaL_Buffer = luaL_Buffer;
+      module.exports.luaL_addchar = luaL_addchar;
+      module.exports.luaL_addlstring = luaL_addlstring;
+      module.exports.luaL_addsize = luaL_addsize;
+      module.exports.luaL_addstring = luaL_addstring;
+      module.exports.luaL_addvalue = luaL_addvalue;
+      module.exports.luaL_argcheck = luaL_argcheck;
+      module.exports.luaL_argerror = luaL_argerror;
+      module.exports.luaL_buffinit = luaL_buffinit;
+      module.exports.luaL_buffinitsize = luaL_buffinitsize;
+      module.exports.luaL_callmeta = luaL_callmeta;
+      module.exports.luaL_checkany = luaL_checkany;
+      module.exports.luaL_checkinteger = luaL_checkinteger;
+      module.exports.luaL_checklstring = luaL_checklstring;
+      module.exports.luaL_checknumber = luaL_checknumber;
+      module.exports.luaL_checkoption = luaL_checkoption;
+      module.exports.luaL_checkstack = luaL_checkstack;
+      module.exports.luaL_checkstring = luaL_checkstring;
+      module.exports.luaL_checktype = luaL_checktype;
+      module.exports.luaL_checkudata = luaL_checkudata;
+      module.exports.luaL_checkversion = luaL_checkversion;
+      module.exports.luaL_checkversion_ = luaL_checkversion_;
+      module.exports.luaL_dofile = luaL_dofile;
+      module.exports.luaL_dostring = luaL_dostring;
+      module.exports.luaL_error = luaL_error;
+      module.exports.luaL_execresult = luaL_execresult;
+      module.exports.luaL_fileresult = luaL_fileresult;
+      module.exports.luaL_getmetafield = luaL_getmetafield;
+      module.exports.luaL_getmetatable = luaL_getmetatable;
+      module.exports.luaL_getsubtable = luaL_getsubtable;
+      module.exports.luaL_gsub = luaL_gsub;
+      module.exports.luaL_len = luaL_len;
+      module.exports.luaL_loadbuffer = luaL_loadbuffer;
+      module.exports.luaL_loadbufferx = luaL_loadbufferx;
+      module.exports.luaL_loadfile = luaL_loadfile;
+      module.exports.luaL_loadfilex = luaL_loadfilex;
+      module.exports.luaL_loadstring = luaL_loadstring;
+      module.exports.luaL_newlib = luaL_newlib;
+      module.exports.luaL_newlibtable = luaL_newlibtable;
+      module.exports.luaL_newmetatable = luaL_newmetatable;
+      module.exports.luaL_newstate = luaL_newstate;
+      module.exports.luaL_opt = luaL_opt;
+      module.exports.luaL_optinteger = luaL_optinteger;
+      module.exports.luaL_optlstring = luaL_optlstring;
+      module.exports.luaL_optnumber = luaL_optnumber;
+      module.exports.luaL_optstring = luaL_optstring;
+      module.exports.luaL_prepbuffer = luaL_prepbuffer;
+      module.exports.luaL_prepbuffsize = luaL_prepbuffsize;
+      module.exports.luaL_pushresult = luaL_pushresult;
+      module.exports.luaL_pushresultsize = luaL_pushresultsize;
+      module.exports.luaL_ref = luaL_ref;
+      module.exports.luaL_requiref = luaL_requiref;
+      module.exports.luaL_setfuncs = luaL_setfuncs;
+      module.exports.luaL_setmetatable = luaL_setmetatable;
+      module.exports.luaL_testudata = luaL_testudata;
+      module.exports.luaL_tolstring = luaL_tolstring;
+      module.exports.luaL_traceback = luaL_traceback;
+      module.exports.luaL_typename = luaL_typename;
+      module.exports.luaL_unref = luaL_unref;
+      module.exports.luaL_where = luaL_where;
+      module.exports.lua_writestringerror = lua_writestringerror;
+    }
+  });
+
+  // node_modules/fengari/src/lbaselib.js
+  var require_lbaselib = __commonJS({
+    "node_modules/fengari/src/lbaselib.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_MULTRET,
+        LUA_OK,
+        LUA_TFUNCTION,
+        LUA_TNIL,
+        LUA_TNONE,
+        LUA_TNUMBER,
+        LUA_TSTRING,
+        LUA_TTABLE,
+        LUA_VERSION,
+        LUA_YIELD,
+        lua_call,
+        lua_callk,
+        lua_concat,
+        lua_error,
+        lua_getglobal,
+        lua_geti,
+        lua_getmetatable,
+        lua_gettop,
+        lua_insert,
+        lua_isnil,
+        lua_isnone,
+        lua_isstring,
+        lua_load,
+        lua_next,
+        lua_pcallk,
+        lua_pop,
+        lua_pushboolean,
+        lua_pushcfunction,
+        lua_pushglobaltable,
+        lua_pushinteger,
+        lua_pushliteral,
+        lua_pushnil,
+        lua_pushstring,
+        lua_pushvalue,
+        lua_rawequal,
+        lua_rawget,
+        lua_rawlen,
+        lua_rawset,
+        lua_remove,
+        lua_replace,
+        lua_rotate,
+        lua_setfield,
+        lua_setmetatable,
+        lua_settop,
+        lua_setupvalue,
+        lua_stringtonumber,
+        lua_toboolean,
+        lua_tolstring,
+        lua_tostring,
+        lua_type,
+        lua_typename
+      } = require_lua();
+      var {
+        luaL_argcheck,
+        luaL_checkany,
+        luaL_checkinteger,
+        luaL_checkoption,
+        luaL_checkstack,
+        luaL_checktype,
+        luaL_error,
+        luaL_getmetafield,
+        luaL_loadbufferx,
+        luaL_loadfile,
+        luaL_loadfilex,
+        luaL_optinteger,
+        luaL_optstring,
+        luaL_setfuncs,
+        luaL_tolstring,
+        luaL_where
+      } = require_lauxlib();
+      var {
+        to_jsstring,
+        to_luastring
+      } = require_fengaricore();
+      var lua_writestring;
+      var lua_writeline;
+      if (typeof process === "undefined") {
+        if (typeof TextDecoder === "function") {
+          let buff = "";
+          let decoder = new TextDecoder("utf-8");
+          lua_writestring = function(s) {
+            buff += decoder.decode(s, { stream: true });
+          };
+          let empty = new Uint8Array(0);
+          lua_writeline = function() {
+            buff += decoder.decode(empty);
+            console.log(buff);
+            buff = "";
+          };
+        } else {
+          let buff = [];
+          lua_writestring = function(s) {
+            try {
+              s = to_jsstring(s);
+            } catch (e) {
+              let copy = new Uint8Array(s.length);
+              copy.set(s);
+              s = copy;
+            }
+            buff.push(s);
+          };
+          lua_writeline = function() {
+            console.log.apply(console.log, buff);
+            buff = [];
+          };
+        }
+      } else {
+        lua_writestring = function(s) {
+          process.stdout.write(Buffer.from(s));
+        };
+        lua_writeline = function() {
+          process.stdout.write("\n");
+        };
+      }
+      var luaB_print = function(L) {
+        let n = lua_gettop(L);
+        lua_getglobal(L, to_luastring("tostring", true));
+        for (let i = 1; i <= n; i++) {
+          lua_pushvalue(L, -1);
+          lua_pushvalue(L, i);
+          lua_call(L, 1, 1);
+          let s = lua_tolstring(L, -1);
+          if (s === null)
+            return luaL_error(L, to_luastring("'tostring' must return a string to 'print'"));
+          if (i > 1) lua_writestring(to_luastring("	"));
+          lua_writestring(s);
+          lua_pop(L, 1);
+        }
+        lua_writeline();
+        return 0;
+      };
+      var luaB_tostring = function(L) {
+        luaL_checkany(L, 1);
+        luaL_tolstring(L, 1);
+        return 1;
+      };
+      var luaB_getmetatable = function(L) {
+        luaL_checkany(L, 1);
+        if (!lua_getmetatable(L, 1)) {
+          lua_pushnil(L);
+          return 1;
+        }
+        luaL_getmetafield(L, 1, to_luastring("__metatable", true));
+        return 1;
+      };
+      var luaB_setmetatable = function(L) {
+        let t = lua_type(L, 2);
+        luaL_checktype(L, 1, LUA_TTABLE);
+        luaL_argcheck(L, t === LUA_TNIL || t === LUA_TTABLE, 2, "nil or table expected");
+        if (luaL_getmetafield(L, 1, to_luastring("__metatable", true)) !== LUA_TNIL)
+          return luaL_error(L, to_luastring("cannot change a protected metatable"));
+        lua_settop(L, 2);
+        lua_setmetatable(L, 1);
+        return 1;
+      };
+      var luaB_rawequal = function(L) {
+        luaL_checkany(L, 1);
+        luaL_checkany(L, 2);
+        lua_pushboolean(L, lua_rawequal(L, 1, 2));
+        return 1;
+      };
+      var luaB_rawlen = function(L) {
+        let t = lua_type(L, 1);
+        luaL_argcheck(L, t === LUA_TTABLE || t === LUA_TSTRING, 1, "table or string expected");
+        lua_pushinteger(L, lua_rawlen(L, 1));
+        return 1;
+      };
+      var luaB_rawget = function(L) {
+        luaL_checktype(L, 1, LUA_TTABLE);
+        luaL_checkany(L, 2);
+        lua_settop(L, 2);
+        lua_rawget(L, 1);
+        return 1;
+      };
+      var luaB_rawset = function(L) {
+        luaL_checktype(L, 1, LUA_TTABLE);
+        luaL_checkany(L, 2);
+        luaL_checkany(L, 3);
+        lua_settop(L, 3);
+        lua_rawset(L, 1);
+        return 1;
+      };
+      var opts = [
+        "stop",
+        "restart",
+        "collect",
+        "count",
+        "step",
+        "setpause",
+        "setstepmul",
+        "isrunning"
+      ].map((e) => to_luastring(e));
+      var luaB_collectgarbage = function(L) {
+        luaL_checkoption(L, 1, "collect", opts);
+        luaL_optinteger(L, 2, 0);
+        luaL_error(L, to_luastring("lua_gc not implemented"));
+      };
+      var luaB_type = function(L) {
+        let t = lua_type(L, 1);
+        luaL_argcheck(L, t !== LUA_TNONE, 1, "value expected");
+        lua_pushstring(L, lua_typename(L, t));
+        return 1;
+      };
+      var pairsmeta = function(L, method, iszero, iter) {
+        luaL_checkany(L, 1);
+        if (luaL_getmetafield(L, 1, method) === LUA_TNIL) {
+          lua_pushcfunction(L, iter);
+          lua_pushvalue(L, 1);
+          if (iszero) lua_pushinteger(L, 0);
+          else lua_pushnil(L);
+        } else {
+          lua_pushvalue(L, 1);
+          lua_call(L, 1, 3);
+        }
+        return 3;
+      };
+      var luaB_next = function(L) {
+        luaL_checktype(L, 1, LUA_TTABLE);
+        lua_settop(L, 2);
+        if (lua_next(L, 1))
+          return 2;
+        else {
+          lua_pushnil(L);
+          return 1;
+        }
+      };
+      var luaB_pairs = function(L) {
+        return pairsmeta(L, to_luastring("__pairs", true), 0, luaB_next);
+      };
+      var ipairsaux = function(L) {
+        let i = luaL_checkinteger(L, 2) + 1;
+        lua_pushinteger(L, i);
+        return lua_geti(L, 1, i) === LUA_TNIL ? 1 : 2;
+      };
+      var luaB_ipairs = function(L) {
+        luaL_checkany(L, 1);
+        lua_pushcfunction(L, ipairsaux);
+        lua_pushvalue(L, 1);
+        lua_pushinteger(L, 0);
+        return 3;
+      };
+      var b_str2int = function(s, base) {
+        try {
+          s = to_jsstring(s);
+        } catch (e) {
+          return null;
+        }
+        let r = /^[\t\v\f \n\r]*([+-]?)0*([0-9A-Za-z]+)[\t\v\f \n\r]*$/.exec(s);
+        if (!r) return null;
+        let v = parseInt(r[1] + r[2], base);
+        if (isNaN(v)) return null;
+        return v | 0;
+      };
+      var luaB_tonumber = function(L) {
+        if (lua_type(L, 2) <= 0) {
+          luaL_checkany(L, 1);
+          if (lua_type(L, 1) === LUA_TNUMBER) {
+            lua_settop(L, 1);
+            return 1;
+          } else {
+            let s = lua_tostring(L, 1);
+            if (s !== null && lua_stringtonumber(L, s) === s.length + 1)
+              return 1;
+          }
+        } else {
+          let base = luaL_checkinteger(L, 2);
+          luaL_checktype(L, 1, LUA_TSTRING);
+          let s = lua_tostring(L, 1);
+          luaL_argcheck(L, 2 <= base && base <= 36, 2, "base out of range");
+          let n = b_str2int(s, base);
+          if (n !== null) {
+            lua_pushinteger(L, n);
+            return 1;
+          }
+        }
+        lua_pushnil(L);
+        return 1;
+      };
+      var luaB_error = function(L) {
+        let level = luaL_optinteger(L, 2, 1);
+        lua_settop(L, 1);
+        if (lua_type(L, 1) === LUA_TSTRING && level > 0) {
+          luaL_where(L, level);
+          lua_pushvalue(L, 1);
+          lua_concat(L, 2);
+        }
+        return lua_error(L);
+      };
+      var luaB_assert = function(L) {
+        if (lua_toboolean(L, 1))
+          return lua_gettop(L);
+        else {
+          luaL_checkany(L, 1);
+          lua_remove(L, 1);
+          lua_pushliteral(L, "assertion failed!");
+          lua_settop(L, 1);
+          return luaB_error(L);
+        }
+      };
+      var luaB_select = function(L) {
+        let n = lua_gettop(L);
+        if (lua_type(L, 1) === LUA_TSTRING && lua_tostring(L, 1)[0] === 35) {
+          lua_pushinteger(L, n - 1);
+          return 1;
+        } else {
+          let i = luaL_checkinteger(L, 1);
+          if (i < 0) i = n + i;
+          else if (i > n) i = n;
+          luaL_argcheck(L, 1 <= i, 1, "index out of range");
+          return n - i;
+        }
+      };
+      var finishpcall = function(L, status, extra) {
+        if (status !== LUA_OK && status !== LUA_YIELD) {
+          lua_pushboolean(L, 0);
+          lua_pushvalue(L, -2);
+          return 2;
+        } else
+          return lua_gettop(L) - extra;
+      };
+      var luaB_pcall = function(L) {
+        luaL_checkany(L, 1);
+        lua_pushboolean(L, 1);
+        lua_insert(L, 1);
+        let status = lua_pcallk(L, lua_gettop(L) - 2, LUA_MULTRET, 0, 0, finishpcall);
+        return finishpcall(L, status, 0);
+      };
+      var luaB_xpcall = function(L) {
+        let n = lua_gettop(L);
+        luaL_checktype(L, 2, LUA_TFUNCTION);
+        lua_pushboolean(L, 1);
+        lua_pushvalue(L, 1);
+        lua_rotate(L, 3, 2);
+        let status = lua_pcallk(L, n - 2, LUA_MULTRET, 2, 2, finishpcall);
+        return finishpcall(L, status, 2);
+      };
+      var load_aux = function(L, status, envidx) {
+        if (status === LUA_OK) {
+          if (envidx !== 0) {
+            lua_pushvalue(L, envidx);
+            if (!lua_setupvalue(L, -2, 1))
+              lua_pop(L, 1);
+          }
+          return 1;
+        } else {
+          lua_pushnil(L);
+          lua_insert(L, -2);
+          return 2;
+        }
+      };
+      var RESERVEDSLOT = 5;
+      var generic_reader = function(L, ud) {
+        luaL_checkstack(L, 2, "too many nested functions");
+        lua_pushvalue(L, 1);
+        lua_call(L, 0, 1);
+        if (lua_isnil(L, -1)) {
+          lua_pop(L, 1);
+          return null;
+        } else if (!lua_isstring(L, -1))
+          luaL_error(L, to_luastring("reader function must return a string"));
+        lua_replace(L, RESERVEDSLOT);
+        return lua_tostring(L, RESERVEDSLOT);
+      };
+      var luaB_load = function(L) {
+        let s = lua_tostring(L, 1);
+        let mode = luaL_optstring(L, 3, "bt");
+        let env = !lua_isnone(L, 4) ? 4 : 0;
+        let status;
+        if (s !== null) {
+          let chunkname = luaL_optstring(L, 2, s);
+          status = luaL_loadbufferx(L, s, s.length, chunkname, mode);
+        } else {
+          let chunkname = luaL_optstring(L, 2, "=(load)");
+          luaL_checktype(L, 1, LUA_TFUNCTION);
+          lua_settop(L, RESERVEDSLOT);
+          status = lua_load(L, generic_reader, null, chunkname, mode);
+        }
+        return load_aux(L, status, env);
+      };
+      var luaB_loadfile = function(L) {
+        let fname = luaL_optstring(L, 1, null);
+        let mode = luaL_optstring(L, 2, null);
+        let env = !lua_isnone(L, 3) ? 3 : 0;
+        let status = luaL_loadfilex(L, fname, mode);
+        return load_aux(L, status, env);
+      };
+      var dofilecont = function(L, d1, d2) {
+        return lua_gettop(L) - 1;
+      };
+      var luaB_dofile = function(L) {
+        let fname = luaL_optstring(L, 1, null);
+        lua_settop(L, 1);
+        if (luaL_loadfile(L, fname) !== LUA_OK)
+          return lua_error(L);
+        lua_callk(L, 0, LUA_MULTRET, 0, dofilecont);
+        return dofilecont(L, 0, 0);
+      };
+      var base_funcs = {
+        "assert": luaB_assert,
+        "collectgarbage": luaB_collectgarbage,
+        "dofile": luaB_dofile,
+        "error": luaB_error,
+        "getmetatable": luaB_getmetatable,
+        "ipairs": luaB_ipairs,
+        "load": luaB_load,
+        "loadfile": luaB_loadfile,
+        "next": luaB_next,
+        "pairs": luaB_pairs,
+        "pcall": luaB_pcall,
+        "print": luaB_print,
+        "rawequal": luaB_rawequal,
+        "rawget": luaB_rawget,
+        "rawlen": luaB_rawlen,
+        "rawset": luaB_rawset,
+        "select": luaB_select,
+        "setmetatable": luaB_setmetatable,
+        "tonumber": luaB_tonumber,
+        "tostring": luaB_tostring,
+        "type": luaB_type,
+        "xpcall": luaB_xpcall
+      };
+      var luaopen_base = function(L) {
+        lua_pushglobaltable(L);
+        luaL_setfuncs(L, base_funcs, 0);
+        lua_pushvalue(L, -1);
+        lua_setfield(L, -2, to_luastring("_G"));
+        lua_pushliteral(L, LUA_VERSION);
+        lua_setfield(L, -2, to_luastring("_VERSION"));
+        return 1;
+      };
+      module.exports.luaopen_base = luaopen_base;
+    }
+  });
+
+  // node_modules/fengari/src/lcorolib.js
+  var require_lcorolib = __commonJS({
+    "node_modules/fengari/src/lcorolib.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_OK,
+        LUA_TFUNCTION,
+        LUA_TSTRING,
+        LUA_YIELD,
+        lua_Debug,
+        lua_checkstack,
+        lua_concat,
+        lua_error,
+        lua_getstack,
+        lua_gettop,
+        lua_insert,
+        lua_isyieldable,
+        lua_newthread,
+        lua_pop,
+        lua_pushboolean,
+        lua_pushcclosure,
+        lua_pushliteral,
+        lua_pushthread,
+        lua_pushvalue,
+        lua_resume,
+        lua_status,
+        lua_tothread,
+        lua_type,
+        lua_upvalueindex,
+        lua_xmove,
+        lua_yield
+      } = require_lua();
+      var {
+        luaL_argcheck,
+        luaL_checktype,
+        luaL_newlib,
+        luaL_where
+      } = require_lauxlib();
+      var getco = function(L) {
+        let co = lua_tothread(L, 1);
+        luaL_argcheck(L, co, 1, "thread expected");
+        return co;
+      };
+      var auxresume = function(L, co, narg) {
+        if (!lua_checkstack(co, narg)) {
+          lua_pushliteral(L, "too many arguments to resume");
+          return -1;
+        }
+        if (lua_status(co) === LUA_OK && lua_gettop(co) === 0) {
+          lua_pushliteral(L, "cannot resume dead coroutine");
+          return -1;
+        }
+        lua_xmove(L, co, narg);
+        let status = lua_resume(co, L, narg);
+        if (status === LUA_OK || status === LUA_YIELD) {
+          let nres = lua_gettop(co);
+          if (!lua_checkstack(L, nres + 1)) {
+            lua_pop(co, nres);
+            lua_pushliteral(L, "too many results to resume");
+            return -1;
+          }
+          lua_xmove(co, L, nres);
+          return nres;
+        } else {
+          lua_xmove(co, L, 1);
+          return -1;
+        }
+      };
+      var luaB_coresume = function(L) {
+        let co = getco(L);
+        let r = auxresume(L, co, lua_gettop(L) - 1);
+        if (r < 0) {
+          lua_pushboolean(L, 0);
+          lua_insert(L, -2);
+          return 2;
+        } else {
+          lua_pushboolean(L, 1);
+          lua_insert(L, -(r + 1));
+          return r + 1;
+        }
+      };
+      var luaB_auxwrap = function(L) {
+        let co = lua_tothread(L, lua_upvalueindex(1));
+        let r = auxresume(L, co, lua_gettop(L));
+        if (r < 0) {
+          if (lua_type(L, -1) === LUA_TSTRING) {
+            luaL_where(L, 1);
+            lua_insert(L, -2);
+            lua_concat(L, 2);
+          }
+          return lua_error(L);
+        }
+        return r;
+      };
+      var luaB_cocreate = function(L) {
+        luaL_checktype(L, 1, LUA_TFUNCTION);
+        let NL = lua_newthread(L);
+        lua_pushvalue(L, 1);
+        lua_xmove(L, NL, 1);
+        return 1;
+      };
+      var luaB_cowrap = function(L) {
+        luaB_cocreate(L);
+        lua_pushcclosure(L, luaB_auxwrap, 1);
+        return 1;
+      };
+      var luaB_yield = function(L) {
+        return lua_yield(L, lua_gettop(L));
+      };
+      var luaB_costatus = function(L) {
+        let co = getco(L);
+        if (L === co) lua_pushliteral(L, "running");
+        else {
+          switch (lua_status(co)) {
+            case LUA_YIELD:
+              lua_pushliteral(L, "suspended");
+              break;
+            case LUA_OK: {
+              let ar = new lua_Debug();
+              if (lua_getstack(co, 0, ar) > 0)
+                lua_pushliteral(L, "normal");
+              else if (lua_gettop(co) === 0)
+                lua_pushliteral(L, "dead");
+              else
+                lua_pushliteral(L, "suspended");
+              break;
+            }
+            default:
+              lua_pushliteral(L, "dead");
+              break;
+          }
+        }
+        return 1;
+      };
+      var luaB_yieldable = function(L) {
+        lua_pushboolean(L, lua_isyieldable(L));
+        return 1;
+      };
+      var luaB_corunning = function(L) {
+        lua_pushboolean(L, lua_pushthread(L));
+        return 2;
+      };
+      var co_funcs = {
+        "create": luaB_cocreate,
+        "isyieldable": luaB_yieldable,
+        "resume": luaB_coresume,
+        "running": luaB_corunning,
+        "status": luaB_costatus,
+        "wrap": luaB_cowrap,
+        "yield": luaB_yield
+      };
+      var luaopen_coroutine = function(L) {
+        luaL_newlib(L, co_funcs);
+        return 1;
+      };
+      module.exports.luaopen_coroutine = luaopen_coroutine;
+    }
+  });
+
+  // node_modules/fengari/src/ltablib.js
+  var require_ltablib = __commonJS({
+    "node_modules/fengari/src/ltablib.js"(exports, module) {
+      "use strict";
+      var { LUA_MAXINTEGER } = require_luaconf();
+      var {
+        LUA_OPEQ,
+        LUA_OPLT,
+        LUA_TFUNCTION,
+        LUA_TNIL,
+        LUA_TTABLE,
+        lua_call,
+        lua_checkstack,
+        lua_compare,
+        lua_createtable,
+        lua_geti,
+        lua_getmetatable,
+        lua_gettop,
+        lua_insert,
+        lua_isnil,
+        lua_isnoneornil,
+        lua_isstring,
+        lua_pop,
+        lua_pushinteger,
+        lua_pushnil,
+        lua_pushstring,
+        lua_pushvalue,
+        lua_rawget,
+        lua_setfield,
+        lua_seti,
+        lua_settop,
+        lua_toboolean,
+        lua_type
+      } = require_lua();
+      var {
+        luaL_Buffer,
+        luaL_addlstring,
+        luaL_addvalue,
+        luaL_argcheck,
+        luaL_buffinit,
+        luaL_checkinteger,
+        luaL_checktype,
+        luaL_error,
+        luaL_len,
+        luaL_newlib,
+        luaL_opt,
+        luaL_optinteger,
+        luaL_optlstring,
+        luaL_pushresult,
+        luaL_typename
+      } = require_lauxlib();
+      var lualib = require_lualib();
+      var { to_luastring } = require_fengaricore();
+      var TAB_R = 1;
+      var TAB_W = 2;
+      var TAB_L = 4;
+      var TAB_RW = TAB_R | TAB_W;
+      var checkfield = function(L, key, n) {
+        lua_pushstring(L, key);
+        return lua_rawget(L, -n) !== LUA_TNIL;
+      };
+      var checktab = function(L, arg, what) {
+        if (lua_type(L, arg) !== LUA_TTABLE) {
+          let n = 1;
+          if (lua_getmetatable(L, arg) && /* must have metatable */
+          (!(what & TAB_R) || checkfield(L, to_luastring("__index", true), ++n)) && (!(what & TAB_W) || checkfield(L, to_luastring("__newindex", true), ++n)) && (!(what & TAB_L) || checkfield(L, to_luastring("__len", true), ++n))) {
+            lua_pop(L, n);
+          } else
+            luaL_checktype(L, arg, LUA_TTABLE);
+        }
+      };
+      var aux_getn = function(L, n, w) {
+        checktab(L, n, w | TAB_L);
+        return luaL_len(L, n);
+      };
+      var addfield = function(L, b, i) {
+        lua_geti(L, 1, i);
+        if (!lua_isstring(L, -1))
+          luaL_error(
+            L,
+            to_luastring("invalid value (%s) at index %d in table for 'concat'"),
+            luaL_typename(L, -1),
+            i
+          );
+        luaL_addvalue(b);
+      };
+      var tinsert = function(L) {
+        let e = aux_getn(L, 1, TAB_RW) + 1;
+        let pos;
+        switch (lua_gettop(L)) {
+          case 2:
+            pos = e;
+            break;
+          case 3: {
+            pos = luaL_checkinteger(L, 2);
+            luaL_argcheck(L, 1 <= pos && pos <= e, 2, "position out of bounds");
+            for (let i = e; i > pos; i--) {
+              lua_geti(L, 1, i - 1);
+              lua_seti(L, 1, i);
+            }
+            break;
+          }
+          default: {
+            return luaL_error(L, "wrong number of arguments to 'insert'");
+          }
+        }
+        lua_seti(L, 1, pos);
+        return 0;
+      };
+      var tremove = function(L) {
+        let size = aux_getn(L, 1, TAB_RW);
+        let pos = luaL_optinteger(L, 2, size);
+        if (pos !== size)
+          luaL_argcheck(L, 1 <= pos && pos <= size + 1, 1, "position out of bounds");
+        lua_geti(L, 1, pos);
+        for (; pos < size; pos++) {
+          lua_geti(L, 1, pos + 1);
+          lua_seti(L, 1, pos);
+        }
+        lua_pushnil(L);
+        lua_seti(L, 1, pos);
+        return 1;
+      };
+      var tmove = function(L) {
+        let f = luaL_checkinteger(L, 2);
+        let e = luaL_checkinteger(L, 3);
+        let t = luaL_checkinteger(L, 4);
+        let tt = !lua_isnoneornil(L, 5) ? 5 : 1;
+        checktab(L, 1, TAB_R);
+        checktab(L, tt, TAB_W);
+        if (e >= f) {
+          luaL_argcheck(L, f > 0 || e < LUA_MAXINTEGER + f, 3, "too many elements to move");
+          let n = e - f + 1;
+          luaL_argcheck(L, t <= LUA_MAXINTEGER - n + 1, 4, "destination wrap around");
+          if (t > e || t <= f || tt !== 1 && lua_compare(L, 1, tt, LUA_OPEQ) !== 1) {
+            for (let i = 0; i < n; i++) {
+              lua_geti(L, 1, f + i);
+              lua_seti(L, tt, t + i);
+            }
+          } else {
+            for (let i = n - 1; i >= 0; i--) {
+              lua_geti(L, 1, f + i);
+              lua_seti(L, tt, t + i);
+            }
+          }
+        }
+        lua_pushvalue(L, tt);
+        return 1;
+      };
+      var tconcat = function(L) {
+        let last = aux_getn(L, 1, TAB_R);
+        let sep = luaL_optlstring(L, 2, "");
+        let lsep = sep.length;
+        let i = luaL_optinteger(L, 3, 1);
+        last = luaL_optinteger(L, 4, last);
+        let b = new luaL_Buffer();
+        luaL_buffinit(L, b);
+        for (; i < last; i++) {
+          addfield(L, b, i);
+          luaL_addlstring(b, sep, lsep);
+        }
+        if (i === last)
+          addfield(L, b, i);
+        luaL_pushresult(b);
+        return 1;
+      };
+      var pack = function(L) {
+        let n = lua_gettop(L);
+        lua_createtable(L, n, 1);
+        lua_insert(L, 1);
+        for (let i = n; i >= 1; i--)
+          lua_seti(L, 1, i);
+        lua_pushinteger(L, n);
+        lua_setfield(L, 1, to_luastring("n"));
+        return 1;
+      };
+      var unpack = function(L) {
+        let i = luaL_optinteger(L, 2, 1);
+        let e = luaL_opt(L, luaL_checkinteger, 3, luaL_len(L, 1));
+        if (i > e) return 0;
+        let n = e - i;
+        if (n >= Number.MAX_SAFE_INTEGER || !lua_checkstack(L, ++n))
+          return luaL_error(L, to_luastring("too many results to unpack"));
+        for (; i < e; i++)
+          lua_geti(L, 1, i);
+        lua_geti(L, 1, e);
+        return n;
+      };
+      var l_randomizePivot = function() {
+        return Math.floor(Math.random() * 4294967296);
+      };
+      var RANLIMIT = 100;
+      var set2 = function(L, i, j) {
+        lua_seti(L, 1, i);
+        lua_seti(L, 1, j);
+      };
+      var sort_comp = function(L, a, b) {
+        if (lua_isnil(L, 2))
+          return lua_compare(L, a, b, LUA_OPLT);
+        else {
+          lua_pushvalue(L, 2);
+          lua_pushvalue(L, a - 1);
+          lua_pushvalue(L, b - 2);
+          lua_call(L, 2, 1);
+          let res = lua_toboolean(L, -1);
+          lua_pop(L, 1);
+          return res;
+        }
+      };
+      var partition = function(L, lo, up) {
+        let i = lo;
+        let j = up - 1;
+        for (; ; ) {
+          while (lua_geti(L, 1, ++i), sort_comp(L, -1, -2)) {
+            if (i == up - 1)
+              luaL_error(L, to_luastring("invalid order function for sorting"));
+            lua_pop(L, 1);
+          }
+          while (lua_geti(L, 1, --j), sort_comp(L, -3, -1)) {
+            if (j < i)
+              luaL_error(L, to_luastring("invalid order function for sorting"));
+            lua_pop(L, 1);
+          }
+          if (j < i) {
+            lua_pop(L, 1);
+            set2(L, up - 1, i);
+            return i;
+          }
+          set2(L, i, j);
+        }
+      };
+      var choosePivot = function(lo, up, rnd) {
+        let r4 = Math.floor((up - lo) / 4);
+        let p = rnd % (r4 * 2) + (lo + r4);
+        lualib.lua_assert(lo + r4 <= p && p <= up - r4);
+        return p;
+      };
+      var auxsort = function(L, lo, up, rnd) {
+        while (lo < up) {
+          lua_geti(L, 1, lo);
+          lua_geti(L, 1, up);
+          if (sort_comp(L, -1, -2))
+            set2(L, lo, up);
+          else
+            lua_pop(L, 2);
+          if (up - lo == 1)
+            return;
+          let p;
+          if (up - lo < RANLIMIT || rnd === 0)
+            p = Math.floor((lo + up) / 2);
+          else
+            p = choosePivot(lo, up, rnd);
+          lua_geti(L, 1, p);
+          lua_geti(L, 1, lo);
+          if (sort_comp(L, -2, -1))
+            set2(L, p, lo);
+          else {
+            lua_pop(L, 1);
+            lua_geti(L, 1, up);
+            if (sort_comp(L, -1, -2))
+              set2(L, p, up);
+            else
+              lua_pop(L, 2);
+          }
+          if (up - lo == 2)
+            return;
+          lua_geti(L, 1, p);
+          lua_pushvalue(L, -1);
+          lua_geti(L, 1, up - 1);
+          set2(L, p, up - 1);
+          p = partition(L, lo, up);
+          let n;
+          if (p - lo < up - p) {
+            auxsort(L, lo, p - 1, rnd);
+            n = p - lo;
+            lo = p + 1;
+          } else {
+            auxsort(L, p + 1, up, rnd);
+            n = up - p;
+            up = p - 1;
+          }
+          if ((up - lo) / 128 > n)
+            rnd = l_randomizePivot();
+        }
+      };
+      var sort = function(L) {
+        let n = aux_getn(L, 1, TAB_RW);
+        if (n > 1) {
+          luaL_argcheck(L, n < LUA_MAXINTEGER, 1, "array too big");
+          if (!lua_isnoneornil(L, 2))
+            luaL_checktype(L, 2, LUA_TFUNCTION);
+          lua_settop(L, 2);
+          auxsort(L, 1, n, 0);
+        }
+        return 0;
+      };
+      var tab_funcs = {
+        "concat": tconcat,
+        "insert": tinsert,
+        "move": tmove,
+        "pack": pack,
+        "remove": tremove,
+        "sort": sort,
+        "unpack": unpack
+      };
+      var luaopen_table = function(L) {
+        luaL_newlib(L, tab_funcs);
+        return 1;
+      };
+      module.exports.luaopen_table = luaopen_table;
+    }
+  });
+
+  // node_modules/fengari/src/liolib.js
+  var require_liolib = __commonJS({
+    "node_modules/fengari/src/liolib.js"(exports, module) {
+      "use strict";
+      var fs = require_node_fs();
+      var {
+        LUA_REGISTRYINDEX,
+        lua_getfield,
+        lua_gettop,
+        lua_isnone,
+        lua_isnoneornil,
+        lua_newuserdata,
+        lua_pop,
+        lua_pushliteral,
+        lua_pushnil,
+        lua_pushstring,
+        lua_pushvalue,
+        lua_setfield,
+        lua_tostring,
+        lua_touserdata
+      } = require_lua();
+      var {
+        LUA_FILEHANDLE,
+        luaL_checkany,
+        luaL_checklstring,
+        luaL_checkudata,
+        luaL_error,
+        luaL_fileresult,
+        luaL_newlib,
+        luaL_newmetatable,
+        luaL_setfuncs,
+        luaL_setmetatable,
+        luaL_testudata
+      } = require_lauxlib();
+      var lualib = require_lualib();
+      var { to_luastring } = require_fengaricore();
+      var IO_PREFIX = "_IO_";
+      var IOPREF_LEN = IO_PREFIX.length;
+      var IO_INPUT = to_luastring(IO_PREFIX + "input");
+      var IO_OUTPUT = to_luastring(IO_PREFIX + "output");
+      var tolstream = function(L) {
+        return luaL_checkudata(L, 1, LUA_FILEHANDLE);
+      };
+      var isclosed = function(p) {
+        return p.closef === null;
+      };
+      var io_type = function(L) {
+        luaL_checkany(L, 1);
+        let p = luaL_testudata(L, 1, LUA_FILEHANDLE);
+        if (p === null)
+          lua_pushnil(L);
+        else if (isclosed(p))
+          lua_pushliteral(L, "closed file");
+        else
+          lua_pushliteral(L, "file");
+        return 1;
+      };
+      var f_tostring = function(L) {
+        let p = tolstream(L);
+        if (isclosed(p))
+          lua_pushliteral(L, "file (closed)");
+        else
+          lua_pushstring(L, to_luastring(`file (${p.f.toString()})`));
+        return 1;
+      };
+      var tofile = function(L) {
+        let p = tolstream(L);
+        if (isclosed(p))
+          luaL_error(L, to_luastring("attempt to use a closed file"));
+        lualib.lua_assert(p.f);
+        return p.f;
+      };
+      var newprefile = function(L) {
+        let p = lua_newuserdata(L);
+        p.f = null;
+        p.closef = null;
+        luaL_setmetatable(L, LUA_FILEHANDLE);
+        return p;
+      };
+      var aux_close = function(L) {
+        let p = tolstream(L);
+        let cf = p.closef;
+        p.closef = null;
+        return cf(L);
+      };
+      var io_close = function(L) {
+        if (lua_isnone(L, 1))
+          lua_getfield(L, LUA_REGISTRYINDEX, IO_OUTPUT);
+        tofile(L);
+        return aux_close(L);
+      };
+      var getiofile = function(L, findex) {
+        lua_getfield(L, LUA_REGISTRYINDEX, findex);
+        let p = lua_touserdata(L, -1);
+        if (isclosed(p))
+          luaL_error(L, to_luastring("standard %s file is closed"), findex.subarray(IOPREF_LEN));
+        return p.f;
+      };
+      var g_iofile = function(L, f, mode) {
+        if (!lua_isnoneornil(L, 1)) {
+          let filename = lua_tostring(L, 1);
+          if (filename)
+            luaL_error(L, to_luastring("opening files not yet implemented"));
+          else {
+            tofile(L);
+            lua_pushvalue(L, 1);
+          }
+          lua_setfield(L, LUA_REGISTRYINDEX, f);
+        }
+        lua_getfield(L, LUA_REGISTRYINDEX, f);
+        return 1;
+      };
+      var io_input = function(L) {
+        return g_iofile(L, IO_INPUT, "r");
+      };
+      var io_output = function(L) {
+        return g_iofile(L, IO_OUTPUT, "w");
+      };
+      var prepare_string_for_write = process.versions.node > 6 ? (s) => s : (
+        // identity function
+        (s) => Buffer.from(s.buffer, s.byteOffset, s.byteLength)
+      );
+      var g_write = function(L, f, arg) {
+        let nargs = lua_gettop(L) - arg;
+        let status = true;
+        let err;
+        for (; nargs--; arg++) {
+          let s = luaL_checklstring(L, arg);
+          try {
+            status = status && fs.writeSync(f.fd, prepare_string_for_write(s), 0, s.length) === s.length;
+          } catch (e) {
+            status = false;
+            err = e;
+          }
+        }
+        if (status) return 1;
+        else return luaL_fileresult(L, status, null, err);
+      };
+      var io_write = function(L) {
+        return g_write(L, getiofile(L, IO_OUTPUT), 1);
+      };
+      var f_write = function(L) {
+        let f = tofile(L);
+        lua_pushvalue(L, 1);
+        return g_write(L, f, 2);
+      };
+      var io_flush = function(L) {
+        getiofile(L, IO_OUTPUT);
+        return luaL_fileresult(L, true, null, null);
+      };
+      var f_flush = function(L) {
+        tofile(L);
+        return luaL_fileresult(L, true, null, null);
+      };
+      var iolib = {
+        "close": io_close,
+        "flush": io_flush,
+        "input": io_input,
+        "output": io_output,
+        "type": io_type,
+        "write": io_write
+      };
+      var flib = {
+        "close": io_close,
+        "flush": f_flush,
+        "write": f_write,
+        "__tostring": f_tostring
+      };
+      var createmeta = function(L) {
+        luaL_newmetatable(L, LUA_FILEHANDLE);
+        lua_pushvalue(L, -1);
+        lua_setfield(L, -2, to_luastring("__index", true));
+        luaL_setfuncs(L, flib, 0);
+        lua_pop(L, 1);
+      };
+      var io_noclose = function(L) {
+        let p = tolstream(L);
+        p.closef = io_noclose;
+        lua_pushnil(L);
+        lua_pushliteral(L, "cannot close standard file");
+        return 2;
+      };
+      var createstdfile = function(L, f, k, fname) {
+        let p = newprefile(L);
+        p.f = f;
+        p.closef = io_noclose;
+        if (k !== null) {
+          lua_pushvalue(L, -1);
+          lua_setfield(L, LUA_REGISTRYINDEX, k);
+        }
+        lua_setfield(L, -2, fname);
+      };
+      var luaopen_io = function(L) {
+        luaL_newlib(L, iolib);
+        createmeta(L);
+        createstdfile(L, process.stdin, IO_INPUT, to_luastring("stdin"));
+        createstdfile(L, process.stdout, IO_OUTPUT, to_luastring("stdout"));
+        createstdfile(L, process.stderr, null, to_luastring("stderr"));
+        return 1;
+      };
+      module.exports.luaopen_io = luaopen_io;
+    }
+  });
+
+  // stubs/tmp.js
+  var require_tmp = __commonJS({
+    "stubs/tmp.js"(exports, module) {
+      "use strict";
+      function unavailable(name) {
+        return function() {
+          throw new Error("tmp." + name + " is unavailable in the browser build");
+        };
+      }
+      module.exports = {
+        dir: unavailable("dir"),
+        dirSync: unavailable("dirSync"),
+        file: unavailable("file"),
+        fileSync: unavailable("fileSync"),
+        setGracefulCleanup: function() {
+        },
+        tmpdir: "/tmp"
+      };
+    }
+  });
+
+  // stubs/node-child_process.js
+  var require_node_child_process = __commonJS({
+    "stubs/node-child_process.js"(exports, module) {
+      var fail = () => {
+        throw new Error("child_process unavailable in the shell");
+      };
+      module.exports = { exec: fail, execSync: fail, spawn: fail, spawnSync: fail };
+    }
+  });
+
+  // node_modules/fengari/src/loslib.js
+  var require_loslib = __commonJS({
+    "node_modules/fengari/src/loslib.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_TNIL,
+        LUA_TTABLE,
+        lua_close,
+        lua_createtable,
+        lua_getfield,
+        lua_isboolean,
+        lua_isnoneornil,
+        lua_pop,
+        lua_pushboolean,
+        lua_pushfstring,
+        lua_pushinteger,
+        lua_pushliteral,
+        lua_pushnil,
+        lua_pushnumber,
+        lua_pushstring,
+        lua_setfield,
+        lua_settop,
+        lua_toboolean,
+        lua_tointegerx
+      } = require_lua();
+      var {
+        luaL_Buffer,
+        luaL_addchar,
+        luaL_addstring,
+        // luaL_argcheck,
+        luaL_argerror,
+        luaL_buffinit,
+        luaL_checkinteger,
+        luaL_checkstring,
+        luaL_checktype,
+        luaL_error,
+        luaL_execresult,
+        luaL_fileresult,
+        luaL_newlib,
+        luaL_optinteger,
+        luaL_optlstring,
+        luaL_optstring,
+        luaL_pushresult
+      } = require_lauxlib();
+      var {
+        luastring_eq,
+        to_jsstring,
+        to_luastring
+      } = require_fengaricore();
+      var LUA_STRFTIMEOPTIONS = to_luastring("aAbBcCdDeFhHIjklmMnpPrRStTuUwWxXyYzZ%");
+      var setfield = function(L, key, value) {
+        lua_pushinteger(L, value);
+        lua_setfield(L, -2, to_luastring(key, true));
+      };
+      var setallfields = function(L, time, utc) {
+        setfield(L, "sec", utc ? time.getUTCSeconds() : time.getSeconds());
+        setfield(L, "min", utc ? time.getUTCMinutes() : time.getMinutes());
+        setfield(L, "hour", utc ? time.getUTCHours() : time.getHours());
+        setfield(L, "day", utc ? time.getUTCDate() : time.getDate());
+        setfield(L, "month", (utc ? time.getUTCMonth() : time.getMonth()) + 1);
+        setfield(L, "year", utc ? time.getUTCFullYear() : time.getFullYear());
+        setfield(L, "wday", (utc ? time.getUTCDay() : time.getDay()) + 1);
+        setfield(L, "yday", Math.floor((time - new Date(
+          time.getFullYear(),
+          0,
+          0
+          /* shortcut to correct day by one */
+        )) / 864e5));
+      };
+      var L_MAXDATEFIELD = Number.MAX_SAFE_INTEGER / 2;
+      var getfield = function(L, key, d, delta) {
+        let t = lua_getfield(L, -1, to_luastring(key, true));
+        let res = lua_tointegerx(L, -1);
+        if (res === false) {
+          if (t !== LUA_TNIL)
+            return luaL_error(L, to_luastring("field '%s' is not an integer"), key);
+          else if (d < 0)
+            return luaL_error(L, to_luastring("field '%s' missing in date table"), key);
+          res = d;
+        } else {
+          if (!(-L_MAXDATEFIELD <= res && res <= L_MAXDATEFIELD))
+            return luaL_error(L, to_luastring("field '%s' is out-of-bound"), key);
+          res -= delta;
+        }
+        lua_pop(L, 1);
+        return res;
+      };
+      var locale = {
+        days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((s) => to_luastring(s)),
+        shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((s) => to_luastring(s)),
+        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"].map((s) => to_luastring(s)),
+        shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"].map((s) => to_luastring(s)),
+        AM: to_luastring("AM"),
+        PM: to_luastring("PM"),
+        am: to_luastring("am"),
+        pm: to_luastring("pm"),
+        formats: {
+          c: to_luastring("%a %b %e %H:%M:%S %Y"),
+          D: to_luastring("%m/%d/%y"),
+          F: to_luastring("%Y-%m-%d"),
+          R: to_luastring("%H:%M"),
+          r: to_luastring("%I:%M:%S %p"),
+          T: to_luastring("%H:%M:%S"),
+          X: to_luastring("%T"),
+          x: to_luastring("%D")
+        }
+      };
+      var week_number = function(date, start_of_week) {
+        let weekday = date.getDay();
+        if (start_of_week === "monday") {
+          if (weekday === 0)
+            weekday = 6;
+          else
+            weekday--;
+        }
+        let yday = (date - new Date(date.getFullYear(), 0, 1)) / 864e5;
+        return Math.floor((yday + 7 - weekday) / 7);
+      };
+      var push_pad_2 = function(b, n, pad) {
+        if (n < 10)
+          luaL_addchar(b, pad);
+        luaL_addstring(b, to_luastring(String(n)));
+      };
+      var strftime = function(L, b, s, date) {
+        let i = 0;
+        while (i < s.length) {
+          if (s[i] !== 37) {
+            luaL_addchar(b, s[i++]);
+          } else {
+            i++;
+            let len = checkoption(L, s, i);
+            switch (s[i]) {
+              // '%'
+              case 37:
+                luaL_addchar(b, 37);
+                break;
+              // 'Thursday'
+              case 65:
+                luaL_addstring(b, locale.days[date.getDay()]);
+                break;
+              // 'January'
+              case 66:
+                luaL_addstring(b, locale.months[date.getMonth()]);
+                break;
+              // '19'
+              case 67:
+                push_pad_2(
+                  b,
+                  Math.floor(date.getFullYear() / 100),
+                  48
+                  /* 0 */
+                );
+                break;
+              // '01/01/70'
+              case 68:
+                strftime(L, b, locale.formats.D, date);
+                break;
+              // '1970-01-01'
+              case 70:
+                strftime(L, b, locale.formats.F, date);
+                break;
+              // '00'
+              case 72:
+                push_pad_2(
+                  b,
+                  date.getHours(),
+                  48
+                  /* 0 */
+                );
+                break;
+              // '12'
+              case 73:
+                push_pad_2(
+                  b,
+                  (date.getHours() + 11) % 12 + 1,
+                  48
+                  /* 0 */
+                );
+                break;
+              // '00'
+              case 77:
+                push_pad_2(
+                  b,
+                  date.getMinutes(),
+                  48
+                  /* 0 */
+                );
+                break;
+              // 'am'
+              case 80:
+                luaL_addstring(b, date.getHours() < 12 ? locale.am : locale.pm);
+                break;
+              // '00:00'
+              case 82:
+                strftime(L, b, locale.formats.R, date);
+                break;
+              // '00'
+              case 83:
+                push_pad_2(
+                  b,
+                  date.getSeconds(),
+                  48
+                  /* 0 */
+                );
+                break;
+              // '00:00:00'
+              case 84:
+                strftime(L, b, locale.formats.T, date);
+                break;
+              // '00'
+              case 85:
+                push_pad_2(
+                  b,
+                  week_number(date, "sunday"),
+                  48
+                  /* 0 */
+                );
+                break;
+              // '00'
+              case 87:
+                push_pad_2(
+                  b,
+                  week_number(date, "monday"),
+                  48
+                  /* 0 */
+                );
+                break;
+              // '16:00:00'
+              case 88:
+                strftime(L, b, locale.formats.X, date);
+                break;
+              // '1970'
+              case 89:
+                luaL_addstring(b, to_luastring(String(date.getFullYear())));
+                break;
+              // 'GMT'
+              case 90: {
+                let tzString = date.toString().match(/\(([\w\s]+)\)/);
+                if (tzString)
+                  luaL_addstring(b, to_luastring(tzString[1]));
+                break;
+              }
+              // 'Thu'
+              case 97:
+                luaL_addstring(b, locale.shortDays[date.getDay()]);
+                break;
+              // 'Jan'
+              case 98:
+              case 104:
+                luaL_addstring(b, locale.shortMonths[date.getMonth()]);
+                break;
+              // ''
+              case 99:
+                strftime(L, b, locale.formats.c, date);
+                break;
+              // '01'
+              case 100:
+                push_pad_2(
+                  b,
+                  date.getDate(),
+                  48
+                  /* 0 */
+                );
+                break;
+              // ' 1'
+              case 101:
+                push_pad_2(
+                  b,
+                  date.getDate(),
+                  32
+                  /* space */
+                );
+                break;
+              // '000'
+              case 106: {
+                let yday = Math.floor((date - new Date(date.getFullYear(), 0, 1)) / 864e5);
+                if (yday < 100) {
+                  if (yday < 10)
+                    luaL_addchar(
+                      b,
+                      48
+                      /* 0 */
+                    );
+                  luaL_addchar(
+                    b,
+                    48
+                    /* 0 */
+                  );
+                }
+                luaL_addstring(b, to_luastring(String(yday)));
+                break;
+              }
+              // ' 0'
+              case 107:
+                push_pad_2(
+                  b,
+                  date.getHours(),
+                  32
+                  /* space */
+                );
+                break;
+              // '12'
+              case 108:
+                push_pad_2(
+                  b,
+                  (date.getHours() + 11) % 12 + 1,
+                  32
+                  /* space */
+                );
+                break;
+              // '01'
+              case 109:
+                push_pad_2(
+                  b,
+                  date.getMonth() + 1,
+                  48
+                  /* 0 */
+                );
+                break;
+              // '\n'
+              case 110:
+                luaL_addchar(b, 10);
+                break;
+              // 'AM'
+              case 112:
+                luaL_addstring(b, date.getHours() < 12 ? locale.AM : locale.PM);
+                break;
+              // '12:00:00 AM'
+              case 114:
+                strftime(L, b, locale.formats.r, date);
+                break;
+              // '0'
+              case 115:
+                luaL_addstring(b, to_luastring(String(Math.floor(date / 1e3))));
+                break;
+              // '\t'
+              case 116:
+                luaL_addchar(b, 8);
+                break;
+              // '4'
+              case 117: {
+                let day = date.getDay();
+                luaL_addstring(b, to_luastring(String(day === 0 ? 7 : day)));
+                break;
+              }
+              // '4'
+              case 119:
+                luaL_addstring(b, to_luastring(String(date.getDay())));
+                break;
+              // '12/31/69'
+              case 120:
+                strftime(L, b, locale.formats.x, date);
+                break;
+              // '70'
+              case 121:
+                push_pad_2(
+                  b,
+                  date.getFullYear() % 100,
+                  48
+                  /* 0 */
+                );
+                break;
+              // '+0000'
+              case 122: {
+                let off = date.getTimezoneOffset();
+                if (off > 0) {
+                  luaL_addchar(
+                    b,
+                    45
+                    /* - */
+                  );
+                } else {
+                  off = -off;
+                  luaL_addchar(
+                    b,
+                    43
+                    /* + */
+                  );
+                }
+                push_pad_2(
+                  b,
+                  Math.floor(off / 60),
+                  48
+                  /* 0 */
+                );
+                push_pad_2(
+                  b,
+                  off % 60,
+                  48
+                  /* 0 */
+                );
+                break;
+              }
+            }
+            i += len;
+          }
+        }
+      };
+      var checkoption = function(L, conv, i) {
+        let option = LUA_STRFTIMEOPTIONS;
+        let o = 0;
+        let oplen = 1;
+        for (; o < option.length && oplen <= conv.length - i; o += oplen) {
+          if (option[o] === "|".charCodeAt(0))
+            oplen++;
+          else if (luastring_eq(conv.subarray(i, i + oplen), option.subarray(o, o + oplen))) {
+            return oplen;
+          }
+        }
+        luaL_argerror(
+          L,
+          1,
+          lua_pushfstring(L, to_luastring("invalid conversion specifier '%%%s'"), conv)
+        );
+      };
+      var os_date = function(L) {
+        let s = luaL_optlstring(L, 1, "%c");
+        let stm = lua_isnoneornil(L, 2) ? /* @__PURE__ */ new Date() : new Date(l_checktime(L, 2) * 1e3);
+        let utc = false;
+        let i = 0;
+        if (s[i] === "!".charCodeAt(0)) {
+          utc = true;
+          i++;
+        }
+        if (s[i] === "*".charCodeAt(0) && s[i + 1] === "t".charCodeAt(0)) {
+          lua_createtable(L, 0, 9);
+          setallfields(L, stm, utc);
+        } else {
+          let cc = new Uint8Array(4);
+          cc[0] = "%".charCodeAt(0);
+          let b = new luaL_Buffer();
+          luaL_buffinit(L, b);
+          strftime(L, b, s, stm);
+          luaL_pushresult(b);
+        }
+        return 1;
+      };
+      var os_time = function(L) {
+        let t;
+        if (lua_isnoneornil(L, 1))
+          t = /* @__PURE__ */ new Date();
+        else {
+          luaL_checktype(L, 1, LUA_TTABLE);
+          lua_settop(L, 1);
+          t = new Date(
+            getfield(L, "year", -1, 0),
+            getfield(L, "month", -1, 1),
+            getfield(L, "day", -1, 0),
+            getfield(L, "hour", 12, 0),
+            getfield(L, "min", 0, 0),
+            getfield(L, "sec", 0, 0)
+          );
+          setallfields(L, t);
+        }
+        lua_pushinteger(L, Math.floor(t / 1e3));
+        return 1;
+      };
+      var l_checktime = function(L, arg) {
+        let t = luaL_checkinteger(L, arg);
+        return t;
+      };
+      var os_difftime = function(L) {
+        let t1 = l_checktime(L, 1);
+        let t2 = l_checktime(L, 2);
+        lua_pushnumber(L, t1 - t2);
+        return 1;
+      };
+      var syslib = {
+        "date": os_date,
+        "difftime": os_difftime,
+        "time": os_time
+      };
+      if (typeof process === "undefined") {
+        syslib.clock = function(L) {
+          lua_pushnumber(L, performance.now() / 1e3);
+          return 1;
+        };
+      } else {
+        const fs = require_node_fs();
+        const tmp = require_tmp();
+        const child_process = require_node_child_process();
+        syslib.exit = function(L) {
+          let status;
+          if (lua_isboolean(L, 1))
+            status = lua_toboolean(L, 1) ? 0 : 1;
+          else
+            status = luaL_optinteger(L, 1, 0);
+          if (lua_toboolean(L, 2))
+            lua_close(L);
+          if (L) process.exit(status);
+          return 0;
+        };
+        syslib.getenv = function(L) {
+          let key = luaL_checkstring(L, 1);
+          key = to_jsstring(key);
+          if (Object.prototype.hasOwnProperty.call(process.env, key)) {
+            lua_pushliteral(L, process.env[key]);
+          } else {
+            lua_pushnil(L);
+          }
+          return 1;
+        };
+        syslib.clock = function(L) {
+          lua_pushnumber(L, process.uptime());
+          return 1;
+        };
+        const lua_tmpname = function() {
+          return tmp.tmpNameSync();
+        };
+        syslib.remove = function(L) {
+          let filename = luaL_checkstring(L, 1);
+          try {
+            fs.unlinkSync(filename);
+          } catch (e) {
+            if (e.code === "EISDIR") {
+              try {
+                fs.rmdirSync(filename);
+              } catch (e2) {
+                return luaL_fileresult(L, false, filename, e2);
+              }
+            } else {
+              return luaL_fileresult(L, false, filename, e);
+            }
+          }
+          return luaL_fileresult(L, true);
+        };
+        syslib.rename = function(L) {
+          let fromname = luaL_checkstring(L, 1);
+          let toname = luaL_checkstring(L, 2);
+          try {
+            fs.renameSync(fromname, toname);
+          } catch (e) {
+            return luaL_fileresult(L, false, false, e);
+          }
+          return luaL_fileresult(L, true);
+        };
+        syslib.tmpname = function(L) {
+          let name = lua_tmpname();
+          if (!name)
+            return luaL_error(L, to_luastring("unable to generate a unique filename"));
+          lua_pushstring(L, to_luastring(name));
+          return 1;
+        };
+        syslib.execute = function(L) {
+          let cmd = luaL_optstring(L, 1, null);
+          if (cmd !== null) {
+            try {
+              child_process.execSync(
+                cmd,
+                {
+                  stdio: [process.stdin, process.stdout, process.stderr]
+                }
+              );
+            } catch (e) {
+              return luaL_execresult(L, e);
+            }
+            return luaL_execresult(L, null);
+          } else {
+            lua_pushboolean(L, 1);
+            return 1;
+          }
+        };
+      }
+      var luaopen_os = function(L) {
+        luaL_newlib(L, syslib);
+        return 1;
+      };
+      module.exports.luaopen_os = luaopen_os;
+    }
+  });
+
+  // node_modules/sprintf-js/src/sprintf.js
+  var require_sprintf = __commonJS({
+    "node_modules/sprintf-js/src/sprintf.js"(exports) {
+      !function() {
+        "use strict";
+        var re = {
+          not_string: /[^s]/,
+          not_bool: /[^t]/,
+          not_type: /[^T]/,
+          not_primitive: /[^v]/,
+          number: /[diefg]/,
+          numeric_arg: /[bcdiefguxX]/,
+          json: /[j]/,
+          not_json: /[^j]/,
+          text: /^[^\x25]+/,
+          modulo: /^\x25{2}/,
+          placeholder: /^\x25(?:([1-9]\d*)\$|\(([^)]+)\))?(\+)?(0|'[^$])?(-)?(\d+)?(?:\.(\d+))?([b-gijostTuvxX])/,
+          key: /^([a-z_][a-z_\d]*)/i,
+          key_access: /^\.([a-z_][a-z_\d]*)/i,
+          index_access: /^\[(\d+)\]/,
+          sign: /^[+-]/
+        };
+        function sprintf(key) {
+          return sprintf_format(sprintf_parse(key), arguments);
+        }
+        function vsprintf(fmt, argv) {
+          return sprintf.apply(null, [fmt].concat(argv || []));
+        }
+        function sprintf_format(parse_tree, argv) {
+          var cursor = 1, tree_length = parse_tree.length, arg, output = "", i, k, ph, pad, pad_character, pad_length, is_positive, sign;
+          for (i = 0; i < tree_length; i++) {
+            if (typeof parse_tree[i] === "string") {
+              output += parse_tree[i];
+            } else if (typeof parse_tree[i] === "object") {
+              ph = parse_tree[i];
+              if (ph.keys) {
+                arg = argv[cursor];
+                for (k = 0; k < ph.keys.length; k++) {
+                  if (arg == void 0) {
+                    throw new Error(sprintf('[sprintf] Cannot access property "%s" of undefined value "%s"', ph.keys[k], ph.keys[k - 1]));
+                  }
+                  arg = arg[ph.keys[k]];
+                }
+              } else if (ph.param_no) {
+                arg = argv[ph.param_no];
+              } else {
+                arg = argv[cursor++];
+              }
+              if (re.not_type.test(ph.type) && re.not_primitive.test(ph.type) && arg instanceof Function) {
+                arg = arg();
+              }
+              if (re.numeric_arg.test(ph.type) && (typeof arg !== "number" && isNaN(arg))) {
+                throw new TypeError(sprintf("[sprintf] expecting number but found %T", arg));
+              }
+              if (re.number.test(ph.type)) {
+                is_positive = arg >= 0;
+              }
+              switch (ph.type) {
+                case "b":
+                  arg = parseInt(arg, 10).toString(2);
+                  break;
+                case "c":
+                  arg = String.fromCharCode(parseInt(arg, 10));
+                  break;
+                case "d":
+                case "i":
+                  arg = parseInt(arg, 10);
+                  break;
+                case "j":
+                  arg = JSON.stringify(arg, null, ph.width ? parseInt(ph.width) : 0);
+                  break;
+                case "e":
+                  arg = ph.precision ? parseFloat(arg).toExponential(ph.precision) : parseFloat(arg).toExponential();
+                  break;
+                case "f":
+                  arg = ph.precision ? parseFloat(arg).toFixed(ph.precision) : parseFloat(arg);
+                  break;
+                case "g":
+                  arg = ph.precision ? String(Number(arg.toPrecision(ph.precision))) : parseFloat(arg);
+                  break;
+                case "o":
+                  arg = (parseInt(arg, 10) >>> 0).toString(8);
+                  break;
+                case "s":
+                  arg = String(arg);
+                  arg = ph.precision ? arg.substring(0, ph.precision) : arg;
+                  break;
+                case "t":
+                  arg = String(!!arg);
+                  arg = ph.precision ? arg.substring(0, ph.precision) : arg;
+                  break;
+                case "T":
+                  arg = Object.prototype.toString.call(arg).slice(8, -1).toLowerCase();
+                  arg = ph.precision ? arg.substring(0, ph.precision) : arg;
+                  break;
+                case "u":
+                  arg = parseInt(arg, 10) >>> 0;
+                  break;
+                case "v":
+                  arg = arg.valueOf();
+                  arg = ph.precision ? arg.substring(0, ph.precision) : arg;
+                  break;
+                case "x":
+                  arg = (parseInt(arg, 10) >>> 0).toString(16);
+                  break;
+                case "X":
+                  arg = (parseInt(arg, 10) >>> 0).toString(16).toUpperCase();
+                  break;
+              }
+              if (re.json.test(ph.type)) {
+                output += arg;
+              } else {
+                if (re.number.test(ph.type) && (!is_positive || ph.sign)) {
+                  sign = is_positive ? "+" : "-";
+                  arg = arg.toString().replace(re.sign, "");
+                } else {
+                  sign = "";
+                }
+                pad_character = ph.pad_char ? ph.pad_char === "0" ? "0" : ph.pad_char.charAt(1) : " ";
+                pad_length = ph.width - (sign + arg).length;
+                pad = ph.width ? pad_length > 0 ? pad_character.repeat(pad_length) : "" : "";
+                output += ph.align ? sign + arg + pad : pad_character === "0" ? sign + pad + arg : pad + sign + arg;
+              }
+            }
+          }
+          return output;
+        }
+        var sprintf_cache = /* @__PURE__ */ Object.create(null);
+        function sprintf_parse(fmt) {
+          if (sprintf_cache[fmt]) {
+            return sprintf_cache[fmt];
+          }
+          var _fmt = fmt, match, parse_tree = [], arg_names = 0;
+          while (_fmt) {
+            if ((match = re.text.exec(_fmt)) !== null) {
+              parse_tree.push(match[0]);
+            } else if ((match = re.modulo.exec(_fmt)) !== null) {
+              parse_tree.push("%");
+            } else if ((match = re.placeholder.exec(_fmt)) !== null) {
+              if (match[2]) {
+                arg_names |= 1;
+                var field_list = [], replacement_field = match[2], field_match = [];
+                if ((field_match = re.key.exec(replacement_field)) !== null) {
+                  field_list.push(field_match[1]);
+                  while ((replacement_field = replacement_field.substring(field_match[0].length)) !== "") {
+                    if ((field_match = re.key_access.exec(replacement_field)) !== null) {
+                      field_list.push(field_match[1]);
+                    } else if ((field_match = re.index_access.exec(replacement_field)) !== null) {
+                      field_list.push(field_match[1]);
+                    } else {
+                      throw new SyntaxError("[sprintf] failed to parse named argument key");
+                    }
+                  }
+                } else {
+                  throw new SyntaxError("[sprintf] failed to parse named argument key");
+                }
+                match[2] = field_list;
+              } else {
+                arg_names |= 2;
+              }
+              if (arg_names === 3) {
+                throw new Error("[sprintf] mixing positional and named placeholders is not (yet) supported");
+              }
+              parse_tree.push(
+                {
+                  placeholder: match[0],
+                  param_no: match[1],
+                  keys: match[2],
+                  sign: match[3],
+                  pad_char: match[4],
+                  align: match[5],
+                  width: match[6],
+                  precision: match[7],
+                  type: match[8]
+                }
+              );
+            } else {
+              throw new SyntaxError("[sprintf] unexpected placeholder");
+            }
+            _fmt = _fmt.substring(match[0].length);
+          }
+          return sprintf_cache[fmt] = parse_tree;
+        }
+        if (typeof exports !== "undefined") {
+          exports["sprintf"] = sprintf;
+          exports["vsprintf"] = vsprintf;
+        }
+        if (typeof window !== "undefined") {
+          window["sprintf"] = sprintf;
+          window["vsprintf"] = vsprintf;
+          if (typeof define === "function" && define["amd"]) {
+            define(function() {
+              return {
+                "sprintf": sprintf,
+                "vsprintf": vsprintf
+              };
+            });
+          }
+        }
+      }();
+    }
+  });
+
+  // node_modules/fengari/src/lstrlib.js
+  var require_lstrlib = __commonJS({
+    "node_modules/fengari/src/lstrlib.js"(exports, module) {
+      "use strict";
+      var { sprintf } = require_sprintf();
+      var {
+        LUA_INTEGER_FMT,
+        LUA_INTEGER_FRMLEN,
+        LUA_MININTEGER,
+        LUA_NUMBER_FMT,
+        LUA_NUMBER_FRMLEN,
+        frexp,
+        lua_getlocaledecpoint
+      } = require_luaconf();
+      var {
+        LUA_TBOOLEAN,
+        LUA_TFUNCTION,
+        LUA_TNIL,
+        LUA_TNUMBER,
+        LUA_TSTRING,
+        LUA_TTABLE,
+        lua_call,
+        lua_createtable,
+        lua_dump,
+        lua_gettable,
+        lua_gettop,
+        lua_isinteger,
+        lua_isstring,
+        lua_pop,
+        lua_pushcclosure,
+        lua_pushinteger,
+        lua_pushlightuserdata,
+        lua_pushliteral,
+        lua_pushlstring,
+        lua_pushnil,
+        lua_pushnumber,
+        lua_pushstring,
+        lua_pushvalue,
+        lua_remove,
+        lua_setfield,
+        lua_setmetatable,
+        lua_settop,
+        lua_toboolean,
+        lua_tointeger,
+        lua_tonumber,
+        lua_tostring,
+        lua_touserdata,
+        lua_type,
+        lua_upvalueindex
+      } = require_lua();
+      var {
+        luaL_Buffer,
+        luaL_addchar,
+        luaL_addlstring,
+        luaL_addsize,
+        luaL_addstring,
+        luaL_addvalue,
+        luaL_argcheck,
+        luaL_argerror,
+        luaL_buffinit,
+        luaL_buffinitsize,
+        luaL_checkinteger,
+        luaL_checknumber,
+        luaL_checkstack,
+        luaL_checkstring,
+        luaL_checktype,
+        luaL_error,
+        luaL_newlib,
+        luaL_optinteger,
+        luaL_optstring,
+        luaL_prepbuffsize,
+        luaL_pushresult,
+        luaL_pushresultsize,
+        luaL_tolstring,
+        luaL_typename
+      } = require_lauxlib();
+      var lualib = require_lualib();
+      var {
+        luastring_eq,
+        luastring_indexOf,
+        to_jsstring,
+        to_luastring
+      } = require_fengaricore();
+      var sL_ESC = "%";
+      var L_ESC = sL_ESC.charCodeAt(0);
+      var LUA_MAXCAPTURES = 32;
+      var MAXSIZE = 2147483647;
+      var strlen = function(s) {
+        let len = luastring_indexOf(s, 0);
+        return len > -1 ? len : s.length;
+      };
+      var posrelat = function(pos, len) {
+        if (pos >= 0) return pos;
+        else if (0 - pos > len) return 0;
+        else return len + pos + 1;
+      };
+      var str_sub = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let l = s.length;
+        let start = posrelat(luaL_checkinteger(L, 2), l);
+        let end = posrelat(luaL_optinteger(L, 3, -1), l);
+        if (start < 1) start = 1;
+        if (end > l) end = l;
+        if (start <= end)
+          lua_pushstring(L, s.subarray(start - 1, start - 1 + (end - start + 1)));
+        else lua_pushliteral(L, "");
+        return 1;
+      };
+      var str_len = function(L) {
+        lua_pushinteger(L, luaL_checkstring(L, 1).length);
+        return 1;
+      };
+      var str_char = function(L) {
+        let n = lua_gettop(L);
+        let b = new luaL_Buffer();
+        let p = luaL_buffinitsize(L, b, n);
+        for (let i = 1; i <= n; i++) {
+          let c = luaL_checkinteger(L, i);
+          luaL_argcheck(L, c >= 0 && c <= 255, "value out of range");
+          p[i - 1] = c;
+        }
+        luaL_pushresultsize(b, n);
+        return 1;
+      };
+      var writer = function(L, b, size, B) {
+        luaL_addlstring(B, b, size);
+        return 0;
+      };
+      var str_dump = function(L) {
+        let b = new luaL_Buffer();
+        let strip = lua_toboolean(L, 2);
+        luaL_checktype(L, 1, LUA_TFUNCTION);
+        lua_settop(L, 1);
+        luaL_buffinit(L, b);
+        if (lua_dump(L, writer, b, strip) !== 0)
+          return luaL_error(L, to_luastring("unable to dump given function"));
+        luaL_pushresult(b);
+        return 1;
+      };
+      var SIZELENMOD = LUA_NUMBER_FRMLEN.length + 1;
+      var L_NBFD = 1;
+      var num2straux = function(x) {
+        if (Object.is(x, Infinity))
+          return to_luastring("inf");
+        else if (Object.is(x, -Infinity))
+          return to_luastring("-inf");
+        else if (Number.isNaN(x))
+          return to_luastring("nan");
+        else if (x === 0) {
+          let zero = sprintf(LUA_NUMBER_FMT + "x0p+0", x);
+          if (Object.is(x, -0))
+            zero = "-" + zero;
+          return to_luastring(zero);
+        } else {
+          let buff = "";
+          let fe = frexp(x);
+          let m = fe[0];
+          let e = fe[1];
+          if (m < 0) {
+            buff += "-";
+            m = -m;
+          }
+          buff += "0x";
+          buff += (m * (1 << L_NBFD)).toString(16);
+          e -= L_NBFD;
+          buff += sprintf("p%+d", e);
+          return to_luastring(buff);
+        }
+      };
+      var lua_number2strx = function(L, fmt, x) {
+        let buff = num2straux(x);
+        if (fmt[SIZELENMOD] === 65) {
+          for (let i = 0; i < buff.length; i++) {
+            let c = buff[i];
+            if (c >= 97)
+              buff[i] = c & 223;
+          }
+        } else if (fmt[SIZELENMOD] !== 97)
+          luaL_error(L, to_luastring("modifiers for format '%%a'/'%%A' not implemented"));
+        return buff;
+      };
+      var FLAGS = to_luastring("-+ #0");
+      var isalpha = (e) => 97 <= e && e <= 122 || 65 <= e && e <= 90;
+      var isdigit = (e) => 48 <= e && e <= 57;
+      var iscntrl = (e) => 0 <= e && e <= 31 || e === 127;
+      var isgraph = (e) => 33 <= e && e <= 126;
+      var islower = (e) => 97 <= e && e <= 122;
+      var isupper = (e) => 65 <= e && e <= 90;
+      var isalnum = (e) => 97 <= e && e <= 122 || 65 <= e && e <= 90 || 48 <= e && e <= 57;
+      var ispunct = (e) => isgraph(e) && !isalnum(e);
+      var isspace = (e) => e === 32 || e >= 9 && e <= 13;
+      var isxdigit = (e) => 48 <= e && e <= 57 || 65 <= e && e <= 70 || 97 <= e && e <= 102;
+      var addquoted = function(b, s, len) {
+        luaL_addchar(
+          b,
+          34
+          /* '"'.charCodeAt(0) */
+        );
+        let i = 0;
+        while (len--) {
+          if (s[i] === 34 || s[i] === 92 || s[i] === 10) {
+            luaL_addchar(
+              b,
+              92
+              /* '\\'.charCodeAt(0) */
+            );
+            luaL_addchar(b, s[i]);
+          } else if (iscntrl(s[i])) {
+            let buff = "" + s[i];
+            if (isdigit(s[i + 1]))
+              buff = "0".repeat(3 - buff.length) + buff;
+            luaL_addstring(b, to_luastring("\\" + buff));
+          } else
+            luaL_addchar(b, s[i]);
+          i++;
+        }
+        luaL_addchar(
+          b,
+          34
+          /* '"'.charCodeAt(0) */
+        );
+      };
+      var checkdp = function(buff) {
+        if (luastring_indexOf(
+          buff,
+          46
+          /* ('.').charCodeAt(0) */
+        ) < 0) {
+          let point = lua_getlocaledecpoint();
+          let ppoint = luastring_indexOf(buff, point);
+          if (ppoint) buff[ppoint] = 46;
+        }
+      };
+      var addliteral = function(L, b, arg) {
+        switch (lua_type(L, arg)) {
+          case LUA_TSTRING: {
+            let s = lua_tostring(L, arg);
+            addquoted(b, s, s.length);
+            break;
+          }
+          case LUA_TNUMBER: {
+            let buff;
+            if (!lua_isinteger(L, arg)) {
+              let n = lua_tonumber(L, arg);
+              buff = lua_number2strx(L, to_luastring(`%${LUA_INTEGER_FRMLEN}a`), n);
+              checkdp(buff);
+            } else {
+              let n = lua_tointeger(L, arg);
+              let format = n === LUA_MININTEGER ? "0x%" + LUA_INTEGER_FRMLEN + "x" : LUA_INTEGER_FMT;
+              buff = to_luastring(sprintf(format, n));
+            }
+            luaL_addstring(b, buff);
+            break;
+          }
+          case LUA_TNIL:
+          case LUA_TBOOLEAN: {
+            luaL_tolstring(L, arg);
+            luaL_addvalue(b);
+            break;
+          }
+          default: {
+            luaL_argerror(L, arg, to_luastring("value has no literal form"));
+          }
+        }
+      };
+      var scanformat = function(L, strfrmt, i, form) {
+        let p = i;
+        while (strfrmt[p] !== 0 && luastring_indexOf(FLAGS, strfrmt[p]) >= 0) p++;
+        if (p - i >= FLAGS.length)
+          luaL_error(L, to_luastring("invalid format (repeated flags)"));
+        if (isdigit(strfrmt[p])) p++;
+        if (isdigit(strfrmt[p])) p++;
+        if (strfrmt[p] === 46) {
+          p++;
+          if (isdigit(strfrmt[p])) p++;
+          if (isdigit(strfrmt[p])) p++;
+        }
+        if (isdigit(strfrmt[p]))
+          luaL_error(L, to_luastring("invalid format (width or precision too long)"));
+        form[0] = 37;
+        for (let j = 0; j < p - i + 1; j++)
+          form[j + 1] = strfrmt[i + j];
+        return p;
+      };
+      var addlenmod = function(form, lenmod) {
+        let l = form.length;
+        let lm = lenmod.length;
+        let spec = form[l - 1];
+        for (let i = 0; i < lm; i++)
+          form[i + l - 1] = lenmod[i];
+        form[l + lm - 1] = spec;
+      };
+      var str_format = function(L) {
+        let top = lua_gettop(L);
+        let arg = 1;
+        let strfrmt = luaL_checkstring(L, arg);
+        let i = 0;
+        let b = new luaL_Buffer();
+        luaL_buffinit(L, b);
+        while (i < strfrmt.length) {
+          if (strfrmt[i] !== L_ESC) {
+            luaL_addchar(b, strfrmt[i++]);
+          } else if (strfrmt[++i] === L_ESC) {
+            luaL_addchar(b, strfrmt[i++]);
+          } else {
+            let form = [];
+            if (++arg > top)
+              luaL_argerror(L, arg, to_luastring("no value"));
+            i = scanformat(L, strfrmt, i, form);
+            switch (String.fromCharCode(strfrmt[i++])) {
+              case "c": {
+                luaL_addchar(b, luaL_checkinteger(L, arg));
+                break;
+              }
+              case "d":
+              case "i":
+              case "o":
+              case "u":
+              case "x":
+              case "X": {
+                let n = luaL_checkinteger(L, arg);
+                addlenmod(form, to_luastring(LUA_INTEGER_FRMLEN, true));
+                luaL_addstring(b, to_luastring(sprintf(String.fromCharCode(...form), n)));
+                break;
+              }
+              case "a":
+              case "A": {
+                addlenmod(form, to_luastring(LUA_INTEGER_FRMLEN, true));
+                luaL_addstring(b, lua_number2strx(L, form, luaL_checknumber(L, arg)));
+                break;
+              }
+              case "e":
+              case "E":
+              case "f":
+              case "g":
+              case "G": {
+                let n = luaL_checknumber(L, arg);
+                addlenmod(form, to_luastring(LUA_INTEGER_FRMLEN, true));
+                luaL_addstring(b, to_luastring(sprintf(String.fromCharCode(...form), n)));
+                break;
+              }
+              case "q": {
+                addliteral(L, b, arg);
+                break;
+              }
+              case "s": {
+                let s = luaL_tolstring(L, arg);
+                if (form.length <= 2 || form[2] === 0) {
+                  luaL_addvalue(b);
+                } else {
+                  luaL_argcheck(L, s.length === strlen(s), arg, "string contains zeros");
+                  if (luastring_indexOf(
+                    form,
+                    46
+                    /* '.'.charCodeAt(0) */
+                  ) < 0 && s.length >= 100) {
+                    luaL_addvalue(b);
+                  } else {
+                    luaL_addstring(b, to_luastring(sprintf(String.fromCharCode(...form), to_jsstring(s))));
+                    lua_pop(L, 1);
+                  }
+                }
+                break;
+              }
+              default: {
+                return luaL_error(L, to_luastring("invalid option '%%%c' to 'format'"), strfrmt[i - 1]);
+              }
+            }
+          }
+        }
+        luaL_pushresult(b);
+        return 1;
+      };
+      var LUAL_PACKPADBYTE = 0;
+      var MAXINTSIZE = 16;
+      var SZINT = 4;
+      var NB = 8;
+      var MC = (1 << NB) - 1;
+      var MAXALIGN = 8;
+      var Header = class {
+        constructor(L) {
+          this.L = L;
+          this.islittle = true;
+          this.maxalign = 1;
+        }
+      };
+      var Kint = 0;
+      var Kuint = 1;
+      var Kfloat = 2;
+      var Kchar = 3;
+      var Kstring = 4;
+      var Kzstr = 5;
+      var Kpadding = 6;
+      var Kpaddalign = 7;
+      var Knop = 8;
+      var digit = isdigit;
+      var getnum = function(fmt, df) {
+        if (fmt.off >= fmt.s.length || !digit(fmt.s[fmt.off]))
+          return df;
+        else {
+          let a = 0;
+          do {
+            a = a * 10 + (fmt.s[fmt.off++] - 48);
+          } while (fmt.off < fmt.s.length && digit(fmt.s[fmt.off]) && a <= (MAXSIZE - 9) / 10);
+          return a;
+        }
+      };
+      var getnumlimit = function(h, fmt, df) {
+        let sz = getnum(fmt, df);
+        if (sz > MAXINTSIZE || sz <= 0)
+          luaL_error(h.L, to_luastring("integral size (%d) out of limits [1,%d]"), sz, MAXINTSIZE);
+        return sz;
+      };
+      var getoption = function(h, fmt) {
+        let r = {
+          opt: fmt.s[fmt.off++],
+          size: 0
+          /* default */
+        };
+        switch (r.opt) {
+          case 98:
+            r.size = 1;
+            r.opt = Kint;
+            return r;
+          // sizeof(char): 1
+          case 66:
+            r.size = 1;
+            r.opt = Kuint;
+            return r;
+          case 104:
+            r.size = 2;
+            r.opt = Kint;
+            return r;
+          // sizeof(short): 2
+          case 72:
+            r.size = 2;
+            r.opt = Kuint;
+            return r;
+          case 108:
+            r.size = 4;
+            r.opt = Kint;
+            return r;
+          // sizeof(long): 4
+          case 76:
+            r.size = 4;
+            r.opt = Kuint;
+            return r;
+          case 106:
+            r.size = 4;
+            r.opt = Kint;
+            return r;
+          // sizeof(lua_Integer): 4
+          case 74:
+            r.size = 4;
+            r.opt = Kuint;
+            return r;
+          case 84:
+            r.size = 4;
+            r.opt = Kuint;
+            return r;
+          // sizeof(size_t): 4
+          case 102:
+            r.size = 4;
+            r.opt = Kfloat;
+            return r;
+          // sizeof(float): 4
+          case 100:
+            r.size = 8;
+            r.opt = Kfloat;
+            return r;
+          // sizeof(double): 8
+          case 110:
+            r.size = 8;
+            r.opt = Kfloat;
+            return r;
+          // sizeof(lua_Number): 8
+          case 105:
+            r.size = getnumlimit(h, fmt, 4);
+            r.opt = Kint;
+            return r;
+          // sizeof(int): 4
+          case 73:
+            r.size = getnumlimit(h, fmt, 4);
+            r.opt = Kuint;
+            return r;
+          case 115:
+            r.size = getnumlimit(h, fmt, 4);
+            r.opt = Kstring;
+            return r;
+          case 99: {
+            r.size = getnum(fmt, -1);
+            if (r.size === -1)
+              luaL_error(h.L, to_luastring("missing size for format option 'c'"));
+            r.opt = Kchar;
+            return r;
+          }
+          case 122:
+            r.opt = Kzstr;
+            return r;
+          case 120:
+            r.size = 1;
+            r.opt = Kpadding;
+            return r;
+          case 88:
+            r.opt = Kpaddalign;
+            return r;
+          case 32:
+            break;
+          case 60:
+            h.islittle = true;
+            break;
+          case 62:
+            h.islittle = false;
+            break;
+          case 61:
+            h.islittle = true;
+            break;
+          case 33:
+            h.maxalign = getnumlimit(h, fmt, MAXALIGN);
+            break;
+          default:
+            luaL_error(h.L, to_luastring("invalid format option '%c'"), r.opt);
+        }
+        r.opt = Knop;
+        return r;
+      };
+      var getdetails = function(h, totalsize, fmt) {
+        let r = {
+          opt: NaN,
+          size: NaN,
+          ntoalign: NaN
+        };
+        let opt = getoption(h, fmt);
+        r.size = opt.size;
+        r.opt = opt.opt;
+        let align = r.size;
+        if (r.opt === Kpaddalign) {
+          if (fmt.off >= fmt.s.length || fmt.s[fmt.off] === 0)
+            luaL_argerror(h.L, 1, to_luastring("invalid next option for option 'X'"));
+          else {
+            let o = getoption(h, fmt);
+            align = o.size;
+            o = o.opt;
+            if (o === Kchar || align === 0)
+              luaL_argerror(h.L, 1, to_luastring("invalid next option for option 'X'"));
+          }
+        }
+        if (align <= 1 || r.opt === Kchar)
+          r.ntoalign = 0;
+        else {
+          if (align > h.maxalign)
+            align = h.maxalign;
+          if ((align & align - 1) !== 0)
+            luaL_argerror(h.L, 1, to_luastring("format asks for alignment not power of 2"));
+          r.ntoalign = align - (totalsize & align - 1) & align - 1;
+        }
+        return r;
+      };
+      var packint = function(b, n, islittle, size, neg) {
+        let buff = luaL_prepbuffsize(b, size);
+        buff[islittle ? 0 : size - 1] = n & MC;
+        for (let i = 1; i < size; i++) {
+          n >>= NB;
+          buff[islittle ? i : size - 1 - i] = n & MC;
+        }
+        if (neg && size > SZINT) {
+          for (let i = SZINT; i < size; i++)
+            buff[islittle ? i : size - 1 - i] = MC;
+        }
+        luaL_addsize(b, size);
+      };
+      var str_pack = function(L) {
+        let b = new luaL_Buffer();
+        let h = new Header(L);
+        let fmt = {
+          s: luaL_checkstring(L, 1),
+          /* format string */
+          off: 0
+        };
+        let arg = 1;
+        let totalsize = 0;
+        lua_pushnil(L);
+        luaL_buffinit(L, b);
+        while (fmt.off < fmt.s.length) {
+          let details = getdetails(h, totalsize, fmt);
+          let opt = details.opt;
+          let size = details.size;
+          let ntoalign = details.ntoalign;
+          totalsize += ntoalign + size;
+          while (ntoalign-- > 0)
+            luaL_addchar(b, LUAL_PACKPADBYTE);
+          arg++;
+          switch (opt) {
+            case Kint: {
+              let n = luaL_checkinteger(L, arg);
+              if (size < SZINT) {
+                let lim = 1 << size * 8 - 1;
+                luaL_argcheck(L, -lim <= n && n < lim, arg, "integer overflow");
+              }
+              packint(b, n, h.islittle, size, n < 0);
+              break;
+            }
+            case Kuint: {
+              let n = luaL_checkinteger(L, arg);
+              if (size < SZINT)
+                luaL_argcheck(L, n >>> 0 < 1 << size * NB, arg, "unsigned overflow");
+              packint(b, n >>> 0, h.islittle, size, false);
+              break;
+            }
+            case Kfloat: {
+              let buff = luaL_prepbuffsize(b, size);
+              let n = luaL_checknumber(L, arg);
+              let dv = new DataView(buff.buffer, buff.byteOffset, buff.byteLength);
+              if (size === 4) dv.setFloat32(0, n, h.islittle);
+              else dv.setFloat64(0, n, h.islittle);
+              luaL_addsize(b, size);
+              break;
+            }
+            case Kchar: {
+              let s = luaL_checkstring(L, arg);
+              let len = s.length;
+              luaL_argcheck(L, len <= size, arg, "string longer than given size");
+              luaL_addlstring(b, s, len);
+              while (len++ < size)
+                luaL_addchar(b, LUAL_PACKPADBYTE);
+              break;
+            }
+            case Kstring: {
+              let s = luaL_checkstring(L, arg);
+              let len = s.length;
+              luaL_argcheck(
+                L,
+                size >= 4 || len < 1 << size * NB,
+                arg,
+                "string length does not fit in given size"
+              );
+              packint(b, len, h.islittle, size, 0);
+              luaL_addlstring(b, s, len);
+              totalsize += len;
+              break;
+            }
+            case Kzstr: {
+              let s = luaL_checkstring(L, arg);
+              let len = s.length;
+              luaL_argcheck(L, luastring_indexOf(s, 0) < 0, arg, "strings contains zeros");
+              luaL_addlstring(b, s, len);
+              luaL_addchar(b, 0);
+              totalsize += len + 1;
+              break;
+            }
+            case Kpadding:
+              luaL_addchar(b, LUAL_PACKPADBYTE);
+            /* fall through */
+            case Kpaddalign:
+            case Knop:
+              arg--;
+              break;
+          }
+        }
+        luaL_pushresult(b);
+        return 1;
+      };
+      var str_reverse = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let l = s.length;
+        let r = new Uint8Array(l);
+        for (let i = 0; i < l; i++)
+          r[i] = s[l - 1 - i];
+        lua_pushstring(L, r);
+        return 1;
+      };
+      var str_lower = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let l = s.length;
+        let r = new Uint8Array(l);
+        for (let i = 0; i < l; i++) {
+          let c = s[i];
+          if (isupper(c))
+            c = c | 32;
+          r[i] = c;
+        }
+        lua_pushstring(L, r);
+        return 1;
+      };
+      var str_upper = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let l = s.length;
+        let r = new Uint8Array(l);
+        for (let i = 0; i < l; i++) {
+          let c = s[i];
+          if (islower(c))
+            c = c & 223;
+          r[i] = c;
+        }
+        lua_pushstring(L, r);
+        return 1;
+      };
+      var str_rep = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let l = s.length;
+        let n = luaL_checkinteger(L, 2);
+        let sep = luaL_optstring(L, 3, "");
+        let lsep = sep.length;
+        if (n <= 0) lua_pushliteral(L, "");
+        else if (l + lsep < l || l + lsep > MAXSIZE / n)
+          return luaL_error(L, to_luastring("resulting string too large"));
+        else {
+          let totallen = n * l + (n - 1) * lsep;
+          let b = new luaL_Buffer();
+          let p = luaL_buffinitsize(L, b, totallen);
+          let pi = 0;
+          while (n-- > 1) {
+            p.set(s, pi);
+            pi += l;
+            if (lsep > 0) {
+              p.set(sep, pi);
+              pi += lsep;
+            }
+          }
+          p.set(s, pi);
+          luaL_pushresultsize(b, totallen);
+        }
+        return 1;
+      };
+      var str_byte = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let l = s.length;
+        let posi = posrelat(luaL_optinteger(L, 2, 1), l);
+        let pose = posrelat(luaL_optinteger(L, 3, posi), l);
+        if (posi < 1) posi = 1;
+        if (pose > l) pose = l;
+        if (posi > pose) return 0;
+        if (pose - posi >= Number.MAX_SAFE_INTEGER)
+          return luaL_error(L, "string slice too long");
+        let n = pose - posi + 1;
+        luaL_checkstack(L, n, "string slice too long");
+        for (let i = 0; i < n; i++)
+          lua_pushinteger(L, s[posi + i - 1]);
+        return n;
+      };
+      var str_packsize = function(L) {
+        let h = new Header(L);
+        let fmt = {
+          s: luaL_checkstring(L, 1),
+          off: 0
+        };
+        let totalsize = 0;
+        while (fmt.off < fmt.s.length) {
+          let details = getdetails(h, totalsize, fmt);
+          let opt = details.opt;
+          let size = details.size;
+          let ntoalign = details.ntoalign;
+          size += ntoalign;
+          luaL_argcheck(L, totalsize <= MAXSIZE - size, 1, "format result too large");
+          totalsize += size;
+          switch (opt) {
+            case Kstring:
+            /* strings with length count */
+            case Kzstr:
+              luaL_argerror(L, 1, "variable-length format");
+            /* call never return, but to avoid warnings: */
+            /* fall through */
+            default:
+              break;
+          }
+        }
+        lua_pushinteger(L, totalsize);
+        return 1;
+      };
+      var unpackint = function(L, str, islittle, size, issigned) {
+        let res = 0;
+        let limit = size <= SZINT ? size : SZINT;
+        for (let i = limit - 1; i >= 0; i--) {
+          res <<= NB;
+          res |= str[islittle ? i : size - 1 - i];
+        }
+        if (size < SZINT) {
+          if (issigned) {
+            let mask = 1 << size * NB - 1;
+            res = (res ^ mask) - mask;
+          }
+        } else if (size > SZINT) {
+          let mask = !issigned || res >= 0 ? 0 : MC;
+          for (let i = limit; i < size; i++) {
+            if (str[islittle ? i : size - 1 - i] !== mask)
+              luaL_error(L, to_luastring("%d-byte integer does not fit into Lua Integer"), size);
+          }
+        }
+        return res;
+      };
+      var unpacknum = function(L, b, islittle, size) {
+        lualib.lua_assert(b.length >= size);
+        let dv = new DataView(new ArrayBuffer(size));
+        for (let i = 0; i < size; i++)
+          dv.setUint8(i, b[i], islittle);
+        if (size == 4) return dv.getFloat32(0, islittle);
+        else return dv.getFloat64(0, islittle);
+      };
+      var str_unpack = function(L) {
+        let h = new Header(L);
+        let fmt = {
+          s: luaL_checkstring(L, 1),
+          off: 0
+        };
+        let data = luaL_checkstring(L, 2);
+        let ld = data.length;
+        let pos = posrelat(luaL_optinteger(L, 3, 1), ld) - 1;
+        let n = 0;
+        luaL_argcheck(L, pos <= ld && pos >= 0, 3, "initial position out of string");
+        while (fmt.off < fmt.s.length) {
+          let details = getdetails(h, pos, fmt);
+          let opt = details.opt;
+          let size = details.size;
+          let ntoalign = details.ntoalign;
+          if (
+            /*ntoalign + size > ~pos ||*/
+            pos + ntoalign + size > ld
+          )
+            luaL_argerror(L, 2, to_luastring("data string too short"));
+          pos += ntoalign;
+          luaL_checkstack(L, 2, "too many results");
+          n++;
+          switch (opt) {
+            case Kint:
+            case Kuint: {
+              let res = unpackint(L, data.subarray(pos), h.islittle, size, opt === Kint);
+              lua_pushinteger(L, res);
+              break;
+            }
+            case Kfloat: {
+              let res = unpacknum(L, data.subarray(pos), h.islittle, size);
+              lua_pushnumber(L, res);
+              break;
+            }
+            case Kchar: {
+              lua_pushstring(L, data.subarray(pos, pos + size));
+              break;
+            }
+            case Kstring: {
+              let len = unpackint(L, data.subarray(pos), h.islittle, size, 0);
+              luaL_argcheck(L, pos + len + size <= ld, 2, "data string too short");
+              lua_pushstring(L, data.subarray(pos + size, pos + size + len));
+              pos += len;
+              break;
+            }
+            case Kzstr: {
+              let e = luastring_indexOf(data, 0, pos);
+              if (e === -1) e = data.length - pos;
+              lua_pushstring(L, data.subarray(pos, e));
+              pos = e + 1;
+              break;
+            }
+            case Kpaddalign:
+            case Kpadding:
+            case Knop:
+              n--;
+              break;
+          }
+          pos += size;
+        }
+        lua_pushinteger(L, pos + 1);
+        return n + 1;
+      };
+      var CAP_UNFINISHED = -1;
+      var CAP_POSITION = -2;
+      var MAXCCALLS = 200;
+      var SPECIALS = to_luastring("^$*+?.([%-");
+      var MatchState = class {
+        constructor(L) {
+          this.src = null;
+          this.src_init = null;
+          this.src_end = null;
+          this.p = null;
+          this.p_end = null;
+          this.L = L;
+          this.matchdepth = NaN;
+          this.level = NaN;
+          this.capture = [];
+        }
+      };
+      var check_capture = function(ms, l) {
+        l = l - 49;
+        if (l < 0 || l >= ms.level || ms.capture[l].len === CAP_UNFINISHED)
+          return luaL_error(ms.L, to_luastring("invalid capture index %%%d"), l + 1);
+        return l;
+      };
+      var capture_to_close = function(ms) {
+        let level = ms.level;
+        for (level--; level >= 0; level--)
+          if (ms.capture[level].len === CAP_UNFINISHED) return level;
+        return luaL_error(ms.L, to_luastring("invalid pattern capture"));
+      };
+      var classend = function(ms, p) {
+        switch (ms.p[p++]) {
+          case L_ESC: {
+            if (p === ms.p_end)
+              luaL_error(ms.L, to_luastring("malformed pattern (ends with '%%')"));
+            return p + 1;
+          }
+          case 91: {
+            if (ms.p[p] === 94) p++;
+            do {
+              if (p === ms.p_end)
+                luaL_error(ms.L, to_luastring("malformed pattern (missing ']')"));
+              if (ms.p[p++] === L_ESC && p < ms.p_end)
+                p++;
+            } while (ms.p[p] !== 93);
+            return p + 1;
+          }
+          default: {
+            return p;
+          }
+        }
+      };
+      var match_class = function(c, cl) {
+        switch (cl) {
+          case 97:
+            return isalpha(c);
+          case 65:
+            return !isalpha(c);
+          case 99:
+            return iscntrl(c);
+          case 67:
+            return !iscntrl(c);
+          case 100:
+            return isdigit(c);
+          case 68:
+            return !isdigit(c);
+          case 103:
+            return isgraph(c);
+          case 71:
+            return !isgraph(c);
+          case 108:
+            return islower(c);
+          case 76:
+            return !islower(c);
+          case 112:
+            return ispunct(c);
+          case 80:
+            return !ispunct(c);
+          case 115:
+            return isspace(c);
+          case 83:
+            return !isspace(c);
+          case 117:
+            return isupper(c);
+          case 85:
+            return !isupper(c);
+          case 119:
+            return isalnum(c);
+          case 87:
+            return !isalnum(c);
+          case 120:
+            return isxdigit(c);
+          case 88:
+            return !isxdigit(c);
+          case 122:
+            return c === 0;
+          /* deprecated option */
+          case 90:
+            return c !== 0;
+          /* deprecated option */
+          default:
+            return cl === c;
+        }
+      };
+      var matchbracketclass = function(ms, c, p, ec) {
+        let sig = true;
+        if (ms.p[p + 1] === 94) {
+          sig = false;
+          p++;
+        }
+        while (++p < ec) {
+          if (ms.p[p] === L_ESC) {
+            p++;
+            if (match_class(c, ms.p[p]))
+              return sig;
+          } else if (ms.p[p + 1] === 45 && p + 2 < ec) {
+            p += 2;
+            if (ms.p[p - 2] <= c && c <= ms.p[p])
+              return sig;
+          } else if (ms.p[p] === c) return sig;
+        }
+        return !sig;
+      };
+      var singlematch = function(ms, s, p, ep) {
+        if (s >= ms.src_end)
+          return false;
+        else {
+          let c = ms.src[s];
+          switch (ms.p[p]) {
+            case 46:
+              return true;
+            /* matches any char */
+            case L_ESC:
+              return match_class(c, ms.p[p + 1]);
+            case 91:
+              return matchbracketclass(ms, c, p, ep - 1);
+            default:
+              return ms.p[p] === c;
+          }
+        }
+      };
+      var matchbalance = function(ms, s, p) {
+        if (p >= ms.p_end - 1)
+          luaL_error(ms.L, to_luastring("malformed pattern (missing arguments to '%%b'"));
+        if (ms.src[s] !== ms.p[p])
+          return null;
+        else {
+          let b = ms.p[p];
+          let e = ms.p[p + 1];
+          let cont = 1;
+          while (++s < ms.src_end) {
+            if (ms.src[s] === e) {
+              if (--cont === 0) return s + 1;
+            } else if (ms.src[s] === b) cont++;
+          }
+        }
+        return null;
+      };
+      var max_expand = function(ms, s, p, ep) {
+        let i = 0;
+        while (singlematch(ms, s + i, p, ep))
+          i++;
+        while (i >= 0) {
+          let res = match(ms, s + i, ep + 1);
+          if (res) return res;
+          i--;
+        }
+        return null;
+      };
+      var min_expand = function(ms, s, p, ep) {
+        for (; ; ) {
+          let res = match(ms, s, ep + 1);
+          if (res !== null)
+            return res;
+          else if (singlematch(ms, s, p, ep))
+            s++;
+          else return null;
+        }
+      };
+      var start_capture = function(ms, s, p, what) {
+        let level = ms.level;
+        if (level >= LUA_MAXCAPTURES) luaL_error(ms.L, to_luastring("too many captures"));
+        ms.capture[level] = ms.capture[level] ? ms.capture[level] : {};
+        ms.capture[level].init = s;
+        ms.capture[level].len = what;
+        ms.level = level + 1;
+        let res;
+        if ((res = match(ms, s, p)) === null)
+          ms.level--;
+        return res;
+      };
+      var end_capture = function(ms, s, p) {
+        let l = capture_to_close(ms);
+        ms.capture[l].len = s - ms.capture[l].init;
+        let res;
+        if ((res = match(ms, s, p)) === null)
+          ms.capture[l].len = CAP_UNFINISHED;
+        return res;
+      };
+      var array_cmp = function(a, ai, b, bi, len) {
+        return luastring_eq(a.subarray(ai, ai + len), b.subarray(bi, bi + len));
+      };
+      var match_capture = function(ms, s, l) {
+        l = check_capture(ms, l);
+        let len = ms.capture[l].len;
+        if (ms.src_end - s >= len && array_cmp(ms.src, ms.capture[l].init, ms.src, s, len))
+          return s + len;
+        else return null;
+      };
+      var match = function(ms, s, p) {
+        let gotodefault = false;
+        let gotoinit = true;
+        if (ms.matchdepth-- === 0)
+          luaL_error(ms.L, to_luastring("pattern too complex"));
+        while (gotoinit || gotodefault) {
+          gotoinit = false;
+          if (p !== ms.p_end) {
+            switch (gotodefault ? void 0 : ms.p[p]) {
+              case 40: {
+                if (ms.p[p + 1] === 41)
+                  s = start_capture(ms, s, p + 2, CAP_POSITION);
+                else
+                  s = start_capture(ms, s, p + 1, CAP_UNFINISHED);
+                break;
+              }
+              case 41: {
+                s = end_capture(ms, s, p + 1);
+                break;
+              }
+              case 36: {
+                if (p + 1 !== ms.p_end) {
+                  gotodefault = true;
+                  break;
+                }
+                s = ms.src.length - s === 0 ? s : null;
+                break;
+              }
+              case L_ESC: {
+                switch (ms.p[p + 1]) {
+                  case 98: {
+                    s = matchbalance(ms, s, p + 2);
+                    if (s !== null) {
+                      p += 4;
+                      gotoinit = true;
+                    }
+                    break;
+                  }
+                  case 102: {
+                    p += 2;
+                    if (ms.p[p] !== 91)
+                      luaL_error(ms.L, to_luastring("missing '[' after '%%f' in pattern"));
+                    let ep = classend(ms, p);
+                    let previous = s === ms.src_init ? 0 : ms.src[s - 1];
+                    if (!matchbracketclass(ms, previous, p, ep - 1) && matchbracketclass(ms, s === ms.src_end ? 0 : ms.src[s], p, ep - 1)) {
+                      p = ep;
+                      gotoinit = true;
+                      break;
+                    }
+                    s = null;
+                    break;
+                  }
+                  case 48:
+                  case 49:
+                  case 50:
+                  case 51:
+                  case 52:
+                  case 53:
+                  case 54:
+                  case 55:
+                  case 56:
+                  case 57: {
+                    s = match_capture(ms, s, ms.p[p + 1]);
+                    if (s !== null) {
+                      p += 2;
+                      gotoinit = true;
+                    }
+                    break;
+                  }
+                  default:
+                    gotodefault = true;
+                }
+                break;
+              }
+              default: {
+                gotodefault = false;
+                let ep = classend(ms, p);
+                if (!singlematch(ms, s, p, ep)) {
+                  if (ms.p[ep] === 42 || ms.p[ep] === 63 || ms.p[ep] === 45) {
+                    p = ep + 1;
+                    gotoinit = true;
+                    break;
+                  } else
+                    s = null;
+                } else {
+                  switch (ms.p[ep]) {
+                    /* handle optional suffix */
+                    case 63: {
+                      let res;
+                      if ((res = match(ms, s + 1, ep + 1)) !== null)
+                        s = res;
+                      else {
+                        p = ep + 1;
+                        gotoinit = true;
+                      }
+                      break;
+                    }
+                    case 43:
+                      s++;
+                    /* 1 match already done */
+                    /* fall through */
+                    case 42:
+                      s = max_expand(ms, s, p, ep);
+                      break;
+                    case 45:
+                      s = min_expand(ms, s, p, ep);
+                      break;
+                    default:
+                      s++;
+                      p = ep;
+                      gotoinit = true;
+                  }
+                }
+                break;
+              }
+            }
+          }
+        }
+        ms.matchdepth++;
+        return s;
+      };
+      var push_onecapture = function(ms, i, s, e) {
+        if (i >= ms.level) {
+          if (i === 0)
+            lua_pushlstring(ms.L, ms.src.subarray(s, e), e - s);
+          else
+            luaL_error(ms.L, to_luastring("invalid capture index %%%d"), i + 1);
+        } else {
+          let l = ms.capture[i].len;
+          if (l === CAP_UNFINISHED) luaL_error(ms.L, to_luastring("unfinished capture"));
+          if (l === CAP_POSITION)
+            lua_pushinteger(ms.L, ms.capture[i].init - ms.src_init + 1);
+          else
+            lua_pushlstring(ms.L, ms.src.subarray(ms.capture[i].init), l);
+        }
+      };
+      var push_captures = function(ms, s, e) {
+        let nlevels = ms.level === 0 && ms.src.subarray(s) ? 1 : ms.level;
+        luaL_checkstack(ms.L, nlevels, "too many captures");
+        for (let i = 0; i < nlevels; i++)
+          push_onecapture(ms, i, s, e);
+        return nlevels;
+      };
+      var nospecials = function(p, l) {
+        for (let i = 0; i < l; i++) {
+          if (luastring_indexOf(SPECIALS, p[i]) !== -1)
+            return false;
+        }
+        return true;
+      };
+      var prepstate = function(ms, L, s, ls, p, lp) {
+        ms.L = L;
+        ms.matchdepth = MAXCCALLS;
+        ms.src = s;
+        ms.src_init = 0;
+        ms.src_end = ls;
+        ms.p = p;
+        ms.p_end = lp;
+      };
+      var reprepstate = function(ms) {
+        ms.level = 0;
+        lualib.lua_assert(ms.matchdepth === MAXCCALLS);
+      };
+      var find_subarray = function(arr, subarr, from_index) {
+        var i = from_index >>> 0, sl = subarr.length;
+        if (sl === 0)
+          return i;
+        for (; (i = arr.indexOf(subarr[0], i)) !== -1; i++) {
+          if (luastring_eq(arr.subarray(i, i + sl), subarr))
+            return i;
+        }
+        return -1;
+      };
+      var str_find_aux = function(L, find) {
+        let s = luaL_checkstring(L, 1);
+        let p = luaL_checkstring(L, 2);
+        let ls = s.length;
+        let lp = p.length;
+        let init = posrelat(luaL_optinteger(L, 3, 1), ls);
+        if (init < 1) init = 1;
+        else if (init > ls + 1) {
+          lua_pushnil(L);
+          return 1;
+        }
+        if (find && (lua_toboolean(L, 4) || nospecials(p, lp))) {
+          let f = find_subarray(s.subarray(init - 1), p, 0);
+          if (f > -1) {
+            lua_pushinteger(L, init + f);
+            lua_pushinteger(L, init + f + lp - 1);
+            return 2;
+          }
+        } else {
+          let ms = new MatchState(L);
+          let s1 = init - 1;
+          let anchor = p[0] === 94;
+          if (anchor) {
+            p = p.subarray(1);
+            lp--;
+          }
+          prepstate(ms, L, s, ls, p, lp);
+          do {
+            let res;
+            reprepstate(ms);
+            if ((res = match(ms, s1, 0)) !== null) {
+              if (find) {
+                lua_pushinteger(L, s1 + 1);
+                lua_pushinteger(L, res);
+                return push_captures(ms, null, 0) + 2;
+              } else
+                return push_captures(ms, s1, res);
+            }
+          } while (s1++ < ms.src_end && !anchor);
+        }
+        lua_pushnil(L);
+        return 1;
+      };
+      var str_find = function(L) {
+        return str_find_aux(L, 1);
+      };
+      var str_match = function(L) {
+        return str_find_aux(L, 0);
+      };
+      var GMatchState = class {
+        constructor() {
+          this.src = NaN;
+          this.p = NaN;
+          this.lastmatch = NaN;
+          this.ms = new MatchState();
+        }
+      };
+      var gmatch_aux = function(L) {
+        let gm = lua_touserdata(L, lua_upvalueindex(3));
+        gm.ms.L = L;
+        for (let src = gm.src; src <= gm.ms.src_end; src++) {
+          reprepstate(gm.ms);
+          let e;
+          if ((e = match(gm.ms, src, gm.p)) !== null && e !== gm.lastmatch) {
+            gm.src = gm.lastmatch = e;
+            return push_captures(gm.ms, src, e);
+          }
+        }
+        return 0;
+      };
+      var str_gmatch = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let p = luaL_checkstring(L, 2);
+        let ls = s.length;
+        let lp = p.length;
+        lua_settop(L, 2);
+        let gm = new GMatchState();
+        lua_pushlightuserdata(L, gm);
+        prepstate(gm.ms, L, s, ls, p, lp);
+        gm.src = 0;
+        gm.p = 0;
+        gm.lastmatch = null;
+        lua_pushcclosure(L, gmatch_aux, 3);
+        return 1;
+      };
+      var add_s = function(ms, b, s, e) {
+        let L = ms.L;
+        let news = lua_tostring(L, 3);
+        let l = news.length;
+        for (let i = 0; i < l; i++) {
+          if (news[i] !== L_ESC)
+            luaL_addchar(b, news[i]);
+          else {
+            i++;
+            if (!isdigit(news[i])) {
+              if (news[i] !== L_ESC)
+                luaL_error(L, to_luastring("invalid use of '%c' in replacement string"), L_ESC);
+              luaL_addchar(b, news[i]);
+            } else if (news[i] === 48)
+              luaL_addlstring(b, ms.src.subarray(s, e), e - s);
+            else {
+              push_onecapture(ms, news[i] - 49, s, e);
+              luaL_tolstring(L, -1);
+              lua_remove(L, -2);
+              luaL_addvalue(b);
+            }
+          }
+        }
+      };
+      var add_value = function(ms, b, s, e, tr) {
+        let L = ms.L;
+        switch (tr) {
+          case LUA_TFUNCTION: {
+            lua_pushvalue(L, 3);
+            let n = push_captures(ms, s, e);
+            lua_call(L, n, 1);
+            break;
+          }
+          case LUA_TTABLE: {
+            push_onecapture(ms, 0, s, e);
+            lua_gettable(L, 3);
+            break;
+          }
+          default: {
+            add_s(ms, b, s, e);
+            return;
+          }
+        }
+        if (!lua_toboolean(L, -1)) {
+          lua_pop(L, 1);
+          lua_pushlstring(L, ms.src.subarray(s, e), e - s);
+        } else if (!lua_isstring(L, -1))
+          luaL_error(L, to_luastring("invalid replacement value (a %s)"), luaL_typename(L, -1));
+        luaL_addvalue(b);
+      };
+      var str_gsub = function(L) {
+        let src = luaL_checkstring(L, 1);
+        let srcl = src.length;
+        let p = luaL_checkstring(L, 2);
+        let lp = p.length;
+        let lastmatch = null;
+        let tr = lua_type(L, 3);
+        let max_s = luaL_optinteger(L, 4, srcl + 1);
+        let anchor = p[0] === 94;
+        let n = 0;
+        let ms = new MatchState(L);
+        let b = new luaL_Buffer();
+        luaL_argcheck(
+          L,
+          tr === LUA_TNUMBER || tr === LUA_TSTRING || tr === LUA_TFUNCTION || tr === LUA_TTABLE,
+          3,
+          "string/function/table expected"
+        );
+        luaL_buffinit(L, b);
+        if (anchor) {
+          p = p.subarray(1);
+          lp--;
+        }
+        prepstate(ms, L, src, srcl, p, lp);
+        src = 0;
+        p = 0;
+        while (n < max_s) {
+          let e;
+          reprepstate(ms);
+          if ((e = match(ms, src, p)) !== null && e !== lastmatch) {
+            n++;
+            add_value(ms, b, src, e, tr);
+            src = lastmatch = e;
+          } else if (src < ms.src_end)
+            luaL_addchar(b, ms.src[src++]);
+          else break;
+          if (anchor) break;
+        }
+        luaL_addlstring(b, ms.src.subarray(src, ms.src_end), ms.src_end - src);
+        luaL_pushresult(b);
+        lua_pushinteger(L, n);
+        return 2;
+      };
+      var strlib = {
+        "byte": str_byte,
+        "char": str_char,
+        "dump": str_dump,
+        "find": str_find,
+        "format": str_format,
+        "gmatch": str_gmatch,
+        "gsub": str_gsub,
+        "len": str_len,
+        "lower": str_lower,
+        "match": str_match,
+        "pack": str_pack,
+        "packsize": str_packsize,
+        "rep": str_rep,
+        "reverse": str_reverse,
+        "sub": str_sub,
+        "unpack": str_unpack,
+        "upper": str_upper
+      };
+      var createmetatable = function(L) {
+        lua_createtable(L, 0, 1);
+        lua_pushliteral(L, "");
+        lua_pushvalue(L, -2);
+        lua_setmetatable(L, -2);
+        lua_pop(L, 1);
+        lua_pushvalue(L, -2);
+        lua_setfield(L, -2, to_luastring("__index", true));
+        lua_pop(L, 1);
+      };
+      var luaopen_string = function(L) {
+        luaL_newlib(L, strlib);
+        createmetatable(L);
+        return 1;
+      };
+      module.exports.luaopen_string = luaopen_string;
+    }
+  });
+
+  // node_modules/fengari/src/lutf8lib.js
+  var require_lutf8lib = __commonJS({
+    "node_modules/fengari/src/lutf8lib.js"(exports, module) {
+      "use strict";
+      var {
+        lua_gettop,
+        lua_pushcfunction,
+        lua_pushfstring,
+        lua_pushinteger,
+        lua_pushnil,
+        lua_pushstring,
+        lua_pushvalue,
+        lua_setfield,
+        lua_tointeger
+      } = require_lua();
+      var {
+        luaL_Buffer,
+        luaL_addvalue,
+        luaL_argcheck,
+        luaL_buffinit,
+        luaL_checkinteger,
+        luaL_checkstack,
+        luaL_checkstring,
+        luaL_error,
+        luaL_newlib,
+        luaL_optinteger,
+        luaL_pushresult
+      } = require_lauxlib();
+      var {
+        luastring_of,
+        to_luastring
+      } = require_fengaricore();
+      var MAXUNICODE = 1114111;
+      var iscont = function(p) {
+        let c = p & 192;
+        return c === 128;
+      };
+      var u_posrelat = function(pos, len) {
+        if (pos >= 0) return pos;
+        else if (0 - pos > len) return 0;
+        else return len + pos + 1;
+      };
+      var limits = [255, 127, 2047, 65535];
+      var utf8_decode = function(s, pos) {
+        let c = s[pos];
+        let res = 0;
+        if (c < 128)
+          res = c;
+        else {
+          let count = 0;
+          while (c & 64) {
+            let cc = s[pos + ++count];
+            if ((cc & 192) !== 128)
+              return null;
+            res = res << 6 | cc & 63;
+            c <<= 1;
+          }
+          res |= (c & 127) << count * 5;
+          if (count > 3 || res > MAXUNICODE || res <= limits[count])
+            return null;
+          pos += count;
+        }
+        return {
+          code: res,
+          pos: pos + 1
+        };
+      };
+      var utflen = function(L) {
+        let n = 0;
+        let s = luaL_checkstring(L, 1);
+        let len = s.length;
+        let posi = u_posrelat(luaL_optinteger(L, 2, 1), len);
+        let posj = u_posrelat(luaL_optinteger(L, 3, -1), len);
+        luaL_argcheck(L, 1 <= posi && --posi <= len, 2, "initial position out of string");
+        luaL_argcheck(L, --posj < len, 3, "final position out of string");
+        while (posi <= posj) {
+          let dec = utf8_decode(s, posi);
+          if (dec === null) {
+            lua_pushnil(L);
+            lua_pushinteger(L, posi + 1);
+            return 2;
+          }
+          posi = dec.pos;
+          n++;
+        }
+        lua_pushinteger(L, n);
+        return 1;
+      };
+      var p_U = to_luastring("%U");
+      var pushutfchar = function(L, arg) {
+        let code = luaL_checkinteger(L, arg);
+        luaL_argcheck(L, 0 <= code && code <= MAXUNICODE, arg, "value out of range");
+        lua_pushfstring(L, p_U, code);
+      };
+      var utfchar = function(L) {
+        let n = lua_gettop(L);
+        if (n === 1)
+          pushutfchar(L, 1);
+        else {
+          let b = new luaL_Buffer();
+          luaL_buffinit(L, b);
+          for (let i = 1; i <= n; i++) {
+            pushutfchar(L, i);
+            luaL_addvalue(b);
+          }
+          luaL_pushresult(b);
+        }
+        return 1;
+      };
+      var byteoffset = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let n = luaL_checkinteger(L, 2);
+        let posi = n >= 0 ? 1 : s.length + 1;
+        posi = u_posrelat(luaL_optinteger(L, 3, posi), s.length);
+        luaL_argcheck(L, 1 <= posi && --posi <= s.length, 3, "position out of range");
+        if (n === 0) {
+          while (posi > 0 && iscont(s[posi])) posi--;
+        } else {
+          if (iscont(s[posi]))
+            luaL_error(L, "initial position is a continuation byte");
+          if (n < 0) {
+            while (n < 0 && posi > 0) {
+              do {
+                posi--;
+              } while (posi > 0 && iscont(s[posi]));
+              n++;
+            }
+          } else {
+            n--;
+            while (n > 0 && posi < s.length) {
+              do {
+                posi++;
+              } while (iscont(s[posi]));
+              n--;
+            }
+          }
+        }
+        if (n === 0)
+          lua_pushinteger(L, posi + 1);
+        else
+          lua_pushnil(L);
+        return 1;
+      };
+      var codepoint = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let posi = u_posrelat(luaL_optinteger(L, 2, 1), s.length);
+        let pose = u_posrelat(luaL_optinteger(L, 3, posi), s.length);
+        luaL_argcheck(L, posi >= 1, 2, "out of range");
+        luaL_argcheck(L, pose <= s.length, 3, "out of range");
+        if (posi > pose) return 0;
+        if (pose - posi >= Number.MAX_SAFE_INTEGER)
+          return luaL_error(L, "string slice too long");
+        let n = pose - posi + 1;
+        luaL_checkstack(L, n, "string slice too long");
+        n = 0;
+        for (posi -= 1; posi < pose; ) {
+          let dec = utf8_decode(s, posi);
+          if (dec === null)
+            return luaL_error(L, "invalid UTF-8 code");
+          lua_pushinteger(L, dec.code);
+          posi = dec.pos;
+          n++;
+        }
+        return n;
+      };
+      var iter_aux = function(L) {
+        let s = luaL_checkstring(L, 1);
+        let len = s.length;
+        let n = lua_tointeger(L, 2) - 1;
+        if (n < 0)
+          n = 0;
+        else if (n < len) {
+          n++;
+          while (iscont(s[n])) n++;
+        }
+        if (n >= len)
+          return 0;
+        else {
+          let dec = utf8_decode(s, n);
+          if (dec === null || iscont(s[dec.pos]))
+            return luaL_error(L, to_luastring("invalid UTF-8 code"));
+          lua_pushinteger(L, n + 1);
+          lua_pushinteger(L, dec.code);
+          return 2;
+        }
+      };
+      var iter_codes = function(L) {
+        luaL_checkstring(L, 1);
+        lua_pushcfunction(L, iter_aux);
+        lua_pushvalue(L, 1);
+        lua_pushinteger(L, 0);
+        return 3;
+      };
+      var funcs = {
+        "char": utfchar,
+        "codepoint": codepoint,
+        "codes": iter_codes,
+        "len": utflen,
+        "offset": byteoffset
+      };
+      var UTF8PATT = luastring_of(91, 0, 45, 127, 194, 45, 244, 93, 91, 128, 45, 191, 93, 42);
+      var luaopen_utf8 = function(L) {
+        luaL_newlib(L, funcs);
+        lua_pushstring(L, UTF8PATT);
+        lua_setfield(L, -2, to_luastring("charpattern", true));
+        return 1;
+      };
+      module.exports.luaopen_utf8 = luaopen_utf8;
+    }
+  });
+
+  // node_modules/fengari/src/lmathlib.js
+  var require_lmathlib = __commonJS({
+    "node_modules/fengari/src/lmathlib.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_OPLT,
+        LUA_TNUMBER,
+        lua_compare,
+        lua_gettop,
+        lua_isinteger,
+        lua_isnoneornil,
+        lua_pushboolean,
+        lua_pushinteger,
+        lua_pushliteral,
+        lua_pushnil,
+        lua_pushnumber,
+        lua_pushvalue,
+        lua_setfield,
+        lua_settop,
+        lua_tointeger,
+        lua_tointegerx,
+        lua_type
+      } = require_lua();
+      var {
+        luaL_argcheck,
+        luaL_argerror,
+        luaL_checkany,
+        luaL_checkinteger,
+        luaL_checknumber,
+        luaL_error,
+        luaL_newlib,
+        luaL_optnumber
+      } = require_lauxlib();
+      var {
+        LUA_MAXINTEGER,
+        LUA_MININTEGER,
+        lua_numbertointeger
+      } = require_luaconf();
+      var { to_luastring } = require_fengaricore();
+      var rand_state;
+      var l_rand = function() {
+        rand_state = 1103515245 * rand_state + 12345 & 2147483647;
+        return rand_state;
+      };
+      var l_srand = function(x) {
+        rand_state = x | 0;
+        if (rand_state === 0)
+          rand_state = 1;
+      };
+      var math_random = function(L) {
+        let low, up;
+        let r = rand_state === void 0 ? Math.random() : l_rand() / 2147483648;
+        switch (lua_gettop(L)) {
+          /* check number of arguments */
+          case 0:
+            lua_pushnumber(L, r);
+            return 1;
+          case 1: {
+            low = 1;
+            up = luaL_checkinteger(L, 1);
+            break;
+          }
+          case 2: {
+            low = luaL_checkinteger(L, 1);
+            up = luaL_checkinteger(L, 2);
+            break;
+          }
+          default:
+            return luaL_error(L, "wrong number of arguments");
+        }
+        luaL_argcheck(L, low <= up, 1, "interval is empty");
+        luaL_argcheck(
+          L,
+          low >= 0 || up <= LUA_MAXINTEGER + low,
+          1,
+          "interval too large"
+        );
+        r *= up - low + 1;
+        lua_pushinteger(L, Math.floor(r) + low);
+        return 1;
+      };
+      var math_randomseed = function(L) {
+        l_srand(luaL_checknumber(L, 1));
+        l_rand();
+        return 0;
+      };
+      var math_abs = function(L) {
+        if (lua_isinteger(L, 1)) {
+          let n = lua_tointeger(L, 1);
+          if (n < 0) n = -n | 0;
+          lua_pushinteger(L, n);
+        } else
+          lua_pushnumber(L, Math.abs(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_sin = function(L) {
+        lua_pushnumber(L, Math.sin(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_cos = function(L) {
+        lua_pushnumber(L, Math.cos(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_tan = function(L) {
+        lua_pushnumber(L, Math.tan(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_asin = function(L) {
+        lua_pushnumber(L, Math.asin(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_acos = function(L) {
+        lua_pushnumber(L, Math.acos(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_atan = function(L) {
+        let y = luaL_checknumber(L, 1);
+        let x = luaL_optnumber(L, 2, 1);
+        lua_pushnumber(L, Math.atan2(y, x));
+        return 1;
+      };
+      var math_toint = function(L) {
+        let n = lua_tointegerx(L, 1);
+        if (n !== false)
+          lua_pushinteger(L, n);
+        else {
+          luaL_checkany(L, 1);
+          lua_pushnil(L);
+        }
+        return 1;
+      };
+      var pushnumint = function(L, d) {
+        let n = lua_numbertointeger(d);
+        if (n !== false)
+          lua_pushinteger(L, n);
+        else
+          lua_pushnumber(L, d);
+      };
+      var math_floor = function(L) {
+        if (lua_isinteger(L, 1))
+          lua_settop(L, 1);
+        else
+          pushnumint(L, Math.floor(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_ceil = function(L) {
+        if (lua_isinteger(L, 1))
+          lua_settop(L, 1);
+        else
+          pushnumint(L, Math.ceil(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_sqrt = function(L) {
+        lua_pushnumber(L, Math.sqrt(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_ult = function(L) {
+        let a = luaL_checkinteger(L, 1);
+        let b = luaL_checkinteger(L, 2);
+        lua_pushboolean(L, a >= 0 ? b < 0 || a < b : b < 0 && a < b);
+        return 1;
+      };
+      var math_log = function(L) {
+        let x = luaL_checknumber(L, 1);
+        let res;
+        if (lua_isnoneornil(L, 2))
+          res = Math.log(x);
+        else {
+          let base = luaL_checknumber(L, 2);
+          if (base === 2)
+            res = Math.log2(x);
+          else if (base === 10)
+            res = Math.log10(x);
+          else
+            res = Math.log(x) / Math.log(base);
+        }
+        lua_pushnumber(L, res);
+        return 1;
+      };
+      var math_exp = function(L) {
+        lua_pushnumber(L, Math.exp(luaL_checknumber(L, 1)));
+        return 1;
+      };
+      var math_deg = function(L) {
+        lua_pushnumber(L, luaL_checknumber(L, 1) * (180 / Math.PI));
+        return 1;
+      };
+      var math_rad = function(L) {
+        lua_pushnumber(L, luaL_checknumber(L, 1) * (Math.PI / 180));
+        return 1;
+      };
+      var math_min = function(L) {
+        let n = lua_gettop(L);
+        let imin = 1;
+        luaL_argcheck(L, n >= 1, 1, "value expected");
+        for (let i = 2; i <= n; i++) {
+          if (lua_compare(L, i, imin, LUA_OPLT))
+            imin = i;
+        }
+        lua_pushvalue(L, imin);
+        return 1;
+      };
+      var math_max = function(L) {
+        let n = lua_gettop(L);
+        let imax = 1;
+        luaL_argcheck(L, n >= 1, 1, "value expected");
+        for (let i = 2; i <= n; i++) {
+          if (lua_compare(L, imax, i, LUA_OPLT))
+            imax = i;
+        }
+        lua_pushvalue(L, imax);
+        return 1;
+      };
+      var math_type = function(L) {
+        if (lua_type(L, 1) === LUA_TNUMBER) {
+          if (lua_isinteger(L, 1))
+            lua_pushliteral(L, "integer");
+          else
+            lua_pushliteral(L, "float");
+        } else {
+          luaL_checkany(L, 1);
+          lua_pushnil(L);
+        }
+        return 1;
+      };
+      var math_fmod = function(L) {
+        if (lua_isinteger(L, 1) && lua_isinteger(L, 2)) {
+          let d = lua_tointeger(L, 2);
+          if (d === 0) {
+            luaL_argerror(L, 2, "zero");
+          } else
+            lua_pushinteger(L, lua_tointeger(L, 1) % d | 0);
+        } else {
+          let a = luaL_checknumber(L, 1);
+          let b = luaL_checknumber(L, 2);
+          lua_pushnumber(L, a % b);
+        }
+        return 1;
+      };
+      var math_modf = function(L) {
+        if (lua_isinteger(L, 1)) {
+          lua_settop(L, 1);
+          lua_pushnumber(L, 0);
+        } else {
+          let n = luaL_checknumber(L, 1);
+          let ip = n < 0 ? Math.ceil(n) : Math.floor(n);
+          pushnumint(L, ip);
+          lua_pushnumber(L, n === ip ? 0 : n - ip);
+        }
+        return 2;
+      };
+      var mathlib = {
+        "abs": math_abs,
+        "acos": math_acos,
+        "asin": math_asin,
+        "atan": math_atan,
+        "ceil": math_ceil,
+        "cos": math_cos,
+        "deg": math_deg,
+        "exp": math_exp,
+        "floor": math_floor,
+        "fmod": math_fmod,
+        "log": math_log,
+        "max": math_max,
+        "min": math_min,
+        "modf": math_modf,
+        "rad": math_rad,
+        "random": math_random,
+        "randomseed": math_randomseed,
+        "sin": math_sin,
+        "sqrt": math_sqrt,
+        "tan": math_tan,
+        "tointeger": math_toint,
+        "type": math_type,
+        "ult": math_ult
+      };
+      var luaopen_math = function(L) {
+        luaL_newlib(L, mathlib);
+        lua_pushnumber(L, Math.PI);
+        lua_setfield(L, -2, to_luastring("pi", true));
+        lua_pushnumber(L, Infinity);
+        lua_setfield(L, -2, to_luastring("huge", true));
+        lua_pushinteger(L, LUA_MAXINTEGER);
+        lua_setfield(L, -2, to_luastring("maxinteger", true));
+        lua_pushinteger(L, LUA_MININTEGER);
+        lua_setfield(L, -2, to_luastring("mininteger", true));
+        return 1;
+      };
+      module.exports.luaopen_math = luaopen_math;
+    }
+  });
+
+  // stubs/readline-sync.js
+  var require_readline_sync = __commonJS({
+    "stubs/readline-sync.js"(exports, module) {
+      "use strict";
+      function unavailable() {
+        throw new Error("readline-sync is unavailable in the browser build");
+      }
+      module.exports = {
+        question: unavailable,
+        prompt: unavailable,
+        setDefaultOptions: function() {
+        }
+      };
+    }
+  });
+
+  // node_modules/fengari/src/ldblib.js
+  var require_ldblib = __commonJS({
+    "node_modules/fengari/src/ldblib.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_MASKCALL,
+        LUA_MASKCOUNT,
+        LUA_MASKLINE,
+        LUA_MASKRET,
+        LUA_REGISTRYINDEX,
+        LUA_TFUNCTION,
+        LUA_TNIL,
+        LUA_TTABLE,
+        LUA_TUSERDATA,
+        lua_Debug,
+        lua_call,
+        lua_checkstack,
+        lua_gethook,
+        lua_gethookcount,
+        lua_gethookmask,
+        lua_getinfo,
+        lua_getlocal,
+        lua_getmetatable,
+        lua_getstack,
+        lua_getupvalue,
+        lua_getuservalue,
+        lua_insert,
+        lua_iscfunction,
+        lua_isfunction,
+        lua_isnoneornil,
+        lua_isthread,
+        lua_newtable,
+        lua_pcall,
+        lua_pop,
+        lua_pushboolean,
+        lua_pushfstring,
+        lua_pushinteger,
+        lua_pushlightuserdata,
+        lua_pushliteral,
+        lua_pushnil,
+        lua_pushstring,
+        lua_pushvalue,
+        lua_rawgetp,
+        lua_rawsetp,
+        lua_rotate,
+        lua_setfield,
+        lua_sethook,
+        lua_setlocal,
+        lua_setmetatable,
+        lua_settop,
+        lua_setupvalue,
+        lua_setuservalue,
+        lua_tojsstring,
+        lua_toproxy,
+        lua_tostring,
+        lua_tothread,
+        lua_touserdata,
+        lua_type,
+        lua_upvalueid,
+        lua_upvaluejoin,
+        lua_xmove
+      } = require_lua();
+      var {
+        luaL_argcheck,
+        luaL_argerror,
+        luaL_checkany,
+        luaL_checkinteger,
+        luaL_checkstring,
+        luaL_checktype,
+        luaL_error,
+        luaL_loadbuffer,
+        luaL_newlib,
+        luaL_optinteger,
+        luaL_optstring,
+        luaL_traceback,
+        lua_writestringerror
+      } = require_lauxlib();
+      var lualib = require_lualib();
+      var {
+        luastring_indexOf,
+        to_luastring
+      } = require_fengaricore();
+      var checkstack = function(L, L1, n) {
+        if (L !== L1 && !lua_checkstack(L1, n))
+          luaL_error(L, to_luastring("stack overflow", true));
+      };
+      var db_getregistry = function(L) {
+        lua_pushvalue(L, LUA_REGISTRYINDEX);
+        return 1;
+      };
+      var db_getmetatable = function(L) {
+        luaL_checkany(L, 1);
+        if (!lua_getmetatable(L, 1)) {
+          lua_pushnil(L);
+        }
+        return 1;
+      };
+      var db_setmetatable = function(L) {
+        const t = lua_type(L, 2);
+        luaL_argcheck(L, t == LUA_TNIL || t == LUA_TTABLE, 2, "nil or table expected");
+        lua_settop(L, 2);
+        lua_setmetatable(L, 1);
+        return 1;
+      };
+      var db_getuservalue = function(L) {
+        if (lua_type(L, 1) !== LUA_TUSERDATA)
+          lua_pushnil(L);
+        else
+          lua_getuservalue(L, 1);
+        return 1;
+      };
+      var db_setuservalue = function(L) {
+        luaL_checktype(L, 1, LUA_TUSERDATA);
+        luaL_checkany(L, 2);
+        lua_settop(L, 2);
+        lua_setuservalue(L, 1);
+        return 1;
+      };
+      var getthread = function(L) {
+        if (lua_isthread(L, 1)) {
+          return {
+            arg: 1,
+            thread: lua_tothread(L, 1)
+          };
+        } else {
+          return {
+            arg: 0,
+            thread: L
+          };
+        }
+      };
+      var settabss = function(L, k, v) {
+        lua_pushstring(L, v);
+        lua_setfield(L, -2, k);
+      };
+      var settabsi = function(L, k, v) {
+        lua_pushinteger(L, v);
+        lua_setfield(L, -2, k);
+      };
+      var settabsb = function(L, k, v) {
+        lua_pushboolean(L, v);
+        lua_setfield(L, -2, k);
+      };
+      var treatstackoption = function(L, L1, fname) {
+        if (L == L1)
+          lua_rotate(L, -2, 1);
+        else
+          lua_xmove(L1, L, 1);
+        lua_setfield(L, -2, fname);
+      };
+      var db_getinfo = function(L) {
+        let ar = new lua_Debug();
+        let thread = getthread(L);
+        let arg = thread.arg;
+        let L1 = thread.thread;
+        let options = luaL_optstring(L, arg + 2, "flnStu");
+        checkstack(L, L1, 3);
+        if (lua_isfunction(L, arg + 1)) {
+          options = lua_pushfstring(L, to_luastring(">%s"), options);
+          lua_pushvalue(L, arg + 1);
+          lua_xmove(L, L1, 1);
+        } else {
+          if (!lua_getstack(L1, luaL_checkinteger(L, arg + 1), ar)) {
+            lua_pushnil(L);
+            return 1;
+          }
+        }
+        if (!lua_getinfo(L1, options, ar))
+          luaL_argerror(L, arg + 2, "invalid option");
+        lua_newtable(L);
+        if (luastring_indexOf(
+          options,
+          83
+          /* 'S'.charCodeAt(0) */
+        ) > -1) {
+          settabss(L, to_luastring("source", true), ar.source);
+          settabss(L, to_luastring("short_src", true), ar.short_src);
+          settabsi(L, to_luastring("linedefined", true), ar.linedefined);
+          settabsi(L, to_luastring("lastlinedefined", true), ar.lastlinedefined);
+          settabss(L, to_luastring("what", true), ar.what);
+        }
+        if (luastring_indexOf(
+          options,
+          108
+          /* 'l'.charCodeAt(0) */
+        ) > -1)
+          settabsi(L, to_luastring("currentline", true), ar.currentline);
+        if (luastring_indexOf(
+          options,
+          117
+          /* 'u'.charCodeAt(0) */
+        ) > -1) {
+          settabsi(L, to_luastring("nups", true), ar.nups);
+          settabsi(L, to_luastring("nparams", true), ar.nparams);
+          settabsb(L, to_luastring("isvararg", true), ar.isvararg);
+        }
+        if (luastring_indexOf(
+          options,
+          110
+          /* 'n'.charCodeAt(0) */
+        ) > -1) {
+          settabss(L, to_luastring("name", true), ar.name);
+          settabss(L, to_luastring("namewhat", true), ar.namewhat);
+        }
+        if (luastring_indexOf(
+          options,
+          116
+          /* 't'.charCodeAt(0) */
+        ) > -1)
+          settabsb(L, to_luastring("istailcall", true), ar.istailcall);
+        if (luastring_indexOf(
+          options,
+          76
+          /* 'L'.charCodeAt(0) */
+        ) > -1)
+          treatstackoption(L, L1, to_luastring("activelines", true));
+        if (luastring_indexOf(
+          options,
+          102
+          /* 'f'.charCodeAt(0) */
+        ) > -1)
+          treatstackoption(L, L1, to_luastring("func", true));
+        return 1;
+      };
+      var db_getlocal = function(L) {
+        let thread = getthread(L);
+        let L1 = thread.thread;
+        let arg = thread.arg;
+        let ar = new lua_Debug();
+        let nvar = luaL_checkinteger(L, arg + 2);
+        if (lua_isfunction(L, arg + 1)) {
+          lua_pushvalue(L, arg + 1);
+          lua_pushstring(L, lua_getlocal(L, null, nvar));
+          return 1;
+        } else {
+          let level = luaL_checkinteger(L, arg + 1);
+          if (!lua_getstack(L1, level, ar))
+            return luaL_argerror(L, arg + 1, "level out of range");
+          checkstack(L, L1, 1);
+          let name = lua_getlocal(L1, ar, nvar);
+          if (name) {
+            lua_xmove(L1, L, 1);
+            lua_pushstring(L, name);
+            lua_rotate(L, -2, 1);
+            return 2;
+          } else {
+            lua_pushnil(L);
+            return 1;
+          }
+        }
+      };
+      var db_setlocal = function(L) {
+        let thread = getthread(L);
+        let L1 = thread.thread;
+        let arg = thread.arg;
+        let ar = new lua_Debug();
+        let level = luaL_checkinteger(L, arg + 1);
+        let nvar = luaL_checkinteger(L, arg + 2);
+        if (!lua_getstack(L1, level, ar))
+          return luaL_argerror(L, arg + 1, "level out of range");
+        luaL_checkany(L, arg + 3);
+        lua_settop(L, arg + 3);
+        checkstack(L, L1, 1);
+        lua_xmove(L, L1, 1);
+        let name = lua_setlocal(L1, ar, nvar);
+        if (name === null)
+          lua_pop(L1, 1);
+        lua_pushstring(L, name);
+        return 1;
+      };
+      var auxupvalue = function(L, get) {
+        let n = luaL_checkinteger(L, 2);
+        luaL_checktype(L, 1, LUA_TFUNCTION);
+        let name = get ? lua_getupvalue(L, 1, n) : lua_setupvalue(L, 1, n);
+        if (name === null) return 0;
+        lua_pushstring(L, name);
+        lua_insert(L, -(get + 1));
+        return get + 1;
+      };
+      var db_getupvalue = function(L) {
+        return auxupvalue(L, 1);
+      };
+      var db_setupvalue = function(L) {
+        luaL_checkany(L, 3);
+        return auxupvalue(L, 0);
+      };
+      var checkupval = function(L, argf, argnup) {
+        let nup = luaL_checkinteger(L, argnup);
+        luaL_checktype(L, argf, LUA_TFUNCTION);
+        luaL_argcheck(L, lua_getupvalue(L, argf, nup) !== null, argnup, "invalid upvalue index");
+        return nup;
+      };
+      var db_upvalueid = function(L) {
+        let n = checkupval(L, 1, 2);
+        lua_pushlightuserdata(L, lua_upvalueid(L, 1, n));
+        return 1;
+      };
+      var db_upvaluejoin = function(L) {
+        let n1 = checkupval(L, 1, 2);
+        let n2 = checkupval(L, 3, 4);
+        luaL_argcheck(L, !lua_iscfunction(L, 1), 1, "Lua function expected");
+        luaL_argcheck(L, !lua_iscfunction(L, 3), 3, "Lua function expected");
+        lua_upvaluejoin(L, 1, n1, 3, n2);
+        return 0;
+      };
+      var HOOKKEY = to_luastring("__hooks__", true);
+      var hooknames = ["call", "return", "line", "count", "tail call"].map((e) => to_luastring(e));
+      var hookf = function(L, ar) {
+        lua_rawgetp(L, LUA_REGISTRYINDEX, HOOKKEY);
+        let hooktable = lua_touserdata(L, -1);
+        let proxy = hooktable.get(L);
+        if (proxy) {
+          proxy(L);
+          lua_pushstring(L, hooknames[ar.event]);
+          if (ar.currentline >= 0)
+            lua_pushinteger(L, ar.currentline);
+          else lua_pushnil(L);
+          lualib.lua_assert(lua_getinfo(L, to_luastring("lS"), ar));
+          lua_call(L, 2, 0);
+        }
+      };
+      var makemask = function(smask, count) {
+        let mask = 0;
+        if (luastring_indexOf(
+          smask,
+          99
+          /* 'c'.charCodeAt(0) */
+        ) > -1) mask |= LUA_MASKCALL;
+        if (luastring_indexOf(
+          smask,
+          114
+          /* 'r'.charCodeAt(0) */
+        ) > -1) mask |= LUA_MASKRET;
+        if (luastring_indexOf(
+          smask,
+          108
+          /* 'l'.charCodeAt(0) */
+        ) > -1) mask |= LUA_MASKLINE;
+        if (count > 0) mask |= LUA_MASKCOUNT;
+        return mask;
+      };
+      var unmakemask = function(mask, smask) {
+        let i = 0;
+        if (mask & LUA_MASKCALL) smask[i++] = 99;
+        if (mask & LUA_MASKRET) smask[i++] = 114;
+        if (mask & LUA_MASKLINE) smask[i++] = 108;
+        return smask.subarray(0, i);
+      };
+      var db_sethook = function(L) {
+        let mask, count, func;
+        let thread = getthread(L);
+        let L1 = thread.thread;
+        let arg = thread.arg;
+        if (lua_isnoneornil(L, arg + 1)) {
+          lua_settop(L, arg + 1);
+          func = null;
+          mask = 0;
+          count = 0;
+        } else {
+          const smask = luaL_checkstring(L, arg + 2);
+          luaL_checktype(L, arg + 1, LUA_TFUNCTION);
+          count = luaL_optinteger(L, arg + 3, 0);
+          func = hookf;
+          mask = makemask(smask, count);
+        }
+        let hooktable;
+        if (lua_rawgetp(L, LUA_REGISTRYINDEX, HOOKKEY) === LUA_TNIL) {
+          hooktable = /* @__PURE__ */ new WeakMap();
+          lua_pushlightuserdata(L, hooktable);
+          lua_rawsetp(L, LUA_REGISTRYINDEX, HOOKKEY);
+        } else {
+          hooktable = lua_touserdata(L, -1);
+        }
+        let proxy = lua_toproxy(L, arg + 1);
+        hooktable.set(L1, proxy);
+        lua_sethook(L1, func, mask, count);
+        return 0;
+      };
+      var db_gethook = function(L) {
+        let thread = getthread(L);
+        let L1 = thread.thread;
+        let buff = new Uint8Array(5);
+        let mask = lua_gethookmask(L1);
+        let hook = lua_gethook(L1);
+        if (hook === null)
+          lua_pushnil(L);
+        else if (hook !== hookf)
+          lua_pushliteral(L, "external hook");
+        else {
+          lua_rawgetp(L, LUA_REGISTRYINDEX, HOOKKEY);
+          let hooktable = lua_touserdata(L, -1);
+          let proxy = hooktable.get(L1);
+          proxy(L);
+        }
+        lua_pushstring(L, unmakemask(mask, buff));
+        lua_pushinteger(L, lua_gethookcount(L1));
+        return 3;
+      };
+      var db_traceback = function(L) {
+        let thread = getthread(L);
+        let L1 = thread.thread;
+        let arg = thread.arg;
+        let msg = lua_tostring(L, arg + 1);
+        if (msg === null && !lua_isnoneornil(L, arg + 1))
+          lua_pushvalue(L, arg + 1);
+        else {
+          let level = luaL_optinteger(L, arg + 2, L === L1 ? 1 : 0);
+          luaL_traceback(L, L1, msg, level);
+        }
+        return 1;
+      };
+      var dblib = {
+        "gethook": db_gethook,
+        "getinfo": db_getinfo,
+        "getlocal": db_getlocal,
+        "getmetatable": db_getmetatable,
+        "getregistry": db_getregistry,
+        "getupvalue": db_getupvalue,
+        "getuservalue": db_getuservalue,
+        "sethook": db_sethook,
+        "setlocal": db_setlocal,
+        "setmetatable": db_setmetatable,
+        "setupvalue": db_setupvalue,
+        "setuservalue": db_setuservalue,
+        "traceback": db_traceback,
+        "upvalueid": db_upvalueid,
+        "upvaluejoin": db_upvaluejoin
+      };
+      var getinput;
+      if (typeof process !== "undefined") {
+        const readlineSync = require_readline_sync();
+        readlineSync.setDefaultOptions({
+          prompt: "lua_debug> "
+        });
+        getinput = function() {
+          return readlineSync.prompt();
+        };
+      } else if (typeof window !== "undefined") {
+        getinput = function() {
+          let input = prompt("lua_debug>", "");
+          return input !== null ? input : "";
+        };
+      }
+      if (getinput) {
+        dblib.debug = function(L) {
+          for (; ; ) {
+            let input = getinput();
+            if (input === "cont")
+              return 0;
+            if (input.length === 0)
+              continue;
+            let buffer = to_luastring(input);
+            if (luaL_loadbuffer(L, buffer, buffer.length, to_luastring("=(debug command)", true)) || lua_pcall(L, 0, 0, 0)) {
+              lua_writestringerror(lua_tojsstring(L, -1), "\n");
+            }
+            lua_settop(L, 0);
+          }
+        };
+      }
+      var luaopen_debug = function(L) {
+        luaL_newlib(L, dblib);
+        return 1;
+      };
+      module.exports.luaopen_debug = luaopen_debug;
+    }
+  });
+
+  // stubs/node-path.js
+  var require_node_path = __commonJS({
+    "stubs/node-path.js"(exports, module) {
+      module.exports = {
+        sep: "/",
+        delimiter: ":",
+        join: (...a) => a.filter((s) => s && s.length).join("/"),
+        resolve: (...a) => a.filter((s) => s && s.length).join("/"),
+        dirname: (p) => p.replace(/\/[^/]*$/, "") || "/",
+        basename: (p) => p.replace(/.*\//, ""),
+        extname: (p) => {
+          const m = /\.[^./]*$/.exec(p);
+          return m ? m[0] : "";
+        }
+      };
+    }
+  });
+
+  // node_modules/fengari/src/loadlib.js
+  var require_loadlib = __commonJS({
+    "node_modules/fengari/src/loadlib.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_DIRSEP,
+        LUA_EXEC_DIR,
+        LUA_JSPATH_DEFAULT,
+        LUA_PATH_DEFAULT,
+        LUA_PATH_MARK,
+        LUA_PATH_SEP
+      } = require_luaconf();
+      var {
+        LUA_OK,
+        LUA_REGISTRYINDEX,
+        LUA_TNIL,
+        LUA_TTABLE,
+        lua_callk,
+        lua_createtable,
+        lua_getfield,
+        lua_insert,
+        lua_isfunction,
+        lua_isnil,
+        lua_isstring,
+        lua_newtable,
+        lua_pop,
+        lua_pushboolean,
+        lua_pushcclosure,
+        lua_pushcfunction,
+        lua_pushfstring,
+        lua_pushglobaltable,
+        lua_pushlightuserdata,
+        lua_pushliteral,
+        lua_pushlstring,
+        lua_pushnil,
+        lua_pushstring,
+        lua_pushvalue,
+        lua_rawgeti,
+        lua_rawgetp,
+        lua_rawseti,
+        lua_rawsetp,
+        lua_remove,
+        lua_setfield,
+        lua_setmetatable,
+        lua_settop,
+        lua_toboolean,
+        lua_tostring,
+        lua_touserdata,
+        lua_upvalueindex
+      } = require_lua();
+      var {
+        LUA_LOADED_TABLE,
+        LUA_PRELOAD_TABLE,
+        luaL_Buffer,
+        luaL_addvalue,
+        luaL_buffinit,
+        luaL_checkstring,
+        luaL_error,
+        luaL_getsubtable,
+        luaL_gsub,
+        luaL_len,
+        luaL_loadfile,
+        luaL_newlib,
+        luaL_optstring,
+        luaL_pushresult,
+        luaL_setfuncs
+      } = require_lauxlib();
+      var lualib = require_lualib();
+      var {
+        luastring_indexOf,
+        to_jsstring,
+        to_luastring,
+        to_uristring
+      } = require_fengaricore();
+      var fengari = require_fengari();
+      var global_env = function() {
+        if (typeof process !== "undefined") {
+          return global;
+        } else if (typeof window !== "undefined") {
+          return window;
+        } else if (typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope) {
+          return self;
+        } else {
+          return (0, eval)("this");
+        }
+      }();
+      var JSLIBS = to_luastring("__JSLIBS__");
+      var LUA_PATH_VAR = "LUA_PATH";
+      var LUA_JSPATH_VAR = "LUA_JSPATH";
+      var LUA_IGMARK = "-";
+      var LUA_CSUBSEP = LUA_DIRSEP;
+      var LUA_LSUBSEP = LUA_DIRSEP;
+      var LUA_POF = to_luastring("luaopen_");
+      var LUA_OFSEP = to_luastring("_");
+      var LIB_FAIL = "open";
+      var AUXMARK = to_luastring("");
+      var lsys_load;
+      if (typeof process === "undefined") {
+        lsys_load = function(L, path, seeglb) {
+          path = to_uristring(path);
+          let xhr = new XMLHttpRequest();
+          xhr.open("GET", path, false);
+          xhr.send();
+          if (xhr.status < 200 || xhr.status >= 300) {
+            lua_pushstring(L, to_luastring(`${xhr.status}: ${xhr.statusText}`));
+            return null;
+          }
+          let code = xhr.response;
+          if (!/\/\/[#@] sourceURL=/.test(code))
+            code += " //# sourceURL=" + path;
+          let func;
+          try {
+            func = Function("fengari", code);
+          } catch (e) {
+            lua_pushstring(L, to_luastring(`${e.name}: ${e.message}`));
+            return null;
+          }
+          let res = func(fengari);
+          if (typeof res === "function" || typeof res === "object" && res !== null) {
+            return res;
+          } else if (res === void 0) {
+            return global_env;
+          } else {
+            lua_pushstring(L, to_luastring(`library returned unexpected type (${typeof res})`));
+            return null;
+          }
+        };
+      } else {
+        const pathlib = require_node_path();
+        lsys_load = function(L, path, seeglb) {
+          path = to_jsstring(path);
+          path = pathlib.resolve(process.cwd(), path);
+          try {
+            return __require(path);
+          } catch (e) {
+            lua_pushstring(L, to_luastring(e.message));
+            return null;
+          }
+        };
+      }
+      var lsys_sym = function(L, lib, sym) {
+        let f = lib[to_jsstring(sym)];
+        if (f && typeof f === "function")
+          return f;
+        else {
+          lua_pushfstring(L, to_luastring("undefined symbol: %s"), sym);
+          return null;
+        }
+      };
+      var noenv = function(L) {
+        lua_getfield(L, LUA_REGISTRYINDEX, to_luastring("LUA_NOENV"));
+        let b = lua_toboolean(L, -1);
+        lua_pop(L, 1);
+        return b;
+      };
+      var readable;
+      if (typeof process !== "undefined") {
+        const fs = require_node_fs();
+        readable = function(filename) {
+          try {
+            let fd = fs.openSync(filename, "r");
+            fs.closeSync(fd);
+          } catch (e) {
+            return false;
+          }
+          return true;
+        };
+      } else {
+        readable = function(path) {
+          path = to_uristring(path);
+          let xhr = new XMLHttpRequest();
+          xhr.open("GET", path, false);
+          xhr.send();
+          return xhr.status >= 200 && xhr.status <= 299;
+        };
+      }
+      var ERRLIB = 1;
+      var ERRFUNC = 2;
+      var lookforfunc = function(L, path, sym) {
+        let reg = checkjslib(L, path);
+        if (reg === null) {
+          reg = lsys_load(L, path, sym[0] === "*".charCodeAt(0));
+          if (reg === null) return ERRLIB;
+          addtojslib(L, path, reg);
+        }
+        if (sym[0] === "*".charCodeAt(0)) {
+          lua_pushboolean(L, 1);
+          return 0;
+        } else {
+          let f = lsys_sym(L, reg, sym);
+          if (f === null)
+            return ERRFUNC;
+          lua_pushcfunction(L, f);
+          return 0;
+        }
+      };
+      var ll_loadlib = function(L) {
+        let path = luaL_checkstring(L, 1);
+        let init = luaL_checkstring(L, 2);
+        let stat = lookforfunc(L, path, init);
+        if (stat === 0)
+          return 1;
+        else {
+          lua_pushnil(L);
+          lua_insert(L, -2);
+          lua_pushliteral(L, stat === ERRLIB ? LIB_FAIL : "init");
+          return 3;
+        }
+      };
+      var env = function() {
+        if (typeof process !== "undefined") {
+          return process.env;
+        } else {
+          return global_env;
+        }
+      }();
+      var setpath = function(L, fieldname, envname, dft) {
+        let nver = `${envname}${lualib.LUA_VERSUFFIX}`;
+        lua_pushstring(L, to_luastring(nver));
+        let path = env[nver];
+        if (path === void 0)
+          path = env[envname];
+        if (path === void 0 || noenv(L))
+          lua_pushstring(L, dft);
+        else {
+          path = luaL_gsub(
+            L,
+            to_luastring(path),
+            to_luastring(LUA_PATH_SEP + LUA_PATH_SEP, true),
+            to_luastring(LUA_PATH_SEP + to_jsstring(AUXMARK) + LUA_PATH_SEP, true)
+          );
+          luaL_gsub(L, path, AUXMARK, dft);
+          lua_remove(L, -2);
+        }
+        lua_setfield(L, -3, fieldname);
+        lua_pop(L, 1);
+      };
+      var checkjslib = function(L, path) {
+        lua_rawgetp(L, LUA_REGISTRYINDEX, JSLIBS);
+        lua_getfield(L, -1, path);
+        let plib = lua_touserdata(L, -1);
+        lua_pop(L, 2);
+        return plib;
+      };
+      var addtojslib = function(L, path, plib) {
+        lua_rawgetp(L, LUA_REGISTRYINDEX, JSLIBS);
+        lua_pushlightuserdata(L, plib);
+        lua_pushvalue(L, -1);
+        lua_setfield(L, -3, path);
+        lua_rawseti(L, -2, luaL_len(L, -2) + 1);
+        lua_pop(L, 1);
+      };
+      var pushnexttemplate = function(L, path) {
+        while (path[0] === LUA_PATH_SEP.charCodeAt(0)) path = path.subarray(1);
+        if (path.length === 0) return null;
+        let l = luastring_indexOf(path, LUA_PATH_SEP.charCodeAt(0));
+        if (l < 0) l = path.length;
+        lua_pushlstring(L, path, l);
+        return path.subarray(l);
+      };
+      var searchpath = function(L, name, path, sep, dirsep) {
+        let msg = new luaL_Buffer();
+        luaL_buffinit(L, msg);
+        if (sep[0] !== 0)
+          name = luaL_gsub(L, name, sep, dirsep);
+        while ((path = pushnexttemplate(L, path)) !== null) {
+          let filename = luaL_gsub(L, lua_tostring(L, -1), to_luastring(LUA_PATH_MARK, true), name);
+          lua_remove(L, -2);
+          if (readable(filename))
+            return filename;
+          lua_pushfstring(L, to_luastring("\n	no file '%s'"), filename);
+          lua_remove(L, -2);
+          luaL_addvalue(msg);
+        }
+        luaL_pushresult(msg);
+        return null;
+      };
+      var ll_searchpath = function(L) {
+        let f = searchpath(
+          L,
+          luaL_checkstring(L, 1),
+          luaL_checkstring(L, 2),
+          luaL_optstring(L, 3, "."),
+          luaL_optstring(L, 4, LUA_DIRSEP)
+        );
+        if (f !== null) return 1;
+        else {
+          lua_pushnil(L);
+          lua_insert(L, -2);
+          return 2;
+        }
+      };
+      var findfile = function(L, name, pname, dirsep) {
+        lua_getfield(L, lua_upvalueindex(1), pname);
+        let path = lua_tostring(L, -1);
+        if (path === null)
+          luaL_error(L, to_luastring("'package.%s' must be a string"), pname);
+        return searchpath(L, name, path, to_luastring("."), dirsep);
+      };
+      var checkload = function(L, stat, filename) {
+        if (stat) {
+          lua_pushstring(L, filename);
+          return 2;
+        } else
+          return luaL_error(
+            L,
+            to_luastring("error loading module '%s' from file '%s':\n	%s"),
+            lua_tostring(L, 1),
+            filename,
+            lua_tostring(L, -1)
+          );
+      };
+      var searcher_Lua = function(L) {
+        let name = luaL_checkstring(L, 1);
+        let filename = findfile(L, name, to_luastring("path", true), to_luastring(LUA_LSUBSEP, true));
+        if (filename === null) return 1;
+        return checkload(L, luaL_loadfile(L, filename) === LUA_OK, filename);
+      };
+      var loadfunc = function(L, filename, modname) {
+        let openfunc;
+        modname = luaL_gsub(L, modname, to_luastring("."), LUA_OFSEP);
+        let mark = luastring_indexOf(modname, LUA_IGMARK.charCodeAt(0));
+        if (mark >= 0) {
+          openfunc = lua_pushlstring(L, modname, mark);
+          openfunc = lua_pushfstring(L, to_luastring("%s%s"), LUA_POF, openfunc);
+          let stat = lookforfunc(L, filename, openfunc);
+          if (stat !== ERRFUNC) return stat;
+          modname = mark + 1;
+        }
+        openfunc = lua_pushfstring(L, to_luastring("%s%s"), LUA_POF, modname);
+        return lookforfunc(L, filename, openfunc);
+      };
+      var searcher_C = function(L) {
+        let name = luaL_checkstring(L, 1);
+        let filename = findfile(L, name, to_luastring("jspath", true), to_luastring(LUA_CSUBSEP, true));
+        if (filename === null) return 1;
+        return checkload(L, loadfunc(L, filename, name) === 0, filename);
+      };
+      var searcher_Croot = function(L) {
+        let name = luaL_checkstring(L, 1);
+        let p = luastring_indexOf(name, ".".charCodeAt(0));
+        let stat;
+        if (p < 0) return 0;
+        lua_pushlstring(L, name, p);
+        let filename = findfile(L, lua_tostring(L, -1), to_luastring("jspath", true), to_luastring(LUA_CSUBSEP, true));
+        if (filename === null) return 1;
+        if ((stat = loadfunc(L, filename, name)) !== 0) {
+          if (stat != ERRFUNC)
+            return checkload(L, 0, filename);
+          else {
+            lua_pushstring(L, to_luastring("\n	no module '%s' in file '%s'"), name, filename);
+            return 1;
+          }
+        }
+        lua_pushstring(L, filename);
+        return 2;
+      };
+      var searcher_preload = function(L) {
+        let name = luaL_checkstring(L, 1);
+        lua_getfield(L, LUA_REGISTRYINDEX, LUA_PRELOAD_TABLE);
+        if (lua_getfield(L, -1, name) === LUA_TNIL)
+          lua_pushfstring(L, to_luastring("\n	no field package.preload['%s']"), name);
+        return 1;
+      };
+      var findloader = function(L, name, ctx, k) {
+        let msg = new luaL_Buffer();
+        luaL_buffinit(L, msg);
+        if (lua_getfield(L, lua_upvalueindex(1), to_luastring("searchers", true)) !== LUA_TTABLE)
+          luaL_error(L, to_luastring("'package.searchers' must be a table"));
+        let ctx2 = { name, i: 1, msg, ctx, k };
+        return findloader_cont(L, LUA_OK, ctx2);
+      };
+      var findloader_cont = function(L, status, ctx) {
+        for (; ; ctx.i++) {
+          if (status === LUA_OK) {
+            if (lua_rawgeti(L, 3, ctx.i) === LUA_TNIL) {
+              lua_pop(L, 1);
+              luaL_pushresult(ctx.msg);
+              luaL_error(L, to_luastring("module '%s' not found:%s"), ctx.name, lua_tostring(L, -1));
+            }
+            lua_pushstring(L, ctx.name);
+            lua_callk(L, 1, 2, ctx, findloader_cont);
+          } else {
+            status = LUA_OK;
+          }
+          if (lua_isfunction(L, -2))
+            break;
+          else if (lua_isstring(L, -2)) {
+            lua_pop(L, 1);
+            luaL_addvalue(ctx.msg);
+          } else
+            lua_pop(L, 2);
+        }
+        return ctx.k(L, LUA_OK, ctx.ctx);
+      };
+      var ll_require = function(L) {
+        let name = luaL_checkstring(L, 1);
+        lua_settop(L, 1);
+        lua_getfield(L, LUA_REGISTRYINDEX, LUA_LOADED_TABLE);
+        lua_getfield(L, 2, name);
+        if (lua_toboolean(L, -1))
+          return 1;
+        lua_pop(L, 1);
+        let ctx = name;
+        return findloader(L, name, ctx, ll_require_cont);
+      };
+      var ll_require_cont = function(L, status, ctx) {
+        let name = ctx;
+        lua_pushstring(L, name);
+        lua_insert(L, -2);
+        lua_callk(L, 2, 1, ctx, ll_require_cont2);
+        return ll_require_cont2(L, LUA_OK, ctx);
+      };
+      var ll_require_cont2 = function(L, status, ctx) {
+        let name = ctx;
+        if (!lua_isnil(L, -1))
+          lua_setfield(L, 2, name);
+        if (lua_getfield(L, 2, name) == LUA_TNIL) {
+          lua_pushboolean(L, 1);
+          lua_pushvalue(L, -1);
+          lua_setfield(L, 2, name);
+        }
+        return 1;
+      };
+      var pk_funcs = {
+        "loadlib": ll_loadlib,
+        "searchpath": ll_searchpath
+      };
+      var ll_funcs = {
+        "require": ll_require
+      };
+      var createsearcherstable = function(L) {
+        let searchers = [searcher_preload, searcher_Lua, searcher_C, searcher_Croot, null];
+        lua_createtable(L);
+        for (let i = 0; searchers[i]; i++) {
+          lua_pushvalue(L, -2);
+          lua_pushcclosure(L, searchers[i], 1);
+          lua_rawseti(L, -2, i + 1);
+        }
+        lua_setfield(L, -2, to_luastring("searchers", true));
+      };
+      var createjslibstable = function(L) {
+        lua_newtable(L);
+        lua_createtable(L, 0, 1);
+        lua_setmetatable(L, -2);
+        lua_rawsetp(L, LUA_REGISTRYINDEX, JSLIBS);
+      };
+      var luaopen_package = function(L) {
+        createjslibstable(L);
+        luaL_newlib(L, pk_funcs);
+        createsearcherstable(L);
+        setpath(L, to_luastring("path", true), LUA_PATH_VAR, LUA_PATH_DEFAULT);
+        setpath(L, to_luastring("jspath", true), LUA_JSPATH_VAR, LUA_JSPATH_DEFAULT);
+        lua_pushliteral(L, LUA_DIRSEP + "\n" + LUA_PATH_SEP + "\n" + LUA_PATH_MARK + "\n" + LUA_EXEC_DIR + "\n" + LUA_IGMARK + "\n");
+        lua_setfield(L, -2, to_luastring("config", true));
+        luaL_getsubtable(L, LUA_REGISTRYINDEX, LUA_LOADED_TABLE);
+        lua_setfield(L, -2, to_luastring("loaded", true));
+        luaL_getsubtable(L, LUA_REGISTRYINDEX, LUA_PRELOAD_TABLE);
+        lua_setfield(L, -2, to_luastring("preload", true));
+        lua_pushglobaltable(L);
+        lua_pushvalue(L, -2);
+        luaL_setfuncs(L, ll_funcs, 1);
+        lua_pop(L, 1);
+        return 1;
+      };
+      module.exports.luaopen_package = luaopen_package;
+    }
+  });
+
+  // node_modules/fengari/src/fengarilib.js
+  var require_fengarilib = __commonJS({
+    "node_modules/fengari/src/fengarilib.js"(exports, module) {
+      var {
+        lua_pushinteger,
+        lua_pushliteral,
+        lua_setfield
+      } = require_lua();
+      var {
+        luaL_newlib
+      } = require_lauxlib();
+      var {
+        FENGARI_AUTHORS,
+        FENGARI_COPYRIGHT,
+        FENGARI_RELEASE,
+        FENGARI_VERSION,
+        FENGARI_VERSION_MAJOR,
+        FENGARI_VERSION_MINOR,
+        FENGARI_VERSION_NUM,
+        FENGARI_VERSION_RELEASE,
+        to_luastring
+      } = require_fengaricore();
+      var luaopen_fengari = function(L) {
+        luaL_newlib(L, {});
+        lua_pushliteral(L, FENGARI_AUTHORS);
+        lua_setfield(L, -2, to_luastring("AUTHORS"));
+        lua_pushliteral(L, FENGARI_COPYRIGHT);
+        lua_setfield(L, -2, to_luastring("COPYRIGHT"));
+        lua_pushliteral(L, FENGARI_RELEASE);
+        lua_setfield(L, -2, to_luastring("RELEASE"));
+        lua_pushliteral(L, FENGARI_VERSION);
+        lua_setfield(L, -2, to_luastring("VERSION"));
+        lua_pushliteral(L, FENGARI_VERSION_MAJOR);
+        lua_setfield(L, -2, to_luastring("VERSION_MAJOR"));
+        lua_pushliteral(L, FENGARI_VERSION_MINOR);
+        lua_setfield(L, -2, to_luastring("VERSION_MINOR"));
+        lua_pushinteger(L, FENGARI_VERSION_NUM);
+        lua_setfield(L, -2, to_luastring("VERSION_NUM"));
+        lua_pushliteral(L, FENGARI_VERSION_RELEASE);
+        lua_setfield(L, -2, to_luastring("VERSION_RELEASE"));
+        return 1;
+      };
+      module.exports.luaopen_fengari = luaopen_fengari;
+    }
+  });
+
+  // node_modules/fengari/src/linit.js
+  var require_linit = __commonJS({
+    "node_modules/fengari/src/linit.js"(exports, module) {
+      "use strict";
+      var { lua_pop } = require_lua();
+      var { luaL_requiref } = require_lauxlib();
+      var { to_luastring } = require_fengaricore();
+      var loadedlibs = {};
+      var luaL_openlibs = function(L) {
+        for (let lib in loadedlibs) {
+          luaL_requiref(L, to_luastring(lib), loadedlibs[lib], 1);
+          lua_pop(L, 1);
+        }
+      };
+      module.exports.luaL_openlibs = luaL_openlibs;
+      var lualib = require_lualib();
+      var { luaopen_base } = require_lbaselib();
+      var { luaopen_coroutine } = require_lcorolib();
+      var { luaopen_debug } = require_ldblib();
+      var { luaopen_math } = require_lmathlib();
+      var { luaopen_package } = require_loadlib();
+      var { luaopen_os } = require_loslib();
+      var { luaopen_string } = require_lstrlib();
+      var { luaopen_table } = require_ltablib();
+      var { luaopen_utf8 } = require_lutf8lib();
+      loadedlibs["_G"] = luaopen_base, loadedlibs[lualib.LUA_LOADLIBNAME] = luaopen_package;
+      loadedlibs[lualib.LUA_COLIBNAME] = luaopen_coroutine;
+      loadedlibs[lualib.LUA_TABLIBNAME] = luaopen_table;
+      loadedlibs[lualib.LUA_OSLIBNAME] = luaopen_os;
+      loadedlibs[lualib.LUA_STRLIBNAME] = luaopen_string;
+      loadedlibs[lualib.LUA_MATHLIBNAME] = luaopen_math;
+      loadedlibs[lualib.LUA_UTF8LIBNAME] = luaopen_utf8;
+      loadedlibs[lualib.LUA_DBLIBNAME] = luaopen_debug;
+      if (typeof process !== "undefined")
+        loadedlibs[lualib.LUA_IOLIBNAME] = require_liolib().luaopen_io;
+      var { luaopen_fengari } = require_fengarilib();
+      loadedlibs[lualib.LUA_FENGARILIBNAME] = luaopen_fengari;
+    }
+  });
+
+  // node_modules/fengari/src/lualib.js
+  var require_lualib = __commonJS({
+    "node_modules/fengari/src/lualib.js"(exports, module) {
+      "use strict";
+      var {
+        LUA_VERSION_MAJOR,
+        LUA_VERSION_MINOR
+      } = require_lua();
+      var LUA_VERSUFFIX = "_" + LUA_VERSION_MAJOR + "_" + LUA_VERSION_MINOR;
+      module.exports.LUA_VERSUFFIX = LUA_VERSUFFIX;
+      module.exports.lua_assert = function(c) {
+      };
+      module.exports.luaopen_base = require_lbaselib().luaopen_base;
+      var LUA_COLIBNAME = "coroutine";
+      module.exports.LUA_COLIBNAME = LUA_COLIBNAME;
+      module.exports.luaopen_coroutine = require_lcorolib().luaopen_coroutine;
+      var LUA_TABLIBNAME = "table";
+      module.exports.LUA_TABLIBNAME = LUA_TABLIBNAME;
+      module.exports.luaopen_table = require_ltablib().luaopen_table;
+      if (typeof process !== "undefined") {
+        const LUA_IOLIBNAME = "io";
+        module.exports.LUA_IOLIBNAME = LUA_IOLIBNAME;
+        module.exports.luaopen_io = require_liolib().luaopen_io;
+      }
+      var LUA_OSLIBNAME = "os";
+      module.exports.LUA_OSLIBNAME = LUA_OSLIBNAME;
+      module.exports.luaopen_os = require_loslib().luaopen_os;
+      var LUA_STRLIBNAME = "string";
+      module.exports.LUA_STRLIBNAME = LUA_STRLIBNAME;
+      module.exports.luaopen_string = require_lstrlib().luaopen_string;
+      var LUA_UTF8LIBNAME = "utf8";
+      module.exports.LUA_UTF8LIBNAME = LUA_UTF8LIBNAME;
+      module.exports.luaopen_utf8 = require_lutf8lib().luaopen_utf8;
+      var LUA_BITLIBNAME = "bit32";
+      module.exports.LUA_BITLIBNAME = LUA_BITLIBNAME;
+      var LUA_MATHLIBNAME = "math";
+      module.exports.LUA_MATHLIBNAME = LUA_MATHLIBNAME;
+      module.exports.luaopen_math = require_lmathlib().luaopen_math;
+      var LUA_DBLIBNAME = "debug";
+      module.exports.LUA_DBLIBNAME = LUA_DBLIBNAME;
+      module.exports.luaopen_debug = require_ldblib().luaopen_debug;
+      var LUA_LOADLIBNAME = "package";
+      module.exports.LUA_LOADLIBNAME = LUA_LOADLIBNAME;
+      module.exports.luaopen_package = require_loadlib().luaopen_package;
+      var LUA_FENGARILIBNAME = "fengari";
+      module.exports.LUA_FENGARILIBNAME = LUA_FENGARILIBNAME;
+      module.exports.luaopen_fengari = require_fengarilib().luaopen_fengari;
+      var linit = require_linit();
+      module.exports.luaL_openlibs = linit.luaL_openlibs;
+    }
+  });
+
+  // node_modules/fengari/src/fengari.js
+  var require_fengari = __commonJS({
+    "node_modules/fengari/src/fengari.js"(exports, module) {
+      "use strict";
+      var core = require_fengaricore();
+      module.exports.FENGARI_AUTHORS = core.FENGARI_AUTHORS;
+      module.exports.FENGARI_COPYRIGHT = core.FENGARI_COPYRIGHT;
+      module.exports.FENGARI_RELEASE = core.FENGARI_RELEASE;
+      module.exports.FENGARI_VERSION = core.FENGARI_VERSION;
+      module.exports.FENGARI_VERSION_MAJOR = core.FENGARI_VERSION_MAJOR;
+      module.exports.FENGARI_VERSION_MINOR = core.FENGARI_VERSION_MINOR;
+      module.exports.FENGARI_VERSION_NUM = core.FENGARI_VERSION_NUM;
+      module.exports.FENGARI_VERSION_RELEASE = core.FENGARI_VERSION_RELEASE;
+      module.exports.luastring_eq = core.luastring_eq;
+      module.exports.luastring_indexOf = core.luastring_indexOf;
+      module.exports.luastring_of = core.luastring_of;
+      module.exports.to_jsstring = core.to_jsstring;
+      module.exports.to_luastring = core.to_luastring;
+      module.exports.to_uristring = core.to_uristring;
+      var luaconf = require_luaconf();
+      var lua = require_lua();
+      var lauxlib = require_lauxlib();
+      var lualib = require_lualib();
+      module.exports.luaconf = luaconf;
+      module.exports.lua = lua;
+      module.exports.lauxlib = lauxlib;
+      module.exports.lualib = lualib;
+    }
+  });
+
+  // fengari-entry.js
+  window.Fengari = require_fengari();
+})();
+/*! Bundled license information:
 
 fengari/src/fengari.js:
   (**

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quartermaster — a Sloane drill game · Nice Thoughts Ranch</title>
+<meta name="description" content="Quartermaster: positions called, held, and appraised. Sloane's ledger is the only place rank moves. An 18+ game by Nice Thoughts Ranch, written in readable Lua and shipped as one file.">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; background: #0d0208; color: #f7e8f1;
+    font-family: ui-monospace, "Courier New", monospace;
+    display: flex; flex-direction: column; align-items: center;
+    min-height: 100vh; padding: 16px; box-sizing: border-box; gap: 12px;
+  }
+  canvas {
+    width: min(92vmin, 720px); height: min(92vmin, 720px);
+    background: #0d0208; border: 1px solid #472238; border-radius: 8px;
+    touch-action: none; image-rendering: auto;
+  }
+  .note { max-width: 720px; font-size: 13px; line-height: 1.5; color: #8a6d80; margin: 0; }
+  .note b { color: #ff2e88; }
+  #err { color: #ff4b4b; font-size: 13px; max-width: 720px; }
+</style>
+</head>
+<body>
+<canvas id="game" width="960" height="960"></canvas>
+<p class="note"><b>QUARTERMASTER</b> — Sloane's drill: positions called, held,
+and appraised; the ledger is witnessed at the ceremony and rank moves there
+and nowhere else. 18+. The whole game is readable Lua running on an embedded
+Fengari VM — view source and read it (the sources are in the
+<code>QM_SOURCES_JS</code> block). Demo mode: <code>?demo=1&amp;seed=42</code>.</p>
+<div id="err"></div>
+<script>/*__FENGARI__*/</script>
+<script>window.QM_SOURCES_JS = /*__SOURCES__*/;
+window.QM_BOOTSTRAP = /*__BOOTSTRAP__*/;</script>
+<script>/*__BRIDGE__*/</script>
+</body>
+</html>

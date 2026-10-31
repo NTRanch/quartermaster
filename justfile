@@ -1,14 +1,23 @@
-# Quartermaster — task recipes. Preflight replaces the stub recipes with the
-# week's real toolchain commands and records them in the book (Build chapter).
+# Quartermaster — recipes. `just build` is the full gate + assembly.
 
-# Assemble the single-file jam entry (stub until preflight)
+# Full build: luac, specs, cross-VM conformance, assemble, checksums.
 build:
-    @echo "preflight: wire the Lua build chain here"
+    ./build.sh
 
-# Run the week's gates (stub until preflight)
-check:
-    @echo "preflight: wire tests + conformance here"
-
-# Build the planning book
+# mdBook process documentation.
 book:
     mdbook build book
+
+# The same gates as build (build.sh runs them before assembling).
+check:
+    ./build.sh
+
+# Specs only (busted on the estate Lua 5.4 toolchain).
+test:
+    ~/workspace/tools/luarocks-tree/bin/busted
+
+# Re-render the per-level preview videos from the shipped core.
+previews:
+    node tools/capture.mjs 1 42
+    node tools/capture.mjs 2 42
+    node tools/capture.mjs 3 42
