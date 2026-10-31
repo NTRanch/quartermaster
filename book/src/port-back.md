@@ -21,7 +21,7 @@ copy of the verdict section.
 - **Language verdict (Lua):** Lua carried table-driven protocol work
   exactly as the dossier hoped — the ledger, the ceremony gate, the
   drill machine, and the save format are all plain tables and small
-  functions, ~2,300 lines, 42 busted specs in ~0.2 s headless. What
+  functions, 1,903 lines, 42 busted specs in ~0.2 s headless. What
   it fought: cross-VM float arithmetic (one `%` desync, fixed with
   Schrage) and the Fengari browser bundle's node probes (stubbed;
   recipe in `tools/build-vendor.sh`). What it cost: one discipline —

@@ -77,7 +77,7 @@ SFW-transferable; Sloane's fiction stays in this repo.
 
 - **Verdict: Lua earns its rotation slot for protocol/table-driven
   systems.** The whole mechanism group — ledger, ceremony, drill,
-  persistence, demo policy — is ~2,300 lines of readable Lua with
+  persistence, demo policy — is 1,903 lines of readable Lua with
   zero VM-specific code in the core; the busted suite (42 specs)
   runs headless under PUC 5.4 in ~0.2 s, and the shipped Fengari
   artifact passes a byte-identical 720-tick conformance gate
