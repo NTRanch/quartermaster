@@ -1,8 +1,91 @@
--- Busted spec stub (estate runner: busted on Lua 5.4.8).
--- Half validation / half adversarial, per estate test law.
-describe("quartermaster", function()
-    it("loads", function()
-        local game = require("src.main")
-        assert.is_table(game)
+-- Validation: boot, navigation, and the public API contract.
+local Main = require("src.main")
+local H = require("tests.spec_helper")
+
+describe("quartermaster boot and navigation", function()
+    it("reports version 1.0.0", function()
+        assert.are.equal("1.0.0", Main.VERSION)
+    end)
+
+    it("boots to the 18+ gate", function()
+        local state = Main.new_game(7, {})
+        assert.are.equal("gate", state.screen)
+        local frame = Main.frame(state)
+        assert.is_true(#frame.ops > 10)
+        assert.are.equal("#ff2e88", frame.palette[4])
+    end)
+
+    it("walks gate -> title -> levels -> play by button clicks", function()
+        local state = Main.new_game(7, {})
+        assert.is_true(H.click(Main, state, "enter"))
+        assert.are.equal("title", state.screen)
+        assert.is_true(H.click(Main, state, "to_levels"))
+        assert.are.equal("levels", state.screen)
+        assert.is_true(H.click(Main, state, "level1"))
+        assert.are.equal("play", state.screen)
+        assert.is_not_nil(state.drill)
+    end)
+
+    it("cannot enter a locked level", function()
+        local state = Main.new_game(7, {})
+        H.click(Main, state, "enter")
+        H.click(Main, state, "to_levels")
+        assert.is_false(H.click(Main, state, "level3"))
+        assert.are.equal("levels", state.screen)
+    end)
+
+    it("settings changes persist into the emitted save string", function()
+        local state = Main.new_game(7, {})
+        H.click(Main, state, "enter")
+        H.click(Main, state, "to_settings")
+        H.click(Main, state, "vol_down")
+        H.click(Main, state, "assist")
+        local frame = Main.frame(state)
+        assert.is_not_nil(frame.save)
+        local reloaded = Main.new_game(7, { save = frame.save })
+        assert.are.equal(60, reloaded.career.volume)
+        assert.is_true(reloaded.career.assist)
+    end)
+
+    it("pause freezes the drill and resume continues it", function()
+        local state = Main.new_game(7, { demo_level = nil })
+        H.click(Main, state, "enter")
+        H.click(Main, state, "to_levels")
+        H.click(Main, state, "level1")
+        H.ticks(Main, state, 30)
+        local ticks_at_pause = state.drill.ticks
+        Main.step(state, { key = "escape" })
+        assert.are.equal("pause", state.screen)
+        H.ticks(Main, state, 30)
+        assert.are.equal(ticks_at_pause, state.drill.ticks)
+        Main.step(state, { key = "escape" })
+        assert.are.equal("play", state.screen)
+    end)
+end)
+
+describe("rng (Park-Miller, cross-VM deterministic)", function()
+    local Rng = require("src.rng")
+
+    it("matches the pinned sequence head", function()
+        local rng = Rng.new(1)
+        assert.are.equal(48271, Rng.next_int(rng))
+        assert.are.equal(182605794, Rng.next_int(rng))
+    end)
+
+    it("repeats exactly for equal seeds", function()
+        local a, b = Rng.new(99), Rng.new(99)
+        for _ = 1, 200 do
+            assert.are.equal(Rng.next_int(a), Rng.next_int(b))
+        end
+    end)
+
+    it("keeps ranges in bounds", function()
+        local rng = Rng.new(5)
+        for _ = 1, 500 do
+            local value = Rng.next_range(rng, 8)
+            assert.is_true(value >= 1 and value <= 8)
+            local f = Rng.next_float(rng)
+            assert.is_true(f >= 0 and f < 1)
+        end
     end)
 end)

@@ -68,10 +68,12 @@ How to work this roadmap (any agent): run `bloch task start R-xxx --agent <you>`
 
 
 ## Phase 9 — Jam program (week 9, D-333)
-- [ ] R-901 Design chapter complete: mechanism group + canon core recorded
+- [x] R-901 Design chapter complete: mechanism group + canon core recorded
   - verify: test -f book/src/design.md
-- [ ] R-902 Engine research pinned for Lua (libraries, versions, licences)
+  - evidence: 1 verify commands, all exit 0 at 2026-10-31T05:47:07Z
+- [x] R-902 Engine research pinned for Lua (libraries, versions, licences)
   - verify: test -f book/src/engine-research.md
+  - evidence: 1 verify commands, all exit 0 at 2026-10-31T05:47:07Z
 - [ ] R-903 Single-file index.html assembles and runs offline with all screens
   - verify: test -f web/index.html
 - [ ] R-904 GJ-07 passed: 18+ flag, warnings listed, itch ToS screen (verified live at entry)
