@@ -37,3 +37,15 @@ bloch at the week's close (the log is the input, bloch is the record).
   evaluating the bundle in a `process`-less VM context (18 exports,
   `6 * 7 = 42` through a real lua state) and by headless Chrome
   screenshots of the assembled page (gate screen + demo mode).
+
+## 2026-10-30 — R-401 budget line set below the artifact's real size
+
+- **What broke:** the first R-401 flip failed its verify: the page is
+  604,884 bytes against a 524,288 budget written earlier from a
+  mis-measured intermediate bundle. The full Fengari VM is ~520 KB of
+  unminified JS; no contract sets a page budget (the programme's size
+  cap is the 4 MB preview limit, met at ~45 KB per video).
+- **Fix:** budget corrected to the measured size class (≤ 786,432
+  bytes) in the roadmap verify line, the failure recorded via
+  `bloch task fail` before the re-run, and the stale size claims in
+  the README and the book's build chapter corrected to 604,884.

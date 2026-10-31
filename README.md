@@ -26,8 +26,9 @@ appraisal, chastity.
 
 Open `web/index.html` in a browser. One file, no server, no assets: the
 game is readable Lua source running on an embedded Fengari VM (view
-source — the core ships in the page as the `QM_SOURCES_JS` block, under
-320 KB total). Progress persists in the browser's local storage.
+source — the core ships in the page as the `QM_SOURCES_JS` block;
+605 KB total, most of it the unminified VM). Progress persists in the
+browser's local storage.
 
 ## The three drills
 

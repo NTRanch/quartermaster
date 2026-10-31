@@ -4,8 +4,8 @@
 5.3 ∩ 5.4 intersection dialect (see the engine chapter's decision of
 record).
 
-**Delivery shape:** one self-contained `web/index.html` (319,307
-bytes): the Fengari 0.1.4 VM inlined as a browser bundle, the readable
+**Delivery shape:** one self-contained `web/index.html` (604,884
+bytes, most of it the unminified Fengari VM): the Fengari 0.1.4 VM inlined as a browser bundle, the readable
 Lua core inlined as the `QM_SOURCES_JS` block, a shared bootstrap, and
 a small JS shell (canvas / input / generated WebAudio / localStorage).
 The Lua renders nothing; it emits draw lists on a 960×960 logical
