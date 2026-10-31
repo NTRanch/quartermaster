@@ -220,3 +220,28 @@ and those are exactly the parts Lua carries at full strength.
   (rendering, animation, audio, dialogue/UI, state, persistence, assets,
   build), the library or tool this entry pins — or states plainly that the
   part is written from scratch (see the next chapter).
+
+## Decision of record — the VM pick (2026-10-30, build time)
+
+The dossier recommends wasmoon (PUC 5.4 to wasm) with Fengari (JS VM,
+Lua 5.3 semantics) as the recorded fallback. The week's preflight for
+this repo named Fengari primary, and the build confirms the pick:
+
+- **Picked: Fengari 0.1.4**, inlined as an esbuild browser bundle.
+  Total page weight: 319,307 bytes including the VM and all sources.
+- **Why it suffices:** the core is written in the 5.3 ∩ 5.4
+  intersection dialect — no integer division on floats, no bitwise
+  operators on possibly-float values, no goto, no integer-only
+  formatting — so 5.3 semantics carry it exactly. The same sources
+  run under the estate PUC 5.4 for the headless busted suite, and a
+  standing conformance gate (720 demo ticks, canonical frame dumps)
+  proves the two VMs agree byte for byte.
+- **What the pick cost:** one real portability bug, found by that
+  gate — Fengari's float `%` loses the division quotient on large
+  operands, which silently desynchronised the Park-Miller RNG. The
+  fix (Schrage decomposition, all intermediates < 2^31) is the
+  estate-portable pattern and is filed in `docs/BREAKAGE-LOG.md`,
+  along with the bundle-stubbing recipe (`tools/build-vendor.sh`).
+- **wasmoon stays the recorded fallback**: if a future Lua week
+  needs a 5.4-only feature (integer semantics in the core, say),
+  wasmoon is the pick and Fengari's 5.3 ceiling is the reason.
