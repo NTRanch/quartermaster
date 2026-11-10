@@ -1,3 +1,5 @@
+> **Game page:** the full storefront page for this game lives at [docs/GAME-PAGE.md](docs/GAME-PAGE.md).
+
 ![Quartermaster header](assets/brand/header.png)
 
 # Quartermaster
