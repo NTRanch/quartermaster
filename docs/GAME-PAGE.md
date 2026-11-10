@@ -15,7 +15,7 @@ All characters depicted are adults.
 
 ## A positions-drill game where you answer called positions, hold them steady, and face appraisal at a closing ceremony.
 
-<p align="center"><a href="https://github.com/NTRanch/quartermaster">GitHub</a> · <a href="https://github.com/NTRanch/quartermaster/blob/main/LICENSE.md">License</a> · <a href="https://ntranch.itch.io">itch.io studio page</a></p>
+<p align="center"><a href="https://github.com/NTRanch/quartermaster">GitHub</a> · <a href="https://github.com/NTRanch/quartermaster/blob/main/LICENSE.md">License</a> · <a href="https://ntranch.itch.io">itch.io studio page</a> · <a href="https://github.com/NTRanch/quartermaster/releases/tag/v1.0.0">Release</a></p>
 
 ![Quartermaster header](../assets/brand/header.png)
 
